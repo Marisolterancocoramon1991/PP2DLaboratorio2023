@@ -13,7 +13,7 @@ namespace BibliotecaDeClases
         //   private LinkedList<Persona> lista;
 
         /// <summary>
-        /// 
+        /// constructor 
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="iD"></param>
