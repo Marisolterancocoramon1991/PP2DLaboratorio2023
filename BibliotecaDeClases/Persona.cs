@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    public class Persona
+    public abstract class Persona
     {
         private string nombre;
         private int id;
@@ -18,7 +18,7 @@ namespace BibliotecaDeClases
         /// <summary>
         /// 
         /// </summary>
-        public Persona() : this(" ", 0, " ", " "," ", " ")
+        public Persona() : this(" ", " ", " ", " ", " ")
         {
         }
         /// <summary>
@@ -31,12 +31,12 @@ namespace BibliotecaDeClases
         /// <param name="correoElectronico"></param>
         /// <param name="contraseña"></param>
         /// 
-        public Persona(string nombre, int id, string apellido, string direccion,
-            string correoElectronico,string contraseña)
+        public Persona(string nombre, string apellido, string direccion,
+            string correoElectronico, string contraseña)
         {
-            this.nombre = nombre;
-            this.id = id;
-            this.apellido = apellido;
+            this.nombre = Validaciones.CargarPalabra(nombre);
+            this.id = Validaciones.CargaID();
+            this.apellido = Validaciones.CargarPalabra(apellido);
             this.direccion = direccion;
             this.correoElectronico = correoElectronico;
             this.contraseña = contraseña;
@@ -48,8 +48,10 @@ namespace BibliotecaDeClases
         public string Nombre
         {
             get { return nombre; }
-            set { nombre = value; }
-
+            set
+            {
+                nombre = value;
+            }
         }
 
         /// <summary>
@@ -66,7 +68,10 @@ namespace BibliotecaDeClases
         public string Apellido
         {
             get { return apellido; }
-            set { apellido = value; }
+            set
+            {
+                apellido = value;
+            }
 
         }
         /// <summary>
@@ -78,6 +83,30 @@ namespace BibliotecaDeClases
             set { direccion = value; }
         }
 
+        public string CorreoElectronico
+        {
+            get { return correoElectronico; }
+            set
+            {
+                correoElectronico = value;
+            }
+        }
+        /// <summary>
+        /// muestra los datos esenciales del modelo de negocios
+        /// en cualquuier persona
+        /// </summary>
+        /// <returns></returns> devuelve un string 
+        public virtual string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Usuario {nombre} {apellido}");
+            sb.AppendLine($"id de la cuenta es {id}");
+            sb.AppendLine($"direccion {direccion}");
+
+            return sb.ToString();
+
+        }
 
 
     }

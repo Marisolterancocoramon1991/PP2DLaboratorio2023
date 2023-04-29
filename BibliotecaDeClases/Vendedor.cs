@@ -20,9 +20,9 @@ namespace BibliotecaDeClases
         public float Sueldo { get => sueldo; set => sueldo = value; }
         public eTurno Turno { get => turno; set => turno = value; }
 
-        public Vendedor(string nombre, int id, string apellido, string direccion,
+        public Vendedor(string nombre, string apellido, string direccion,
             string correoElectronico,   string contraseña, float  sueldo, eTurno turno) : 
-            base(nombre, id, apellido, direccion, correoElectronico, contraseña)
+            base(nombre, apellido, direccion, correoElectronico, contraseña)
         {
             this.Turno = turno; 
             this.Sueldo = sueldo;   

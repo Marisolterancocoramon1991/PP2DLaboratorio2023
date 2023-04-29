@@ -88,5 +88,79 @@ namespace BibliotecaDeClases
             }
 
         }
+        /// <summary>
+        /// Valida si es nombre dependiendo de las condiciones 
+        /// no es vacio ni nulo, solo contiene letras y espacios en blanco
+        /// y no contiene solo es pacios en blanco
+        /// </summary>
+        /// <param name="nombre"></param> parametro string 
+        /// <returns></returns> retorna falso si es vacio, null o tiene caracteres
+        /// por fuera de las letras de lo contrario verdadero
+        public static bool EsNombre(string nombre)
+        {
+            // este metodo de string verifica si viene nulo o vacia la cadena
+            if (string.IsNullOrEmpty(nombre))
+            {
+                return false;
+            }
+
+            // se recocorre caracter por caracter y se verifica 
+            // si alguno de los caracteres es invalido
+            foreach (char c in nombre)
+            {
+                if (!char.IsLetter(c) && c != ' ')
+                {
+                    return false;
+                }
+            }
+
+            // Verificar si el nombre contiene solo espacios en blanco
+            if (nombre.Trim().Length == 0)
+            {
+                return false;
+            }
+
+            // El nombre es válido
+            return true;
+        }
+        public static string CargarPalabra(string cadenaCaracteres)
+        {
+
+            if (Validaciones.EsNombre(cadenaCaracteres))
+            {
+                return cadenaCaracteres;
+            }
+            else
+            {
+                return "hubo un error en la carga de datos";
+            }
+
+
+        }
+
+        public static string CargarNumero(string cadenaCaracteres)
+        {
+            if(EsNumero(cadenaCaracteres))
+            {
+                return cadenaCaracteres;
+
+            }
+            else 
+            {
+                return "error en la carga de numero de cuenta";
+            
+            }
+
+        }
+
+
+        public static int CargaID()
+        {
+            
+            Random rnd = new Random();
+            int id = rnd.Next(1000000, 9999999);
+
+            return id;
+        }
     }
 }
