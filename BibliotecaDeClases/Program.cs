@@ -10,7 +10,7 @@ namespace BibliotecaDeClases
     {
         static void Main(string[] args)
         {
-            Cliente cliente = new Cliente("kervin","briceño","capital",
+      /*      Cliente cliente = new Cliente("kervin","briceño","capital",
                 "pepito@gmail.com","45ccc", 10, "15552525");
             Cliente cliente2 = new Cliente("pedro", "teran", "capital",
                "pepito@gmail.com", "45ccc", 10, "2555252");
@@ -20,7 +20,7 @@ Console.WriteLine(cliente.Mostrar());
             Console.WriteLine("-----------------");
             Console.WriteLine(cliente2.Mostrar());
             Console.WriteLine("----------------");
-            Console.WriteLine(cliente3.Mostrar());
+            Console.WriteLine(cliente3.Mostrar());*/
 
            /* public Carne(string nombre, string tipo, float precio, int cantidadEnInventario)
                 carne*/

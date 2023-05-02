@@ -42,7 +42,7 @@ namespace BibliotecaDeClases
 
         }
 
-        public string MostrarCarnes()
+        public virtual string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();
 

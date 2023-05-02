@@ -21,8 +21,8 @@ namespace BibliotecaDeClases
         public eTurno Turno { get => turno; set => turno = value; }
 
         public Vendedor(string nombre, string apellido, string direccion,
-            string correoElectronico,   string contraseña, float  sueldo, eTurno turno) : 
-            base(nombre, apellido, direccion, correoElectronico, contraseña)
+            string correoElectronico,   string contraseña, float  sueldo, eTurno turno,eTipoDeUsuario tipoDeUsuario) : 
+            base(nombre, apellido, direccion, correoElectronico, contraseña, tipoDeUsuario)
         {
             this.Turno = turno; 
             this.Sueldo = sueldo;   

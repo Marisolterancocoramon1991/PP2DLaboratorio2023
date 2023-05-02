@@ -14,25 +14,21 @@ namespace BibliotecaDeClases
         private string direccion;
         private string correoElectronico;
         private string contraseña;
+        private eTipoDeUsuario  tipoDeUsuario;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public Persona() : this(" ", " ", " ", " ", " ")
+        public enum eTipoDeUsuario
         {
+            Cliente,
+            Vendedor
+
         }
-        /// <summary>
-        /// /
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="id"></param>
-        /// <param name="apellido"></param>
-        /// <param name="direccion"></param>
-        /// <param name="correoElectronico"></param>
-        /// <param name="contraseña"></param>
-        /// 
+
+       /* public Persona() : this(" ", " ", " ", " ", " ")
+        {
+        }*/
+      
         public Persona(string nombre, string apellido, string direccion,
-            string correoElectronico, string contraseña)
+            string correoElectronico, string contraseña, eTipoDeUsuario tipoDeUsuario)
         {
             this.nombre = Validaciones.CargarPalabra(nombre);
             this.id = Validaciones.CargaID();
@@ -40,7 +36,7 @@ namespace BibliotecaDeClases
             this.direccion = direccion;
             this.correoElectronico = correoElectronico;
             this.contraseña = contraseña;
-
+            this.tipoDeUsuario=tipoDeUsuario;
         }
         /// <summary>
         /// 
@@ -90,6 +86,21 @@ namespace BibliotecaDeClases
             {
                 correoElectronico = value;
             }
+        }
+
+        public string Contraseña
+        {
+            get { return contraseña; }
+            set
+            {
+                contraseña = value;
+            }
+
+        }
+
+        public eTipoDeUsuario TipoDeUsuario
+        {
+            get { return this.tipoDeUsuario; }
         }
         /// <summary>
         /// muestra los datos esenciales del modelo de negocios

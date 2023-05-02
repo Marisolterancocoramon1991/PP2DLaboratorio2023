@@ -3,80 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BibliotecaDeClases.Persona;
+using static BibliotecaDeClases.Vendedor;
+using static BibliotecaDeClases.Venta;
 
 namespace BibliotecaDeClases
 {
-    internal class Negocio
+    public static class Negocio
     {
-
-    }
-}
-/*
- *  #region Atributos
-        private static List<Usuario> usuariosRegistrados;
-        private static List<Producto> listaDeProductos;
+        private static List<Persona> usuariosRegistrados;
+        private static List<Carne> listaDeProductos;
         private static Queue<Cliente> colaClientes;
         private static List<Venta> listaVentas;
-        #endregion
 
-        #region Constructores
         static Negocio()
         {
-            usuariosRegistrados = new List<Usuario>();
-            listaDeProductos = new List<Producto>();
+            usuariosRegistrados = new List<Persona>();
+            listaDeProductos = new List<Carne>();
             colaClientes = new Queue<Cliente>();
             listaVentas = new List<Venta>();
 
-            CargarUsuarios();
-            CargarProductos();
+             CargarVendedor();
+           //  CargarProductos();
             CargarClientes();
         }
-        #endregion
 
-        #region Metodos
-        private static void CargarUsuarios()
+        private static void CargarVendedor()
         {
-            usuariosRegistrados.Add(new Usuario("Ignacio Fadon", "fadon@vendedor.com", "contraseña", Usuario.eTipoDeUsuario.Vendedor));
-            usuariosRegistrados.Add(new Usuario("Valentin Peralta", "peralta@peralta.com", "contraseña", Usuario.eTipoDeUsuario.Dueño));
-            usuariosRegistrados.Add(new Usuario("José Martinez de Hoz", "contador@contador.com","contraseña", Usuario.eTipoDeUsuario.Contador));
-        }
-        private static void CargarProductos()
-        {
-            listaDeProductos.Add(new Procesador("Procesador", "AMD", "Ryzen 5 3600g", 35000, "Gamer", 3, 4, 3.6, "AM4"));
-            listaDeProductos.Add(new Notebook("Notebook", "Asus", "X515EA", 105000, "Escritorio", 2, 8, 256, "Intel I3 1115g"));
-            listaDeProductos.Add(new MemoriaRam("Memoria Ram", "Corsair","ValueSelect" , 18100, "Gamer", 1, 16, "DDR4", 2400));
-            listaDeProductos.Add(new PlacaDeVideo("Placa De Video", "Asus", "GeForce GTX 1630", 95000, "Escritorio", 3, "GTX 1630", 4, 75));
+            usuariosRegistrados.Add(new Vendedor("Lucas", "Santos", "Combate de los Pozos",
+                "LucasBriceño@gmial.com", "123456789", 154545,eTurno.tarde, eTipoDeUsuario.Vendedor));
+
+
         }
 
-        private static void CargarClientes()
+        private static void CargarClientes() 
         {
-            colaClientes.Enqueue(new Cliente("Lautaro Martinez", 85000, Cliente.eMetodoPago.MercadoPago));
-            colaClientes.Enqueue(new Cliente("Daniela Perez", 160000, Cliente.eMetodoPago.Efectivo));
-            colaClientes.Enqueue(new Cliente("Juan Basquez", 35000, Cliente.eMetodoPago.TarjetaDeCredito));
-            colaClientes.Enqueue(new Cliente("Ludmila Fernandez", 85000, Cliente.eMetodoPago.TarjetaDeCredito));
-        }
+            usuariosRegistrados.Add(new Cliente("Marisol", "Briceño", "capital"
+                , "marienarg@gmail.com", "dwee2w12e", 0, "878484", eTipoDeUsuario.Cliente));
+                usuariosRegistrados.Add(new Cliente("Kervin", "Briceño", "Capital",
+                "KervinBriceño@gmail.com", "123456", 156516, "6546546", eTipoDeUsuario.Cliente));
+            usuariosRegistrados.Add(new Cliente("Vicente", "Briceño", "Capital",
+                "VicenteBriceño@gmail.com", "1234fef6", 1560, "5465798", eTipoDeUsuario.Cliente));
 
-        public static void CargarVenta(Venta venta)
-        {
-            listaVentas.Add(venta);
         }
-
-        public static bool ValidarCamposIngresados(string email, string contraseña)
+        public static Persona? LogearUsuario(string corrreoElectornico, string contraseña)
         {
-            if(string.IsNullOrEmpty(email.Trim()) || string.IsNullOrEmpty(contraseña))
+            if (Validaciones.ValidarCamposIngresados(corrreoElectornico, contraseña))
             {
-                return false;
-            }
-            return true;
-        }
-
-        public static Usuario LogearUsuario(string email, string contraseña)
-        {
-            if(ValidarCamposIngresados(email, contraseña))
-            {
-                foreach(Usuario item in usuariosRegistrados)
+                foreach (Persona item in usuariosRegistrados)
                 {
-                    if(item.Email.Trim().ToLower() == email.Trim().ToLower() 
+                    if (item.CorreoElectronico.Trim().ToLower() == corrreoElectornico.Trim().ToLower()
                         && item.Contraseña == contraseña) //Dejo diferencia de mayus y espacios.
                     {
                         return item;
@@ -86,8 +62,7 @@ namespace BibliotecaDeClases
             return null;
 
         }
-
-        public static List<Producto> RetornarProductos()
+        public static List<Carne> RetornarProductos()
         {
             return listaDeProductos;
         }
@@ -97,15 +72,13 @@ namespace BibliotecaDeClases
             return colaClientes;
         }
 
-
-
-        public static List<Producto> BuscarPorPrecio(double precioMinimo, double precioMaximo)
+        public static List<Carne> BuscarPorPrecio(double precioMinimo, double precioMaximo)
         {
-            List<Producto> lista = new List<Producto>();
+            List<Carne> lista = new List<Carne>();
 
-            foreach (Producto item in listaDeProductos)
+            foreach (Carne item in listaDeProductos)
             {
-                if(item.Precio > precioMinimo && item.Precio < precioMaximo)
+                if (item.Precio > precioMinimo && item.Precio < precioMaximo)
                 {
                     lista.Add(item);
                 }
@@ -114,13 +87,13 @@ namespace BibliotecaDeClases
             return lista;
         }
 
-        public static List<Producto> BuscarPorCategoria(string categoria)
+        public static List<Carne> BuscarPorTipo(string categoria)
         {
-            List<Producto> lista = new List<Producto>();
+            List<Carne> lista = new List<Carne>();
 
-            foreach (Producto item in listaDeProductos)
+            foreach (Carne item in listaDeProductos)
             {
-                if (item.Categoria.ToLower().Trim().Contains(categoria.ToLower().Trim()) || categoria == "")
+                if (item.Tipo.ToLower().Trim().Contains(categoria.ToLower().Trim()) || categoria == "")
                 {
                     lista.Add(item);
                 }
@@ -133,36 +106,21 @@ namespace BibliotecaDeClases
         {
             int ret = 0;
 
-            foreach(Venta item in listaVentas)
+            foreach (Venta item in listaVentas)
             {
                 ret++;
             }
             return ret;
         }
 
-        public static List<String> DevuelveCategorias()
-        {
-            List<String> categorias = new List<String>();
 
-            foreach(Venta item in listaVentas)
-            {
-                if(categorias.Contains(item.ProductoVendido.Categoria) == false)
-                {
-                    categorias.Add(item.ProductoVendido.Categoria);
-                }
-            }
-            return categorias;
-        }
-
-
-
-        public static int ContadorCategoriasVendidas(string categoria)
+        public static int ContadorTiposVendidas(string Tipo)
         {
             int retorno = 0;
 
-            foreach(Venta item in listaVentas)
+            foreach (Venta item in listaVentas)
             {
-                if(item.ProductoVendido.Categoria == categoria)
+                if (item.ProductoVendido.Tipo == Tipo)
                 {
                     retorno++;
                 }
@@ -175,31 +133,29 @@ namespace BibliotecaDeClases
         {
             double retorno = 0;
 
-            foreach(Venta item in listaVentas)
+            foreach (Venta item in listaVentas)
             {
                 retorno += item.ProductoVendido.Precio;
             }
 
             return retorno;
         }
-
-        public static double GananciaPorTag(string categoria)
+        public static double GananciaPorMercadoPago(eMetodoPago metodoPago)
         {
             double retorno = 0;
 
-            foreach(Venta item in listaVentas)
+            foreach (Venta item in listaVentas)
             {
-                 if(item.ProductoVendido.Categoria == categoria)
-                 {
+                if (item.MetodoPago == metodoPago)
+                {
                     retorno += item.ProductoVendido.Precio;
-                 }
+                }
             }
 
             return retorno;
         }
 
+    }
+}
 
-        #endregion
 
-
-*/

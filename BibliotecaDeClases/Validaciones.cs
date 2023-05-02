@@ -152,7 +152,14 @@ namespace BibliotecaDeClases
             }
 
         }
-
+        public static bool ValidarCamposIngresados(string email, string contraseña)
+        {
+            if (string.IsNullOrEmpty(email.Trim()) || string.IsNullOrEmpty(contraseña))
+            {
+                return false;
+            }
+            return true;
+        }
 
         public static int CargaID()
         {
