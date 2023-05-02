@@ -36,7 +36,8 @@ namespace PrimerParcial
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
             auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text);
-
+            //SoundPlayer sonido = new SoundPlayer();
+           
             if (auxiliar != null)
             {
                
