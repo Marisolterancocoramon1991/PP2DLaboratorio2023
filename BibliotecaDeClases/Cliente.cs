@@ -9,7 +9,7 @@ namespace BibliotecaDeClases
 {
     public class Cliente : Persona
     {
-        private float saldo;
+        protected float saldo;
         private string numeroDeCuenta;
 
         private List<Carne> lista;
@@ -44,7 +44,7 @@ namespace BibliotecaDeClases
             get { return numeroDeCuenta; }
             set
             {
-                this.NumeroDeCuenta = value;
+                this.numeroDeCuenta = value;
             }
         }
 

@@ -36,19 +36,18 @@ namespace PrimerParcial
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
             auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text);
-            //SoundPlayer sonido = new SoundPlayer();
-           
+            SoundPlayer sonido = new SoundPlayer();
+            sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
+            sonido.Play();
             if (auxiliar != null)
             {
-               
+
                 if (auxiliar.TipoDeUsuario == Persona.eTipoDeUsuario.Cliente)
                 {
-                    formBienvenidaMonto = new FormBienvenidaMontoM();
-                    labelContraseña.Text = "CASA";
-                    
+                    formBienvenidaMonto = new FormBienvenidaMontoM(auxiliar);
                     formBienvenidaMonto.Show();
-                   this.Hide();//oculta esta ventana
-                  //  this.Close();
+                    this.Hide();//oculta esta ventana
+                    //  this.Close();
                 }
                 if (auxiliar.TipoDeUsuario == Persona.eTipoDeUsuario.Vendedor)
                 {
@@ -75,15 +74,31 @@ namespace PrimerParcial
             bool resultado = Usuario.Text.Equals("Trabajador");
             if (resultado == false)
             {
+                SoundPlayer sonido = new SoundPlayer();
+                sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
+                sonido.Play();
                 textBoxCorreo.Text = "KervinBriceño@gmail.com";
                 textBoxContraseña.Text = "123456";
             }
             else
             {
+                SoundPlayer sonido = new SoundPlayer();
+                sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
+                sonido.Play();
                 textBoxCorreo.Text = "LucasBriceño@gmial.com";
                 textBoxContraseña.Text = "123456789";
 
             }
+        }
+
+        private void Carniceria_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

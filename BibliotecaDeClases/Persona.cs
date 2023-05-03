@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    public abstract class Persona
+    public  class Persona
     {
         private string nombre;
         private int id;

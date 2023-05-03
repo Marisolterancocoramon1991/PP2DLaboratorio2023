@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    internal class Validaciones
+    public class Validaciones
     {
 
         /// <summary>
@@ -168,6 +168,19 @@ namespace BibliotecaDeClases
             int id = rnd.Next(1000000, 9999999);
 
             return id;
+        }
+
+        public static float DeStringANumero(string numero)
+        {
+            float auxiliar;
+           
+            if (EsNumero(numero))
+            {
+                 float.TryParse(numero, out auxiliar);
+                return auxiliar;
+            }
+
+            return 0;
         }
     }
 }
