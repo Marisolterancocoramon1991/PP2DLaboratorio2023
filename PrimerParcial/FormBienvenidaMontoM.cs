@@ -34,16 +34,16 @@ namespace PrimerParcial
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-       /*     string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
-            string rutaRelativa = "Resources/sonidoAplicacion.wav";
-            string rutaCompleta = Path.Combine(rutaBase, rutaRelativa);
-            SoundPlayer sonido = new SoundPlayer(rutaCompleta);
 
-            sonido.Play();*/
+            /*     string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
+                 string rutaRelativa = "Resources/sonidoAplicacion.wav";
+                 string rutaCompleta = Path.Combine(rutaBase, rutaRelativa);
+                 SoundPlayer sonido = new SoundPlayer(rutaCompleta);
+
+                 sonido.Play();*/
 
             // Ruta relativa del archivo de sonido
-            string relativePath = "C:/Users/kervi/source/repos/PP2DLaboratorio/PrimerParcial/Resources/sonidoAplicacion.wav"; ;
+            string relativePath = @".\sonidoAplicacion.wav";
 
             // Ruta completa del archivo de sonido
             string fullPath = Path.Combine(Application.StartupPath, relativePath);

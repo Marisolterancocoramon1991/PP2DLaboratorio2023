@@ -73,6 +73,12 @@ namespace BibliotecaDeClases
             listaDeProductos.Add(new Cerdo("Solomillo", "Carne Semi", 1300, 50, eRazasDeCerdo.Mallorquinos));
             listaDeProductos.Add(new Cerdo("Pecho", "Carne Semi", 1800, 40, eRazasDeCerdo.Ibericos));
             listaDeProductos.Add(new Cerdo("Costillar", "Carne Semi", 900, 30, eRazasDeCerdo.Lanbrace));
+            listaDeProductos.Add(new Ave("Huevos", "Cigoto", 20, 1000, Ave.eTipoAve.Huevo));
+            listaDeProductos.Add(new Ave("Suprema", "Blanca", 900, 80, Ave.eTipoAve.Pollo));
+            listaDeProductos.Add(new Ave("PATA y Muslo", "Blanca", 1500, 30, Ave.eTipoAve.Gallina));
+            listaDeProductos.Add(new Ave("Huevos Grandes", "Cigoto", 30, 1200, Ave.eTipoAve.Huevo));
+            listaDeProductos.Add(new Ave("Churrasquito", "Blanca", 900, 30, Ave.eTipoAve.Pollo));
+            listaDeProductos.Add(new Ave("Milanesa", "Blanca", 900, 30, Ave.eTipoAve.Gallina));
         }
 
 

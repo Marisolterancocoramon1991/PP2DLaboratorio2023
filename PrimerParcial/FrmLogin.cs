@@ -40,7 +40,7 @@ namespace PrimerParcial
         {
             auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text);
             // Ruta relativa del archivo de sonido
-            string relativePath = "C:/Users/kervi/source/repos/PP2DLaboratorio/PrimerParcial/Resources/sonidoAplicacion.wav"; ;
+            string relativePath = @".\sonidoAplicacion.wav";
 
             // Ruta completa del archivo de sonido
             string fullPath = Path.Combine(Application.StartupPath, relativePath);
@@ -94,7 +94,7 @@ namespace PrimerParcial
         {
             bool resultado = Usuario.Text.Equals("Trabajador");
             // Ruta relativa del archivo de sonido
-            string relativePath = "C:/Users/kervi/source/repos/PP2DLaboratorio/PrimerParcial/Resources/sonidoAplicacion.wav"; ;
+            string relativePath = @".\sonidoAplicacion.wav";
 
             // Ruta completa del archivo de sonido
             string fullPath = Path.Combine(Application.StartupPath, relativePath);

@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimerParcial", "PrimerParc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaDeClases", "BibliotecaDeClases\BibliotecaDeClases.csproj", "{E0A3AF67-48EE-4B4B-A25F-77B1091A93AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logicApplication", "logicApplication\logicApplication.csproj", "{F0E052B3-A606-4B00-84E2-66EEDD30E669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "logicApplication", "logicApplication\logicApplication.csproj", "{F0E052B3-A606-4B00-84E2-66EEDD30E669}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{FE6A51D2-4384-4019-BB51-D53471E647BB}"
+	ProjectSection(SolutionItems) = preProject
+		PrimerParcial\Resources\vaca.jpg = PrimerParcial\Resources\vaca.jpg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

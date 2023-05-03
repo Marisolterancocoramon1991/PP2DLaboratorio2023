@@ -63,6 +63,26 @@ namespace PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cerdo {
+            get {
+                object obj = ResourceManager.GetObject("cerdo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gallina {
+            get {
+                object obj = ResourceManager.GetObject("gallina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OjoAbiertoContraseña {
             get {
                 object obj = ResourceManager.GetObject("OjoAbiertoContraseña", resourceCulture);
@@ -86,6 +106,16 @@ namespace PrimerParcial.Properties {
         internal static System.Drawing.Bitmap OjoContraseña {
             get {
                 object obj = ResourceManager.GetObject("OjoContraseña", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vaca {
+            get {
+                object obj = ResourceManager.GetObject("vaca", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
