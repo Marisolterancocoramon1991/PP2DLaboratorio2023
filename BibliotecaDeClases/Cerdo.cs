@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    internal class Cerdo : Carne
+    public class Cerdo : Carne
     {
 
 

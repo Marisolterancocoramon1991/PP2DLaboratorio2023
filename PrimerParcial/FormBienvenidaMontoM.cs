@@ -20,9 +20,9 @@ namespace PrimerParcial
         public FormBienvenidaMontoM(Persona usuario)
         {
             InitializeComponent();
-            if (usuario is not null) {
-                cliente = (Cliente)usuario;
-            }
+        //    if (usuario is not null) {
+                this.cliente = (Cliente)usuario;
+        //    }
            
 
         }

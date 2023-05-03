@@ -30,7 +30,7 @@
         {
             button1 = new Button();
             button2 = new Button();
-            buttonCarneVacuna = new Button();
+            buttonCVacuna = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -61,15 +61,15 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // buttonCarneVacuna
+            // buttonCVacuna
             // 
-            buttonCarneVacuna.Location = new Point(85, 183);
-            buttonCarneVacuna.Name = "buttonCarneVacuna";
-            buttonCarneVacuna.Size = new Size(75, 23);
-            buttonCarneVacuna.TabIndex = 2;
-            buttonCarneVacuna.Text = "Vacuno";
-            buttonCarneVacuna.UseVisualStyleBackColor = true;
-            buttonCarneVacuna.Click += button3_Click;
+            buttonCVacuna.Location = new Point(85, 183);
+            buttonCVacuna.Name = "buttonCVacuna";
+            buttonCVacuna.Size = new Size(75, 23);
+            buttonCVacuna.TabIndex = 2;
+            buttonCVacuna.Text = "Vacuno";
+            buttonCVacuna.UseVisualStyleBackColor = true;
+            buttonCVacuna.Click += button3_Click;
             // 
             // pictureBox1
             // 
@@ -100,12 +100,13 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
             // 
             // groupBoxEleccion
             // 
             groupBoxEleccion.BackColor = Color.IndianRed;
             groupBoxEleccion.Controls.Add(pictureBox1);
-            groupBoxEleccion.Controls.Add(buttonCarneVacuna);
+            groupBoxEleccion.Controls.Add(buttonCVacuna);
             groupBoxEleccion.Controls.Add(pictureBox3);
             groupBoxEleccion.Controls.Add(button2);
             groupBoxEleccion.Controls.Add(pictureBox2);
@@ -125,6 +126,7 @@
             Controls.Add(groupBoxEleccion);
             Name = "FormVentas";
             Text = "Form1";
+            Load += FormVentas_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -136,7 +138,7 @@
 
         private Button button1;
         private Button button2;
-        private Button buttonCarneVacuna;
+        private Button buttonCVacuna;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
