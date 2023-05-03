@@ -3,6 +3,9 @@ using BibliotecaDeClases;
 using System.Windows.Forms.VisualStyles;
 using System.Media;
 using System.ComponentModel.Design.Serialization;
+using Microsoft.VisualBasic.ApplicationServices;
+using PrimerParcial.Properties;
+using System.Numerics;
 
 namespace PrimerParcial
 
@@ -36,9 +39,27 @@ namespace PrimerParcial
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
             auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text);
-            SoundPlayer sonido = new SoundPlayer();
-            sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
-            sonido.Play();
+            // Ruta relativa del archivo de sonido
+            string relativePath = "C:/Users/kervi/source/repos/PP2DLaboratorio/PrimerParcial/Resources/sonidoAplicacion.wav"; ;
+
+            // Ruta completa del archivo de sonido
+            string fullPath = Path.Combine(Application.StartupPath, relativePath);
+
+            // Verificar si el archivo existe en la ruta especificada
+            if (File.Exists(fullPath))
+            {
+                // Crear un objeto SoundPlayer con la ruta del archivo
+                SoundPlayer player = new SoundPlayer(fullPath);
+
+                // Reproducir el archivo de sonido
+                player.Play();
+            }
+            else
+            {
+                // Mostrar espera ya que el archvo no pudo abrir...
+                MessageBox.Show("...espere unos instantes");
+            }
+
             if (auxiliar != null)
             {
 
@@ -72,19 +93,36 @@ namespace PrimerParcial
         private void Usuario_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool resultado = Usuario.Text.Equals("Trabajador");
+            // Ruta relativa del archivo de sonido
+            string relativePath = "C:/Users/kervi/source/repos/PP2DLaboratorio/PrimerParcial/Resources/sonidoAplicacion.wav"; ;
+
+            // Ruta completa del archivo de sonido
+            string fullPath = Path.Combine(Application.StartupPath, relativePath);
+
+            // Verificar si el archivo existe en la ruta especificada
+            if (File.Exists(fullPath))
+            {
+                // Crear un objeto SoundPlayer con la ruta del archivo
+                SoundPlayer player = new SoundPlayer(fullPath);
+
+                // Reproducir el archivo de sonido
+                player.Play();
+            }
+            else
+            {
+                // Mostrar espera ya que el archvo no pudo abrir...
+                MessageBox.Show("...espere unos instantes");
+            }
             if (resultado == false)
             {
-                SoundPlayer sonido = new SoundPlayer();
-                sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
-                sonido.Play();
+             
+       
                 textBoxCorreo.Text = "KervinBriceño@gmail.com";
                 textBoxContraseña.Text = "123456";
             }
             else
             {
-                SoundPlayer sonido = new SoundPlayer();
-                sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
-                sonido.Play();
+
                 textBoxCorreo.Text = "LucasBriceño@gmial.com";
                 textBoxContraseña.Text = "123456789";
 

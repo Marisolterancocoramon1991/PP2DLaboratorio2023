@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PrimerParcial
 {
@@ -33,10 +34,39 @@ namespace PrimerParcial
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SoundPlayer sonido = new SoundPlayer();
-            sonido.SoundLocation = "C:/Users/kervi/source/repos/PP2DLaboratorio/sonidoAplicacion.wav";
-            sonido.Play();
             
+       /*     string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
+            string rutaRelativa = "Resources/sonidoAplicacion.wav";
+            string rutaCompleta = Path.Combine(rutaBase, rutaRelativa);
+            SoundPlayer sonido = new SoundPlayer(rutaCompleta);
+
+            sonido.Play();*/
+
+            // Ruta relativa del archivo de sonido
+            string relativePath = "C:/Users/kervi/source/repos/PP2DLaboratorio/PrimerParcial/Resources/sonidoAplicacion.wav"; ;
+
+            // Ruta completa del archivo de sonido
+            string fullPath = Path.Combine(Application.StartupPath, relativePath);
+
+            // Verificar si el archivo existe en la ruta especificada
+            if (File.Exists(fullPath))
+            {
+                // Crear un objeto SoundPlayer con la ruta del archivo
+                SoundPlayer player = new SoundPlayer(fullPath);
+
+                // Reproducir el archivo de sonido
+                player.Play();
+            }
+            else
+            {
+                // Mostrar espera ya que el archvo no pudo abrir...
+                MessageBox.Show("...espere unos instantes");
+            }
+
+
+
+
+
             if (Validaciones.DeStringANumero(textBoxAgregarMonto.Text) > 0)
             {
                 if (cliente is not null) {

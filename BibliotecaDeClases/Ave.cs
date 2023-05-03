@@ -3,10 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BibliotecaDeClases.Cerdo;
 
 namespace BibliotecaDeClases
 {
-    internal class Ave
+    internal class Ave : Carne
     {
+        public enum eTipoAve 
+        {
+            Huevo,
+            Pollo,
+            Gallina  
+        }
+        private eTipoAve tipoAve;
+        public Ave(string nombre, string tipo, float precio, int cantidadEnInventarioKilos,eTipoAve tipoAve)
+            : base(nombre, tipo, precio, cantidadEnInventarioKilos)
+        {
+            this.tipoAve= tipoAve;
+        }
+
+        public eTipoAve TipoAve { get => tipoAve; }
+
+        public override string MostrarCarnes()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(base.MostrarDetallesDeProducto());
+            sb.AppendLine($"Articulo de ave : {tipoAve}");
+
+            return sb.ToString();
+
+
+        }
     }
 }

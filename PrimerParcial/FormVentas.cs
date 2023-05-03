@@ -18,7 +18,7 @@ namespace PrimerParcial
         public FormVentas(Cliente cliente)
         {
             InitializeComponent();
-           usuario = cliente;
+            usuario = cliente;
 
 
         }
