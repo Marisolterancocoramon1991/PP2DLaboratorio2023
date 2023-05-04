@@ -17,7 +17,7 @@ namespace PrimerParcial
         Cliente? usuario;
         Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
-       
+
         public FormVentas(Cliente cliente)
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace PrimerParcial
                 MessageBox.Show("...espere unos instantes");
             }
             FormCerdo ventanaCerdo = new FormCerdo(usuario, colaClientes, listaDeProductos);
-            
+
             this.Hide();
             ventanaCerdo.Show();
         }
@@ -113,6 +113,16 @@ namespace PrimerParcial
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxEleccion_Enter(object sender, EventArgs e)
         {
 
         }

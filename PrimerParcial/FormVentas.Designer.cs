@@ -80,6 +80,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
@@ -117,6 +118,7 @@
             groupBoxEleccion.TabIndex = 6;
             groupBoxEleccion.TabStop = false;
             groupBoxEleccion.Text = "Carniceria_Teran";
+            groupBoxEleccion.Enter += groupBoxEleccion_Enter;
             // 
             // FormVentas
             // 

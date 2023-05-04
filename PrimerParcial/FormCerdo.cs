@@ -19,11 +19,12 @@ namespace PrimerParcial
         List<Carne> listaDeProductos;
         Carne productoSeleccioando;
 
-        public FormCerdo(Cliente? usuario,
-            Queue<Cliente> colaClientes, List<Carne> listaDeProductos)
+        public FormCerdo(Cliente usuario,
+            Queue<Cliente> colaClientes, List<Carne> listaDeProductos) //: base (usuario)
         {
             InitializeComponent();
-            this.usuario = usuario;
+            if (usuario is not null)
+                this.usuario = usuario;
             this.colaClientes = colaClientes;
             this.listaDeProductos = listaDeProductos;
             CargarDataGridView(Negocio.RetornarProductos());
@@ -47,6 +48,18 @@ namespace PrimerParcial
 
             if (n != -1)
             {
+                foreach (Carne producto in listaDeProductos)
+                {
+                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
+                        producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
+                        producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
+                    {
+
+                        productoSeleccioando = producto;
+                        break;
+                    }
+
+                }
 
 
 
@@ -58,10 +71,53 @@ namespace PrimerParcial
 
             foreach (Carne producto in listaDeProductos)
             {
+                if (producto is Cerdo)
+                {
+                    Cerdo prodct = (Cerdo)producto;
+                    dataGridView1.Rows.Add(prodct.Nombre, prodct.Tipo, prodct.Precio, prodct.RazasDeCerdo);
 
-                dataGridView1.Rows.Add(producto.Nombre, producto.Tipo, producto.Precio/*, producto.RazasDeCerdo*/);
+                }
+
             }
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //    DialogResult confirmarVenta;
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (usuario is not null)
+            {
+                FormVentas frmVentas = new FormVentas(usuario);
+                this.Hide();
+                frmVentas.Show();
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmarVenta;
+            confirmarVenta = MessageBox.Show("Desea logearse", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (confirmarVenta == DialogResult.Yes)
+            {
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Show();
+                this.Hide();
+            }
+            else 
+            {
+                MessageBox.Show("Perfecto... siga con su compra");
+            }
+        }
     }
 }
