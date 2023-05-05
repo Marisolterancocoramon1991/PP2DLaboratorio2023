@@ -12,16 +12,17 @@ using System.Windows.Forms;
 
 namespace PrimerParcial
 {
-    public partial class FormVentas : Form
+    public partial class FormBuscadorCarnes : Form
     {
         Cliente? usuario;
         Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
 
-        public FormVentas(Cliente cliente)
+        public FormBuscadorCarnes(Cliente cliente)
         {
             InitializeComponent();
             usuario = cliente;
+            Validaciones.IsNotNull(usuario);
             listaDeProductos = Negocio.RetornarProductos();
             colaClientes = Negocio.RetornarClientes();
             this.usuario = cliente;
@@ -49,7 +50,8 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormCerdo ventanaCerdo = new FormCerdo(usuario, colaClientes, listaDeProductos);
+
+            FormVentaDeCarne ventanaCerdo = new FormVentaDeCarne(usuario, colaClientes, listaDeProductos);
 
             this.Hide();
             ventanaCerdo.Show();
@@ -76,9 +78,11 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormAve ventanaAve = new FormAve();
+            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario, colaClientes, listaDeProductos);
+
             this.Hide();
-            ventanaAve.Show();
+            ventanaVentaCarne.Show();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -102,9 +106,9 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormVacuno VentanaVacuno = new FormVacuno();
+            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario, colaClientes, listaDeProductos);
             this.Hide();
-            VentanaVacuno.Show();
+            ventanaVentaCarne.Show();
         }
 
         private void FormVentas_Load(object sender, EventArgs e)

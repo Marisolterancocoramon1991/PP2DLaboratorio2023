@@ -1,6 +1,6 @@
 ﻿namespace PrimerParcial
 {
-    partial class FormCerdo
+    partial class FormVentaDeCarne
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,17 @@
         private void InitializeComponent()
         {
             groupCerdo = new GroupBox();
+            textBuscador = new TextBox();
+            buttonBuscar = new Button();
+            groupBoxTipoPago = new GroupBox();
+            radioButtonTarjeteDebito = new RadioButton();
+            radioButtonMarcadoPago = new RadioButton();
+            radioButtonTarjetaC = new RadioButton();
             label3 = new Label();
             label2 = new Label();
             button3 = new Button();
             button2 = new Button();
-            button1 = new Button();
+            buttonComprar = new Button();
             label1 = new Label();
             numericUpDown1 = new NumericUpDown();
             labelDinero = new Label();
@@ -44,6 +50,7 @@
             precio = new DataGridViewTextBoxColumn();
             raza = new DataGridViewTextBoxColumn();
             groupCerdo.SuspendLayout();
+            groupBoxTipoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -51,11 +58,14 @@
             // groupCerdo
             // 
             groupCerdo.BackColor = Color.FromArgb(255, 128, 128);
+            groupCerdo.Controls.Add(textBuscador);
+            groupCerdo.Controls.Add(buttonBuscar);
+            groupCerdo.Controls.Add(groupBoxTipoPago);
             groupCerdo.Controls.Add(label3);
             groupCerdo.Controls.Add(label2);
             groupCerdo.Controls.Add(button3);
             groupCerdo.Controls.Add(button2);
-            groupCerdo.Controls.Add(button1);
+            groupCerdo.Controls.Add(buttonComprar);
             groupCerdo.Controls.Add(label1);
             groupCerdo.Controls.Add(numericUpDown1);
             groupCerdo.Controls.Add(labelDinero);
@@ -68,6 +78,69 @@
             groupCerdo.TabStop = false;
             groupCerdo.Text = "Carniceria_Teran";
             groupCerdo.Enter += groupCerdo_Enter;
+            // 
+            // textBuscador
+            // 
+            textBuscador.Location = new Point(393, 38);
+            textBuscador.Name = "textBuscador";
+            textBuscador.Size = new Size(155, 23);
+            textBuscador.TabIndex = 12;
+            // 
+            // buttonBuscar
+            // 
+            buttonBuscar.Location = new Point(429, 9);
+            buttonBuscar.Name = "buttonBuscar";
+            buttonBuscar.Size = new Size(75, 23);
+            buttonBuscar.TabIndex = 11;
+            buttonBuscar.Text = "Buscador";
+            buttonBuscar.UseVisualStyleBackColor = true;
+            buttonBuscar.Click += buttonBuscar_Click;
+            // 
+            // groupBoxTipoPago
+            // 
+            groupBoxTipoPago.Controls.Add(radioButtonTarjeteDebito);
+            groupBoxTipoPago.Controls.Add(radioButtonMarcadoPago);
+            groupBoxTipoPago.Controls.Add(radioButtonTarjetaC);
+            groupBoxTipoPago.Location = new Point(32, 319);
+            groupBoxTipoPago.Name = "groupBoxTipoPago";
+            groupBoxTipoPago.Size = new Size(314, 100);
+            groupBoxTipoPago.TabIndex = 10;
+            groupBoxTipoPago.TabStop = false;
+            groupBoxTipoPago.Text = "Tipo de Pago";
+            // 
+            // radioButtonTarjeteDebito
+            // 
+            radioButtonTarjeteDebito.AutoSize = true;
+            radioButtonTarjeteDebito.Location = new Point(89, 61);
+            radioButtonTarjeteDebito.Name = "radioButtonTarjeteDebito";
+            radioButtonTarjeteDebito.Size = new Size(113, 19);
+            radioButtonTarjeteDebito.TabIndex = 2;
+            radioButtonTarjeteDebito.TabStop = true;
+            radioButtonTarjeteDebito.Text = "Tarjeta de Debito";
+            radioButtonTarjeteDebito.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMarcadoPago
+            // 
+            radioButtonMarcadoPago.AutoSize = true;
+            radioButtonMarcadoPago.Location = new Point(165, 31);
+            radioButtonMarcadoPago.Name = "radioButtonMarcadoPago";
+            radioButtonMarcadoPago.Size = new Size(102, 19);
+            radioButtonMarcadoPago.TabIndex = 1;
+            radioButtonMarcadoPago.TabStop = true;
+            radioButtonMarcadoPago.Text = "Marcado Pago";
+            radioButtonMarcadoPago.UseVisualStyleBackColor = true;
+            radioButtonMarcadoPago.CheckedChanged += radioButtonMarcadoPago_CheckedChanged;
+            // 
+            // radioButtonTarjetaC
+            // 
+            radioButtonTarjetaC.AutoSize = true;
+            radioButtonTarjetaC.Location = new Point(19, 31);
+            radioButtonTarjetaC.Name = "radioButtonTarjetaC";
+            radioButtonTarjetaC.Size = new Size(117, 19);
+            radioButtonTarjetaC.TabIndex = 0;
+            radioButtonTarjetaC.TabStop = true;
+            radioButtonTarjetaC.Text = "Tarjeta de Credito";
+            radioButtonTarjetaC.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -93,7 +166,7 @@
             // 
             button3.BackColor = Color.Chocolate;
             button3.ForeColor = Color.Red;
-            button3.Location = new Point(139, 360);
+            button3.Location = new Point(497, 389);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 7;
@@ -104,7 +177,7 @@
             // button2
             // 
             button2.BackColor = Color.FromArgb(128, 255, 255);
-            button2.Location = new Point(14, 360);
+            button2.Location = new Point(416, 376);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 6;
@@ -112,22 +185,22 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // button1
+            // buttonComprar
             // 
-            button1.BackColor = Color.FromArgb(0, 192, 0);
-            button1.Location = new Point(497, 402);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 5;
-            button1.Text = "Compra";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            buttonComprar.BackColor = Color.FromArgb(0, 192, 0);
+            buttonComprar.Location = new Point(497, 360);
+            buttonComprar.Name = "buttonComprar";
+            buttonComprar.Size = new Size(75, 23);
+            buttonComprar.TabIndex = 5;
+            buttonComprar.Text = "Compra";
+            buttonComprar.UseVisualStyleBackColor = false;
+            buttonComprar.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Khaki;
-            label1.Location = new Point(369, 357);
+            label1.Location = new Point(369, 319);
             label1.Name = "label1";
             label1.Size = new Size(167, 15);
             label1.TabIndex = 4;
@@ -136,7 +209,7 @@
             // numericUpDown1
             // 
             numericUpDown1.BackColor = Color.SteelBlue;
-            numericUpDown1.Location = new Point(389, 375);
+            numericUpDown1.Location = new Point(393, 337);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(120, 23);
             numericUpDown1.TabIndex = 3;
@@ -165,10 +238,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, tipo, precio, raza });
-            dataGridView1.Location = new Point(107, 66);
+            dataGridView1.Location = new Point(38, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(443, 288);
+            dataGridView1.Size = new Size(443, 250);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -192,16 +265,18 @@
             raza.HeaderText = "Raza";
             raza.Name = "raza";
             // 
-            // FormCerdo
+            // FormVentaDeCarne
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(570, 428);
             Controls.Add(groupCerdo);
-            Name = "FormCerdo";
+            Name = "FormVentaDeCarne";
             Text = "Form2";
             groupCerdo.ResumeLayout(false);
             groupCerdo.PerformLayout();
+            groupBoxTipoPago.ResumeLayout(false);
+            groupBoxTipoPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -217,12 +292,18 @@
         private DataGridViewTextBoxColumn raza;
         private Label labelNombre;
         private Label labelDinero;
-        private Button button1;
+        private Button buttonComprar;
         private Label label1;
         private NumericUpDown numericUpDown1;
         private Label label3;
         private Label label2;
         private Button button3;
         private Button button2;
+        private GroupBox groupBoxTipoPago;
+        private RadioButton radioButtonTarjeteDebito;
+        private RadioButton radioButtonMarcadoPago;
+        private RadioButton radioButtonTarjetaC;
+        private TextBox textBuscador;
+        private Button buttonBuscar;
     }
 }

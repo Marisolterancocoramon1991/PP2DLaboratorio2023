@@ -44,9 +44,9 @@
             groupBienvenida.Controls.Add(textBoxAgregarMonto);
             groupBienvenida.Controls.Add(label1);
             groupBienvenida.Controls.Add(labelBienvenido);
-            groupBienvenida.Location = new Point(95, 28);
+            groupBienvenida.Location = new Point(-1, 1);
             groupBienvenida.Name = "groupBienvenida";
-            groupBienvenida.Size = new Size(299, 226);
+            groupBienvenida.Size = new Size(374, 231);
             groupBienvenida.TabIndex = 0;
             groupBienvenida.TabStop = false;
             groupBienvenida.Text = "grupo_Carniceria";
@@ -54,7 +54,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(153, 192);
+            button1.Location = new Point(222, 197);
             button1.Name = "button1";
             button1.Size = new Size(114, 23);
             button1.TabIndex = 3;
@@ -64,7 +64,7 @@
             // 
             // textBoxAgregarMonto
             // 
-            textBoxAgregarMonto.Location = new Point(183, 163);
+            textBoxAgregarMonto.Location = new Point(222, 168);
             textBoxAgregarMonto.Name = "textBoxAgregarMonto";
             textBoxAgregarMonto.Size = new Size(100, 23);
             textBoxAgregarMonto.TabIndex = 2;
@@ -72,7 +72,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(19, 166);
+            label1.Location = new Point(92, 171);
             label1.Name = "label1";
             label1.Size = new Size(124, 15);
             label1.TabIndex = 1;
@@ -83,7 +83,7 @@
             labelBienvenido.BackColor = Color.DarkSalmon;
             labelBienvenido.Location = new Point(6, 19);
             labelBienvenido.Name = "labelBienvenido";
-            labelBienvenido.Size = new Size(277, 141);
+            labelBienvenido.Size = new Size(353, 146);
             labelBienvenido.TabIndex = 0;
             labelBienvenido.Text = resources.GetString("labelBienvenido.Text");
             // 
@@ -91,7 +91,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(460, 311);
+            ClientSize = new Size(372, 230);
             Controls.Add(groupBienvenida);
             Font = new Font("Segoe UI", 9F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
             Name = "FormBienvenidaMontoM";

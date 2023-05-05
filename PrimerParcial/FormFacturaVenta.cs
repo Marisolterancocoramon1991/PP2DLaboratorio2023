@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PrimerParcial
 {
-    public partial class FormAve : Form
+    public partial class FormFacturaVenta : Form
     {
-        public FormAve()
+        public FormFacturaVenta()
         {
             InitializeComponent();
         }

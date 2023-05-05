@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BibliotecaDeClases.Carne;
 
 namespace BibliotecaDeClases
 {
@@ -18,11 +19,11 @@ namespace BibliotecaDeClases
         }
 
 
-    
+
         public Venta(Carne productoVendido, eMetodoPago metodoDePago)
         {
             this.productoVendido = productoVendido;
-            this.metodoDePago = metodoDePago;   
+            this.metodoDePago = metodoDePago;
         }
 
 
@@ -30,7 +31,7 @@ namespace BibliotecaDeClases
         {
             get { return productoVendido; }
         }
-        public eMetodoPago MetodoPago
+     public eMetodoPago MetodoPago
         { get => metodoDePago; }
 
     }

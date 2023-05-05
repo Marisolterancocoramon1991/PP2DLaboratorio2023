@@ -16,7 +16,7 @@ namespace BibliotecaDeClases
             Gallina  
         }
         private eTipoAve tipoAve;
-        public Ave(string nombre, string tipo, float precio, int cantidadEnInventarioKilos,eTipoAve tipoAve)
+        public Ave(string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eTipoAve tipoAve)
             : base(nombre, tipo, precio, cantidadEnInventarioKilos)
         {
             this.tipoAve= tipoAve;

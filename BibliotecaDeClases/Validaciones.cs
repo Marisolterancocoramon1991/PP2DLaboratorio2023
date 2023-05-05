@@ -182,5 +182,9 @@ namespace BibliotecaDeClases
 
             return 0;
         }
+        public static bool IsNotNull(object obj)
+        {
+            return obj != null;
+        }
     }
 }

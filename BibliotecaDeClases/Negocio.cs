@@ -172,7 +172,10 @@ namespace BibliotecaDeClases
 
             return retorno;
         }
-
+        public static void CargarVenta(Venta venta)
+        {
+            listaVentas.Add(venta);
+        }
         public static double GananciaTotal()
         {
             double retorno = 0;
@@ -184,13 +187,13 @@ namespace BibliotecaDeClases
 
             return retorno;
         }
-        public static double GananciaPorMercadoPago(eMetodoPago metodoPago)
+    /*    public static double GananciaPorMercadoPago(Cliente cliente)
         {
             double retorno = 0;
 
             foreach (Venta item in listaVentas)
             {
-                if (item.MetodoPago == metodoPago)
+                if (item.ProductoVendido. == producto.ProductoVendido.MetodoPago)
                 {
                     retorno += item.ProductoVendido.Precio;
                 }
@@ -198,7 +201,7 @@ namespace BibliotecaDeClases
 
             return retorno;
         }
-
+    */
     }
 }
 

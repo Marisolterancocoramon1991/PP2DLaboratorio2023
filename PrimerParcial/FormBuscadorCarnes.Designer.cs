@@ -1,6 +1,6 @@
 ﻿namespace PrimerParcial
 {
-    partial class FormVentas
+    partial class FormBuscadorCarnes
     {
         /// <summary>
         /// Required designer variable.

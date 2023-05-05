@@ -11,9 +11,7 @@ namespace BibliotecaDeClases
     {
         protected float saldo;
         private string numeroDeCuenta;
-
-        private List<Carne> lista;
-
+      
         /// <summary>
         /// constructor 
         /// </summary>
@@ -25,13 +23,13 @@ namespace BibliotecaDeClases
         /// <param name="numeroDeCuenta"></param>
         public Cliente(string nombre,
             string apellido, string direccion, string correoElectronico, string contraseña,
-            float saldo, string numeroDeCuenta,eTipoDeUsuario tipoDeUsuario)
+            float saldo, string numeroDeCuenta, eTipoDeUsuario tipoDeUsuario)
             : base(nombre, apellido, direccion, correoElectronico, contraseña, tipoDeUsuario)
         {
             this.saldo = saldo;
-
+            
             this.numeroDeCuenta = Validaciones.CargarNumero(numeroDeCuenta);
-            lista = new List<Carne>();
+
         }
 
         public float Saldo
@@ -60,7 +58,7 @@ namespace BibliotecaDeClases
             sb.AppendLine(base.Mostrar());
             sb.AppendLine($"saldo actual {saldo}");
             sb.AppendLine($"numero de cuenta {numeroDeCuenta}");
-           
+
 
             return sb.ToString();
 

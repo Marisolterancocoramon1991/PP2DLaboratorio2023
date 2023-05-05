@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BibliotecaDeClases.Cliente;
+using System.Linq;
 
 namespace BibliotecaDeClases
 {
@@ -12,12 +14,14 @@ namespace BibliotecaDeClases
         private string tipos = string.Empty;
         private float precio;
         private int cantidadEnInventarioKilos;
+       
         private List<Carne> carnes;
 
         public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos) : this()
         {
             this.Nombre = nombre;
             this.Tipo = tipo;
+           
             this.Precio = precio;
             this.cantidadEnInventarioKilos = cantidadEnInventarioKilos;
         }
@@ -41,7 +45,7 @@ namespace BibliotecaDeClases
             carnes.Add(carne);
 
         }
-
+       
         public virtual string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();

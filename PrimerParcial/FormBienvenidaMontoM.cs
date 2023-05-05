@@ -16,14 +16,14 @@ namespace PrimerParcial
     public partial class FormBienvenidaMontoM : Form
     {
         Cliente? cliente;
-        FormVentas formVentas;
+        FormBuscadorCarnes formVentas;
         public FormBienvenidaMontoM(Persona usuario)
         {
             InitializeComponent();
-        //    if (usuario is not null) {
-                this.cliente = (Cliente)usuario;
-        //    }
-           
+
+            this.cliente = (Cliente)usuario;
+
+
 
         }
 
@@ -35,12 +35,7 @@ namespace PrimerParcial
         private void button1_Click(object sender, EventArgs e)
         {
 
-            /*     string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
-                 string rutaRelativa = "Resources/sonidoAplicacion.wav";
-                 string rutaCompleta = Path.Combine(rutaBase, rutaRelativa);
-                 SoundPlayer sonido = new SoundPlayer(rutaCompleta);
-
-                 sonido.Play();*/
+           
 
             // Ruta relativa del archivo de sonido
             string relativePath = @".\sonidoAplicacion.wav";
@@ -67,17 +62,23 @@ namespace PrimerParcial
 
 
 
-            if (Validaciones.DeStringANumero(textBoxAgregarMonto.Text) > 0)
+            if (Validaciones.DeStringANumero(textBoxAgregarMonto.Text) > 1000)
             {
-                if (cliente is not null) {
+
+
+                if (cliente is not null)
+                {
+
                     cliente.Saldo = Validaciones.DeStringANumero(textBoxAgregarMonto.Text);
                     MessageBox.Show(cliente.Mostrar());
-                    formVentas = new FormVentas(cliente);
+                    formVentas = new FormBuscadorCarnes(cliente);
                     formVentas.Show();
                     this.Hide();
-                }
-            }
 
+
+                }
+
+            }
         }
 
         private void groupBienvenida_Enter(object sender, EventArgs e)
