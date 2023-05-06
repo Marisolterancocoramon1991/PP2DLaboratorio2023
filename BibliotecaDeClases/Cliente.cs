@@ -45,7 +45,12 @@ namespace BibliotecaDeClases
                 this.numeroDeCuenta = value;
             }
         }
+        public static Cliente operator -(Cliente usuario, float dineroADescontar)
+        {
+            usuario.Saldo -= dineroADescontar;
+            return usuario;
 
+        }
 
 
         /// <summary>

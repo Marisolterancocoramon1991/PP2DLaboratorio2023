@@ -89,9 +89,11 @@ namespace BibliotecaDeClases
 
             return p1;
         }
+        
+
         public static float operator *(Carne p1, int multiplicador)
         {
-            float resultado = p1.cantidadEnInventarioKilos * multiplicador;
+            float resultado = p1.precio * multiplicador;
 
             return resultado;
         }

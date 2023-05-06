@@ -51,6 +51,7 @@
             tipo = new DataGridViewTextBoxColumn();
             precio = new DataGridViewTextBoxColumn();
             raza = new DataGridViewTextBoxColumn();
+            buttonFactura = new Button();
             groupCerdo.SuspendLayout();
             groupBoxTipoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -60,6 +61,7 @@
             // groupCerdo
             // 
             groupCerdo.BackColor = Color.FromArgb(255, 128, 128);
+            groupCerdo.Controls.Add(buttonFactura);
             groupCerdo.Controls.Add(textBuscador);
             groupCerdo.Controls.Add(buttonBuscar);
             groupCerdo.Controls.Add(groupBoxTipoPago);
@@ -75,7 +77,7 @@
             groupCerdo.Controls.Add(dataGridView1);
             groupCerdo.Location = new Point(-2, 3);
             groupCerdo.Name = "groupCerdo";
-            groupCerdo.Size = new Size(578, 425);
+            groupCerdo.Size = new Size(637, 425);
             groupCerdo.TabIndex = 0;
             groupCerdo.TabStop = false;
             groupCerdo.Text = "Carniceria_Teran";
@@ -168,7 +170,7 @@
             // 
             button3.BackColor = Color.Chocolate;
             button3.ForeColor = Color.Red;
-            button3.Location = new Point(497, 389);
+            button3.Location = new Point(433, 390);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 7;
@@ -179,7 +181,7 @@
             // button2
             // 
             button2.BackColor = Color.FromArgb(128, 255, 255);
-            button2.Location = new Point(416, 376);
+            button2.Location = new Point(352, 376);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 6;
@@ -190,7 +192,7 @@
             // buttonComprar
             // 
             buttonComprar.BackColor = Color.FromArgb(0, 192, 0);
-            buttonComprar.Location = new Point(497, 360);
+            buttonComprar.Location = new Point(433, 361);
             buttonComprar.Name = "buttonComprar";
             buttonComprar.Size = new Size(75, 23);
             buttonComprar.TabIndex = 5;
@@ -264,7 +266,7 @@
             dataGridView1.Location = new Point(38, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(443, 250);
+            dataGridView1.Size = new Size(502, 250);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -288,11 +290,21 @@
             raza.HeaderText = "Raza";
             raza.Name = "raza";
             // 
+            // buttonFactura
+            // 
+            buttonFactura.Location = new Point(538, 350);
+            buttonFactura.Name = "buttonFactura";
+            buttonFactura.Size = new Size(86, 49);
+            buttonFactura.TabIndex = 13;
+            buttonFactura.Text = "Factura";
+            buttonFactura.UseVisualStyleBackColor = true;
+            buttonFactura.Click += buttonFactura_Click;
+            // 
             // FormVentaDeCarne
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(570, 428);
+            ClientSize = new Size(634, 428);
             Controls.Add(groupCerdo);
             Name = "FormVentaDeCarne";
             StartPosition = FormStartPosition.CenterScreen;
@@ -329,5 +341,6 @@
         private RadioButton radioButtonTarjetaC;
         private TextBox textBuscador;
         private Button buttonBuscar;
+        private Button buttonFactura;
     }
 }

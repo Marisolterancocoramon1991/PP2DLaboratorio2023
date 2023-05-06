@@ -59,9 +59,6 @@ namespace PrimerParcial
 
                 }
 
-
-
-
             }
         }
         public void CargarDataGridView(List<Carne> listaDeProductos)
@@ -86,6 +83,7 @@ namespace PrimerParcial
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult confirmarVenta;
+            float precioAGastar;
             //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
             if (Validaciones.IsNotNull(productoSeleccioando) && productoSeleccioando.CantidadEnInventario > 0 && (int)numericUpDown1.Value > 0
                 && productoSeleccioando.CantidadEnInventario
@@ -101,7 +99,7 @@ namespace PrimerParcial
                     {
                         if (radioButtonMarcadoPago.Checked == true)
                         {
-                            Venta venta = new Venta(productoSeleccioando, 
+                            Venta venta = new Venta(productoSeleccioando,
                                 Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
                         }
@@ -118,8 +116,12 @@ namespace PrimerParcial
                             Negocio.CargarVenta(venta);
                         }
 
-                        productoSeleccioando  = productoSeleccioando - (int)numericUpDown1.Value;
+                        productoSeleccioando = productoSeleccioando - (int)numericUpDown1.Value;
 
+                        precioAGastar = productoSeleccioando * (int)numericUpDown1.Value;  
+                        usuario = usuario - precioAGastar; 
+
+                        labelDinero.Text = usuario.Saldo.ToString();
 
 
                     }
@@ -187,6 +189,14 @@ namespace PrimerParcial
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = productosEncontrados;
             dataGridView1.Refresh();
+        }
+
+        private void buttonFactura_Click(object sender, EventArgs e)
+        {
+            FormFacturaVenta formFacturaVenta = new(usuario);
+            
+            this.Hide();
+            formFacturaVenta.Show();
         }
     }
 }
