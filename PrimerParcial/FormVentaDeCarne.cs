@@ -16,7 +16,7 @@ namespace PrimerParcial
     public partial class FormVentaDeCarne : Form
     {
         Cliente usuario;
-//Queue<Cliente> colaClientes;
+      //  Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
         Carne productoSeleccioando;
 
@@ -24,7 +24,7 @@ namespace PrimerParcial
         {
             InitializeComponent();
             this.usuario = usuario;
-//this.colaClientes = colaClientes;
+            //this.colaClientes = colaClientes;
              listaDeProductos = Negocio.RetornarProductos();
             CargarDataGridView(listaDeProductos);
             labelNombre.Text = usuario.Nombre;
@@ -193,7 +193,7 @@ namespace PrimerParcial
         private void buttonFactura_Click(object sender, EventArgs e)
         {
             FormFacturaVenta formFacturaVenta = new(usuario);
-            
+            Negocio.CargarColaClientes(usuario); 
             this.Hide();
             formFacturaVenta.Show();
         }

@@ -32,6 +32,10 @@ namespace BibliotecaDeClases
         public eRazasDeCerdo RazasDeCerdo { get => razasDeCerdo; }
 
 
+        /// <summary>
+        /// muestra las caracteristicias esenciales ademas de alguna especificas
+        /// </summary>
+        /// <returns></returns>
         public override string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();

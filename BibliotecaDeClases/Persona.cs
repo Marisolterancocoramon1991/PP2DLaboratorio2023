@@ -38,9 +38,7 @@ namespace BibliotecaDeClases
             this.contraseña = contraseña;
             this.tipoDeUsuario=tipoDeUsuario;
         }
-        /// <summary>
-        /// 
-        /// </summary>
+     
         public string Nombre
         {
             get { return nombre; }
@@ -50,17 +48,13 @@ namespace BibliotecaDeClases
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+       
         public int ID
         {
             get { return id; }
             set { id = value; }
         }
-        /// <summary>
-        /// 
-        /// </summary>
+      
         public string Apellido
         {
             get { return apellido; }
@@ -70,9 +64,7 @@ namespace BibliotecaDeClases
             }
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         public string Direccion
         {
             get { return direccion; }

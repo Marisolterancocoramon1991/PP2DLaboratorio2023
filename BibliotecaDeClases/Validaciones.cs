@@ -123,6 +123,13 @@ namespace BibliotecaDeClases
             // El nombre es válido
             return true;
         }
+
+
+        /// <summary>
+        /// verifica si lo que se ha ingresado es una palabra
+        /// </summary>
+        /// <param name="cadenaCaracteres"></param>
+        /// <returns></returns>
         public static string CargarPalabra(string cadenaCaracteres)
         {
 
@@ -137,7 +144,11 @@ namespace BibliotecaDeClases
 
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cadenaCaracteres"></param>
+        /// <returns></returns>
         public static string CargarNumero(string cadenaCaracteres)
         {
             if(EsNumero(cadenaCaracteres))
@@ -152,6 +163,12 @@ namespace BibliotecaDeClases
             }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="contraseña"></param>
+        /// <returns></returns>
         public static bool ValidarCamposIngresados(string email, string contraseña)
         {
             if (string.IsNullOrEmpty(email.Trim()) || string.IsNullOrEmpty(contraseña))
@@ -160,7 +177,10 @@ namespace BibliotecaDeClases
             }
             return true;
         }
-
+        /// <summary>
+        /// carga el ID de la persona
+        /// </summary>
+        /// <returns></returns>
         public static int CargaID()
         {
             
@@ -169,7 +189,11 @@ namespace BibliotecaDeClases
 
             return id;
         }
-
+        /// <summary>
+        /// verifica si es numero
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns></returns>
         public static float DeStringANumero(string numero)
         {
             float auxiliar;
@@ -182,6 +206,11 @@ namespace BibliotecaDeClases
 
             return 0;
         }
+        /// <summary>
+        /// verifica si un objero no es null 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns> retrona un bool
         public static bool IsNotNull(object obj)
         {
             return obj != null;

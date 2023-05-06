@@ -37,6 +37,11 @@ namespace BibliotecaDeClases
         public eRazasDeVacas RazasDeVacas { get => razasDeVacas; }
         public eCategoria Categoria { get => categoria; }
 
+
+        /// <summary>
+        /// muestra las caracteristicas esenciales ademas de algunas especificas
+        /// </summary>
+        /// <returns></returns> string
         public override string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();

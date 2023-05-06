@@ -29,7 +29,11 @@ namespace BibliotecaDeClases
             CargarProductos();
             CargarClientes();
         }
+        
 
+        /// <summary>
+        /// instancia y agrega a la lista usuarios registrados los vendedores 
+        /// </summary>
         private static void CargarVendedor()
         {
             usuariosRegistrados.Add(new Vendedor("Lucas", "Santos", "Combate de los Pozos",
@@ -38,6 +42,10 @@ namespace BibliotecaDeClases
 
         }
 
+
+        /// <summary>
+        /// instancia y agrega a la lista usuarios registrados los clientes
+        /// </summary>
         private static void CargarClientes()
         {
             usuariosRegistrados.Add(new Cliente("Marisol", "Briceño", "capital"
@@ -49,6 +57,10 @@ namespace BibliotecaDeClases
 
         }
 
+
+        /// <summary>
+        /// instancia y agrega a la lista de productos todo el stock 
+        /// </summary>
         private static void CargarProductos()
         {
 
@@ -81,7 +93,13 @@ namespace BibliotecaDeClases
             listaDeProductos.Add(new Ave("Milanesa", "Blanca", 900, 30, Ave.eTipoAve.Gallina));
         }
 
-
+        /// <summary>
+        /// busca un usuario en una lista de "usuariosRegistrados" a través de su correo electrónico y 
+        ///   devuelve el objeto "Persona" correspondiente si se encuentra una coincidencia.
+        /// </summary>
+        /// <param name="corrreoElectornico"></param>
+        /// <param name="contraseña"></param>
+        /// <returns></returns> objeto Persona
         public static Persona? LogearUsuario(string corrreoElectornico, string contraseña)
         {
             if (Validaciones.ValidarCamposIngresados(corrreoElectornico, contraseña))
@@ -98,17 +116,36 @@ namespace BibliotecaDeClases
             return null;
 
         }
-
+        /// <summary>
+        /// retorna lista e productos 
+        /// </summary>
+        /// <returns></returns> lista e productos 
         public static List<Carne> RetornarProductos()
         {
             return listaDeProductos;
         }
-
+        /// <summary>
+        /// retorna cola de clientes 
+        /// </summary>
+        /// <returns></returns> cola clientes
         public static Queue<Cliente> RetornarClientes()
         {
             return colaClientes;
         }
-
+        /// <summary>
+        ///  agrega un objeto Cliente a una cola de clientes.
+        /// </summary>
+        /// <param name="cliente"></param> parámetro un objeto Cliente
+        public static void CargarColaClientes(Cliente cliente)
+        {
+            colaClientes.Enqueue(cliente);
+        }
+        /// <summary>
+        ///  devuelve una lista de objetos de la clase Carne que estén dentro del rango de precios especificado.
+        /// </summary>
+        /// <param name="precioMinimo"></param> precio minimo 
+        /// <param name="precioMaximo"></param> precio Maximo
+        /// <returns></returns> retorna la lista
         public static List<Carne> BuscarPorPrecio(double precioMinimo, double precioMaximo)
         {
             List<Carne> lista = new List<Carne>();
@@ -124,6 +161,13 @@ namespace BibliotecaDeClases
             return lista;
         }
 
+
+        /// <summary>
+        /// La función BuscarPorTipo recibe un parámetro categoria y busca en la lista de productos listaDeProductos) 
+        /// los productos que tengan un tipo que contenga la cadena categoria (si es que se especificó una)
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         public static List<Carne> BuscarPorTipo(string categoria)
         {
             List<Carne> lista = new List<Carne>();
@@ -138,7 +182,10 @@ namespace BibliotecaDeClases
 
             return lista;
         }
-
+        /// <summary>
+        /// retorna cantida de ventas
+        /// </summary>
+        /// <returns></returns> un entero
         public static int RetornarCantidadVentas()
         {
             int ret = 0;
@@ -150,7 +197,12 @@ namespace BibliotecaDeClases
             return ret;
         }
 
-
+        /// <summary>
+        /// Esta función recibe como parámetro un string Tipo, y cuenta cuántas ventas se 
+        /// realizado de un producto con ese tipo en particular, dentro de la lista de ventas listaVentas.
+        /// </summary>
+        /// <param name="Tipo"></param>
+        /// <returns></returns>
         public static int ContadorTiposVendidas(string Tipo)
         {
             int retorno = 0;
@@ -165,26 +217,47 @@ namespace BibliotecaDeClases
 
             return retorno;
         }
+
+
+        /// <summary>
+        /// carga una venta a la lista de ventas
+        /// </summary>
+        /// <param name="venta"></param>
         public static void CargarVenta(Venta venta)
         {
             listaVentas.Add(venta);
         }
+
+
+        /// <summary>
+        /// va iterando y sumando hasta obtener las ganancias totales
+        /// </summary>
+        /// <returns></returns>
         public static double GananciaTotal()
         {
             double retorno = 0;
-
+       
             foreach (Venta item in listaVentas)
             {
-                retorno += item.ProductoVendido.Precio;
+                retorno += (item.ProductoVendido.Precio* item.CantidadDeUnidades);
             }
 
             return retorno;
         }
+
+        /// <summary>
+        /// retorna la lista venta 
+        /// </summary>
+        /// <returns></returns> lista 
         public static List<Venta> RetornarListaDeVentas()
         {
             return listaVentas;
         }
-
+        /// <summary>
+        ///  retorna el precio total de la factura
+        /// </summary>
+        /// <param name="listaVenta"></param> lista de venta creada
+        /// <returns></returns> float 
         public static float RetornaPrecioTotalFactura(List<Venta> listaVenta)
         {
             float resultado = 0;

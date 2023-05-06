@@ -37,6 +37,11 @@ namespace BibliotecaDeClases
         { get => metodoDePago; }
         public int CantidadDeUnidades { get => cantidadDeUnidades; set => cantidadDeUnidades = value; }
 
+
+        /// <summary>
+        /// muestra los detalles de la venta
+        /// </summary>
+        /// <returns></returns>
         public virtual string MostrarDetallesDeVenta()
         {
             StringBuilder sb = new StringBuilder();

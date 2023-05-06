@@ -24,6 +24,11 @@ namespace BibliotecaDeClases
 
         public eTipoAve TipoAve { get => tipoAve; }
 
+
+        /// <summary>
+        /// muestra los datos del tipo de producto de manera polimorfica
+        /// </summary>
+        /// <returns></returns> retorna de forma de string toda la informacion
         public override string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();

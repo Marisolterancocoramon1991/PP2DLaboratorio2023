@@ -45,7 +45,11 @@ namespace BibliotecaDeClases
             carnes.Add(carne);
 
         }
-
+            
+        /// <summary>
+        /// muestra la informacion general del producto
+        /// </summary>
+        /// <returns></returns> string
         public virtual string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();
@@ -63,12 +67,25 @@ namespace BibliotecaDeClases
 
         }
 
+
+        /// <summary>
+        /// suma la cantidad de unidades agregadas en el stock
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="cantidadASumar"></param>
+        /// <returns></returns> retorna el objeto de carne
         public static Carne operator +(Carne p1, int cantidadASumar)
         {
             p1.cantidadEnInventarioKilos = p1.cantidadEnInventarioKilos + cantidadASumar;
 
             return p1;
         }
+
+        /// <summary>
+        /// suma el stock de forma progresiva
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <returns></returns> retorna el objeto
         public static Carne operator ++(Carne p1)
         {
             p1.cantidadEnInventarioKilos++;
@@ -76,13 +93,24 @@ namespace BibliotecaDeClases
             return p1;
         }
 
+
+        /// <summary>
+        /// resta de forma progresiva la cantida de inventario
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <returns></returns> regresa el objeto
         public static Carne operator --(Carne p1)
         {
             p1.cantidadEnInventarioKilos--;
 
             return p1;
         }
-
+        /// <summary>
+        /// resta la cantidad necesaria de stock del producto
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="CantidadARestar"></param>
+        /// <returns></returns> retorna objeto 
         public static Carne operator -(Carne p1, int CantidadARestar)
         {
             p1.cantidadEnInventarioKilos-= CantidadARestar;
@@ -90,7 +118,12 @@ namespace BibliotecaDeClases
             return p1;
         }
         
-
+        /// <summary>
+        /// multiplica el precio por la unidades establecidas
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="multiplicador"></param>
+        /// <returns></returns> retorna un flotante
         public static float operator *(Carne p1, int multiplicador)
         {
             float resultado = p1.precio * multiplicador;
@@ -98,6 +131,11 @@ namespace BibliotecaDeClases
             return resultado;
         }
 
+
+        /// <summary>
+        /// muestra los detalles del producto
+        /// </summary>
+        /// <returns></returns> retorna un string
         public virtual string MostrarDetallesDeProducto()
         {
             StringBuilder sb = new StringBuilder();
