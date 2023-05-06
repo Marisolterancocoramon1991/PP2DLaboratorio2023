@@ -11,7 +11,7 @@ using static BibliotecaDeClases.Venta;
 
 namespace BibliotecaDeClases
 {
-    public static class Negocio
+    public  class Negocio
     {
         private static List<Persona> usuariosRegistrados;
         private static List<Carne> listaDeProductos;
@@ -183,6 +183,20 @@ namespace BibliotecaDeClases
         public static List<Venta> RetornarListaDeVentas()
         {
             return listaVentas;
+        }
+
+        public static float RetornaPrecioTotalFactura(List<Venta> listaVenta)
+        {
+            float resultado = 0;
+
+            foreach(Venta venta in listaVenta)
+            {
+                resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
+
+            }
+    
+
+        return resultado;
         }
 
 

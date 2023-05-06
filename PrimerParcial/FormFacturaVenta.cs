@@ -23,6 +23,12 @@ namespace PrimerParcial
             this.usuario = usuario;
             listaVentas = Negocio.RetornarListaDeVentas();
             CargarDataGridView(listaVentas);
+            labelDirecccion.Text = "Dirrecion: " + usuario.Direccion;
+            labelNombre.Text = "Nombre del Cliente  " + usuario.Nombre;
+            labelID.Text = "ID: " + usuario.ID;
+            DateTime fechaActual = DateTime.Now;
+            labelFechaActual.Text = "Fecha actual " + fechaActual.ToString();
+            labelTotal.Text = "Haz click y conoceras el total de gastos";
         }
         public void CargarDataGridView(List<Venta> listaDeVentas)
         {
@@ -62,6 +68,46 @@ namespace PrimerParcial
 
                 }
 
+            }
+        }
+
+        private void labelDirecccion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelTotal_Click(object sender, EventArgs e)
+        {
+
+            labelTotal.Text = "TOTAL " + Negocio.RetornaPrecioTotalFactura(listaVentas).ToString();
+
+        }
+
+        private void ButtonRegresar_Click(object sender, EventArgs e)
+        {
+            FormVentaDeCarne formVentaDeCarne = new FormVentaDeCarne(usuario);
+            formVentaDeCarne.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmarVenta;
+            confirmarVenta = MessageBox.Show("Desea logearse", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (confirmarVenta == DialogResult.Yes)
+            {
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("En esta ventana esta detallada la infromacion de su compra");
             }
         }
     }

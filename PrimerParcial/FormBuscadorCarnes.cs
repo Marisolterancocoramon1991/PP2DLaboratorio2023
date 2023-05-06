@@ -15,7 +15,7 @@ namespace PrimerParcial
     public partial class FormBuscadorCarnes : Form
     {
         Cliente? usuario;
-        Queue<Cliente> colaClientes;
+     //   Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
 
         public FormBuscadorCarnes(Cliente cliente)
@@ -24,7 +24,7 @@ namespace PrimerParcial
             usuario = cliente;
             Validaciones.IsNotNull(usuario);
             listaDeProductos = Negocio.RetornarProductos();
-            colaClientes = Negocio.RetornarClientes();
+         //   colaClientes = Negocio.RetornarClientes();
             this.usuario = cliente;
 
         }
@@ -51,7 +51,7 @@ namespace PrimerParcial
                 MessageBox.Show("...espere unos instantes");
             }
 
-            FormVentaDeCarne ventanaCerdo = new FormVentaDeCarne(usuario, colaClientes, listaDeProductos);
+            FormVentaDeCarne ventanaCerdo = new FormVentaDeCarne(usuario);
 
             this.Hide();
             ventanaCerdo.Show();
@@ -78,7 +78,7 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario, colaClientes, listaDeProductos);
+            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario);
 
             this.Hide();
             ventanaVentaCarne.Show();
@@ -106,7 +106,7 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario, colaClientes, listaDeProductos);
+            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario);
             this.Hide();
             ventanaVentaCarne.Show();
         }

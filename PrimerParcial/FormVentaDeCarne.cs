@@ -16,21 +16,20 @@ namespace PrimerParcial
     public partial class FormVentaDeCarne : Form
     {
         Cliente usuario;
-        Queue<Cliente> colaClientes;
+//Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
         Carne productoSeleccioando;
 
-        public FormVentaDeCarne(Cliente usuario,
-            Queue<Cliente> colaClientes, List<Carne> listaDeProductos) //: base (usuario)
+        public FormVentaDeCarne(Cliente usuario/*, List<Carne> listaDeProductos*/) //: base (usuario)
         {
             InitializeComponent();
             this.usuario = usuario;
-            this.colaClientes = colaClientes;
-            this.listaDeProductos = listaDeProductos;
+//this.colaClientes = colaClientes;
+             listaDeProductos = Negocio.RetornarProductos();
             CargarDataGridView(listaDeProductos);
             labelNombre.Text = usuario.Nombre;
             labelDinero.Text = usuario.Saldo.ToString();
-
+            
 
 
         }
@@ -202,19 +201,3 @@ namespace PrimerParcial
 }
 
 
-/* if (radioButtonMercadoPago.Checked == true || radioButtonTarjetaC.Checked == true
-                    || radioButtonTarjetaDebito.Checked == true ) {
-
-  }
-                else
-                {
-                    MessageBox.Show("No se ha podido generar el metodo de pago");
-
-                }
-
-
-
- //    if (radioButtonMercadoPago.Checked == true)
-                     //       Venta.eMetodoPago.MercadoPago();
- 
- */

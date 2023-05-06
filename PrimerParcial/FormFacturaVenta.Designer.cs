@@ -32,15 +32,18 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             groupCarniceria = new GroupBox();
+            button1 = new Button();
+            labelTotal = new Label();
+            ButtonRegresar = new Button();
             dataGridView1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            labelID = new Label();
+            labelFechaActual = new Label();
+            labelNombre = new Label();
+            labelDirecccion = new Label();
             groupCarniceria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -48,23 +51,65 @@
             // groupCarniceria
             // 
             groupCarniceria.BackColor = SystemColors.ScrollBar;
+            groupCarniceria.Controls.Add(button1);
+            groupCarniceria.Controls.Add(labelTotal);
+            groupCarniceria.Controls.Add(ButtonRegresar);
             groupCarniceria.Controls.Add(dataGridView1);
-            groupCarniceria.Controls.Add(label4);
-            groupCarniceria.Controls.Add(label3);
-            groupCarniceria.Controls.Add(label2);
-            groupCarniceria.Controls.Add(label1);
-            groupCarniceria.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            groupCarniceria.Controls.Add(labelID);
+            groupCarniceria.Controls.Add(labelFechaActual);
+            groupCarniceria.Controls.Add(labelNombre);
+            groupCarniceria.Controls.Add(labelDirecccion);
+            groupCarniceria.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             groupCarniceria.Location = new Point(-7, 0);
             groupCarniceria.Name = "groupCarniceria";
-            groupCarniceria.Size = new Size(484, 456);
+            groupCarniceria.Size = new Size(596, 456);
             groupCarniceria.TabIndex = 0;
             groupCarniceria.TabStop = false;
             groupCarniceria.Text = "Carniceria_Teran";
             groupCarniceria.Enter += groupCarniceria_Enter;
             // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.HotTrack;
+            button1.Cursor = Cursors.Hand;
+            button1.Location = new Point(119, 410);
+            button1.Name = "button1";
+            button1.Size = new Size(86, 28);
+            button1.TabIndex = 7;
+            button1.Text = "Logearte";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // labelTotal
+            // 
+            labelTotal.AutoSize = true;
+            labelTotal.Cursor = Cursors.Hand;
+            labelTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTotal.Location = new Point(288, 386);
+            labelTotal.Name = "labelTotal";
+            labelTotal.Size = new Size(52, 21);
+            labelTotal.TabIndex = 6;
+            labelTotal.Text = "label1";
+            labelTotal.Click += labelTotal_Click;
+            // 
+            // ButtonRegresar
+            // 
+            ButtonRegresar.BackColor = SystemColors.Info;
+            ButtonRegresar.Cursor = Cursors.Hand;
+            ButtonRegresar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonRegresar.Location = new Point(19, 410);
+            ButtonRegresar.Name = "ButtonRegresar";
+            ButtonRegresar.Size = new Size(74, 28);
+            ButtonRegresar.TabIndex = 5;
+            ButtonRegresar.Text = "Regresar";
+            ButtonRegresar.UseVisualStyleBackColor = false;
+            ButtonRegresar.Click += ButtonRegresar_Click;
+            // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 12.1F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.1F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Red;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -87,10 +132,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Blue;
-            dataGridView1.Location = new Point(40, 142);
+            dataGridView1.Location = new Point(30, 142);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(422, 241);
+            dataGridView1.Size = new Size(560, 241);
             dataGridView1.TabIndex = 4;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -114,51 +159,53 @@
             Column4.HeaderText = "Precio Total";
             Column4.Name = "Column4";
             // 
-            // label4
+            // labelID
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(6, 91);
-            label4.Name = "label4";
-            label4.Size = new Size(45, 19);
-            label4.TabIndex = 3;
-            label4.Text = "label4";
+            labelID.AutoSize = true;
+            labelID.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            labelID.Location = new Point(6, 91);
+            labelID.Name = "labelID";
+            labelID.Size = new Size(45, 19);
+            labelID.TabIndex = 3;
+            labelID.Text = "label4";
             // 
-            // label3
+            // labelFechaActual
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(6, 120);
-            label3.Name = "label3";
-            label3.Size = new Size(45, 19);
-            label3.TabIndex = 2;
-            label3.Text = "label3";
+            labelFechaActual.AutoSize = true;
+            labelFechaActual.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            labelFechaActual.Location = new Point(6, 120);
+            labelFechaActual.Name = "labelFechaActual";
+            labelFechaActual.Size = new Size(45, 19);
+            labelFechaActual.TabIndex = 2;
+            labelFechaActual.Text = "label3";
+            labelFechaActual.Click += label_Click;
             // 
-            // label2
+            // labelNombre
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(6, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(45, 19);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
+            labelNombre.AutoSize = true;
+            labelNombre.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            labelNombre.Location = new Point(6, 59);
+            labelNombre.Name = "labelNombre";
+            labelNombre.Size = new Size(45, 19);
+            labelNombre.TabIndex = 1;
+            labelNombre.Text = "label2";
             // 
-            // label1
+            // labelDirecccion
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(6, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(45, 19);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            labelDirecccion.AutoSize = true;
+            labelDirecccion.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            labelDirecccion.Location = new Point(6, 30);
+            labelDirecccion.Name = "labelDirecccion";
+            labelDirecccion.Size = new Size(45, 19);
+            labelDirecccion.TabIndex = 0;
+            labelDirecccion.Text = "label1";
+            labelDirecccion.Click += labelDirecccion_Click;
             // 
             // FormFacturaVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(516, 450);
+            ClientSize = new Size(592, 450);
             Controls.Add(groupCarniceria);
             Name = "FormFacturaVenta";
             StartPosition = FormStartPosition.CenterScreen;
@@ -172,14 +219,17 @@
         #endregion
 
         private GroupBox groupCarniceria;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
+        private Label labelID;
+        private Label labelFechaActual;
+        private Label labelNombre;
+        private Label labelDirecccion;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private Label labelTotal;
+        private Button ButtonRegresar;
+        private Button button1;
     }
 }
