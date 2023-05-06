@@ -73,9 +73,10 @@ namespace PrimerParcial
                 }
                 if (auxiliar.TipoDeUsuario == Persona.eTipoDeUsuario.Vendedor)
                 {
-
+                    FormCreacionNuevoProducto fromCreacionNuevoProducto = new();
                     MessageBox.Show("gracias por tu trabajo");
-
+                    this.Hide();
+                    fromCreacionNuevoProducto.Show(); ;
                 }
 
 

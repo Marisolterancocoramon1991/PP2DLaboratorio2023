@@ -7,7 +7,7 @@ using static BibliotecaDeClases.Cerdo;
 
 namespace BibliotecaDeClases
 {
-    internal class Ave : Carne
+    public class Ave : Carne
     {
         public enum eTipoAve 
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    internal class Vacuno : Carne
+    public class Vacuno : Carne
     {
         public enum eRazasDeVacas
         {

@@ -45,6 +45,14 @@ namespace BibliotecaDeClases
                 this.numeroDeCuenta = value;
             }
         }
+
+
+        /// <summary>
+        /// operador que resta el saldo que tiene la persona con el monto gastado
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="dineroADescontar"></param>
+        /// <returns></returns> retorna el objeto cliente
         public static Cliente operator -(Cliente usuario, float dineroADescontar)
         {
             usuario.Saldo -= dineroADescontar;
