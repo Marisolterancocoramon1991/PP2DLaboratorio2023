@@ -10,10 +10,10 @@ using System.Numerics;
 namespace PrimerParcial
 
 {
-    public partial class FrmLogin : Form 
+    public partial class FrmLogin : Form
     {
         Persona? auxiliar;
-      
+
         FormBienvenidaMontoM? formBienvenidaMonto;
         public FrmLogin()
         {
@@ -116,8 +116,8 @@ namespace PrimerParcial
             }
             if (resultado == false)
             {
-             
-       
+
+
                 textBoxCorreo.Text = "KervinBriceño@gmail.com";
                 textBoxContraseña.Text = "123456";
             }

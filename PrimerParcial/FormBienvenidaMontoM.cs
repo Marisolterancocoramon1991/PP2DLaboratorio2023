@@ -35,7 +35,7 @@ namespace PrimerParcial
         private void button1_Click(object sender, EventArgs e)
         {
 
-           
+
 
             // Ruta relativa del archivo de sonido
             string relativePath = @".\sonidoAplicacion.wav";

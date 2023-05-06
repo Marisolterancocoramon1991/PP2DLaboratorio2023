@@ -120,13 +120,14 @@
             groupBoxEleccion.Text = "Carniceria_Teran";
             groupBoxEleccion.Enter += groupBoxEleccion_Enter;
             // 
-            // FormVentas
+            // FormBuscadorCarnes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(628, 274);
             Controls.Add(groupBoxEleccion);
-            Name = "FormVentas";
+            Name = "FormBuscadorCarnes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += FormVentas_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

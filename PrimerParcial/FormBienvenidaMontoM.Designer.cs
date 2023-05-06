@@ -91,10 +91,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(372, 230);
+            ClientSize = new Size(377, 230);
             Controls.Add(groupBienvenida);
             Font = new Font("Segoe UI", 9F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
             Name = "FormBienvenidaMontoM";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormBienvenidaMontoM";
             Load += FormBienvenidaMontoM_Load;
             groupBienvenida.ResumeLayout(false);

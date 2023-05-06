@@ -14,14 +14,14 @@ namespace BibliotecaDeClases
         private string tipos = string.Empty;
         private float precio;
         private int cantidadEnInventarioKilos;
-       
+
         private List<Carne> carnes;
 
         public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos) : this()
         {
             this.Nombre = nombre;
             this.Tipo = tipo;
-           
+
             this.Precio = precio;
             this.cantidadEnInventarioKilos = cantidadEnInventarioKilos;
         }
@@ -45,7 +45,7 @@ namespace BibliotecaDeClases
             carnes.Add(carne);
 
         }
-       
+
         public virtual string MostrarCarnes()
         {
             StringBuilder sb = new StringBuilder();
@@ -57,7 +57,7 @@ namespace BibliotecaDeClases
                 sb.AppendLine($"el del producto precio {precio}");
 
             }
-            
+
 
             return sb.ToString();
 
@@ -83,7 +83,19 @@ namespace BibliotecaDeClases
             return p1;
         }
 
-        
+        public static Carne operator -(Carne p1, int CantidadARestar)
+        {
+            p1.cantidadEnInventarioKilos-= CantidadARestar;
+
+            return p1;
+        }
+        public static float operator *(Carne p1, int multiplicador)
+        {
+            float resultado = p1.cantidadEnInventarioKilos * multiplicador;
+
+            return resultado;
+        }
+
         public virtual string MostrarDetallesDeProducto()
         {
             StringBuilder sb = new StringBuilder();
@@ -91,7 +103,7 @@ namespace BibliotecaDeClases
             sb.AppendLine($"Tipo de producto: {tipos}");
             sb.AppendLine($"Precio : ${precio}");
             sb.AppendLine($"inventario por kilos : {cantidadEnInventarioKilos}");
-          
+
 
             return sb.ToString();
         }

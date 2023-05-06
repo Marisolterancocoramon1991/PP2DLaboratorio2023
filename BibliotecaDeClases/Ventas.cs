@@ -11,6 +11,7 @@ namespace BibliotecaDeClases
     {
         private Carne productoVendido;
         private eMetodoPago metodoDePago;
+        private int cantidadDeUnidades;
         public enum eMetodoPago
         {
             TarjetaDeCredito,
@@ -20,10 +21,11 @@ namespace BibliotecaDeClases
 
 
 
-        public Venta(Carne productoVendido, eMetodoPago metodoDePago)
+        public Venta(Carne productoVendido, eMetodoPago metodoDePago, int cantidadDeUnidades)
         {
             this.productoVendido = productoVendido;
             this.metodoDePago = metodoDePago;
+            this.CantidadDeUnidades = cantidadDeUnidades;
         }
 
 
@@ -33,6 +35,6 @@ namespace BibliotecaDeClases
         }
      public eMetodoPago MetodoPago
         { get => metodoDePago; }
-
+        public int CantidadDeUnidades { get => cantidadDeUnidades; set => cantidadDeUnidades = value; }
     }
 }

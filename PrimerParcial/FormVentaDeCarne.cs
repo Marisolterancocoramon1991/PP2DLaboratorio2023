@@ -101,27 +101,26 @@ namespace PrimerParcial
                     {
                         if (radioButtonMarcadoPago.Checked == true)
                         {
-                            Venta venta = new Venta(productoSeleccioando, Venta.eMetodoPago.MercadoPago);
+                            Venta venta = new Venta(productoSeleccioando, 
+                                Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
                         }
                         else if (radioButtonTarjetaC.Checked == true)
                         {
-                            Venta venta = new Venta(productoSeleccioando, Venta.eMetodoPago.TarjetaDeCredito);
+                            Venta venta = new Venta(productoSeleccioando,
+                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
                         }
                         else
                         {
-                            Venta venta = new Venta(productoSeleccioando, Venta.eMetodoPago.TarjetaDebito);
+                            Venta venta = new Venta(productoSeleccioando,
+                                Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
                         }
 
+                        productoSeleccioando  = productoSeleccioando - (int)numericUpDown1.Value;
 
-                        /*lblDinero.Text = auxCliente.Dinero.ToString();
-                        productoSeleccioando--;
-                          
-                        CargarDataGridView(Negocio.RetornarProductos());
-                        frmFacturaDeVenta.ShowDialog();
-                        Negocio.CargarVenta(venta);*/
+
 
                     }
 

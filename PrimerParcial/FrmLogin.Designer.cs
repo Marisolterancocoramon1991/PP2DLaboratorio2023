@@ -186,6 +186,7 @@
             ClientSize = new Size(460, 311);
             Controls.Add(Carniceria);
             Name = "FrmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TopMost = true;
             Load += FrmLogin_Load;

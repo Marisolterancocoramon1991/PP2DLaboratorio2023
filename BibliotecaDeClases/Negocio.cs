@@ -99,13 +99,6 @@ namespace BibliotecaDeClases
 
         }
 
-
-
-
-
-
-
-
         public static List<Carne> RetornarProductos()
         {
             return listaDeProductos;
@@ -187,21 +180,27 @@ namespace BibliotecaDeClases
 
             return retorno;
         }
-    /*    public static double GananciaPorMercadoPago(Cliente cliente)
+        public static List<Venta> RetornarListaDeVentas()
         {
-            double retorno = 0;
-
-            foreach (Venta item in listaVentas)
-            {
-                if (item.ProductoVendido. == producto.ProductoVendido.MetodoPago)
-                {
-                    retorno += item.ProductoVendido.Precio;
-                }
-            }
-
-            return retorno;
+            return listaVentas;
         }
-    */
+
+
+        /*    public static double GananciaPorMercadoPago(Cliente cliente)
+            {
+                double retorno = 0;
+
+                foreach (Venta item in listaVentas)
+                {
+                    if (item.ProductoVendido. == producto.ProductoVendido.MetodoPago)
+                    {
+                        retorno += item.ProductoVendido.Precio;
+                    }
+                }
+
+                return retorno;
+            }
+        */
     }
 }
 
