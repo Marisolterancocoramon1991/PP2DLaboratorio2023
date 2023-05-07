@@ -54,6 +54,7 @@
             textBoxTipoCarne = new TextBox();
             textBoxPrecio = new TextBox();
             textBoxUnidades = new TextBox();
+            buttonCrearProducto = new Button();
             groupBoxAve.SuspendLayout();
             groupBoxCarneVacuno.SuspendLayout();
             groupBoxCarneCerdo.SuspendLayout();
@@ -222,7 +223,7 @@
             // 
             // buttonLogearse
             // 
-            buttonLogearse.Location = new Point(327, 241);
+            buttonLogearse.Location = new Point(388, 232);
             buttonLogearse.Name = "buttonLogearse";
             buttonLogearse.Size = new Size(75, 23);
             buttonLogearse.TabIndex = 3;
@@ -232,7 +233,7 @@
             // 
             // buttonRegresar
             // 
-            buttonRegresar.Location = new Point(368, 270);
+            buttonRegresar.Location = new Point(421, 273);
             buttonRegresar.Name = "buttonRegresar";
             buttonRegresar.Size = new Size(75, 23);
             buttonRegresar.TabIndex = 4;
@@ -311,11 +312,22 @@
             textBoxUnidades.TabIndex = 12;
             textBoxUnidades.TextChanged += textBox4_TextChanged;
             // 
+            // buttonCrearProducto
+            // 
+            buttonCrearProducto.Location = new Point(388, 302);
+            buttonCrearProducto.Name = "buttonCrearProducto";
+            buttonCrearProducto.Size = new Size(128, 23);
+            buttonCrearProducto.TabIndex = 13;
+            buttonCrearProducto.Text = "Crear Producto";
+            buttonCrearProducto.UseVisualStyleBackColor = true;
+            buttonCrearProducto.Click += buttonCrearProducto_Click;
+            // 
             // FormCreacionNuevoProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(536, 343);
+            Controls.Add(buttonCrearProducto);
             Controls.Add(textBoxUnidades);
             Controls.Add(textBoxPrecio);
             Controls.Add(groupBoxCarneVacuno);
@@ -331,6 +343,7 @@
             Controls.Add(groupBoxAve);
             Controls.Add(comboBox1);
             Name = "FormCreacionNuevoProducto";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCreacionNuevoProducto";
             Load += FormCreacionNuevoProducto_Load;
             groupBoxAve.ResumeLayout(false);
@@ -371,5 +384,6 @@
         private Label label1;
         private ComboBox comboBoxRCerdo;
         private Label labelRCerdo;
+        private Button buttonCrearProducto;
     }
 }

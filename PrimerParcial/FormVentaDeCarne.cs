@@ -16,7 +16,7 @@ namespace PrimerParcial
     public partial class FormVentaDeCarne : Form
     {
         Cliente usuario;
-      //  Queue<Cliente> colaClientes;
+        //  Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
         Carne productoSeleccioando;
 
@@ -25,11 +25,11 @@ namespace PrimerParcial
             InitializeComponent();
             this.usuario = usuario;
             //this.colaClientes = colaClientes;
-             listaDeProductos = Negocio.RetornarProductos();
+            listaDeProductos = Negocio.RetornarProductos();
             CargarDataGridView(listaDeProductos);
             labelNombre.Text = usuario.Nombre;
             labelDinero.Text = usuario.Saldo.ToString();
-            
+
 
 
         }
@@ -60,19 +60,34 @@ namespace PrimerParcial
 
             }
         }
+
+        /// <summary>
+        /// recibe una lista de objetos de la clase padre Carne y muestra los datos de estos objetos en un DataGridView. 
+        /// Además, verifica si los objetos de la lista son de las clases hijas Cerdo, Ave o Vacuno
+        /// </summary>
+        /// <param name="listaDeProductos"></param>  es una lista de objetos de la clase padre Carne.
         public void CargarDataGridView(List<Carne> listaDeProductos)
         {
 
+            dataGridView1.Rows.Clear();
             foreach (Carne producto in listaDeProductos)
             {
-                //   if (producto is Cerdo)
-                // {
-                //   Cerdo prodct = (Cerdo)producto;
-                dataGridView1.Rows.Add(producto.Nombre, producto.Tipo, producto.Precio, producto.CantidadEnInventario);
-
-                //                }
-
-            }
+                if (producto is Cerdo)
+                {
+                    Cerdo cerdo = (Cerdo)producto;
+                    dataGridView1.Rows.Add(cerdo.Nombre, cerdo.Tipo, cerdo.Precio, cerdo.RazasDeCerdo);
+                }
+                else if (producto is Ave)
+                {
+                    Ave ave = (Ave)producto;
+                    dataGridView1.Rows.Add(ave.Nombre, ave.Tipo, ave.Precio, ave.TipoAve);
+                }
+                else if (producto is Vacuno)
+                {
+                    Vacuno vaca = (Vacuno)producto;
+                    dataGridView1.Rows.Add(vaca.Nombre, vaca.Tipo, vaca.Precio, vaca.RazasDeVacas);
+                }
+            }            
         }
         /// <summary>
         /// sirve para hacer las compras 
@@ -83,7 +98,7 @@ namespace PrimerParcial
         {
             DialogResult confirmarVenta;
             float precioAGastar;
-            //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
+           //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
             if (Validaciones.IsNotNull(productoSeleccioando) && productoSeleccioando.CantidadEnInventario > 0 && (int)numericUpDown1.Value > 0
                 && productoSeleccioando.CantidadEnInventario
                 >= (int)numericUpDown1.Value && Validaciones.IsNotNull(usuario) && usuario.Saldo >=
@@ -117,8 +132,8 @@ namespace PrimerParcial
 
                         productoSeleccioando = productoSeleccioando - (int)numericUpDown1.Value;
 
-                        precioAGastar = productoSeleccioando * (int)numericUpDown1.Value;  
-                        usuario = usuario - precioAGastar; 
+                        precioAGastar = productoSeleccioando * (int)numericUpDown1.Value;
+                        usuario = usuario - precioAGastar;
 
                         labelDinero.Text = usuario.Saldo.ToString();
 
@@ -193,7 +208,7 @@ namespace PrimerParcial
         private void buttonFactura_Click(object sender, EventArgs e)
         {
             FormFacturaVenta formFacturaVenta = new(usuario);
-            Negocio.CargarColaClientes(usuario); 
+            Negocio.CargarColaClientes(usuario);
             this.Hide();
             formFacturaVenta.Show();
         }

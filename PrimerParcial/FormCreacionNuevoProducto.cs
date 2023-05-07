@@ -79,30 +79,30 @@ namespace PrimerParcial
         }
 
         private Carne CrearProducto()
-        {
+         {
             Carne nuevoProducto = null;
             float precio;
             int cantidadEnInventarioKilos;
 
 
-            if (comboBox1.Text != "Tipo de Producto" && string.IsNullOrEmpty(textBoxNombre.Text)
-                && string.IsNullOrEmpty(textBoxTipoCarne.Text) &&
+            if (comboBox1.Text != "Tipo de Producto" && 
+               !(string.IsNullOrEmpty(textBoxNombre.Text))
+                && !(string.IsNullOrEmpty(textBoxTipoCarne.Text)) &&
                 float.TryParse(textBoxPrecio.Text, out precio) &&
                 int.TryParse(textBoxUnidades.Text, out cantidadEnInventarioKilos)
                 && cantidadEnInventarioKilos > 0)
             {
-
+              //  MessageBox.Show("llega nulo");
                 switch (comboBox1.SelectedIndex)
                 {
                     case 1:
                         nuevoProducto = new Ave(textBoxNombre.Text, textBoxTipoCarne.Text,
                    precio, cantidadEnInventarioKilos, (Ave.eTipoAve)comboBoxTipoAve.SelectedItem);
 
-
+                        
                         break;
                     case 2:
-
-                        nuevoProducto = new Cerdo("Costillar", "Carne Semi", 900, 30, (Cerdo.eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
+                        nuevoProducto = new Cerdo(textBoxNombre.Text, textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, (Cerdo.eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
 
                         break;
                     case 3:
@@ -183,6 +183,27 @@ namespace PrimerParcial
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonCrearProducto_Click(object sender, EventArgs e)
+        {
+            List<Carne> lista = Negocio.RetornarProductos();
+            Carne nuevoProducto = CrearProducto();
+            DialogResult Respuesta = new();
+            if (nuevoProducto != null)
+            {
+                lista.Add(nuevoProducto);
+                Respuesta = MessageBox.Show("Desea logearse o seguir creando productos", "Atencion", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+                if (Respuesta == DialogResult.Yes) 
+                {
+                    this.Hide();
+                    FrmLogin login = new();
+                    login.Show();
+
+                }
+                
+            }
         }
     }
 }
