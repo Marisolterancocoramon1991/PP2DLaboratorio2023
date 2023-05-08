@@ -28,6 +28,12 @@ namespace PrimerParcial
 
 
         }
+
+        /// <summary>
+        /// carga todos los elementos de l ventana
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void FormVentaDeCarne_Load(object sender, EventArgs e)
         {
             listaDeProductos = Negocio.RetornarProductos();
@@ -36,11 +42,11 @@ namespace PrimerParcial
             labelDinero.Text = usuario.Saldo.ToString();
             listVentaCliente = new List<Venta>();
         }
-        private void groupCerdo_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// carga el producto a traves de un click 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
@@ -94,8 +100,8 @@ namespace PrimerParcial
         /// <summary>
         /// sirve para hacer las compras 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult confirmarVenta;
@@ -162,7 +168,11 @@ namespace PrimerParcial
 
 
         }
-
+        /// <summary>
+        /// abre la ventaa buscador de ventana 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void button2_Click(object sender, EventArgs e)
         {
             if (usuario is not null)
@@ -178,6 +188,11 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// logea al usuario 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void button3_Click(object sender, EventArgs e)
         {
             DialogResult confirmarVenta;
@@ -194,11 +209,12 @@ namespace PrimerParcial
             }
         }
 
-        private void radioButtonMarcadoPago_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// busca en la lista de productos coincidencias y las imprime en la data 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             string TerminoABuscar = textBuscador.Text;
@@ -209,7 +225,11 @@ namespace PrimerParcial
             dataGridView1.DataSource = productosEncontrados;
             dataGridView1.Refresh();
         }
-
+        /// <summary>
+        /// carga cola cliente y abre la ventana de factura
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonFactura_Click(object sender, EventArgs e)
         {
             FormFacturaVenta formFacturaVenta = new(usuario, listVentaCliente);

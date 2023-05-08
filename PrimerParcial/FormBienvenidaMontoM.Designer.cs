@@ -50,7 +50,7 @@
             groupBienvenida.TabIndex = 0;
             groupBienvenida.TabStop = false;
             groupBienvenida.Text = "grupo_Carniceria";
-            groupBienvenida.Enter += groupBienvenida_Enter;
+         //   groupBienvenida.Enter += groupBienvenida_Enter;
             // 
             // button1
             // 
@@ -97,7 +97,7 @@
             Name = "FormBienvenidaMontoM";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormBienvenidaMontoM";
-            Load += FormBienvenidaMontoM_Load;
+          //  Load += FormBienvenidaMontoM_Load;
             groupBienvenida.ResumeLayout(false);
             groupBienvenida.PerformLayout();
             ResumeLayout(false);

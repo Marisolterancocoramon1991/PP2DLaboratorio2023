@@ -86,7 +86,7 @@
             Carniceria.TabIndex = 2;
             Carniceria.TabStop = false;
             Carniceria.Text = "grupoCarniceria";
-            Carniceria.Enter += Carniceria_Enter;
+            //Carniceria.Enter += Carniceria_Enter;
             // 
             // labelInformacionError
             // 
@@ -189,7 +189,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TopMost = true;
-            Load += FrmLogin_Load;
+   //         Load += FrmLogin_Load;
             Carniceria.ResumeLayout(false);
             Carniceria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMostrar).EndInit();

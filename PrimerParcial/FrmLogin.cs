@@ -132,14 +132,6 @@ namespace PrimerParcial
             }
         }
 
-        private void Carniceria_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

@@ -146,7 +146,7 @@
             labelRazaCerdo.Size = new Size(82, 15);
             labelRazaCerdo.TabIndex = 7;
             labelRazaCerdo.Text = "Raza de Cerdo";
-            labelRazaCerdo.Click += label4_Click;
+            //labelRazaCerdo.Click += label4_Click;
             // 
             // labelRazaDelVacuno
             // 
@@ -156,7 +156,7 @@
             labelRazaDelVacuno.Size = new Size(92, 15);
             labelRazaDelVacuno.TabIndex = 8;
             labelRazaDelVacuno.Text = "Raza del Vacuno";
-            labelRazaDelVacuno.Click += label5_Click;
+            //labelRazaDelVacuno.Click += label5_Click;
             // 
             // textBoxNombre
             // 
@@ -190,7 +190,7 @@
             groupBoxAve.TabIndex = 13;
             groupBoxAve.TabStop = false;
             groupBoxAve.Text = "AVE";
-            groupBoxAve.Enter += groupBox1_Enter;
+            //groupBoxAve.Enter += groupBox1_Enter;
             // 
             // comboBoxTipoAve
             // 
@@ -321,7 +321,7 @@
             groupBoxCerdo.TabIndex = 15;
             groupBoxCerdo.TabStop = false;
             groupBoxCerdo.Text = "CERDO";
-            groupBoxCerdo.Enter += groupBoxCerdo_Enter;
+            //groupBoxCerdo.Enter += groupBoxCerdo_Enter;
             // 
             // comboBoxRCerdo
             // 

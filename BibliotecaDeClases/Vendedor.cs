@@ -28,5 +28,22 @@ namespace BibliotecaDeClases
             this.Sueldo = sueldo;   
         }
 
+
+        /// <summary>
+        /// muestra las caractristicas ensenciales del trabajador 
+        /// </summary>
+        /// <returns></returns> string mensaje
+        public override string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Sueldo del Trabajador {Sueldo}");
+            sb.AppendLine($"Turno de trabajo {Turno}");
+         
+
+            return sb.ToString();
+
+        }
+
     }
 }

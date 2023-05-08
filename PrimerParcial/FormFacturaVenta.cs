@@ -43,11 +43,11 @@ namespace PrimerParcial
             }
         }
 
-        private void groupCarniceria_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;

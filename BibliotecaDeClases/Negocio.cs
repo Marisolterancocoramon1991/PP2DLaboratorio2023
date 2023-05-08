@@ -232,6 +232,13 @@ namespace BibliotecaDeClases
             listaVentas.Add(venta);
         }
 
+
+
+        /// <summary>
+        /// /agrega a la lista venta una venta
+        /// </summary>
+        /// <param name="listaVenta"></param> lista de venta
+        /// <param name="venta"></param> venta
         public static void CargarVenta(List<Venta> listaVenta, Venta venta)
         {
             listaVenta.Add(venta);

@@ -27,15 +27,15 @@ namespace PrimerParcial
 
         }
 
-        private void FormBienvenidaMontoM_Load(object sender, EventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// valida si la informacion ingresada es mayor a 1000 y si 
+        /// es numero
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-
-
 
             // Ruta relativa del archivo de sonido
             string relativePath = @".\sonidoAplicacion.wav";
@@ -58,10 +58,6 @@ namespace PrimerParcial
                 MessageBox.Show("...espere unos instantes");
             }
 
-
-
-
-
             if (Validaciones.DeStringANumero(textBoxAgregarMonto.Text) > 1000)
             {
 
@@ -81,9 +77,6 @@ namespace PrimerParcial
             }
         }
 
-        private void groupBienvenida_Enter(object sender, EventArgs e)
-        {
 
-        }
     }
 }

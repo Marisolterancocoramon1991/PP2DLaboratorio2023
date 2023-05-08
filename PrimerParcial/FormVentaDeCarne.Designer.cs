@@ -81,7 +81,7 @@
             groupCerdo.TabIndex = 0;
             groupCerdo.TabStop = false;
             groupCerdo.Text = "Carniceria_Teran";
-            groupCerdo.Enter += groupCerdo_Enter;
+            //groupCerdo.Enter += groupCerdo_Enter;
             // 
             // buttonFactura
             // 
@@ -143,7 +143,7 @@
             radioButtonMarcadoPago.TabStop = true;
             radioButtonMarcadoPago.Text = "Marcado Pago";
             radioButtonMarcadoPago.UseVisualStyleBackColor = true;
-            radioButtonMarcadoPago.CheckedChanged += radioButtonMarcadoPago_CheckedChanged;
+           // radioButtonMarcadoPago.CheckedChanged += radioButtonMarcadoPago_CheckedChanged;
             // 
             // radioButtonTarjetaC
             // 

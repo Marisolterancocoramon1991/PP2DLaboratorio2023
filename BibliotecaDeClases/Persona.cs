@@ -23,9 +23,6 @@ namespace BibliotecaDeClases
 
         }
 
-       /* public Persona() : this(" ", " ", " ", " ", " ")
-        {
-        }*/
       
         public Persona(string nombre, string apellido, string direccion,
             string correoElectronico, string contraseña, eTipoDeUsuario tipoDeUsuario)

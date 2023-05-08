@@ -15,9 +15,7 @@ namespace BibliotecaDeClases
         private float precio;
         private int cantidadEnInventarioKilos;
 
-        private List<Carne> carnes;
-
-        public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos) : this()
+        public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos) 
         {
             this.Nombre = nombre;
             this.Tipo = tipo;
@@ -35,17 +33,8 @@ namespace BibliotecaDeClases
             set => cantidadEnInventarioKilos = value;
         }
 
-        public Carne()
-        {
-            carnes = new List<Carne>();
-
-        }
-        public void AgregarCarnes(Carne carne)
-        {
-            carnes.Add(carne);
-
-        }
-            
+        
+     
         /// <summary>
         /// muestra la informacion general del producto
         /// </summary>
@@ -54,14 +43,12 @@ namespace BibliotecaDeClases
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Carne carne in carnes)
-            {
+            
                 sb.AppendLine($"  Carne  {nombre}");
                 sb.AppendLine($"tipo de carne{tipos}");
                 sb.AppendLine($"el del producto precio {precio}");
 
-            }
-
+           
 
             return sb.ToString();
 
@@ -79,6 +66,17 @@ namespace BibliotecaDeClases
             p1.cantidadEnInventarioKilos = p1.cantidadEnInventarioKilos + cantidadASumar;
 
             return p1;
+        }
+        /// <summary>
+        /// En este caso, se sobrecarga el operador "+" 
+        /// para que funcione con objetos de la clase "Carne" y un número en punto flotante.
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="cantidadASumar"></param>
+        /// <returns></returns>
+        public static float operator +(Carne p1, float cantidadASumar)
+        {
+            return p1.precio += p1.precio * cantidadASumar;
         }
 
         /// <summary>
@@ -131,6 +129,7 @@ namespace BibliotecaDeClases
             return resultado;
         }
 
+        
 
         /// <summary>
         /// muestra los detalles del producto

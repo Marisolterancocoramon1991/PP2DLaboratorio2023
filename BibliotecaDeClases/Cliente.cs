@@ -12,15 +12,7 @@ namespace BibliotecaDeClases
         protected float saldo;
         private string numeroDeCuenta;
       
-        /// <summary>
-        /// constructor 
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="iD"></param>
-        /// <param name="apellido"></param>
-        /// <param name="direccion"></param>
-        /// <param name="saldo"></param>
-        /// <param name="numeroDeCuenta"></param>
+       
         public Cliente(string nombre,
             string apellido, string direccion, string correoElectronico, string contraseña,
             float saldo, string numeroDeCuenta, eTipoDeUsuario tipoDeUsuario)

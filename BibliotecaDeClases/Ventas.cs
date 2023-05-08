@@ -41,7 +41,7 @@ namespace BibliotecaDeClases
         /// <summary>
         /// muestra los detalles de la venta
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> string mensaje
         public virtual string MostrarDetallesDeVenta()
         {
             StringBuilder sb = new StringBuilder();

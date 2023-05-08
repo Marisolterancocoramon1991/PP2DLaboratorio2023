@@ -66,7 +66,7 @@
             groupCarniceria.TabIndex = 0;
             groupCarniceria.TabStop = false;
             groupCarniceria.Text = "Carniceria_Teran";
-            groupCarniceria.Enter += groupCarniceria_Enter;
+            //groupCarniceria.Enter += groupCarniceria_Enter;
             // 
             // button1
             // 

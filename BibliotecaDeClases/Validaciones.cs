@@ -145,9 +145,9 @@ namespace BibliotecaDeClases
 
         }
         /// <summary>
-        /// 
+        /// car numero y valida si lo es...
         /// </summary>
-        /// <param name="cadenaCaracteres"></param>
+        /// <param name="cadenaCaracteres"></param> es un string 
         /// <returns></returns>
         public static string CargarNumero(string cadenaCaracteres)
         {
@@ -164,10 +164,10 @@ namespace BibliotecaDeClases
 
         }
         /// <summary>
-        /// 
+        /// valida si no viene vaco alguno de estos campos
         /// </summary>
-        /// <param name="email"></param>
-        /// <param name="contraseña"></param>
+        /// <param name="email"></param> string
+        /// <param name="contraseña"></param> string
         /// <returns></returns>
         public static bool ValidarCamposIngresados(string email, string contraseña)
         {
@@ -178,7 +178,7 @@ namespace BibliotecaDeClases
             return true;
         }
         /// <summary>
-        /// carga el ID de la persona
+        /// carga el ID de la persona de forma aleatoria
         /// </summary>
         /// <returns></returns>
         public static int CargaID()
@@ -192,7 +192,7 @@ namespace BibliotecaDeClases
         /// <summary>
         /// verifica si es numero
         /// </summary>
-        /// <param name="numero"></param>
+        /// <param name="numero"></param> string
         /// <returns></returns>
         public static float DeStringANumero(string numero)
         {
@@ -209,7 +209,7 @@ namespace BibliotecaDeClases
         /// <summary>
         /// verifica si un objero no es null 
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj"></param> cualquier objeto...
         /// <returns></returns> retrona un bool
         public static bool IsNotNull(object obj)
         {

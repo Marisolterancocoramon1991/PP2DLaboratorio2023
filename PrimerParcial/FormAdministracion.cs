@@ -17,6 +17,12 @@ namespace PrimerParcial
             InitializeComponent();
         }
 
+
+        /// <summary>
+        ///  oculta esta ventana y levanta la ventana de nuevos productos
+        ///  /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonCrearProducto_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -24,14 +30,22 @@ namespace PrimerParcial
             formCreacionNuevoProducto.Show();
 
         }
-
+        /// <summary>
+        ///  oculta esta ventana y levanta y levanta editar producto
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             this.Hide();
             FormEditarProductoYStock formEditarProductoYStock = new();
             formEditarProductoYStock.Show();
         }
-
+        /// <summary>
+        /// oculta esta ventana y levanta la ventan del cliente
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonVender_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -39,6 +53,11 @@ namespace PrimerParcial
             formVentaAlCliente.Show();  
         }
 
+        /// <summary>
+        /// oculta esta ventana y levanta la ventan de heladera
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonHeladera_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -46,6 +65,11 @@ namespace PrimerParcial
             formHeladera.Show();    
         }
 
+        /// <summary>
+        /// oculta esta ventana y levanta la ventan del login
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonLogearte_Click(object sender, EventArgs e)
         {
             this.Hide();

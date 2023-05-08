@@ -25,6 +25,13 @@ namespace PrimerParcial
             InitializeComponent();
 
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void FormEditarProductoYStock_Load(object sender, EventArgs e)
         {
             comboBoxTipoAve.DataSource = Enum.GetValues(typeof(Ave.eTipoAve));
@@ -36,16 +43,13 @@ namespace PrimerParcial
             CargarDataGridView(listaDeProductos, productoVacuno);
             CargarDataGridView(listaDeProductos, productoCerdo);
         }
-        private void label4_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBoxTipoProducto.SelectedIndex)
@@ -80,10 +84,11 @@ namespace PrimerParcial
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -104,6 +109,12 @@ namespace PrimerParcial
                 }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
@@ -123,6 +134,13 @@ namespace PrimerParcial
                 }
             }
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
@@ -143,11 +161,11 @@ namespace PrimerParcial
             }
         }
 
-        private void groupBoxCerdo_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonlogearte_Click(object sender, EventArgs e)
         {
 
@@ -168,6 +186,12 @@ namespace PrimerParcial
 
         }
 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="listaDeProductos"></param>
+        /// <param name="Ave"></param>
         public void CargarDataGridView(List<Carne> listaDeProductos, Ave Ave)
         {
 
@@ -206,7 +230,9 @@ namespace PrimerParcial
                 }
             }
         }
-
+        /// <summary>
+        /// edita el producto depende de lo generado
+        /// </summary>
         private void EditarProducto()
         {
             // Carne nuevoProducto = null;
@@ -254,6 +280,12 @@ namespace PrimerParcial
                 MessageBox.Show("no ha seleccionado ningun producto para editar");
         }
 
+
+        /// <summary>
+        /// agrega un cartel de aviso
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void comboBoxTipoProducto_MouseHover_1(object sender, EventArgs e)
         {
             System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
@@ -261,17 +293,29 @@ namespace PrimerParcial
                 "que estan en la agrupacion, aseegurese de que todo este integrado correctamente \n");
         }
 
+        /// <summary>
+        /// llama al metodo editar producto
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             EditarProducto();
         }
 
+
+        /// <summary>
+        /// agrega y valida la cantidar a sumar en stock
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonCantidad_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show($"{productoSeleccioando.CantidadEnInventario}");
+           
             if (productoSeleccioando is not null && Validaciones.EsNumero(textBoxCantidad.Text))
             {
+                MessageBox.Show($"{productoSeleccioando.CantidadEnInventario}");
                 productoSeleccioando = productoSeleccioando + int.Parse(textBoxCantidad.Text);
                 MessageBox.Show($"{productoSeleccioando.CantidadEnInventario}");
             }
@@ -280,6 +324,12 @@ namespace PrimerParcial
 
         }
 
+
+        /// <summary>
+        /// instancia una ventana y la levanta la ventana de administracion
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void buttonRegresar_Click(object sender, EventArgs e)
         {
             FormAdministracion formAdministracion = new();

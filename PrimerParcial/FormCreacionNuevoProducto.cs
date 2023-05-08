@@ -48,21 +48,7 @@ namespace PrimerParcial
             }
         }
 
-        private void FormCreacionNuevoProducto_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -119,71 +105,7 @@ namespace PrimerParcial
             }
             return nuevoProducto;
         }
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelNombre_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxCategoria_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxRazasVacuno_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelCategoria_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxCarneCerdo_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void buttonCrearProducto_Click(object sender, EventArgs e)
         {
             List<Carne> lista = Negocio.RetornarProductos();
