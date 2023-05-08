@@ -17,13 +17,13 @@ namespace PrimerParcial
         Cliente usuario;
         List<Venta> listaVentas;
 
-        public FormFacturaVenta(Cliente usuario)
+        public FormFacturaVenta(Cliente usuario, List<Venta> listaVentas)
         {
             InitializeComponent();
             this.usuario = usuario;
-            listaVentas = Negocio.RetornarListaDeVentas();
+            this.listaVentas = listaVentas;
             CargarDataGridView(listaVentas);
-            labelDirecccion.Text = "Dirrecion: " + usuario.Direccion;
+            labelDirecccion.Text = "Direcion: " + usuario.Direccion;
             labelNombre.Text = "Nombre del Cliente  " + usuario.Nombre;
             labelID.Text = "ID: " + usuario.ID;
             DateTime fechaActual = DateTime.Now;

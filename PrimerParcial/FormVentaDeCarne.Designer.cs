@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupCerdo = new GroupBox();
+            buttonFactura = new Button();
             textBuscador = new TextBox();
             buttonBuscar = new Button();
             groupBoxTipoPago = new GroupBox();
@@ -51,7 +52,6 @@
             tipo = new DataGridViewTextBoxColumn();
             precio = new DataGridViewTextBoxColumn();
             raza = new DataGridViewTextBoxColumn();
-            buttonFactura = new Button();
             groupCerdo.SuspendLayout();
             groupBoxTipoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -82,6 +82,16 @@
             groupCerdo.TabStop = false;
             groupCerdo.Text = "Carniceria_Teran";
             groupCerdo.Enter += groupCerdo_Enter;
+            // 
+            // buttonFactura
+            // 
+            buttonFactura.Location = new Point(538, 350);
+            buttonFactura.Name = "buttonFactura";
+            buttonFactura.Size = new Size(86, 49);
+            buttonFactura.TabIndex = 13;
+            buttonFactura.Text = "Factura";
+            buttonFactura.UseVisualStyleBackColor = true;
+            buttonFactura.Click += buttonFactura_Click;
             // 
             // textBuscador
             // 
@@ -290,16 +300,6 @@
             raza.HeaderText = "Raza";
             raza.Name = "raza";
             // 
-            // buttonFactura
-            // 
-            buttonFactura.Location = new Point(538, 350);
-            buttonFactura.Name = "buttonFactura";
-            buttonFactura.Size = new Size(86, 49);
-            buttonFactura.TabIndex = 13;
-            buttonFactura.Text = "Factura";
-            buttonFactura.UseVisualStyleBackColor = true;
-            buttonFactura.Click += buttonFactura_Click;
-            // 
             // FormVentaDeCarne
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -309,6 +309,7 @@
             Name = "FormVentaDeCarne";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
+            Load += FormVentaDeCarne_Load;
             groupCerdo.ResumeLayout(false);
             groupCerdo.PerformLayout();
             groupBoxTipoPago.ResumeLayout(false);

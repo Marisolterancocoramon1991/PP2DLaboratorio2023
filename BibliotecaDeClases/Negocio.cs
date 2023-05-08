@@ -124,6 +124,10 @@ namespace BibliotecaDeClases
         {
             return listaDeProductos;
         }
+       
+
+
+
         /// <summary>
         /// retorna cola de clientes 
         /// </summary>
@@ -228,6 +232,11 @@ namespace BibliotecaDeClases
             listaVentas.Add(venta);
         }
 
+        public static void CargarVenta(List<Venta> listaVenta, Venta venta)
+        {
+            listaVenta.Add(venta);
+        }
+
 
         /// <summary>
         /// va iterando y sumando hasta obtener las ganancias totales
@@ -253,6 +262,7 @@ namespace BibliotecaDeClases
         {
             return listaVentas;
         }
+
         /// <summary>
         ///  retorna el precio total de la factura
         /// </summary>

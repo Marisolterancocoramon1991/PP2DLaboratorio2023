@@ -19,21 +19,23 @@ namespace PrimerParcial
         //  Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
         Carne productoSeleccioando;
+        List<Venta> listVentaCliente;
 
-        public FormVentaDeCarne(Cliente usuario/*, List<Carne> listaDeProductos*/) //: base (usuario)
+        public FormVentaDeCarne(Cliente usuario) 
         {
             InitializeComponent();
             this.usuario = usuario;
-            //this.colaClientes = colaClientes;
+
+
+        }
+        private void FormVentaDeCarne_Load(object sender, EventArgs e)
+        {
             listaDeProductos = Negocio.RetornarProductos();
             CargarDataGridView(listaDeProductos);
             labelNombre.Text = usuario.Nombre;
             labelDinero.Text = usuario.Saldo.ToString();
-
-
-
+            listVentaCliente = new List<Venta>();
         }
-
         private void groupCerdo_Enter(object sender, EventArgs e)
         {
 
@@ -87,7 +89,7 @@ namespace PrimerParcial
                     Vacuno vaca = (Vacuno)producto;
                     dataGridView1.Rows.Add(vaca.Nombre, vaca.Tipo, vaca.Precio, vaca.RazasDeVacas);
                 }
-            }            
+            }
         }
         /// <summary>
         /// sirve para hacer las compras 
@@ -98,7 +100,7 @@ namespace PrimerParcial
         {
             DialogResult confirmarVenta;
             float precioAGastar;
-           //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
+            //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
             if (Validaciones.IsNotNull(productoSeleccioando) && productoSeleccioando.CantidadEnInventario > 0 && (int)numericUpDown1.Value > 0
                 && productoSeleccioando.CantidadEnInventario
                 >= (int)numericUpDown1.Value && Validaciones.IsNotNull(usuario) && usuario.Saldo >=
@@ -114,27 +116,30 @@ namespace PrimerParcial
                         if (radioButtonMarcadoPago.Checked == true)
                         {
                             Venta venta = new Venta(productoSeleccioando,
-                                Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value);
+                              Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
+                            Negocio.CargarVenta(listVentaCliente, venta);
                         }
                         else if (radioButtonTarjetaC.Checked == true)
                         {
                             Venta venta = new Venta(productoSeleccioando,
                                 Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
+                            Negocio.CargarVenta(listVentaCliente, venta);
+
                         }
                         else
                         {
                             Venta venta = new Venta(productoSeleccioando,
                                 Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value);
                             Negocio.CargarVenta(venta);
+                            Negocio.CargarVenta(listVentaCliente, venta);
                         }
 
                         productoSeleccioando = productoSeleccioando - (int)numericUpDown1.Value;
 
                         precioAGastar = productoSeleccioando * (int)numericUpDown1.Value;
                         usuario = usuario - precioAGastar;
-
                         labelDinero.Text = usuario.Saldo.ToString();
 
 
@@ -196,10 +201,10 @@ namespace PrimerParcial
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            string searchTerm = textBuscador.Text;
+            string TerminoABuscar = textBuscador.Text;
 
             // Aquí se realiza la búsqueda utilizando una lista de objetos llamada "productos".
-            List<Carne> productosEncontrados = listaDeProductos.Where(p => p.Nombre.Contains(searchTerm)).ToList();
+            List<Carne> productosEncontrados = listaDeProductos.Where(p => p.Nombre.Contains(TerminoABuscar)).ToList();
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = productosEncontrados;
             dataGridView1.Refresh();
@@ -207,11 +212,13 @@ namespace PrimerParcial
 
         private void buttonFactura_Click(object sender, EventArgs e)
         {
-            FormFacturaVenta formFacturaVenta = new(usuario);
+            FormFacturaVenta formFacturaVenta = new(usuario, listVentaCliente);
             Negocio.CargarColaClientes(usuario);
             this.Hide();
             formFacturaVenta.Show();
         }
+
+     
     }
 }
 

@@ -28,12 +28,151 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormAdministracion";
+            buttonCrearProducto = new Button();
+            buttonEditar = new Button();
+            buttonHeladera = new Button();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            buttonLogearte = new Button();
+            pictureBox4 = new PictureBox();
+            buttonVender = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            SuspendLayout();
+            // 
+            // buttonCrearProducto
+            // 
+            buttonCrearProducto.BackColor = Color.OrangeRed;
+            buttonCrearProducto.Location = new Point(46, 280);
+            buttonCrearProducto.Name = "buttonCrearProducto";
+            buttonCrearProducto.Size = new Size(128, 23);
+            buttonCrearProducto.TabIndex = 0;
+            buttonCrearProducto.Text = "Crear Producto";
+            buttonCrearProducto.UseVisualStyleBackColor = false;
+            buttonCrearProducto.Click += buttonCrearProducto_Click;
+            // 
+            // buttonEditar
+            // 
+            buttonEditar.BackColor = Color.FromArgb(255, 128, 128);
+            buttonEditar.Location = new Point(255, 280);
+            buttonEditar.Name = "buttonEditar";
+            buttonEditar.Size = new Size(128, 23);
+            buttonEditar.TabIndex = 1;
+            buttonEditar.Text = "Editar Producto";
+            buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
+            // 
+            // buttonHeladera
+            // 
+            buttonHeladera.BackColor = Color.FromArgb(0, 192, 192);
+            buttonHeladera.Location = new Point(471, 280);
+            buttonHeladera.Name = "buttonHeladera";
+            buttonHeladera.Size = new Size(128, 23);
+            buttonHeladera.TabIndex = 2;
+            buttonHeladera.Text = "Heladera";
+            buttonHeladera.UseVisualStyleBackColor = false;
+            buttonHeladera.Click += buttonHeladera_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.NuevoProducto;
+            pictureBox1.Location = new Point(33, 94);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(166, 157);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.EditarProducto;
+            pictureBox2.Location = new Point(238, 94);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(175, 157);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.Heladera;
+            pictureBox3.Location = new Point(447, 94);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(175, 157);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
+            // buttonLogearte
+            // 
+            buttonLogearte.BackColor = Color.LightPink;
+            buttonLogearte.Location = new Point(732, 320);
+            buttonLogearte.Name = "buttonLogearte";
+            buttonLogearte.Size = new Size(135, 41);
+            buttonLogearte.TabIndex = 6;
+            buttonLogearte.Text = "Logearte";
+            buttonLogearte.UseVisualStyleBackColor = false;
+            buttonLogearte.Click += buttonLogearte_Click;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = Properties.Resources.Carnicero;
+            pictureBox4.Location = new Point(656, 94);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(175, 157);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 7;
+            pictureBox4.TabStop = false;
+            // 
+            // buttonVender
+            // 
+            buttonVender.BackColor = Color.Lime;
+            buttonVender.Location = new Point(690, 280);
+            buttonVender.Name = "buttonVender";
+            buttonVender.Size = new Size(128, 23);
+            buttonVender.TabIndex = 8;
+            buttonVender.Text = "Vender";
+            buttonVender.UseVisualStyleBackColor = false;
+            buttonVender.Click += buttonVender_Click;
+            // 
+            // FormAdministracion
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Gold;
+            ClientSize = new Size(868, 362);
+            Controls.Add(buttonVender);
+            Controls.Add(pictureBox4);
+            Controls.Add(buttonLogearte);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
+            Controls.Add(buttonHeladera);
+            Controls.Add(buttonEditar);
+            Controls.Add(buttonCrearProducto);
+            Name = "FormAdministracion";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormAdministracion";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button buttonCrearProducto;
+        private Button buttonEditar;
+        private Button buttonHeladera;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private Button buttonLogearte;
+        private PictureBox pictureBox4;
+        private Button buttonVender;
     }
 }

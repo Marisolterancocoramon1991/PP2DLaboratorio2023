@@ -22,7 +22,7 @@ namespace BibliotecaDeClases
             this.tipoAve= tipoAve;
         }
 
-        public eTipoAve TipoAve { get => tipoAve; }
+        public eTipoAve TipoAve { get => tipoAve; set => tipoAve = value ; }
 
 
         /// <summary>

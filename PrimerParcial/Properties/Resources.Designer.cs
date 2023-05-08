@@ -63,6 +63,16 @@ namespace PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Carnicero {
+            get {
+                object obj = ResourceManager.GetObject("Carnicero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerdo {
             get {
                 object obj = ResourceManager.GetObject("cerdo", resourceCulture);
@@ -73,9 +83,39 @@ namespace PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EditarProducto {
+            get {
+                object obj = ResourceManager.GetObject("EditarProducto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gallina {
             get {
                 object obj = ResourceManager.GetObject("gallina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heladera {
+            get {
+                object obj = ResourceManager.GetObject("Heladera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NuevoProducto {
+            get {
+                object obj = ResourceManager.GetObject("NuevoProducto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

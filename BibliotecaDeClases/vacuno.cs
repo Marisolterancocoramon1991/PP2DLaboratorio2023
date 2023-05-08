@@ -34,8 +34,8 @@ namespace BibliotecaDeClases
             this.razasDeVacas = razasDeVacas;
         }
 
-        public eRazasDeVacas RazasDeVacas { get => razasDeVacas; }
-        public eCategoria Categoria { get => categoria; }
+        public eRazasDeVacas RazasDeVacas { get => razasDeVacas; set => razasDeVacas = value; }
+        public eCategoria Categoria { get => categoria; set => categoria = value; }
 
 
         /// <summary>

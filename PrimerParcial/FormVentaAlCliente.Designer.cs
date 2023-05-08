@@ -1,6 +1,6 @@
 ﻿namespace PrimerParcial
 {
-    partial class FormHeladera
+    partial class FormVentaAlCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,15 @@
         {
             SuspendLayout();
             // 
-            // FormHeladera
+            // FormVentaAlCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(128, 255, 128);
             ClientSize = new Size(800, 450);
-            Name = "FormHeladera";
+            Name = "FormVentaAlCliente";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Heladera";
+            Text = "VentaAlCliente";
             ResumeLayout(false);
         }
 

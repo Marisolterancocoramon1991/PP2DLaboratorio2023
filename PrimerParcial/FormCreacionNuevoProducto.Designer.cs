@@ -55,9 +55,11 @@
             textBoxPrecio = new TextBox();
             textBoxUnidades = new TextBox();
             buttonCrearProducto = new Button();
+            pictureBox1 = new PictureBox();
             groupBoxAve.SuspendLayout();
             groupBoxCarneVacuno.SuspendLayout();
             groupBoxCarneCerdo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // comboBox1
@@ -223,23 +225,25 @@
             // 
             // buttonLogearse
             // 
-            buttonLogearse.Location = new Point(388, 232);
+            buttonLogearse.BackColor = Color.FromArgb(128, 255, 255);
+            buttonLogearse.Location = new Point(421, 250);
             buttonLogearse.Name = "buttonLogearse";
             buttonLogearse.Size = new Size(75, 23);
             buttonLogearse.TabIndex = 3;
             buttonLogearse.Text = "logearse";
-            buttonLogearse.UseVisualStyleBackColor = true;
+            buttonLogearse.UseVisualStyleBackColor = false;
             buttonLogearse.Click += button1_Click;
             // 
             // buttonRegresar
             // 
-            buttonRegresar.Location = new Point(421, 273);
+            buttonRegresar.BackColor = Color.Lime;
+            buttonRegresar.Location = new Point(421, 279);
             buttonRegresar.Name = "buttonRegresar";
             buttonRegresar.Size = new Size(75, 23);
             buttonRegresar.TabIndex = 4;
             buttonRegresar.TabStop = false;
             buttonRegresar.Text = "Regresar";
-            buttonRegresar.UseVisualStyleBackColor = true;
+            buttonRegresar.UseVisualStyleBackColor = false;
             buttonRegresar.Click += button2_Click;
             // 
             // labelNombre
@@ -314,19 +318,32 @@
             // 
             // buttonCrearProducto
             // 
-            buttonCrearProducto.Location = new Point(388, 302);
+            buttonCrearProducto.BackColor = Color.FromArgb(255, 255, 128);
+            buttonCrearProducto.Location = new Point(396, 308);
             buttonCrearProducto.Name = "buttonCrearProducto";
             buttonCrearProducto.Size = new Size(128, 23);
             buttonCrearProducto.TabIndex = 13;
             buttonCrearProducto.Text = "Crear Producto";
-            buttonCrearProducto.UseVisualStyleBackColor = true;
+            buttonCrearProducto.UseVisualStyleBackColor = false;
             buttonCrearProducto.Click += buttonCrearProducto_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.NuevoProducto;
+            pictureBox1.Location = new Point(32, 230);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(129, 101);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
             // 
             // FormCreacionNuevoProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightCoral;
             ClientSize = new Size(536, 343);
+            Controls.Add(pictureBox1);
             Controls.Add(buttonCrearProducto);
             Controls.Add(textBoxUnidades);
             Controls.Add(textBoxPrecio);
@@ -352,6 +369,7 @@
             groupBoxCarneVacuno.PerformLayout();
             groupBoxCarneCerdo.ResumeLayout(false);
             groupBoxCarneCerdo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -385,5 +403,6 @@
         private ComboBox comboBoxRCerdo;
         private Label labelRCerdo;
         private Button buttonCrearProducto;
+        private PictureBox pictureBox1;
     }
 }

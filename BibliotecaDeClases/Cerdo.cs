@@ -29,7 +29,7 @@ namespace BibliotecaDeClases
             this.razasDeCerdo = razasDeCerdo;
         }
 
-        public eRazasDeCerdo RazasDeCerdo { get => razasDeCerdo; }
+        public eRazasDeCerdo RazasDeCerdo { get => razasDeCerdo; set => razasDeCerdo = value; }
 
 
         /// <summary>
