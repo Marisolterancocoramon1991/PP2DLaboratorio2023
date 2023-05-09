@@ -11,7 +11,7 @@ using static BibliotecaDeClases.Venta;
 
 namespace BibliotecaDeClases
 {
-    public  class Negocio
+    public class Negocio
     {
         private static List<Persona> usuariosRegistrados;
         private static List<Carne> listaDeProductos;
@@ -29,7 +29,7 @@ namespace BibliotecaDeClases
             CargarProductos();
             CargarClientes();
         }
-        
+
 
         /// <summary>
         /// instancia y agrega a la lista usuarios registrados los vendedores 
@@ -66,15 +66,15 @@ namespace BibliotecaDeClases
 
             listaDeProductos.Add(new Vacuno("Osobuco", "Carne Roja", 1000, 30, eRazasDeVacas.Pardo, eCategoria.vaca));
             listaDeProductos.Add(new Vacuno("Cola de Cuadril", "Carne Roja", 1500, 25, eRazasDeVacas.Braford, eCategoria.ternero));
-            listaDeProductos.Add(new Vacuno("Bife Ancho", "Carne Roja", 1200,50,eRazasDeVacas.Brangus,eCategoria.toro));
-            listaDeProductos.Add(new Vacuno("Asado de Tira", "Carne Roja", 1300,300,eRazasDeVacas.Brangus,eCategoria.ternero));
-            listaDeProductos.Add(new Vacuno("Falda", "Carne Roja", 1100,25,eRazasDeVacas.Pardo, eCategoria.novillos));
-            listaDeProductos.Add(new Vacuno("Nalga", "Carne Roja", 1120,80,eRazasDeVacas.Pardo, eCategoria.novillos));
-            listaDeProductos.Add(new Vacuno("Pecho", "Carne Roja", 2000,30,eRazasDeVacas.Braford, eCategoria.toro));
-            listaDeProductos.Add(new Vacuno("Bife Vacio", "Carne Roja", 3000,50,eRazasDeVacas.Pardo, eCategoria.novillos));
-            listaDeProductos.Add(new Vacuno("Bife Ancho con Hueso", "Carne Roja", 500,10,eRazasDeVacas.Pardo, eCategoria.ternero));
-            listaDeProductos.Add(new Vacuno("Espinazo", "Carne Roja", 465,50,eRazasDeVacas.Braford, eCategoria.novillos));
-            listaDeProductos.Add(new Cerdo("Pechito","Carne Semi",800,30,eRazasDeCerdo.Ibericos));
+            listaDeProductos.Add(new Vacuno("Bife Ancho", "Carne Roja", 1200, 50, eRazasDeVacas.Brangus, eCategoria.toro));
+            listaDeProductos.Add(new Vacuno("Asado de Tira", "Carne Roja", 1300, 300, eRazasDeVacas.Brangus, eCategoria.ternero));
+            listaDeProductos.Add(new Vacuno("Falda", "Carne Roja", 1100, 25, eRazasDeVacas.Pardo, eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Nalga", "Carne Roja", 1120, 80, eRazasDeVacas.Pardo, eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Pecho", "Carne Roja", 2000, 30, eRazasDeVacas.Braford, eCategoria.toro));
+            listaDeProductos.Add(new Vacuno("Bife Vacio", "Carne Roja", 3000, 50, eRazasDeVacas.Pardo, eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Bife Ancho con Hueso", "Carne Roja", 500, 10, eRazasDeVacas.Pardo, eCategoria.ternero));
+            listaDeProductos.Add(new Vacuno("Espinazo", "Carne Roja", 465, 50, eRazasDeVacas.Braford, eCategoria.novillos));
+            listaDeProductos.Add(new Cerdo("Pechito", "Carne Semi", 800, 30, eRazasDeCerdo.Ibericos));
             listaDeProductos.Add(new Cerdo("Bondiola", "Carne Semi", 1000, 10, eRazasDeCerdo.Mallorquinos));
             listaDeProductos.Add(new Cerdo("Costillita", "Carne Semi", 2200, 20, eRazasDeCerdo.Ibericos));
             listaDeProductos.Add(new Cerdo("Matambrito", "Carne Semi", 3200, 310, eRazasDeCerdo.Lanbrace));
@@ -124,7 +124,7 @@ namespace BibliotecaDeClases
         {
             return listaDeProductos;
         }
-       
+
 
 
 
@@ -254,7 +254,7 @@ namespace BibliotecaDeClases
             List<Venta> nuevaListaDeVentas = new List<Venta>(listaDeVentas);
             List<List<Venta>> listaDeListDeVentas = new List<List<Venta>>();
             listaDeListDeVentas.Add(nuevaListaDeVentas);
-           
+
         }
 
         /// <summary>
@@ -275,10 +275,16 @@ namespace BibliotecaDeClases
         public static double GananciaTotal()
         {
             double retorno = 0;
-       
+
             foreach (Venta item in listaVentas)
             {
-                retorno += (item.ProductoVendido.Precio* item.CantidadDeUnidades);
+                if (item.MetodoPago == eMetodoPago.TarjetaDeCredito)
+                {
+                    double resultadoMasImpuesto = (item.ProductoVendido.Precio * item.CantidadDeUnidades) * 0.05;
+                    retorno += (item.ProductoVendido.Precio * item.CantidadDeUnidades) + resultadoMasImpuesto;
+                }
+                else
+                    retorno += (item.ProductoVendido.Precio * item.CantidadDeUnidades);
             }
 
             return retorno;
@@ -298,7 +304,7 @@ namespace BibliotecaDeClases
             List<Venta> list = new();
             foreach (Venta venta in listaVentas)
             {
-                if(cliente == venta.IDCliente1)
+                if (cliente == venta.IDCliente1)
                     list.Add(venta);
             }
             return list;
@@ -311,28 +317,45 @@ namespace BibliotecaDeClases
         /// </summary>
         /// <param name="listaVenta"></param> lista de venta creada
         /// <returns></returns> float 
-        public static float GananciaTotal(Cliente usuario)
+        public static double GananciaTotal(Cliente usuario)
         {
-            float resultado = 0;
+            double resultado = 0;
 
-            foreach(Venta venta in listaVentas)
+            foreach (Venta venta in listaVentas)
             {
-                if(usuario == venta.IDCliente1)
-                resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
+                if (usuario == venta.IDCliente1 && venta.MetodoPago == eMetodoPago.TarjetaDeCredito)
+                {
+                    double resultadoMasImpuesto = (venta.ProductoVendido.Precio * venta.CantidadDeUnidades) * 0.05;
+                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades) + resultadoMasImpuesto;
+                }
+                else if (usuario == venta.IDCliente1)
+                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
             }
-    
 
-        return resultado;
+
+            return resultado;
         }
 
-        public static float GananciaTotal(List<Venta> listaVenta, Cliente usuario)
+        public static double GananciaTotal(List<Venta> listaVenta, Cliente usuario)
         {
-            float resultado = 0;
+            double resultado = 0;
 
             foreach (Venta venta in listaVenta)
             {
-                if (usuario == venta.IDCliente1)
+                if (usuario == venta.IDCliente1 && venta.MetodoPago == eMetodoPago.TarjetaDeCredito)
+                {
+                    double resultadoMasImpuesto = (venta.ProductoVendido.Precio * venta.CantidadDeUnidades) * 0.05;
+                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades)+ resultadoMasImpuesto;
+                }
+                else if (usuario == venta.IDCliente1)
+                {
                     resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
+
+                }
+
+
+
+
             }
 
 
