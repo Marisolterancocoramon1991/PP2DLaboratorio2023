@@ -161,7 +161,7 @@ namespace PrimerParcial
                     }
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("debes elegir un tipo de lista antes de editar el producto");
             }
@@ -245,7 +245,8 @@ namespace PrimerParcial
             float precio;
             //       int cantidadEnInventarioKilos;
 
-            if (productoSeleccioando is not null)
+            if (productoSeleccioando is not null && (comboBoxTipoProducto.Text == "Ave" ||
+                comboBoxTipoProducto.Text == "Cerdo" || comboBoxTipoProducto.Text == "Vacuno"))
             {
                 if (Validaciones.EsNombre(textBoxNombre.Text))
                     productoSeleccioando.Nombre = textBoxNombre.Text;
@@ -261,6 +262,8 @@ namespace PrimerParcial
                         {
                             Ave ProductoA = (Ave)productoSeleccioando;
                             ProductoA.TipoAve = (eTipoAve)comboBoxTipoAve.SelectedItem;
+                            MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
+                            $" {ProductoA.MostrarDetallesDeProducto()}");
 
                         }
                         break;
@@ -269,6 +272,8 @@ namespace PrimerParcial
                         {
                             Cerdo ProductoC = (Cerdo)productoSeleccioando;
                             ProductoC.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
+                            MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
+                                  $" {ProductoC.MostrarDetallesDeProducto()}");
                         }
                         break;
                     case 3:
@@ -276,11 +281,13 @@ namespace PrimerParcial
                         {
                             Vacuno ProductoV = (Vacuno)productoSeleccioando;
                             ProductoV.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
+                            MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
+                            $" {ProductoV.MostrarDetallesDeProducto()}");
                         }
                         break;
 
                 }
-
+               
             }
             else
                 MessageBox.Show("no ha seleccionado ningun producto para editar");

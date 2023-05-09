@@ -114,7 +114,8 @@ namespace PrimerParcial
             if (nuevoProducto != null)
             {
                 lista.Add(nuevoProducto);
-                Respuesta = MessageBox.Show("Desea logearse o seguir creando productos", "Atencion", MessageBoxButtons.YesNo,
+                Respuesta = MessageBox.Show("Ha editado exitosamente, desea logearse o seguir", "Atencion",
+                    MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);
                 if (Respuesta == DialogResult.Yes)
                 {
