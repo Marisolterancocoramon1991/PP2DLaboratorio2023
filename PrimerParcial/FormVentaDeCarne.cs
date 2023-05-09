@@ -122,14 +122,14 @@ namespace PrimerParcial
                         if (radioButtonMarcadoPago.Checked == true)
                         {
                             Venta venta = new Venta(productoSeleccioando,
-                              Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value);
+                              Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value, usuario.ID);
                             Negocio.CargarVenta(venta);
                             Negocio.CargarVenta(listVentaCliente, venta);
                         }
                         else if (radioButtonTarjetaC.Checked == true)
                         {
                             Venta venta = new Venta(productoSeleccioando,
-                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value);
+                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value,usuario.ID);
                             Negocio.CargarVenta(venta);
                             Negocio.CargarVenta(listVentaCliente, venta);
 
@@ -137,7 +137,7 @@ namespace PrimerParcial
                         else
                         {
                             Venta venta = new Venta(productoSeleccioando,
-                                Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value);
+                                Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value, usuario.ID);
                             Negocio.CargarVenta(venta);
                             Negocio.CargarVenta(listVentaCliente, venta);
                         }

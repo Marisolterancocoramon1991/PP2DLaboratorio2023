@@ -18,10 +18,10 @@ namespace PrimerParcial
         public FormCreacionNuevoProducto()
         {
             InitializeComponent();
-            comboBoxTipoAve.DataSource = Enum.GetValues(typeof(Ave.eTipoAve));
-            comboBoxRVacuno.DataSource = Enum.GetValues(typeof(Vacuno.eRazasDeVacas));
-            comboBoxCategoria.DataSource = Enum.GetValues(typeof(Vacuno.eCategoria));
-            comboBoxRCerdo.DataSource = Enum.GetValues(typeof(Cerdo.eRazasDeCerdo));
+            comboBoxTipoAve.DataSource = Enum.GetValues(typeof(eTipoAve));
+            comboBoxRVacuno.DataSource = Enum.GetValues(typeof(eRazasDeVacas));
+            comboBoxCategoria.DataSource = Enum.GetValues(typeof(eCategoria));
+            comboBoxRCerdo.DataSource = Enum.GetValues(typeof(eRazasDeCerdo));
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,19 +82,19 @@ namespace PrimerParcial
                 {
                     case 1:
                         nuevoProducto = new Ave(textBoxNombre.Text, textBoxTipoCarne.Text,
-                   precio, cantidadEnInventarioKilos, (Ave.eTipoAve)comboBoxTipoAve.SelectedItem);
+                   precio, cantidadEnInventarioKilos, (eTipoAve)comboBoxTipoAve.SelectedItem);
 
 
                         break;
                     case 2:
-                        nuevoProducto = new Cerdo(textBoxNombre.Text, textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, (Cerdo.eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
+                        nuevoProducto = new Cerdo(textBoxNombre.Text, textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, (eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
 
                         break;
                     case 3:
                         nuevoProducto = new Vacuno(textBoxNombre.Text, textBoxTipoCarne.Text,
                         precio, cantidadEnInventarioKilos,
-                        (Vacuno.eRazasDeVacas)comboBoxRVacuno.SelectedItem,
-                        (Vacuno.eCategoria)comboBoxCategoria.SelectedItem);
+                        (eRazasDeVacas)comboBoxRVacuno.SelectedItem,
+                        (eCategoria)comboBoxCategoria.SelectedItem);
                         break;
 
                 }

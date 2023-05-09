@@ -34,10 +34,10 @@ namespace PrimerParcial
         /// <param name="e"></param> informacion adicional del evento
         private void FormEditarProductoYStock_Load(object sender, EventArgs e)
         {
-            comboBoxTipoAve.DataSource = Enum.GetValues(typeof(Ave.eTipoAve));
-            comboBoxRazaVacuno.DataSource = Enum.GetValues(typeof(Vacuno.eRazasDeVacas));
-            comboBoxCategoria.DataSource = Enum.GetValues(typeof(Vacuno.eCategoria));
-            comboBoxRCerdo.DataSource = Enum.GetValues(typeof(Cerdo.eRazasDeCerdo));
+            comboBoxTipoAve.DataSource = Enum.GetValues(typeof(eTipoAve));
+            comboBoxRazaVacuno.DataSource = Enum.GetValues(typeof(eRazasDeVacas));
+            comboBoxCategoria.DataSource = Enum.GetValues(typeof(eCategoria));
+            comboBoxRCerdo.DataSource = Enum.GetValues(typeof(eRazasDeCerdo));
             listaDeProductos = Negocio.RetornarProductos();
             CargarDataGridView(listaDeProductos, productoAve);
             CargarDataGridView(listaDeProductos, productoVacuno);
@@ -254,7 +254,7 @@ namespace PrimerParcial
                         if (productoSeleccioando is Ave)
                         {
                             Ave ProductoA = (Ave)productoSeleccioando;
-                            ProductoA.TipoAve = (Ave.eTipoAve)comboBoxTipoAve.SelectedItem;
+                            ProductoA.TipoAve = (eTipoAve)comboBoxTipoAve.SelectedItem;
 
                         }
                         break;
@@ -262,14 +262,14 @@ namespace PrimerParcial
                         if (productoSeleccioando is Cerdo)
                         {
                             Cerdo ProductoC = (Cerdo)productoSeleccioando;
-                            ProductoC.RazasDeCerdo = (Cerdo.eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
+                            ProductoC.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
                         }
                         break;
                     case 3:
                         if (productoSeleccioando is Vacuno)
                         {
                             Vacuno ProductoV = (Vacuno)productoSeleccioando;
-                            ProductoV.RazasDeVacas = (Vacuno.eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
+                            ProductoV.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
                         }
                         break;
 
@@ -323,7 +323,6 @@ namespace PrimerParcial
 
 
         }
-
 
         /// <summary>
         /// instancia una ventana y la levanta la ventana de administracion

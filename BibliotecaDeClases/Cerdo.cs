@@ -10,13 +10,7 @@ namespace BibliotecaDeClases
     {
 
 
-        public enum eRazasDeCerdo
-        {
-            Ibericos,
-            Mallorquinos,
-            Lanbrace,
-            Duroc
-        }
+       
 
         private eRazasDeCerdo razasDeCerdo;
 

@@ -9,12 +9,7 @@ namespace BibliotecaDeClases
     public class Vendedor : Persona
     {
         private float sueldo;
-        public enum eTurno
-        {
-            mañana,
-            tarde,
-            noche
-        }
+       
         private eTurno turno;
 
         public float Sueldo { get => sueldo; set => sueldo = value; }

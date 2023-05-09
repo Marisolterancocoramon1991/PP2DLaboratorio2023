@@ -8,21 +8,6 @@ namespace BibliotecaDeClases
 {
     public class Vacuno : Carne
     {
-        public enum eRazasDeVacas
-        {
-            Belga,
-            Brangus,
-            Braford,
-            Pardo
-        }
-        public enum eCategoria
-        {
-            novillos,
-            vaca,
-            ternero,
-            toro
-        }
-
         private eRazasDeVacas razasDeVacas;
         private eCategoria categoria;
 
@@ -37,7 +22,6 @@ namespace BibliotecaDeClases
         public eRazasDeVacas RazasDeVacas { get => razasDeVacas; set => razasDeVacas = value; }
         public eCategoria Categoria { get => categoria; set => categoria = value; }
 
-
         /// <summary>
         /// muestra las caracteristicas esenciales ademas de algunas especificas
         /// </summary>
@@ -50,9 +34,7 @@ namespace BibliotecaDeClases
             sb.AppendLine($"Raza de la vaca: {razasDeVacas}");
             sb.AppendLine($"Cateogoria del animal : {categoria}");
 
-
             return sb.ToString();
-
 
         }
     }

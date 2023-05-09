@@ -70,13 +70,15 @@ namespace BibliotecaDeClases
         /// <summary>
         /// En este caso, se sobrecarga el operador "+" 
         /// para que funcione con objetos de la clase "Carne" y un número en punto flotante.
+        /// devuelve un flotante
         /// </summary>
-        /// <param name="p1"></param>
-        /// <param name="cantidadASumar"></param>
-        /// <returns></returns>
+        /// <param name="p1"></param> objeto
+        /// <param name="cantidadASumar"></param> flotante
+        /// <returns></returns> flotante 
         public static float operator +(Carne p1, float cantidadASumar)
         {
-            return p1.precio += p1.precio * cantidadASumar;
+            
+            return p1.precio +( p1.precio * cantidadASumar);
         }
 
         /// <summary>
@@ -95,7 +97,7 @@ namespace BibliotecaDeClases
         /// <summary>
         /// resta de forma progresiva la cantida de inventario
         /// </summary>
-        /// <param name="p1"></param>
+        /// <param name="p1"></param> objeto 
         /// <returns></returns> regresa el objeto
         public static Carne operator --(Carne p1)
         {
@@ -106,8 +108,8 @@ namespace BibliotecaDeClases
         /// <summary>
         /// resta la cantidad necesaria de stock del producto
         /// </summary>
-        /// <param name="p1"></param>
-        /// <param name="CantidadARestar"></param>
+        /// <param name="p1"></param> objeto
+        /// <param name="CantidadARestar"></param> entero
         /// <returns></returns> retorna objeto 
         public static Carne operator -(Carne p1, int CantidadARestar)
         {

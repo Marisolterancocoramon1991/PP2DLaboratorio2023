@@ -17,7 +17,7 @@ namespace BibliotecaDeClases
         private static List<Carne> listaDeProductos;
         private static Queue<Cliente> colaClientes;
         private static List<Venta> listaVentas;
-
+        private static List<List<Venta>> listaDeListDeVentas;
         static Negocio()
         {
             usuariosRegistrados = new List<Persona>();
@@ -49,7 +49,7 @@ namespace BibliotecaDeClases
         private static void CargarClientes()
         {
             usuariosRegistrados.Add(new Cliente("Marisol", "Briceño", "capital"
-                , "marienarg@gmail.com", "dwee2w12e", 0, "878484", eTipoDeUsuario.Cliente));
+                , "marienarg@gmail.com", "dwee2w12e", 21321, "878484", eTipoDeUsuario.Cliente));
             usuariosRegistrados.Add(new Cliente("Kervin", "Briceño", "Capital",
             "KervinBriceño@gmail.com", "123456", 156516, "6546546", eTipoDeUsuario.Cliente));
             usuariosRegistrados.Add(new Cliente("Vicente", "Briceño", "Capital",
@@ -64,16 +64,16 @@ namespace BibliotecaDeClases
         private static void CargarProductos()
         {
 
-            listaDeProductos.Add(new Vacuno("Osobuco", "Carne Roja", 1000, 30, Vacuno.eRazasDeVacas.Pardo, Vacuno.eCategoria.vaca));
-            listaDeProductos.Add(new Vacuno("Cola de Cuadril", "Carne Roja", 1500, 25, Vacuno.eRazasDeVacas.Braford, Vacuno.eCategoria.ternero));
-            listaDeProductos.Add(new Vacuno("Bife Ancho", "Carne Roja", 1200,50,Vacuno.eRazasDeVacas.Brangus,Vacuno.eCategoria.toro));
-            listaDeProductos.Add(new Vacuno("Asado de Tira", "Carne Roja", 1300,300,Vacuno.eRazasDeVacas.Brangus,Vacuno.eCategoria.ternero));
-            listaDeProductos.Add(new Vacuno("Falda", "Carne Roja", 1100,25,Vacuno.eRazasDeVacas.Pardo,Vacuno.eCategoria.novillos));
-            listaDeProductos.Add(new Vacuno("Nalga", "Carne Roja", 1120,80,Vacuno.eRazasDeVacas.Pardo,Vacuno.eCategoria.novillos));
-            listaDeProductos.Add(new Vacuno("Pecho", "Carne Roja", 2000,30,Vacuno.eRazasDeVacas.Braford,Vacuno.eCategoria.toro));
-            listaDeProductos.Add(new Vacuno("Bife Vacio", "Carne Roja", 3000,50,Vacuno.eRazasDeVacas.Pardo,Vacuno.eCategoria.novillos));
-            listaDeProductos.Add(new Vacuno("Bife Ancho con Hueso", "Carne Roja", 500,10,Vacuno.eRazasDeVacas.Pardo,Vacuno.eCategoria.ternero));
-            listaDeProductos.Add(new Vacuno("Espinazo", "Carne Roja", 465,50,Vacuno.eRazasDeVacas.Braford,Vacuno.eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Osobuco", "Carne Roja", 1000, 30, eRazasDeVacas.Pardo, eCategoria.vaca));
+            listaDeProductos.Add(new Vacuno("Cola de Cuadril", "Carne Roja", 1500, 25, eRazasDeVacas.Braford, eCategoria.ternero));
+            listaDeProductos.Add(new Vacuno("Bife Ancho", "Carne Roja", 1200,50,eRazasDeVacas.Brangus,eCategoria.toro));
+            listaDeProductos.Add(new Vacuno("Asado de Tira", "Carne Roja", 1300,300,eRazasDeVacas.Brangus,eCategoria.ternero));
+            listaDeProductos.Add(new Vacuno("Falda", "Carne Roja", 1100,25,eRazasDeVacas.Pardo, eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Nalga", "Carne Roja", 1120,80,eRazasDeVacas.Pardo, eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Pecho", "Carne Roja", 2000,30,eRazasDeVacas.Braford, eCategoria.toro));
+            listaDeProductos.Add(new Vacuno("Bife Vacio", "Carne Roja", 3000,50,eRazasDeVacas.Pardo, eCategoria.novillos));
+            listaDeProductos.Add(new Vacuno("Bife Ancho con Hueso", "Carne Roja", 500,10,eRazasDeVacas.Pardo, eCategoria.ternero));
+            listaDeProductos.Add(new Vacuno("Espinazo", "Carne Roja", 465,50,eRazasDeVacas.Braford, eCategoria.novillos));
             listaDeProductos.Add(new Cerdo("Pechito","Carne Semi",800,30,eRazasDeCerdo.Ibericos));
             listaDeProductos.Add(new Cerdo("Bondiola", "Carne Semi", 1000, 10, eRazasDeCerdo.Mallorquinos));
             listaDeProductos.Add(new Cerdo("Costillita", "Carne Semi", 2200, 20, eRazasDeCerdo.Ibericos));
@@ -85,12 +85,12 @@ namespace BibliotecaDeClases
             listaDeProductos.Add(new Cerdo("Solomillo", "Carne Semi", 1300, 50, eRazasDeCerdo.Mallorquinos));
             listaDeProductos.Add(new Cerdo("Pecho", "Carne Semi", 1800, 40, eRazasDeCerdo.Ibericos));
             listaDeProductos.Add(new Cerdo("Costillar", "Carne Semi", 900, 30, eRazasDeCerdo.Lanbrace));
-            listaDeProductos.Add(new Ave("Huevos", "Cigoto", 20, 1000, Ave.eTipoAve.Huevo));
-            listaDeProductos.Add(new Ave("Suprema", "Blanca", 900, 80, Ave.eTipoAve.Pollo));
-            listaDeProductos.Add(new Ave("PATA y Muslo", "Blanca", 1500, 30, Ave.eTipoAve.Gallina));
-            listaDeProductos.Add(new Ave("Huevos Grandes", "Cigoto", 30, 1200, Ave.eTipoAve.Huevo));
-            listaDeProductos.Add(new Ave("Churrasquito", "Blanca", 900, 30, Ave.eTipoAve.Pollo));
-            listaDeProductos.Add(new Ave("Milanesa", "Blanca", 900, 30, Ave.eTipoAve.Gallina));
+            listaDeProductos.Add(new Ave("Huevos", "Cigoto", 20, 1000, eTipoAve.Huevo));
+            listaDeProductos.Add(new Ave("Suprema", "Blanca", 900, 80, eTipoAve.Pollo));
+            listaDeProductos.Add(new Ave("PATA y Muslo", "Blanca", 1500, 30, eTipoAve.Gallina));
+            listaDeProductos.Add(new Ave("Huevos Grandes", "Cigoto", 30, 1200, eTipoAve.Huevo));
+            listaDeProductos.Add(new Ave("Churrasquito", "Blanca", 900, 30, eTipoAve.Pollo));
+            listaDeProductos.Add(new Ave("Milanesa", "Blanca", 900, 30, eTipoAve.Gallina));
         }
 
         /// <summary>
@@ -132,10 +132,21 @@ namespace BibliotecaDeClases
         /// retorna cola de clientes 
         /// </summary>
         /// <returns></returns> cola clientes
-        public static Queue<Cliente> RetornarClientes()
+        public static Queue<Cliente> RetornarClientesCompras()
         {
             return colaClientes;
         }
+
+
+        /// <summary>
+        /// retorna la lista de usuarios
+        /// </summary>
+        /// <returns></returns> lista
+        public static List<Persona> RetornaListaUsuarios()
+        {
+            return usuariosRegistrados;
+        }
+
         /// <summary>
         ///  agrega un objeto Cliente a una cola de clientes.
         /// </summary>
@@ -233,6 +244,18 @@ namespace BibliotecaDeClases
         }
 
 
+        /// <summary>
+        /// en esta funcion se carga una lista de lista de ventas
+        /// y al no hacerlo directamente la lista con la otra no se solapan
+        /// </summary>
+        /// <param name="listaDeVentas"></param> lista de ventas;
+        public static void CargarVenta(List<Venta> listaDeVentas)
+        {
+            List<Venta> nuevaListaDeVentas = new List<Venta>(listaDeVentas);
+            List<List<Venta>> listaDeListDeVentas = new List<List<Venta>>();
+            listaDeListDeVentas.Add(nuevaListaDeVentas);
+           
+        }
 
         /// <summary>
         /// /agrega a la lista venta una venta
