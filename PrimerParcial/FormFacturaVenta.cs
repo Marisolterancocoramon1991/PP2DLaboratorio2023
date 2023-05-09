@@ -24,7 +24,11 @@ namespace PrimerParcial
             this.listaVentas = listaVentas;
            
         }
-
+        /// <summary>
+        /// carga los item para que la ventana pueda funcionar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormFacturaVenta_Load(object sender, EventArgs e)
         {
             CargarDataGridView(listaVentas);
@@ -35,6 +39,11 @@ namespace PrimerParcial
             labelFechaActual.Text = "Fecha actual " + fechaActual.ToString();
             labelTotal.Text = "Haz click y conoceras el total de gastos";
         }
+
+        /// <summary>
+        /// carga el data necesaria  en el dataGridView
+        /// </summary>
+        /// <param name="listaDeVentas"></param>
         public void CargarDataGridView(List<Venta> listaDeVentas)
         {
 
@@ -49,7 +58,7 @@ namespace PrimerParcial
         }
 
         /// <summary>
-        /// 
+        /// determina el producto que se esta clikeando en e Datagridview
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -76,19 +85,32 @@ namespace PrimerParcial
             }
         }
 
-
+        /// <summary>
+        /// carga unlabel total de cossto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void labelTotal_Click(object sender, EventArgs e)
         {
             labelTotal.Text = "TOTAL " + Negocio.GananciaTotal(usuario).ToString();
         }
 
+        /// <summary>
+        /// te lleva a la venta de carne
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonRegresar_Click(object sender, EventArgs e)
         {
             FormVentaDeCarne formVentaDeCarne = new FormVentaDeCarne(usuario);
             formVentaDeCarne.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// te lleva a la ventana login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult confirmarVenta;

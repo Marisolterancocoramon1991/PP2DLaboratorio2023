@@ -128,7 +128,7 @@
             textBoxCorreo.Name = "textBoxCorreo";
             textBoxCorreo.Size = new Size(149, 23);
             textBoxCorreo.TabIndex = 6;
-            textBoxCorreo.TextChanged += textBoxCorreo_TextChanged;
+           // textBoxCorreo.TextChanged += textBoxCorreo_TextChanged;
             // 
             // textBoxContraseña
             // 

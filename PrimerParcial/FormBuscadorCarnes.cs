@@ -24,6 +24,12 @@ namespace PrimerParcial
        
             this.usuario = cliente;
         }
+
+        /// <summary>
+        /// descarga los item necesarios para poder trabaaja r en la ventana 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormVentas_Load(object sender, EventArgs e)
         {
             Validaciones.IsNotNull(usuario);
@@ -32,7 +38,11 @@ namespace PrimerParcial
             
 
         }
-
+        /// <summary>
+        /// te lleva de venta carne 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             string relativePath = @".\sonidoAplicacion.wav";
@@ -61,6 +71,11 @@ namespace PrimerParcial
             ventanaCerdo.Show();
         }
 
+        /// <summary>
+        /// te lleva de venta carne 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             string relativePath = @".\sonidoAplicacion.wav";
@@ -89,6 +104,11 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// te lleva de venta carne 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             string relativePath = @".\sonidoAplicacion.wav";

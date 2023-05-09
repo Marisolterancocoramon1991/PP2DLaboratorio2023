@@ -77,7 +77,11 @@ namespace PrimerParcial
             FrmLogin formLogin = new();
             formLogin.Show();
         }
-
+        /// <summary>
+        /// si le das click entrega las ventas totales del negocio
+        /// </summary>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void labelMontoVentasTotales_Click(object sender, EventArgs e)
         {
             labelMontoVentasTotales.Text = "Ganancias totales del mes"
@@ -87,8 +91,8 @@ namespace PrimerParcial
         /// <summary>
         /// carga la ventana
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></param> contralodoor del evento
+        /// <param name="e"></param> informacion adicional del evento
         private void FormAdministracion_Load(object sender, EventArgs e)
         {
             labelMontoVentasTotales.Text = "haz clock aqui para conocer las ganancias totales";

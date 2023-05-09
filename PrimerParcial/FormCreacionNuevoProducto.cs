@@ -24,6 +24,12 @@ namespace PrimerParcial
             comboBoxRCerdo.DataSource = Enum.GetValues(typeof(eRazasDeCerdo));
         }
 
+
+        /// <summary>
+        /// hace visible un grupo que se ha elegido por medio combox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex)
@@ -48,7 +54,11 @@ namespace PrimerParcial
             }
         }
 
-     
+        /// <summary>
+        /// te lleva a la ventana login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -56,6 +66,11 @@ namespace PrimerParcial
             frmLogin.Show();
         }
 
+        /// <summary>
+        /// te lleva a la ventana de administracion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             FormAdministracion formAdministracion = new();
@@ -63,6 +78,10 @@ namespace PrimerParcial
             formAdministracion.Show();
         }
 
+        /// <summary>
+        /// valida, intancia y agrega un producto nuevo
+        /// </summary>
+        /// <returns></returns>
         private Carne CrearProducto()
         {
             Carne nuevoProducto = null;
@@ -105,7 +124,13 @@ namespace PrimerParcial
             }
             return nuevoProducto;
         }
-     
+        
+
+        /// <summary>
+        /// este boton le da el acepte para poder crar el producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCrearProducto_Click(object sender, EventArgs e)
         {
             List<Carne> lista = Negocio.RetornarProductos();

@@ -28,7 +28,7 @@ namespace PrimerParcial
 
 
         /// <summary>
-        /// 
+        /// carga todos los iten para que pueda trabajar la ventana
         /// </summary>
         /// <param name="sender"></param> contralodoor del evento
         /// <param name="e"></param> informacion adicional del evento
@@ -46,7 +46,7 @@ namespace PrimerParcial
 
 
         /// <summary>
-        /// 
+        /// oculta y hace visible los grupos
         /// </summary>
         /// <param name="sender"></param> contralodoor del evento
         /// <param name="e"></param> informacion adicional del evento
@@ -85,7 +85,7 @@ namespace PrimerParcial
         }
 
         /// <summary>
-        /// 
+        /// determina en que parte de data se hico el click y se entrega el producto seleccinado
         /// </summary>
         /// <param name="sender"></param> contralodoor del evento
         /// <param name="e"></param> informacion adicional del evento
@@ -111,7 +111,7 @@ namespace PrimerParcial
         }
 
         /// <summary>
-        /// 
+        /// determina en que parte de data se hico el click y se entrega el producto seleccinado
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -137,7 +137,7 @@ namespace PrimerParcial
 
 
         /// <summary>
-        /// 
+        ///  determina en que parte de data se hico el click y se entrega el producto seleccinado
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,7 +168,7 @@ namespace PrimerParcial
         }
 
         /// <summary>
-        /// 
+        /// te lleva a la ventana login
         /// </summary>
         /// <param name="sender"></param> contralodoor del evento
         /// <param name="e"></param> informacion adicional del evento
@@ -194,7 +194,7 @@ namespace PrimerParcial
 
 
         /// <summary>
-        /// 
+        /// carga el data necesaria  en el dataGridView
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="Ave"></param>
@@ -211,6 +211,12 @@ namespace PrimerParcial
 
             }
         }
+
+        /// <summary>
+        /// carga el data necesaria  en el dataGridView
+        /// </summary>
+        /// <param name="listaDeProductos"></param>
+        /// <param name="CarneCerdo"></param>
         public void CargarDataGridView(List<Carne> listaDeProductos, Cerdo CarneCerdo)
         {
             foreach (Carne producto in listaDeProductos)
@@ -223,7 +229,11 @@ namespace PrimerParcial
                 }
             }
         }
-
+        /// <summary>
+        /// carga el data necesaria  en el dataGridView
+        /// </summary>
+        /// <param name="listaDeProductos"></param>
+        /// <param name="ProductoVaca"></param>
         public void CargarDataGridView(List<Carne> listaDeProductos, Vacuno ProductoVaca)
         {
             foreach (Carne producto in listaDeProductos)

@@ -19,7 +19,11 @@ namespace PrimerParcial
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// boton para ocultar la clave
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //imagen mostrar la mandamos al frente
@@ -28,7 +32,11 @@ namespace PrimerParcial
             textBoxContraseña.PasswordChar = '*';
 
         }
-
+        /// <summary>
+        /// boton para mostrar la clave
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -36,7 +44,12 @@ namespace PrimerParcial
             //
             textBoxContraseña.PasswordChar = '\0';
         }
-
+        /// <summary>
+        /// llama una funcion que compara contraseña y correo y si es cierto t abre la ventana 
+        /// especial para vendedor o cliente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
             auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text);
@@ -88,11 +101,12 @@ namespace PrimerParcial
             }
         }
 
-        private void textBoxCorreo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        /// <summary>
+        /// depende de lo que se elija se auto completa textBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Usuario_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool resultado = Usuario.Text.Equals("Trabajador");

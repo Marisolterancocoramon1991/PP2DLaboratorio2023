@@ -27,7 +27,8 @@ namespace PrimerParcial
             InitializeComponent();
         }
         /// <summary>
-        /// 
+        /// compara la impresiono del listbox a la seleccion de item
+        /// y en la iteracion que sea cierta le pasa el espaco en memoria a clienteSeleccinado
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,7 +56,11 @@ namespace PrimerParcial
                 }
             }
         }
-
+        /// <summary>
+        /// crga todos los item para que pueda funcionar correctamente la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormVentaAlCliente_Load(object sender, EventArgs e)
         {
             listaUsuarios = Negocio.RetornaListaUsuarios();
@@ -65,7 +70,9 @@ namespace PrimerParcial
             ventaTotal = Negocio.RetornarListaDeVentas();
         }
 
-
+        /// <summary>
+        /// carga los item necesarios al DataGridView
+        /// </summary>
         public void CargarDataGridView2()
         {
 
@@ -97,7 +104,9 @@ namespace PrimerParcial
                   }*/
         }
 
-
+        /// <summary>
+        /// carga cada ite en la listabox
+        /// </summary>
         private void CargaListaBoxClientes()
         {
             listBoxClientes.FormattingEnabled = true;
@@ -116,7 +125,11 @@ namespace PrimerParcial
 
 
         }
-
+        /// <summary>
+        /// te devuelve a la ventana adinistracion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             FormAdministracion formAdministracion = new();
@@ -124,6 +137,11 @@ namespace PrimerParcial
             formAdministracion.Show();
         }
 
+        /// <summary>
+        /// se crea la venta por porducto a un cliente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             ///Agregar venta 
@@ -181,6 +199,12 @@ namespace PrimerParcial
             }
         }
 
+
+        /// <summary>
+        /// te lleva a la ventana login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             DialogResult respuesta;
@@ -201,7 +225,10 @@ namespace PrimerParcial
         }
 
 
-
+        /// <summary>
+        /// carga la data necesaria en el DataGridView
+        /// </summary>
+        /// <param name="listaDeProductos"></param>
         public void CargarDataGridView(List<Carne> listaDeProductos)
         {
 
@@ -225,7 +252,11 @@ namespace PrimerParcial
                 }
             }
         }
-
+        /// <summary>
+        /// determina a traves de un click la seleccion de un producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
@@ -249,7 +280,11 @@ namespace PrimerParcial
         }
 
 
-
+        /// <summary>
+        /// determina a traves de un click la seleccion de un producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;

@@ -143,6 +143,12 @@ namespace PrimerParcial
                 }
             }
         }
+
+        /// <summary>
+        /// carga todos los item para que la ventana pueda funcionar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormHeladera_Load(object sender, EventArgs e)
         {
             listaDeProductos = Negocio.RetornarProductos();
