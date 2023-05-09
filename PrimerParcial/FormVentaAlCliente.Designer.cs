@@ -57,15 +57,15 @@
             labelSaldo1 = new Label();
             labelSaldo2 = new Label();
             labelGastoTotal = new Label();
-            groupBox1 = new GroupBox();
-            radioButtonMarcadoPago = new RadioButton();
-            radioButtonTarjetaC = new RadioButton();
+            groupBoxModoPago = new GroupBox();
             radioButtonTarjeteDebito = new RadioButton();
+            radioButtonTarjetaC = new RadioButton();
+            radioButtonMarcadoPago = new RadioButton();
             numericUpDown1 = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            groupBox1.SuspendLayout();
+            groupBoxModoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -312,27 +312,27 @@
             labelGastoTotal.TabIndex = 19;
             labelGastoTotal.Text = "TOTAL GASTO";
             // 
-            // groupBox1
+            // groupBoxModoPago
             // 
-            groupBox1.Controls.Add(radioButtonTarjeteDebito);
-            groupBox1.Controls.Add(radioButtonTarjetaC);
-            groupBox1.Location = new Point(507, 222);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(281, 69);
-            groupBox1.TabIndex = 20;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBoxModoPago.Controls.Add(radioButtonTarjeteDebito);
+            groupBoxModoPago.Controls.Add(radioButtonTarjetaC);
+            groupBoxModoPago.Location = new Point(507, 222);
+            groupBoxModoPago.Name = "groupBoxModoPago";
+            groupBoxModoPago.Size = new Size(281, 69);
+            groupBoxModoPago.TabIndex = 20;
+            groupBoxModoPago.TabStop = false;
+            groupBoxModoPago.Text = "Modo de Pago";
             // 
-            // radioButtonMarcadoPago
+            // radioButtonTarjeteDebito
             // 
-            radioButtonMarcadoPago.AutoSize = true;
-            radioButtonMarcadoPago.Location = new Point(520, 240);
-            radioButtonMarcadoPago.Name = "radioButtonMarcadoPago";
-            radioButtonMarcadoPago.Size = new Size(90, 19);
-            radioButtonMarcadoPago.TabIndex = 21;
-            radioButtonMarcadoPago.TabStop = true;
-            radioButtonMarcadoPago.Text = "Mercado PG";
-            radioButtonMarcadoPago.UseVisualStyleBackColor = true;
+            radioButtonTarjeteDebito.AutoSize = true;
+            radioButtonTarjeteDebito.Location = new Point(85, 44);
+            radioButtonTarjeteDebito.Name = "radioButtonTarjeteDebito";
+            radioButtonTarjeteDebito.Size = new Size(97, 19);
+            radioButtonTarjeteDebito.TabIndex = 22;
+            radioButtonTarjeteDebito.TabStop = true;
+            radioButtonTarjeteDebito.Text = "Tarjeta Debito";
+            radioButtonTarjeteDebito.UseVisualStyleBackColor = true;
             // 
             // radioButtonTarjetaC
             // 
@@ -345,16 +345,16 @@
             radioButtonTarjetaC.Text = "Tarjeta de Credito";
             radioButtonTarjetaC.UseVisualStyleBackColor = true;
             // 
-            // radioButtonTarjeteDebito
+            // radioButtonMarcadoPago
             // 
-            radioButtonTarjeteDebito.AutoSize = true;
-            radioButtonTarjeteDebito.Location = new Point(85, 44);
-            radioButtonTarjeteDebito.Name = "radioButtonTarjeteDebito";
-            radioButtonTarjeteDebito.Size = new Size(97, 19);
-            radioButtonTarjeteDebito.TabIndex = 22;
-            radioButtonTarjeteDebito.TabStop = true;
-            radioButtonTarjeteDebito.Text = "Tarjeta Debito";
-            radioButtonTarjeteDebito.UseVisualStyleBackColor = true;
+            radioButtonMarcadoPago.AutoSize = true;
+            radioButtonMarcadoPago.Location = new Point(520, 240);
+            radioButtonMarcadoPago.Name = "radioButtonMarcadoPago";
+            radioButtonMarcadoPago.Size = new Size(90, 19);
+            radioButtonMarcadoPago.TabIndex = 21;
+            radioButtonMarcadoPago.TabStop = true;
+            radioButtonMarcadoPago.Text = "Mercado PG";
+            radioButtonMarcadoPago.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
@@ -371,7 +371,7 @@
             ClientSize = new Size(800, 433);
             Controls.Add(numericUpDown1);
             Controls.Add(radioButtonMarcadoPago);
-            Controls.Add(groupBox1);
+            Controls.Add(groupBoxModoPago);
             Controls.Add(labelGastoTotal);
             Controls.Add(labelSaldo2);
             Controls.Add(labelSaldo1);
@@ -399,8 +399,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxModoPago.ResumeLayout(false);
+            groupBoxModoPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -437,7 +437,7 @@
         private Label labelSaldo1;
         private Label labelSaldo2;
         private Label labelGastoTotal;
-        private GroupBox groupBox1;
+        private GroupBox groupBoxModoPago;
         private RadioButton radioButtonMarcadoPago;
         private RadioButton radioButtonTarjetaC;
         private RadioButton radioButtonTarjeteDebito;

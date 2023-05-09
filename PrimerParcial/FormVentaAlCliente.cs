@@ -161,7 +161,7 @@ namespace PrimerParcial
                         {
                             Venta venta = new Venta(productoSeleccinadoDataUno,
                                 Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value, clienteSeleccionado.ID);
-                            Negocio.CargarVenta(venta);                   
+                            Negocio.CargarVenta(venta);
                         }
 
                         productoSeleccinadoDataUno = productoSeleccinadoDataUno - (int)numericUpDown1.Value;
