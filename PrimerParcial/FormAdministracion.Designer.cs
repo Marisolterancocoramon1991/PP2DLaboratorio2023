@@ -37,6 +37,7 @@
             buttonLogearte = new Button();
             pictureBox4 = new PictureBox();
             buttonVender = new Button();
+            labelMontoVentasTotales = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -138,12 +139,23 @@
             buttonVender.UseVisualStyleBackColor = false;
             buttonVender.Click += buttonVender_Click;
             // 
+            // labelMontoVentasTotales
+            // 
+            labelMontoVentasTotales.AutoSize = true;
+            labelMontoVentasTotales.Location = new Point(204, 320);
+            labelMontoVentasTotales.Name = "labelMontoVentasTotales";
+            labelMontoVentasTotales.Size = new Size(170, 15);
+            labelMontoVentasTotales.TabIndex = 9;
+            labelMontoVentasTotales.Text = "Click para ver las ventas totales";
+            labelMontoVentasTotales.Click += labelMontoVentasTotales_Click;
+            // 
             // FormAdministracion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(868, 362);
+            Controls.Add(labelMontoVentasTotales);
             Controls.Add(buttonVender);
             Controls.Add(pictureBox4);
             Controls.Add(buttonLogearte);
@@ -156,11 +168,13 @@
             Name = "FormAdministracion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAdministracion";
+            Load += FormAdministracion_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -174,5 +188,6 @@
         private Button buttonLogearte;
         private PictureBox pictureBox4;
         private Button buttonVender;
+        private Label labelMontoVentasTotales;
     }
 }

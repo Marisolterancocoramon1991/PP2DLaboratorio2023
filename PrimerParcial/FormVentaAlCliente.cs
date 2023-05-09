@@ -17,12 +17,20 @@ namespace PrimerParcial
     {
         List<Carne> ListaCarne;
         List<Persona> listaUsuarios;
+        List<Venta> ventaTotal;
+        Carne productoSeleccinadoDataUno;
+        Carne productoSeleccinadoDataDos;
         Cliente clienteSeleccionado;
+        List<Venta> listaDeVentasClientesSeleccionado = new();
         public FormVentaAlCliente()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxClientes.SelectedItem != null)
@@ -36,6 +44,9 @@ namespace PrimerParcial
                         if (clienteInfo == listBoxClientes.SelectedItem.ToString())
                         {
                             clienteSeleccionado = cliente;
+                            listaDeVentasClientesSeleccionado = Negocio.RetornarListaDeVentas(cliente);
+                            CargarDataGridView(listaDeVentasClientesSeleccionado);
+                            labelSaldo2.Text = Negocio.GananciaTotal(cliente).ToString();
                             // Aquí puedes utilizar la variable "clienteSeleccionado" para mostrar la información del cliente en la aplicación
                             labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();
                             break;
@@ -51,7 +62,42 @@ namespace PrimerParcial
             ListaCarne = Negocio.RetornarProductos();
             CargaListaBoxClientes();
             CargarDataGridView(ListaCarne);
+            ventaTotal = Negocio.RetornarListaDeVentas();
         }
+
+
+        public void CargarDataGridView(List<Venta> listaDeVenta)
+        {
+
+            dataGridView2.Rows.Clear();
+            foreach (Venta producto in ventaTotal)
+            {
+                if (clienteSeleccionado == producto.IDCliente1)
+                {
+
+                    dataGridView2.Rows.Add(producto.ProductoVendido.Nombre, producto.ProductoVendido.Tipo,
+                        producto.ProductoVendido.Precio, (producto.ProductoVendido.Precio * producto.CantidadDeUnidades));
+                    //         Negocio.CargarVenta(listaDeVenta, producto);
+                }
+            }
+
+            /*      dataGridView2.Rows.Clear();
+                  List<Venta> ventasParaCargar = new List<Venta>();
+                  foreach (Venta producto in listaDeVenta)
+                  {
+                      if (clienteSeleccionado == producto.IDCliente1)
+                      {
+                          ventasParaCargar.Add(producto);
+                      }
+                  }
+
+                  foreach (Venta ventaParaCargar in ventasParaCargar)
+                  {
+                      Negocio.CargarVenta(listaDeVenta, ventaParaCargar);
+                  }*/
+        }
+
+
         private void CargaListaBoxClientes()
         {
             listBoxClientes.FormattingEnabled = true;
@@ -80,7 +126,52 @@ namespace PrimerParcial
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ///Agregar venta 
+            DialogResult confirmarVenta;
+            float precioAGastar;
+            //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
+            if (Validaciones.IsNotNull(productoSeleccinadoDataUno) && productoSeleccinadoDataUno.CantidadEnInventario > 0 && (int)numericUpDown1.Value > 0
+                && productoSeleccinadoDataUno.CantidadEnInventario
+                >= (int)numericUpDown1.Value && Validaciones.IsNotNull(clienteSeleccionado) && clienteSeleccionado.Saldo >=
+                productoSeleccinadoDataUno.Precio * (int)numericUpDown1.Value)
+            {
+                if (radioButtonMarcadoPago.Checked == true || radioButtonTarjetaC.Checked == true
+                    || radioButtonTarjeteDebito.Checked == true)
+                {
+                    confirmarVenta = MessageBox.Show("Desea confirmar la compra?",
+                        "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (confirmarVenta == DialogResult.Yes)
+                    {
+                        if (radioButtonMarcadoPago.Checked == true)
+                        {
+                            Venta venta = new Venta(productoSeleccinadoDataUno,
+                              Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value, clienteSeleccionado.ID);
+                            Negocio.CargarVenta(venta);
 
+                        }
+                        else if (radioButtonTarjetaC.Checked == true)
+                        {
+                            Venta venta = new Venta(productoSeleccinadoDataUno,
+                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value, clienteSeleccionado.ID);
+                            Negocio.CargarVenta(venta);
+
+
+                        }
+                        else
+                        {
+                            Venta venta = new Venta(productoSeleccinadoDataUno,
+                                Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value, clienteSeleccionado.ID);
+                            Negocio.CargarVenta(venta);                   
+                        }
+
+                        productoSeleccinadoDataUno = productoSeleccinadoDataUno - (int)numericUpDown1.Value;
+
+                        precioAGastar = productoSeleccinadoDataUno * (int)numericUpDown1.Value;
+                        clienteSeleccionado = clienteSeleccionado - precioAGastar;
+
+                    }
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -102,10 +193,7 @@ namespace PrimerParcial
 
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
 
-        }
 
         public void CargarDataGridView(List<Carne> listaDeProductos)
         {
@@ -133,7 +221,47 @@ namespace PrimerParcial
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int n = e.RowIndex;
 
+            if (n != -1)
+            {
+                foreach (Carne producto in ListaCarne)
+                {
+                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
+                        producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
+                        producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
+                    {
+                        productoSeleccinadoDataDos = producto;
+                        MessageBox.Show(productoSeleccinadoDataDos.MostrarDetallesDeProducto());
+
+
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int n = e.RowIndex;
+
+            if (n != -1)
+            {
+                foreach (Carne producto in ListaCarne)
+                {
+                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
+                        producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
+                        producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
+                    {
+                        productoSeleccinadoDataUno = producto;
+
+
+                        break;
+                    }
+                }
+            }
         }
     }
 }

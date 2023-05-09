@@ -66,7 +66,6 @@
             groupCarniceria.TabIndex = 0;
             groupCarniceria.TabStop = false;
             groupCarniceria.Text = "Carniceria_Teran";
-            //groupCarniceria.Enter += groupCarniceria_Enter;
             // 
             // button1
             // 
@@ -178,7 +177,6 @@
             labelFechaActual.Size = new Size(45, 19);
             labelFechaActual.TabIndex = 2;
             labelFechaActual.Text = "label3";
-            labelFechaActual.Click += label_Click;
             // 
             // labelNombre
             // 
@@ -199,7 +197,6 @@
             labelDirecccion.Size = new Size(45, 19);
             labelDirecccion.TabIndex = 0;
             labelDirecccion.Text = "label1";
-            labelDirecccion.Click += labelDirecccion_Click;
             // 
             // FormFacturaVenta
             // 
@@ -210,6 +207,7 @@
             Name = "FormFacturaVenta";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormFacturaVenta";
+            Load += FormFacturaVenta_Load;
             groupCarniceria.ResumeLayout(false);
             groupCarniceria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

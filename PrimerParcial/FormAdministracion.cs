@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BibliotecaDeClases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,8 +50,8 @@ namespace PrimerParcial
         private void buttonVender_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormVentaAlCliente formVentaAlCliente =new();
-            formVentaAlCliente.Show();  
+            FormVentaAlCliente formVentaAlCliente = new();
+            formVentaAlCliente.Show();
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace PrimerParcial
         {
             this.Hide();
             FormHeladera formHeladera = new();
-            formHeladera.Show();    
+            formHeladera.Show();
         }
 
         /// <summary>
@@ -75,6 +76,22 @@ namespace PrimerParcial
             this.Hide();
             FrmLogin formLogin = new();
             formLogin.Show();
+        }
+
+        private void labelMontoVentasTotales_Click(object sender, EventArgs e)
+        {
+            labelMontoVentasTotales.Text = "Ganancias totales del mes"
+                + Negocio.GananciaTotal().ToString();
+        }
+
+        /// <summary>
+        /// carga la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormAdministracion_Load(object sender, EventArgs e)
+        {
+            labelMontoVentasTotales.Text = "haz clock aqui para conocer las ganancias totales";
         }
     }
 }

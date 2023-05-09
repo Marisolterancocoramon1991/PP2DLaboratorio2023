@@ -22,6 +22,11 @@ namespace PrimerParcial
             InitializeComponent();
             this.usuario = usuario;
             this.listaVentas = listaVentas;
+           
+        }
+
+        private void FormFacturaVenta_Load(object sender, EventArgs e)
+        {
             CargarDataGridView(listaVentas);
             labelDirecccion.Text = "Direcion: " + usuario.Direccion;
             labelNombre.Text = "Nombre del Cliente  " + usuario.Nombre;
@@ -43,11 +48,11 @@ namespace PrimerParcial
             }
         }
 
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
@@ -71,21 +76,10 @@ namespace PrimerParcial
             }
         }
 
-        private void labelDirecccion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void labelTotal_Click(object sender, EventArgs e)
         {
-
-            labelTotal.Text = "TOTAL " + Negocio.RetornaPrecioTotalFactura(listaVentas).ToString();
-
+            labelTotal.Text = "TOTAL " + Negocio.GananciaTotal(usuario).ToString();
         }
 
         private void ButtonRegresar_Click(object sender, EventArgs e)
@@ -110,5 +104,7 @@ namespace PrimerParcial
                 MessageBox.Show("En esta ventana esta detallada la infromacion de su compra");
             }
         }
+
+       
     }
 }

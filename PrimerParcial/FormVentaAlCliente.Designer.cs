@@ -48,18 +48,25 @@
             labelMostrarSeleccion = new Label();
             pictureBox1 = new PictureBox();
             dataGridView2 = new DataGridView();
-            labelComPraFacturacion = new Label();
-            label8 = new Label();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
             Column9 = new DataGridViewTextBoxColumn();
+            labelComPraFacturacion = new Label();
+            label8 = new Label();
             labelSaldo1 = new Label();
             labelSaldo2 = new Label();
             labelGastoTotal = new Label();
+            groupBox1 = new GroupBox();
+            radioButtonMarcadoPago = new RadioButton();
+            radioButtonTarjetaC = new RadioButton();
+            radioButtonTarjeteDebito = new RadioButton();
+            numericUpDown1 = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // listBoxClientes
@@ -147,6 +154,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(331, 182);
             dataGridView1.TabIndex = 8;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
@@ -176,7 +184,7 @@
             // button1
             // 
             button1.BackColor = Color.Green;
-            button1.Location = new Point(713, 284);
+            button1.Location = new Point(686, 326);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 9;
@@ -187,7 +195,7 @@
             // buttonRegresar
             // 
             buttonRegresar.BackColor = Color.RosyBrown;
-            buttonRegresar.Location = new Point(713, 339);
+            buttonRegresar.Location = new Point(713, 370);
             buttonRegresar.Name = "buttonRegresar";
             buttonRegresar.Size = new Size(75, 23);
             buttonRegresar.TabIndex = 10;
@@ -199,7 +207,7 @@
             // 
             buttonLogearse.BackColor = Color.FromArgb(255, 128, 0);
             buttonLogearse.ForeColor = Color.Red;
-            buttonLogearse.Location = new Point(713, 388);
+            buttonLogearse.Location = new Point(713, 399);
             buttonLogearse.Name = "buttonLogearse";
             buttonLogearse.Size = new Size(75, 23);
             buttonLogearse.TabIndex = 11;
@@ -215,12 +223,11 @@
             labelMostrarSeleccion.Size = new Size(211, 205);
             labelMostrarSeleccion.TabIndex = 12;
             labelMostrarSeleccion.Text = "Mostrar en texto informacion del cliente ";
-            labelMostrarSeleccion.Click += label7_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Carnicero;
-            pictureBox1.Location = new Point(530, 284);
+            pictureBox1.Location = new Point(468, 297);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(177, 127);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -237,26 +244,6 @@
             dataGridView2.Size = new Size(288, 226);
             dataGridView2.TabIndex = 14;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
-            // 
-            // labelComPraFacturacion
-            // 
-            labelComPraFacturacion.AutoSize = true;
-            labelComPraFacturacion.ForeColor = Color.Red;
-            labelComPraFacturacion.Location = new Point(17, 133);
-            labelComPraFacturacion.Name = "labelComPraFacturacion";
-            labelComPraFacturacion.Size = new Size(179, 15);
-            labelComPraFacturacion.TabIndex = 15;
-            labelComPraFacturacion.Text = "Compra y facturacion del cliente";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.ForeColor = Color.Red;
-            label8.Location = new Point(507, 13);
-            label8.Name = "label8";
-            label8.Size = new Size(104, 15);
-            label8.TabIndex = 16;
-            label8.Text = "Lista de Productos";
             // 
             // Column6
             // 
@@ -278,10 +265,30 @@
             Column9.HeaderText = "Precio Cantidad";
             Column9.Name = "Column9";
             // 
+            // labelComPraFacturacion
+            // 
+            labelComPraFacturacion.AutoSize = true;
+            labelComPraFacturacion.ForeColor = Color.Red;
+            labelComPraFacturacion.Location = new Point(17, 133);
+            labelComPraFacturacion.Name = "labelComPraFacturacion";
+            labelComPraFacturacion.Size = new Size(179, 15);
+            labelComPraFacturacion.TabIndex = 15;
+            labelComPraFacturacion.Text = "Compra y facturacion del cliente";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.Red;
+            label8.Location = new Point(507, 13);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 15);
+            label8.TabIndex = 16;
+            label8.Text = "Lista de Productos";
+            // 
             // labelSaldo1
             // 
             labelSaldo1.AutoSize = true;
-            labelSaldo1.Location = new Point(299, 157);
+            labelSaldo1.Location = new Point(334, 201);
             labelSaldo1.Name = "labelSaldo1";
             labelSaldo1.Size = new Size(95, 15);
             labelSaldo1.TabIndex = 17;
@@ -290,7 +297,7 @@
             // labelSaldo2
             // 
             labelSaldo2.AutoSize = true;
-            labelSaldo2.Location = new Point(300, 178);
+            labelSaldo2.Location = new Point(166, 396);
             labelSaldo2.Name = "labelSaldo2";
             labelSaldo2.Size = new Size(16, 15);
             labelSaldo2.TabIndex = 18;
@@ -299,11 +306,62 @@
             // labelGastoTotal
             // 
             labelGastoTotal.AutoSize = true;
-            labelGastoTotal.Location = new Point(57, 389);
+            labelGastoTotal.Location = new Point(68, 396);
             labelGastoTotal.Name = "labelGastoTotal";
-            labelGastoTotal.Size = new Size(38, 15);
+            labelGastoTotal.Size = new Size(78, 15);
             labelGastoTotal.TabIndex = 19;
-            labelGastoTotal.Text = "label7";
+            labelGastoTotal.Text = "TOTAL GASTO";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(radioButtonTarjeteDebito);
+            groupBox1.Controls.Add(radioButtonTarjetaC);
+            groupBox1.Location = new Point(507, 222);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(281, 69);
+            groupBox1.TabIndex = 20;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
+            // 
+            // radioButtonMarcadoPago
+            // 
+            radioButtonMarcadoPago.AutoSize = true;
+            radioButtonMarcadoPago.Location = new Point(520, 240);
+            radioButtonMarcadoPago.Name = "radioButtonMarcadoPago";
+            radioButtonMarcadoPago.Size = new Size(90, 19);
+            radioButtonMarcadoPago.TabIndex = 21;
+            radioButtonMarcadoPago.TabStop = true;
+            radioButtonMarcadoPago.Text = "Mercado PG";
+            radioButtonMarcadoPago.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTarjetaC
+            // 
+            radioButtonTarjetaC.AutoSize = true;
+            radioButtonTarjetaC.Location = new Point(137, 18);
+            radioButtonTarjetaC.Name = "radioButtonTarjetaC";
+            radioButtonTarjetaC.Size = new Size(117, 19);
+            radioButtonTarjetaC.TabIndex = 0;
+            radioButtonTarjetaC.TabStop = true;
+            radioButtonTarjetaC.Text = "Tarjeta de Credito";
+            radioButtonTarjetaC.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTarjeteDebito
+            // 
+            radioButtonTarjeteDebito.AutoSize = true;
+            radioButtonTarjeteDebito.Location = new Point(85, 44);
+            radioButtonTarjeteDebito.Name = "radioButtonTarjeteDebito";
+            radioButtonTarjeteDebito.Size = new Size(97, 19);
+            radioButtonTarjeteDebito.TabIndex = 22;
+            radioButtonTarjeteDebito.TabStop = true;
+            radioButtonTarjeteDebito.Text = "Tarjeta Debito";
+            radioButtonTarjeteDebito.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(668, 297);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(120, 23);
+            numericUpDown1.TabIndex = 23;
             // 
             // FormVentaAlCliente
             // 
@@ -311,6 +369,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 255, 128);
             ClientSize = new Size(800, 433);
+            Controls.Add(numericUpDown1);
+            Controls.Add(radioButtonMarcadoPago);
+            Controls.Add(groupBox1);
             Controls.Add(labelGastoTotal);
             Controls.Add(labelSaldo2);
             Controls.Add(labelSaldo1);
@@ -338,6 +399,9 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -373,5 +437,10 @@
         private Label labelSaldo1;
         private Label labelSaldo2;
         private Label labelGastoTotal;
+        private GroupBox groupBox1;
+        private RadioButton radioButtonMarcadoPago;
+        private RadioButton radioButtonTarjetaC;
+        private RadioButton radioButtonTarjeteDebito;
+        private NumericUpDown numericUpDown1;
     }
 }

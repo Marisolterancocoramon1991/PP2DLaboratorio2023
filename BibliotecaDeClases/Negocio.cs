@@ -100,13 +100,13 @@ namespace BibliotecaDeClases
         /// <param name="corrreoElectornico"></param>
         /// <param name="contraseña"></param>
         /// <returns></returns> objeto Persona
-        public static Persona? LogearUsuario(string corrreoElectornico, string contraseña)
+        public static Persona? LogearUsuario(string corrreoElectronico, string contraseña)
         {
-            if (Validaciones.ValidarCamposIngresados(corrreoElectornico, contraseña))
+            if (Validaciones.ValidarCamposIngresados(corrreoElectronico, contraseña))
             {
                 foreach (Persona item in usuariosRegistrados)
                 {
-                    if (item.CorreoElectronico.Trim().ToLower() == corrreoElectornico.Trim().ToLower()
+                    if (item.CorreoElectronico.Trim().ToLower() == corrreoElectronico.Trim().ToLower()
                         && item.Contraseña == contraseña) //Dejo diferencia de mayus y espacios.
                     {
                         return item;
@@ -293,25 +293,51 @@ namespace BibliotecaDeClases
             return listaVentas;
         }
 
+        public static List<Venta> RetornarListaDeVentas(Cliente cliente)
+        {
+            List<Venta> list = new();
+            foreach (Venta venta in listaVentas)
+            {
+                if(cliente == venta.IDCliente1)
+                    list.Add(venta);
+            }
+            return list;
+        }
+
+
+
         /// <summary>
-        ///  retorna el precio total de la factura
+        ///  retorna el precio total de la factura por cliente
         /// </summary>
         /// <param name="listaVenta"></param> lista de venta creada
         /// <returns></returns> float 
-        public static float RetornaPrecioTotalFactura(List<Venta> listaVenta)
+        public static float GananciaTotal(Cliente usuario)
         {
             float resultado = 0;
 
-            foreach(Venta venta in listaVenta)
+            foreach(Venta venta in listaVentas)
             {
+                if(usuario == venta.IDCliente1)
                 resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
-
             }
     
 
         return resultado;
         }
 
+        public static float GananciaTotal(List<Venta> listaVenta, Cliente usuario)
+        {
+            float resultado = 0;
+
+            foreach (Venta venta in listaVenta)
+            {
+                if (usuario == venta.IDCliente1)
+                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
+            }
+
+
+            return resultado;
+        }
 
         /*    public static double GananciaPorMercadoPago(Cliente cliente)
             {

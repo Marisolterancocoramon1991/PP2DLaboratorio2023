@@ -27,7 +27,7 @@ namespace BibliotecaDeClases
             this.productoVendido = productoVendido;
             this.metodoDePago = metodoDePago;
             this.CantidadDeUnidades = cantidadDeUnidades;
-            IDCliente = iDCliente;
+            IDCliente1 = iDCliente;
         }
 
 
@@ -38,6 +38,7 @@ namespace BibliotecaDeClases
         public eMetodoPago MetodoPago
         { get => metodoDePago; }
         public int CantidadDeUnidades { get => cantidadDeUnidades; set => cantidadDeUnidades = value; }
+        public int IDCliente1 { get => IDCliente; set => IDCliente = value; }
 
 
         /// <summary>

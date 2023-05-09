@@ -15,17 +15,21 @@ namespace PrimerParcial
     public partial class FormBuscadorCarnes : Form
     {
         Cliente? usuario;
-     //   Queue<Cliente> colaClientes;
+        //   Queue<Cliente> colaClientes;
         List<Carne> listaDeProductos;
 
         public FormBuscadorCarnes(Cliente cliente)
         {
             InitializeComponent();
-            usuario = cliente;
+       
+            this.usuario = cliente;
+        }
+        private void FormVentas_Load(object sender, EventArgs e)
+        {
             Validaciones.IsNotNull(usuario);
             listaDeProductos = Negocio.RetornarProductos();
-         //   colaClientes = Negocio.RetornarClientes();
-            this.usuario = cliente;
+            //   colaClientes = Negocio.RetornarClientes();
+            
 
         }
 
@@ -111,24 +115,7 @@ namespace PrimerParcial
             ventanaVentaCarne.Show();
         }
 
-        private void FormVentas_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxEleccion_Enter(object sender, EventArgs e)
-        {
-
-        }
+      
+   
     }
 }

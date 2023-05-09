@@ -47,7 +47,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "Cerdo";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -57,7 +57,7 @@
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 1;
-            button2.Text = "button2";
+            button2.Text = "Ave";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -80,7 +80,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+          //  pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
@@ -101,7 +101,7 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
+            //pictureBox3.Click += pictureBox3_Click;
             // 
             // groupBoxEleccion
             // 
@@ -118,7 +118,7 @@
             groupBoxEleccion.TabIndex = 6;
             groupBoxEleccion.TabStop = false;
             groupBoxEleccion.Text = "Carniceria_Teran";
-            groupBoxEleccion.Enter += groupBoxEleccion_Enter;
+           // groupBoxEleccion.Enter += groupBoxEleccion_Enter;
             // 
             // FormBuscadorCarnes
             // 

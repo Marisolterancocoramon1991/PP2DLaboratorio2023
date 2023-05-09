@@ -54,6 +54,36 @@ namespace BibliotecaDeClases
 
 
         /// <summary>
+        /// operadores boleanos que me entregan si el ID del cliente  
+        /// no coincide con la marca de la venta ID
+        /// </summary>
+        /// <param name="clienteID"></param> Objeto
+        /// <param name="ID"></param> int 
+        /// <returns></returns> bool
+        public static bool operator == (Cliente clienteID, int ID) 
+        {
+        
+            return clienteID.ID == ID;
+        
+        
+        }
+
+        /// <summary>
+        /// operadores boleanos que me entregan si el ID del cliente  
+        /// no coincide con la marca de la venta ID
+        /// </summary>
+        /// <param name="clienteID"></param> Objeto
+        /// <param name="ID"></param> int 
+        /// <returns></returns> bool
+        public static bool operator !=(Cliente clienteID, int ID)
+        {
+
+            return !(clienteID.ID == ID);
+
+
+        }
+
+        /// <summary>
         /// Muestra los datos esenciales de la categoria cliente
         /// </summary>
         /// <returns></returns> devuelve un string

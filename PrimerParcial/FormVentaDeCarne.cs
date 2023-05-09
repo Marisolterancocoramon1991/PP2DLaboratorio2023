@@ -107,7 +107,7 @@ namespace PrimerParcial
             DialogResult confirmarVenta;
             float precioAGastar;
             //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
-            if (Validaciones.IsNotNull(productoSeleccioando) && productoSeleccioando.CantidadEnInventario > 0 && (int)numericUpDown1.Value > 0
+            if (Validaciones.IsNotNull(productoSeleccioando) && productoSeleccioando.CantidadEnInventario > 0 && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value)
                 && productoSeleccioando.CantidadEnInventario
                 >= (int)numericUpDown1.Value && Validaciones.IsNotNull(usuario) && usuario.Saldo >=
                 productoSeleccioando.Precio * (int)numericUpDown1.Value)
@@ -141,14 +141,10 @@ namespace PrimerParcial
                             Negocio.CargarVenta(venta);
                             Negocio.CargarVenta(listVentaCliente, venta);
                         }
-
                         productoSeleccioando = productoSeleccioando - (int)numericUpDown1.Value;
-
                         precioAGastar = productoSeleccioando * (int)numericUpDown1.Value;
                         usuario = usuario - precioAGastar;
                         labelDinero.Text = usuario.Saldo.ToString();
-
-
                     }
 
                 }
