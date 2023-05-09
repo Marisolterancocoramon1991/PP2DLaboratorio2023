@@ -315,6 +315,7 @@
             // groupBoxModoPago
             // 
             groupBoxModoPago.Controls.Add(radioButtonTarjeteDebito);
+            groupBoxModoPago.Controls.Add(radioButtonMarcadoPago);
             groupBoxModoPago.Controls.Add(radioButtonTarjetaC);
             groupBoxModoPago.Location = new Point(507, 222);
             groupBoxModoPago.Name = "groupBoxModoPago";
@@ -348,7 +349,7 @@
             // radioButtonMarcadoPago
             // 
             radioButtonMarcadoPago.AutoSize = true;
-            radioButtonMarcadoPago.Location = new Point(520, 240);
+            radioButtonMarcadoPago.Location = new Point(17, 22);
             radioButtonMarcadoPago.Name = "radioButtonMarcadoPago";
             radioButtonMarcadoPago.Size = new Size(90, 19);
             radioButtonMarcadoPago.TabIndex = 21;
@@ -370,7 +371,6 @@
             BackColor = Color.FromArgb(128, 255, 128);
             ClientSize = new Size(800, 433);
             Controls.Add(numericUpDown1);
-            Controls.Add(radioButtonMarcadoPago);
             Controls.Add(groupBoxModoPago);
             Controls.Add(labelGastoTotal);
             Controls.Add(labelSaldo2);

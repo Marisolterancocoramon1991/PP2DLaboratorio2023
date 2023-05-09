@@ -144,20 +144,26 @@ namespace PrimerParcial
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
-
-            if (n != -1)
+            if (listaDeProductos != null)
             {
-                foreach (Carne producto in listaDeProductos)
+                if (n != -1)
                 {
-                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
-                        producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
-                        producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
+                    foreach (Carne producto in listaDeProductos)
                     {
+                        if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
+                            producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
+                            producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
+                        {
 
-                        productoSeleccioando = producto;
-                        break;
+                            productoSeleccioando = producto;
+                            break;
+                        }
                     }
                 }
+            }
+            else 
+            {
+                MessageBox.Show("debes elegir un tipo de lista antes de editar el producto");
             }
         }
 
@@ -186,7 +192,7 @@ namespace PrimerParcial
 
         }
 
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -312,7 +318,7 @@ namespace PrimerParcial
         private void buttonCantidad_Click(object sender, EventArgs e)
         {
 
-           
+
             if (productoSeleccioando is not null && Validaciones.EsNumero(textBoxCantidad.Text))
             {
                 MessageBox.Show($"{productoSeleccioando.CantidadEnInventario}");

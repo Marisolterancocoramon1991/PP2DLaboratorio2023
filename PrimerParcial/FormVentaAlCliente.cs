@@ -44,8 +44,8 @@ namespace PrimerParcial
                         if (clienteInfo == listBoxClientes.SelectedItem.ToString())
                         {
                             clienteSeleccionado = cliente;
-                            listaDeVentasClientesSeleccionado = Negocio.RetornarListaDeVentas(cliente);
-                            CargarDataGridView(listaDeVentasClientesSeleccionado);
+                            listaDeVentasClientesSeleccionado = Negocio.RetornarListaDeVentas(clienteSeleccionado);
+                            CargarDataGridView2();
                             labelSaldo2.Text = Negocio.GananciaTotal(cliente).ToString();
                             // Aquí puedes utilizar la variable "clienteSeleccionado" para mostrar la información del cliente en la aplicación
                             labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();
@@ -66,7 +66,7 @@ namespace PrimerParcial
         }
 
 
-        public void CargarDataGridView(List<Venta> listaDeVenta)
+        public void CargarDataGridView2()
         {
 
             dataGridView2.Rows.Clear();
@@ -130,7 +130,7 @@ namespace PrimerParcial
             DialogResult confirmarVenta;
             float precioAGastar;
             //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
-            if (Validaciones.IsNotNull(productoSeleccinadoDataUno) && productoSeleccinadoDataUno.CantidadEnInventario > 0 && (int)numericUpDown1.Value > 0
+            if (Validaciones.IsNotNull(productoSeleccinadoDataUno) && Validaciones.NumeroMayorAcero(productoSeleccinadoDataUno.CantidadEnInventario) && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value)
                 && productoSeleccinadoDataUno.CantidadEnInventario
                 >= (int)numericUpDown1.Value && Validaciones.IsNotNull(clienteSeleccionado) && clienteSeleccionado.Saldo >=
                 productoSeleccinadoDataUno.Precio * (int)numericUpDown1.Value)
@@ -163,12 +163,19 @@ namespace PrimerParcial
                                 Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value, clienteSeleccionado.ID);
                             Negocio.CargarVenta(venta);
                         }
-
-                        productoSeleccinadoDataUno = productoSeleccinadoDataUno - (int)numericUpDown1.Value;
-
-                        precioAGastar = productoSeleccinadoDataUno * (int)numericUpDown1.Value;
-                        clienteSeleccionado = clienteSeleccionado - precioAGastar;
-
+                       
+                         productoSeleccinadoDataUno = productoSeleccinadoDataUno - (int)numericUpDown1.Value;
+                      //   listBoxClientes.Items.Clear();
+                        // CargaListaBoxClientes();
+                         precioAGastar = productoSeleccinadoDataUno * (int)numericUpDown1.Value;
+                         clienteSeleccionado = clienteSeleccionado - precioAGastar;
+                        // listaUsuarios = Negocio.RetornaListaUsuarios();
+                        // listaDeVentasClientesSeleccionado = Negocio.RetornarListaDeVentas(clienteSeleccionado);
+                         CargarDataGridView2();
+                        listaUsuarios = Negocio.RetornaListaUsuarios();
+                        listBoxClientes.Items.Clear();
+                        CargaListaBoxClientes();
+                        labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();  
                     }
                 }
             }

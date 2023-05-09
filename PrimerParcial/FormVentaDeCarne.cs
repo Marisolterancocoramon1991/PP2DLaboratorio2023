@@ -21,7 +21,7 @@ namespace PrimerParcial
         Carne productoSeleccioando;
         List<Venta> listVentaCliente;
 
-        public FormVentaDeCarne(Cliente usuario) 
+        public FormVentaDeCarne(Cliente usuario)
         {
             InitializeComponent();
             this.usuario = usuario;
@@ -107,7 +107,7 @@ namespace PrimerParcial
             DialogResult confirmarVenta;
             float precioAGastar;
             //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
-            if (Validaciones.IsNotNull(productoSeleccioando) && productoSeleccioando.CantidadEnInventario > 0 && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value)
+            if (Validaciones.IsNotNull(productoSeleccioando) && Validaciones.NumeroMayorAcero(productoSeleccioando.CantidadEnInventario) && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value)
                 && productoSeleccioando.CantidadEnInventario
                 >= (int)numericUpDown1.Value && Validaciones.IsNotNull(usuario) && usuario.Saldo >=
                 productoSeleccioando.Precio * (int)numericUpDown1.Value)
@@ -129,7 +129,7 @@ namespace PrimerParcial
                         else if (radioButtonTarjetaC.Checked == true)
                         {
                             Venta venta = new Venta(productoSeleccioando,
-                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value,usuario.ID);
+                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value, usuario.ID);
                             Negocio.CargarVenta(venta);
                             Negocio.CargarVenta(listVentaCliente, venta);
 
@@ -234,7 +234,7 @@ namespace PrimerParcial
             formFacturaVenta.Show();
         }
 
-     
+
     }
 }
 

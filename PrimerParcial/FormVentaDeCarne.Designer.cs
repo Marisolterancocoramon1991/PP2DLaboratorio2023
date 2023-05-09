@@ -81,7 +81,6 @@
             groupCerdo.TabIndex = 0;
             groupCerdo.TabStop = false;
             groupCerdo.Text = "Carniceria_Teran";
-            //groupCerdo.Enter += groupCerdo_Enter;
             // 
             // buttonFactura
             // 
@@ -143,7 +142,6 @@
             radioButtonMarcadoPago.TabStop = true;
             radioButtonMarcadoPago.Text = "Marcado Pago";
             radioButtonMarcadoPago.UseVisualStyleBackColor = true;
-           // radioButtonMarcadoPago.CheckedChanged += radioButtonMarcadoPago_CheckedChanged;
             // 
             // radioButtonTarjetaC
             // 
@@ -273,7 +271,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.GridColor = Color.Blue;
-            dataGridView1.Location = new Point(38, 66);
+            dataGridView1.Location = new Point(51, 67);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(502, 250);
