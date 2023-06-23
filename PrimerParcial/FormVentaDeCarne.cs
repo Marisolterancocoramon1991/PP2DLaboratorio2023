@@ -20,7 +20,7 @@ namespace PrimerParcial
         List<Carne> listaDeProductos;
         Carne productoSeleccioando;
         List<Venta> listVentaCliente;
-
+        List<Venta> ventaTotal;
         public FormVentaDeCarne(Cliente usuario)
         {
             InitializeComponent();
@@ -49,23 +49,56 @@ namespace PrimerParcial
         /// <param name="e"></param> informacion adicional del evento
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             int n = e.RowIndex;
 
-            if (n != -1)
+            if (n != -1 && listaDeProductos != null)
             {
-                foreach (Carne producto in listaDeProductos)
+                DataGridViewRow selectedRow;
+                try
                 {
-                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
-                        producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
-                        producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
-                    {
-
-                        productoSeleccioando = producto;
-                        break;
-                    }
-
+                    selectedRow = dataGridView1.Rows[n];
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ha ocurrido un error al seleccionar la fila.");
+                    return;
                 }
 
+
+                DataGridViewCell nombreCell = selectedRow.Cells[0];
+                DataGridViewCell tipoCell = selectedRow.Cells[1];
+                DataGridViewCell precioCell = selectedRow.Cells[2];
+
+                if (nombreCell.Value != null && tipoCell.Value != null && precioCell.Value != null)
+                {
+                    string nombre = nombreCell.Value.ToString();
+                    string tipo = tipoCell.Value.ToString();
+
+                    if (float.TryParse(precioCell.Value.ToString(), out float precio))
+                    {
+                        foreach (Carne producto in listaDeProductos)
+                        {
+                            if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
+                            {
+                                productoSeleccioando = producto;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del precio no es válido.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se seleccionó un producto válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes elegir un tipo de lista antes de editar el producto.");
             }
         }
 
@@ -106,64 +139,62 @@ namespace PrimerParcial
         {
             DialogResult confirmarVenta;
             float precioAGastar;
-            //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
-            if (Validaciones.IsNotNull(productoSeleccioando) && Validaciones.NumeroMayorAcero(productoSeleccioando.CantidadEnInventario) && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value)
-                && productoSeleccioando.CantidadEnInventario
-                >= (int)numericUpDown1.Value && Validaciones.IsNotNull(usuario) && usuario.Saldo >=
-                productoSeleccioando.Precio * (int)numericUpDown1.Value)
+
+            if (Validaciones.IsNotNull(productoSeleccioando) && Validaciones.NumeroMayorAcero(productoSeleccioando.CantidadEnInventario) && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value) && productoSeleccioando.CantidadEnInventario >= (int)numericUpDown1.Value && Validaciones.IsNotNull(usuario))
             {
-                if (radioButtonMarcadoPago.Checked == true || radioButtonTarjetaC.Checked == true
-                    || radioButtonTarjeteDebito.Checked == true)
+                precioAGastar = productoSeleccioando.Precio * (int)numericUpDown1.Value;
+
+                try
                 {
-                    confirmarVenta = MessageBox.Show("Desea confirmar la compra?",
-                        "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (confirmarVenta == DialogResult.Yes)
+                    usuario.ComprarProductoValidacion(precioAGastar);
+
+                    if (radioButtonMarcadoPago.Checked || radioButtonTarjetaC.Checked || radioButtonTarjeteDebito.Checked)
                     {
-                        if (radioButtonMarcadoPago.Checked == true)
-                        {
-                            Venta venta = new Venta(productoSeleccioando,
-                              Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value, usuario.ID);
-                            Negocio.CargarVenta(venta);
-                            Negocio.CargarVenta(listVentaCliente, venta);
-                        }
-                        else if (radioButtonTarjetaC.Checked == true)
-                        {
-                            Venta venta = new Venta(productoSeleccioando,
-                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value, usuario.ID);
-                            Negocio.CargarVenta(venta);
-                            Negocio.CargarVenta(listVentaCliente, venta);
+                        confirmarVenta = MessageBox.Show("¿Desea confirmar la compra?", "ATENCIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                        }
-                        else
+                        if (confirmarVenta == DialogResult.Yes)
                         {
-                            Venta venta = new Venta(productoSeleccioando,
-                                Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value, usuario.ID);
+                            eMetodoPago metodoPago;
+
+                            if (radioButtonMarcadoPago.Checked)
+                            {
+                                metodoPago = eMetodoPago.MercadoPago;
+                            }
+                            else if (radioButtonTarjetaC.Checked)
+                            {
+                                metodoPago = eMetodoPago.TarjetaDeCredito;
+                            }
+                            else
+                            {
+                                metodoPago = eMetodoPago.TarjetaDebito;
+                            }
+                            precioAGastar = productoSeleccioando.Precio * (int)numericUpDown1.Value;
+                            Venta venta = new Venta(productoSeleccioando.Nombre,productoSeleccioando.Tipo,
+                                productoSeleccioando.Precio, precioAGastar, metodoPago, 
+                                (int)numericUpDown1.Value, usuario.ID, usuario.Nombre);
                             Negocio.CargarVenta(venta);
                             Negocio.CargarVenta(listVentaCliente, venta);
+                            // List<Venta> listaCompletaVenta = Negocio.RetornarListaDeVentas();
+                            ventaTotal = Negocio.RetornarListaDeVentas();
+                            productoSeleccioando = productoSeleccioando - (int)numericUpDown1.Value;
+                            
+                            usuario = usuario - precioAGastar;
+                            labelDinero.Text = usuario.Saldo.ToString();
+                            EscribirArchivo.ActualizarArchivo(listVentaCliente);
                         }
-                        productoSeleccioando = productoSeleccioando - (int)numericUpDown1.Value;
-                        precioAGastar = productoSeleccioando * (int)numericUpDown1.Value;
-                        usuario = usuario - precioAGastar;
-                        labelDinero.Text = usuario.Saldo.ToString();
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Por favor, seleccione el método de pago.");
+                    }
                 }
-                else
+                catch (SaldoInsuficienteException ObjetoException)
                 {
-                    MessageBox.Show("por favor seleccione el metodo de pago");
+                    MessageBox.Show($"{ObjetoException.Message}. No se pudo validar con el método {ObjetoException.TargetSite?.Name}, por favor agregar saldo...");
                 }
-
             }
-            else
-            {
-
-                MessageBox.Show("hubo un error en la compra");
-
-
-            }
-
-
         }
+
         /// <summary>
         /// abre la ventaa buscador de ventana 
         /// </summary>

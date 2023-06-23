@@ -124,7 +124,7 @@ namespace PrimerParcial
             }
             return nuevoProducto;
         }
-        
+
 
         /// <summary>
         /// este boton le da el acepte para poder crar el producto
@@ -151,6 +151,11 @@ namespace PrimerParcial
                 }
 
             }
+        }
+
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

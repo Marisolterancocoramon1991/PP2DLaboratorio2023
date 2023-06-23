@@ -18,6 +18,9 @@ namespace PrimerParcial
         public FrmLogin()
         {
             InitializeComponent();
+            string stringVentas = LecturaArchivo.leerArchivosVentas();
+            List<string> listaStringVenta = LecturaArchivo.CrearListasStringVentas(stringVentas);
+             Parser.ParsearProductos(listaStringVenta);
         }
         /// <summary>
         /// boton para ocultar la clave

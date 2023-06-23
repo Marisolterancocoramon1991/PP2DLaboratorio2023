@@ -86,7 +86,6 @@
             groupBoxAve.TabIndex = 1;
             groupBoxAve.TabStop = false;
             groupBoxAve.Text = "Producto Ave";
-            //groupBoxAve.Enter += groupBox1_Enter;
             // 
             // comboBox2
             // 
@@ -153,7 +152,6 @@
             groupBoxCarneVacuno.TabIndex = 2;
             groupBoxCarneVacuno.TabStop = false;
             groupBoxCarneVacuno.Text = "Producto Carne Vacuno";
-            //groupBoxCarneVacuno.Enter += groupBox1_Enter_1;
             // 
             // comboBoxCategoria
             // 
@@ -163,7 +161,6 @@
             comboBoxCategoria.Name = "comboBoxCategoria";
             comboBoxCategoria.Size = new Size(121, 23);
             comboBoxCategoria.TabIndex = 3;
-            //comboBoxCategoria.SelectedIndexChanged += comboBoxCategoria_SelectedIndexChanged;
             // 
             // comboBoxRVacuno
             // 
@@ -173,7 +170,6 @@
             comboBoxRVacuno.Name = "comboBoxRVacuno";
             comboBoxRVacuno.Size = new Size(121, 23);
             comboBoxRVacuno.TabIndex = 2;
-            //comboBoxRVacuno.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // labelCategoria
             // 
@@ -183,7 +179,6 @@
             labelCategoria.Size = new Size(58, 15);
             labelCategoria.TabIndex = 1;
             labelCategoria.Text = "Categoria";
-            //labelCategoria.Click += labelCategoria_Click;
             // 
             // labelRazasVaca
             // 
@@ -204,7 +199,6 @@
             groupBoxCarneCerdo.TabIndex = 0;
             groupBoxCarneCerdo.TabStop = false;
             groupBoxCarneCerdo.Text = "Carne Cerdo";
-            //groupBoxCarneCerdo.Enter += groupBoxCarneCerdo_Enter;
             // 
             // comboBoxRCerdo
             // 
@@ -254,7 +248,6 @@
             labelNombre.Size = new Size(51, 15);
             labelNombre.TabIndex = 5;
             labelNombre.Text = "Nombre";
-            //labelNombre.Click += labelNombre_Click;
             // 
             // labelTipo
             // 
@@ -273,7 +266,6 @@
             labelPrecio.Size = new Size(40, 15);
             labelPrecio.TabIndex = 7;
             labelPrecio.Text = "Precio";
-            //labelPrecio.Click += label3_Click;
             // 
             // labelCantidadInventario
             // 
@@ -283,7 +275,6 @@
             labelCantidadInventario.Size = new Size(133, 15);
             labelCantidadInventario.TabIndex = 8;
             labelCantidadInventario.Text = "unidades por Kg u otros";
-            //labelCantidadInventario.Click += label4_Click;
             // 
             // textBoxNombre
             // 
@@ -291,6 +282,7 @@
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.Size = new Size(175, 23);
             textBoxNombre.TabIndex = 9;
+            textBoxNombre.TextChanged += textBoxNombre_TextChanged;
             // 
             // textBoxTipoCarne
             // 
@@ -298,7 +290,6 @@
             textBoxTipoCarne.Name = "textBoxTipoCarne";
             textBoxTipoCarne.Size = new Size(175, 23);
             textBoxTipoCarne.TabIndex = 10;
-            //textBoxTipoCarne.TextChanged += textBox2_TextChanged;
             // 
             // textBoxPrecio
             // 
@@ -306,7 +297,6 @@
             textBoxPrecio.Name = "textBoxPrecio";
             textBoxPrecio.Size = new Size(175, 23);
             textBoxPrecio.TabIndex = 11;
-            //textBoxPrecio.TextChanged += textBox3_TextChanged;
             // 
             // textBoxUnidades
             // 
@@ -314,7 +304,6 @@
             textBoxUnidades.Name = "textBoxUnidades";
             textBoxUnidades.Size = new Size(175, 23);
             textBoxUnidades.TabIndex = 12;
-            //textBoxUnidades.TextChanged += textBox4_TextChanged;
             // 
             // buttonCrearProducto
             // 
@@ -362,7 +351,6 @@
             Name = "FormCreacionNuevoProducto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCreacionNuevoProducto";
-           //Load += FormCreacionNuevoProducto_Load;
             groupBoxAve.ResumeLayout(false);
             groupBoxAve.PerformLayout();
             groupBoxCarneVacuno.ResumeLayout(false);

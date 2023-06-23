@@ -92,21 +92,56 @@ namespace PrimerParcial
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             int n = e.RowIndex;
 
-            if (n != -1)
+            if (n != -1 && listaDeProductos != null)
             {
-                foreach (Carne producto in listaDeProductos)
+                DataGridViewRow selectedRow;
+                try
                 {
-                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
-                        producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
-                        producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
-                    {
+                    selectedRow = dataGridView1.Rows[n];
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ha ocurrido un error al seleccionar la fila.");
+                    return;
+                }
 
-                        productoSeleccioando = producto;
-                        break;
+
+                DataGridViewCell nombreCell = selectedRow.Cells[0];
+                DataGridViewCell tipoCell = selectedRow.Cells[1];
+                DataGridViewCell precioCell = selectedRow.Cells[2];
+
+                if (nombreCell.Value != null && tipoCell.Value != null && precioCell.Value != null)
+                {
+                    string nombre = nombreCell.Value.ToString();
+                    string tipo = tipoCell.Value.ToString();
+
+                    if (float.TryParse(precioCell.Value.ToString(), out float precio))
+                    {
+                        foreach (Carne producto in listaDeProductos)
+                        {
+                            if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
+                            {
+                                productoSeleccioando = producto;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del precio no es válido.");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("No se seleccionó un producto válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes elegir un tipo de lista antes de editar el producto.");
             }
         }
 
@@ -117,6 +152,60 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            int n = e.RowIndex;
+
+            if (n != -1 && listaDeProductos != null)
+            {
+                DataGridViewRow selectedRow;
+                try
+                {
+                    selectedRow = dataGridView2.Rows[n];
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ha ocurrido un error al seleccionar la fila.");
+                    return;
+                }
+
+
+                DataGridViewCell nombreCell = selectedRow.Cells[0];
+                DataGridViewCell tipoCell = selectedRow.Cells[1];
+                DataGridViewCell precioCell = selectedRow.Cells[2];
+
+                if (nombreCell.Value != null && tipoCell.Value != null && precioCell.Value != null)
+                {
+                    string nombre = nombreCell.Value.ToString();
+                    string tipo = tipoCell.Value.ToString();
+
+                    if (float.TryParse(precioCell.Value.ToString(), out float precio))
+                    {
+                        foreach (Carne producto in listaDeProductos)
+                        {
+                            if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
+                            {
+                                productoSeleccioando = producto;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del precio no es válido.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se seleccionó un producto válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes elegir un tipo de lista antes de editar el producto.");
+            }
+            ////////////////
+            /*
+
             int n = e.RowIndex;
 
             if (n != -1)
@@ -132,7 +221,7 @@ namespace PrimerParcial
                         break;
                     }
                 }
-            }
+            }*/
         }
 
 
@@ -141,31 +230,98 @@ namespace PrimerParcial
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
-            if (listaDeProductos != null)
-            {
-                if (n != -1)
-                {
-                    foreach (Carne producto in listaDeProductos)
-                    {
-                        if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
-                            producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
-                            producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
-                        {
 
-                            productoSeleccioando = producto;
-                            break;
+            if (n != -1 && listaDeProductos != null)
+            {
+                DataGridViewRow selectedRow;
+                try
+                {
+                    selectedRow = dataGridViewVacuno.Rows[n];
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ha ocurrido un error al seleccionar la fila.");
+                    return;
+                }
+
+
+                DataGridViewCell nombreCell = selectedRow.Cells[0];
+                DataGridViewCell tipoCell = selectedRow.Cells[1];
+                DataGridViewCell precioCell = selectedRow.Cells[2];
+
+                if (nombreCell.Value != null && tipoCell.Value != null && precioCell.Value != null)
+                {
+                    string nombre = nombreCell.Value.ToString();
+                    string tipo = tipoCell.Value.ToString();
+
+                    if (float.TryParse(precioCell.Value.ToString(), out float precio))
+                    {
+                        foreach (Carne producto in listaDeProductos)
+                        {
+                            if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
+                            {
+                                productoSeleccioando = producto;
+                                break;
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("El valor del precio no es válido.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se seleccionó un producto válido.");
                 }
             }
             else
             {
-                MessageBox.Show("debes elegir un tipo de lista antes de editar el producto");
+                MessageBox.Show("Debes elegir un tipo de lista antes de editar el producto.");
             }
         }
+
+
+        /*  private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+          {
+              int n = e.RowIndex;
+              if (n != -1  && listaDeProductos != null)
+              {
+                  if (n != -1)
+                  {
+                      foreach (Carne producto in listaDeProductos)
+                      {
+                          try
+                          {
+                              if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
+                                                          producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
+                                                          producto.Precio == (float)dataGridView1.Rows[n].Cells[2].Value)
+                              {
+
+                                  productoSeleccioando = producto;
+                                  break;
+                              }
+
+                          }
+                          catch (ArgumentOutOfRangeException objetoExeception) 
+                          {
+
+                              MessageBox.Show(objetoExeception.Message);
+
+                          }
+
+                      }
+                  }
+              }
+              else
+              {
+                  MessageBox.Show("debes elegir un tipo de lista antes de editar el producto");
+              }
+          }*/
 
         /// <summary>
         /// te lleva a la ventana login

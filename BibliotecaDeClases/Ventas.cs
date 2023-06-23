@@ -9,21 +9,23 @@ namespace BibliotecaDeClases
 {
     public class Venta
     {
-        private Carne productoVendido;
+        private string  productoVendido;
         private eMetodoPago metodoDePago;
         private int cantidadDeUnidades;
         private int IDCliente;
-        public enum eMetodoPago
+        private string tipo;
+        private string nombre;
+        float precio;
+        float precioTotal;
+     
+
+        public Venta(string productoVendido,string tipo, float precio , float precioTotal ,
+            eMetodoPago metodoDePago, int cantidadDeUnidades, int iDCliente, string nombre)
         {
-            TarjetaDeCredito,
-            MercadoPago,
-            TarjetaDebito
-        }
-
-
-
-        public Venta(Carne productoVendido, eMetodoPago metodoDePago, int cantidadDeUnidades, int iDCliente)
-        {
+            this.PrecioTotal = precioTotal;
+            this.Precio = precio;
+            this.Nombre = nombre;
+            this.Tipo = tipo;    
             this.productoVendido = productoVendido;
             this.metodoDePago = metodoDePago;
             this.CantidadDeUnidades = cantidadDeUnidades;
@@ -31,14 +33,18 @@ namespace BibliotecaDeClases
         }
 
 
-        public Carne ProductoVendido
+        public string ProductoVendido
         {
             get { return productoVendido; }
         }
         public eMetodoPago MetodoPago
-        { get => metodoDePago; }
+        { get => metodoDePago; set => metodoDePago = value; }
         public int CantidadDeUnidades { get => cantidadDeUnidades; set => cantidadDeUnidades = value; }
         public int IDCliente1 { get => IDCliente; set => IDCliente = value; }
+        public string Tipo { get => tipo; set => tipo = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public float Precio { get => precio; set => precio = value; }
+        public float PrecioTotal { get => precioTotal; set => precioTotal = value; }
 
 
         /// <summary>
@@ -49,10 +55,10 @@ namespace BibliotecaDeClases
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Muchas gracias por su compra de Productos de alta calidad");
-            sb.AppendLine($"Producto : {ProductoVendido.Nombre}");
-            sb.AppendLine($"Tipo de producto: {productoVendido.Tipo}");
-            sb.AppendLine($"Precio : ${ProductoVendido.Precio}");
-            sb.AppendLine($"precio total de este producto : {productoVendido * cantidadDeUnidades}");
+            sb.AppendLine($"Producto : {Nombre}");
+            sb.AppendLine($"Tipo de producto: {Tipo}");
+            sb.AppendLine($"Precio : ${Precio}");
+            sb.AppendLine($"precio total de este producto : {PrecioTotal}");
 
 
             return sb.ToString();

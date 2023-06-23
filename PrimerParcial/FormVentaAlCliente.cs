@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace PrimerParcial
 {
@@ -82,8 +83,8 @@ namespace PrimerParcial
                 if (clienteSeleccionado == producto.IDCliente1)
                 {
 
-                    dataGridView2.Rows.Add(producto.ProductoVendido.Nombre, producto.ProductoVendido.Tipo,
-                        producto.ProductoVendido.Precio, (producto.ProductoVendido.Precio * producto.CantidadDeUnidades));
+                    dataGridView2.Rows.Add(producto.Nombre, producto.Tipo,
+                        producto.Precio, producto.PrecioTotal);
                     //         Negocio.CargarVenta(listaDeVenta, producto);
                 }
             }
@@ -144,68 +145,81 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            ///Agregar venta 
+            // Agregar venta
             DialogResult confirmarVenta;
             float precioAGastar;
-            //  MessageBox.Show(productoSeleccioando.MostrarDetallesDeProducto());
-            if (Validaciones.IsNotNull(productoSeleccinadoDataUno) && Validaciones.NumeroMayorAcero(productoSeleccinadoDataUno.CantidadEnInventario) && Validaciones.NumeroMayorAcero((int)numericUpDown1.Value)
-                && productoSeleccinadoDataUno.CantidadEnInventario
-                >= (int)numericUpDown1.Value && Validaciones.IsNotNull(clienteSeleccionado) && clienteSeleccionado.Saldo >=
-                productoSeleccinadoDataUno.Precio * (int)numericUpDown1.Value)
+
+            if (Validaciones.IsNotNull(productoSeleccinadoDataUno) && Validaciones.NumeroMayorAcero(productoSeleccinadoDataUno.CantidadEnInventario) &&
+                Validaciones.NumeroMayorAcero((int)numericUpDown1.Value) && productoSeleccinadoDataUno.CantidadEnInventario >= (int)numericUpDown1.Value &&
+                Validaciones.IsNotNull(clienteSeleccionado))
             {
-                if (radioButtonMarcadoPago.Checked == true || radioButtonTarjetaC.Checked == true
-                    || radioButtonTarjeteDebito.Checked == true)
+                precioAGastar = productoSeleccinadoDataUno.Precio * (int)numericUpDown1.Value;
+
+                try
                 {
-                    confirmarVenta = MessageBox.Show("Desea confirmar la compra?",
-                        "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (confirmarVenta == DialogResult.Yes)
+                    clienteSeleccionado.ComprarProductoValidacion(precioAGastar);
+
+                    if (radioButtonMarcadoPago.Checked || radioButtonTarjetaC.Checked || radioButtonTarjeteDebito.Checked)
                     {
-                        if (radioButtonMarcadoPago.Checked == true)
-                        {
-                            Venta venta = new Venta(productoSeleccinadoDataUno,
-                              Venta.eMetodoPago.MercadoPago, (int)numericUpDown1.Value, clienteSeleccionado.ID);
-                            Negocio.CargarVenta(venta);
+                        confirmarVenta = MessageBox.Show("¿Desea confirmar la compra?", "ATENCIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                        }
-                        else if (radioButtonTarjetaC.Checked == true)
+                        if (confirmarVenta == DialogResult.Yes)
                         {
-                            Venta venta = new Venta(productoSeleccinadoDataUno,
-                                Venta.eMetodoPago.TarjetaDeCredito, (int)numericUpDown1.Value, clienteSeleccionado.ID);
-                            Negocio.CargarVenta(venta);
+                          eMetodoPago metodoPago;
 
-
-                        }
-                        else
-                        {
-                            Venta venta = new Venta(productoSeleccinadoDataUno,
-                                Venta.eMetodoPago.TarjetaDebito, (int)numericUpDown1.Value, clienteSeleccionado.ID);
+                            if (radioButtonMarcadoPago.Checked)
+                            {
+                                metodoPago = eMetodoPago.MercadoPago;
+                            }
+                            else if (radioButtonTarjetaC.Checked)
+                            {
+                                metodoPago = eMetodoPago.TarjetaDeCredito;
+                            }
+                            else
+                            {
+                                metodoPago = eMetodoPago.TarjetaDebito;
+                            }
+                            productoSeleccinadoDataUno = productoSeleccinadoDataUno - (int)numericUpDown1.Value;
+                            Venta venta = new Venta(productoSeleccinadoDataUno.Nombre, productoSeleccinadoDataUno.Tipo,
+                                productoSeleccinadoDataUno.Precio, precioAGastar, metodoPago, (int)numericUpDown1.Value, clienteSeleccionado.ID,
+                                clienteSeleccionado.Nombre);
                             Negocio.CargarVenta(venta);
+                          /*  productoSeleccioando.Nombre,productoSeleccioando.Tipo,
+                                productoSeleccioando.Precio, precioAGastar, metodoPago, 
+                                (int)numericUpDown1.Value, usuario.ID, usuario.Nombre*/
+
+                            
+                            clienteSeleccionado = clienteSeleccionado - precioAGastar;
+
+                            CargarDataGridView2();
+                            listaUsuarios = Negocio.RetornaListaUsuarios();
+                            listBoxClientes.Items.Clear();
+                            CargaListaBoxClientes();
+                            labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();
+                            EscribirArchivo.ActualizarArchivo(ventaTotal);
                         }
-                       
-                         productoSeleccinadoDataUno = productoSeleccinadoDataUno - (int)numericUpDown1.Value;
-                      //   listBoxClientes.Items.Clear();
-                        // CargaListaBoxClientes();
-                         precioAGastar = productoSeleccinadoDataUno * (int)numericUpDown1.Value;
-                         clienteSeleccionado = clienteSeleccionado - precioAGastar;
-                        // listaUsuarios = Negocio.RetornaListaUsuarios();
-                        // listaDeVentasClientesSeleccionado = Negocio.RetornarListaDeVentas(clienteSeleccionado);
-                         CargarDataGridView2();
-                        listaUsuarios = Negocio.RetornaListaUsuarios();
-                        listBoxClientes.Items.Clear();
-                        CargaListaBoxClientes();
-                        labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();  
+                    }
+                    else
+                    {
+                        MessageBox.Show("por favor seleccione el metodo de pago");
                     }
                 }
+                catch (SaldoInsuficienteException ex)
+                {
+                    MessageBox.Show($"{ex.Message}. No se pudo validar con el método {ex.TargetSite?.Name}, por favor agregar saldo...");
+                }
+                
+               
+                
             }
         }
-
 
         /// <summary>
         /// te lleva a la ventana login
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
+        public void button3_Click(object sender, EventArgs e)
         {
             DialogResult respuesta;
             respuesta = MessageBox.Show("Desea Logearse", "Atencion", MessageBoxButtons.YesNo);
@@ -217,7 +231,6 @@ namespace PrimerParcial
             }
             else
             {
-
                 MessageBox.Show("Puede seguir trabajando, tu labor es motivo de orgullo y excelencia");
 
             }

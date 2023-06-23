@@ -52,6 +52,16 @@ namespace BibliotecaDeClases
 
         }
 
+        public void ComprarProductoValidacion(float precio)
+        {
+            if (precio > saldo)
+            {
+                throw new SaldoInsuficienteException(Saldo, precio);
+            }
+            
+        }
+
+
 
         /// <summary>
         /// operadores boleanos que me entregan si el ID del cliente  

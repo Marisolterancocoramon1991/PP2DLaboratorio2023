@@ -181,11 +181,17 @@ namespace BibliotecaDeClases
         /// carga el ID de la persona de forma aleatoria
         /// </summary>
         /// <returns></returns>
-        public static int CargaID()
+        public static int CargaID(string nombre)
         {
-            
+            int id;
+            if (nombre == "Kervin") 
+            {
+                id = 7628199;
+                return id;
+               
+            }          
             Random rnd = new Random();
-            int id = rnd.Next(1000000, 9999999);
+             id = rnd.Next(1000000, 9999999);
 
             return id;
         }

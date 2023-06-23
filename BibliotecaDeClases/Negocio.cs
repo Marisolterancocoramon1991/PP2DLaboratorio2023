@@ -224,7 +224,7 @@ namespace BibliotecaDeClases
 
             foreach (Venta item in listaVentas)
             {
-                if (item.ProductoVendido.Tipo == Tipo)
+                if (item.Tipo == Tipo)
                 {
                     retorno++;
                 }
@@ -280,11 +280,11 @@ namespace BibliotecaDeClases
             {
                 if (item.MetodoPago == eMetodoPago.TarjetaDeCredito)
                 {
-                    double resultadoMasImpuesto = (item.ProductoVendido.Precio * item.CantidadDeUnidades) * 0.05;
-                    retorno += (item.ProductoVendido.Precio * item.CantidadDeUnidades) + resultadoMasImpuesto;
+                    double resultadoMasImpuesto = (item.Precio * item.CantidadDeUnidades) * 0.05;
+                    retorno += (item.Precio * item.CantidadDeUnidades) + resultadoMasImpuesto;
                 }
                 else
-                    retorno += (item.ProductoVendido.Precio * item.CantidadDeUnidades);
+                    retorno += (item.Precio * item.CantidadDeUnidades);
             }
 
             return retorno;
@@ -325,11 +325,11 @@ namespace BibliotecaDeClases
             {
                 if (usuario == venta.IDCliente1 && venta.MetodoPago == eMetodoPago.TarjetaDeCredito)
                 {
-                    double resultadoMasImpuesto = (venta.ProductoVendido.Precio * venta.CantidadDeUnidades) * 0.05;
-                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades) + resultadoMasImpuesto;
+                    double resultadoMasImpuesto = (venta.Precio * venta.CantidadDeUnidades) * 0.05;
+                    resultado += (venta.Precio * venta.CantidadDeUnidades) + resultadoMasImpuesto;
                 }
                 else if (usuario == venta.IDCliente1)
-                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
+                    resultado += (venta.Precio * venta.CantidadDeUnidades);
             }
 
 
@@ -344,12 +344,12 @@ namespace BibliotecaDeClases
             {
                 if (usuario == venta.IDCliente1 && venta.MetodoPago == eMetodoPago.TarjetaDeCredito)
                 {
-                    double resultadoMasImpuesto = (venta.ProductoVendido.Precio * venta.CantidadDeUnidades) * 0.05;
-                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades)+ resultadoMasImpuesto;
+                    double resultadoMasImpuesto = (venta.Precio * venta.CantidadDeUnidades) * 0.05;
+                    resultado += (venta.Precio * venta.CantidadDeUnidades)+ resultadoMasImpuesto;
                 }
                 else if (usuario == venta.IDCliente1)
                 {
-                    resultado += (venta.ProductoVendido.Precio * venta.CantidadDeUnidades);
+                    resultado += (venta.Precio * venta.CantidadDeUnidades);
 
                 }
 

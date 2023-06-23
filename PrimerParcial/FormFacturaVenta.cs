@@ -50,7 +50,7 @@ namespace PrimerParcial
             foreach (Venta producto in listaDeVentas)
             {
 
-                dataGridView1.Rows.Add(producto.ProductoVendido.Nombre, producto.ProductoVendido.Precio, producto.CantidadDeUnidades, producto.ProductoVendido * producto.CantidadDeUnidades);
+                dataGridView1.Rows.Add(producto.Nombre, producto.Precio, producto.CantidadDeUnidades, producto.PrecioTotal);
 
 
 
@@ -70,8 +70,8 @@ namespace PrimerParcial
             {
                 foreach (Venta producto in listaVentas)
                 {
-                    if (producto.ProductoVendido.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
-                        producto.ProductoVendido.Precio == (float)dataGridView1.Rows[n].Cells[1].Value //&&
+                    if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
+                        producto.Precio == (float)dataGridView1.Rows[n].Cells[1].Value //&&
                         /*producto.ProductoVendido == (float)dataGridView1.Rows[n].Cells[2].Value*/)
                     {
 

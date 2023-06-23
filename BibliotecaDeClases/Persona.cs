@@ -28,7 +28,7 @@ namespace BibliotecaDeClases
             string correoElectronico, string contraseña, eTipoDeUsuario tipoDeUsuario)
         {
             this.nombre = Validaciones.CargarPalabra(nombre);
-            this.id = Validaciones.CargaID();
+            this.id = Validaciones.CargaID(nombre);
             this.apellido = Validaciones.CargarPalabra(apellido);
             this.direccion = direccion;
             this.correoElectronico = correoElectronico;
