@@ -83,6 +83,36 @@ namespace PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CSVIMAGEN {
+            get {
+                object obj = ResourceManager.GetObject("CSVIMAGEN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CSVIMAGEN1 {
+            get {
+                object obj = ResourceManager.GetObject("CSVIMAGEN1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CSVIMAGEN2 {
+            get {
+                object obj = ResourceManager.GetObject("CSVIMAGEN2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EditarProducto {
             get {
                 object obj = ResourceManager.GetObject("EditarProducto", resourceCulture);
@@ -106,6 +136,26 @@ namespace PrimerParcial.Properties {
         internal static System.Drawing.Bitmap Heladera {
             get {
                 object obj = ResourceManager.GetObject("Heladera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap JSON {
+            get {
+                object obj = ResourceManager.GetObject("JSON", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap JSONNuevo {
+            get {
+                object obj = ResourceManager.GetObject("JSONNuevo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +206,26 @@ namespace PrimerParcial.Properties {
         internal static System.Drawing.Bitmap vaca {
             get {
                 object obj = ResourceManager.GetObject("vaca", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap XML {
+            get {
+                object obj = ResourceManager.GetObject("XML", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap XMLNuevo {
+            get {
+                object obj = ResourceManager.GetObject("XMLNuevo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

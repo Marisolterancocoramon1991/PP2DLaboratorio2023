@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,19 @@ namespace BibliotecaDeClases
 {
     public class Cliente : Persona
     {
-        protected float saldo;
-        private string numeroDeCuenta;
-      
-       
-        public Cliente(string nombre,
+        public float saldo;
+        protected string numeroDeCuenta;
+
+        public Cliente()
+        {
+        }
+        public Cliente(int id, string nombre,
             string apellido, string direccion, string correoElectronico, string contraseña,
             float saldo, string numeroDeCuenta, eTipoDeUsuario tipoDeUsuario)
-            : base(nombre, apellido, direccion, correoElectronico, contraseña, tipoDeUsuario)
+            : base(id, nombre, apellido, direccion, correoElectronico, contraseña, tipoDeUsuario)
         {
             this.saldo = saldo;
-            
+
             this.numeroDeCuenta = Validaciones.CargarNumero(numeroDeCuenta);
 
         }
@@ -58,7 +61,7 @@ namespace BibliotecaDeClases
             {
                 throw new SaldoInsuficienteException(Saldo, precio);
             }
-            
+
         }
 
 
@@ -70,12 +73,12 @@ namespace BibliotecaDeClases
         /// <param name="clienteID"></param> Objeto
         /// <param name="ID"></param> int 
         /// <returns></returns> bool
-        public static bool operator == (Cliente clienteID, int ID) 
+        public static bool operator ==(Cliente clienteID, int ID)
         {
-        
+
             return clienteID.ID == ID;
-        
-        
+
+
         }
 
         /// <summary>
@@ -107,6 +110,42 @@ namespace BibliotecaDeClases
 
             return sb.ToString();
 
+        }
+        public static List<Cliente> ConvertirDataTableALista(DataTable dataTable)
+        {
+            List<Cliente> listaUsuarios = new List<Cliente>();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+
+
+
+                // (Nombre, Apellido, Direccion, CorreoElectronico, Contraseña, TipoDeUsuarios)
+                Cliente usuario = new Cliente();
+                usuario.id = Convert.ToInt32(dataTable.Rows[i]["id"]);
+                usuario.Nombre = dataTable.Rows[i]["Nombre"].ToString();
+                usuario.Apellido = dataTable.Rows[i]["Apellido"].ToString();
+                usuario.Direccion = dataTable.Rows[i]["Direccion"].ToString();
+                usuario.correoElectronico = dataTable.Rows[i]["CorreoElectronico"].ToString();
+                usuario.contraseña = dataTable.Rows[i]["Contraseña"].ToString();
+                usuario.tipoDeUsuario = (eTipoDeUsuario)Convert.ToInt32(dataTable.Rows[i]["TipoDeUsuario"]);
+                if (float.TryParse(dataTable.Rows[i]["saldo"].ToString(), out float saldo))
+                {
+                    usuario.saldo = saldo;
+                }
+                else
+                {
+                    // Manejar el caso en que el valor no se pueda convertir a float
+                    // Asignar un valor predeterminado o mostrar un mensaje de error
+                    usuario.saldo = 0.0f; // Por ejemplo, se asigna un saldo de 0.0 en caso de conversión fallida
+                }
+
+                usuario.numeroDeCuenta = dataTable.Rows[i]["numeroDeCuenta"].ToString();
+
+                listaUsuarios.Add(usuario);
+            }
+
+            return listaUsuarios;
         }
 
 

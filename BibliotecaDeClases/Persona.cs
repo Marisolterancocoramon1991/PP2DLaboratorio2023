@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BibliotecaDeClases.Persona;
 
 namespace BibliotecaDeClases
 {
-    public  abstract class Persona
+    public class Persona
     {
-        private string nombre;
-        private int id;
-        private string apellido;
-        private string direccion;
-        private string correoElectronico;
-        private string contraseña;
-        private eTipoDeUsuario  tipoDeUsuario;
+        protected string nombre;
+        protected int id;
+        protected string apellido;
+        protected string direccion;
+        protected string correoElectronico;
+        protected string contraseña;
+        protected eTipoDeUsuario  tipoDeUsuario;
 
-        public enum eTipoDeUsuario
-        {
-            Cliente,
-            Vendedor
+       
 
+        public Persona()
+        { 
+        //constructor vacio para conectarse a la base de datos
+        
         }
-
       
-        public Persona(string nombre, string apellido, string direccion,
+        public Persona(int id, string nombre, string apellido, string direccion,
             string correoElectronico, string contraseña, eTipoDeUsuario tipoDeUsuario)
         {
             this.nombre = Validaciones.CargarPalabra(nombre);
-            this.id = Validaciones.CargaID(nombre);
+            this.id = id;
             this.apellido = Validaciones.CargarPalabra(apellido);
             this.direccion = direccion;
             this.correoElectronico = correoElectronico;
@@ -105,6 +107,28 @@ namespace BibliotecaDeClases
             sb.AppendLine($"direccion {direccion}");
 
             return sb.ToString();
+
+        }
+        public virtual List<Persona> ConvertirDataTableALista(DataTable dataTable)
+        {
+            List<Persona> listaUsuarios = new List<Persona>();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+               // (Nombre, Apellido, Direccion, CorreoElectronico" +
+               // "Contraseña,TipoDeUsuarios)
+                Persona usuario = new Persona();
+                usuario.id = Convert.ToInt32(dataTable.Rows[i]["id"]);
+                usuario.Nombre = dataTable.Rows[i]["Nombre"].ToString();
+                usuario.Apellido = dataTable.Rows[i]["Apellido"].ToString();
+                usuario.Direccion = dataTable.Rows[i]["Direccion"].ToString();
+                usuario.correoElectronico = dataTable.Rows[i]["CorreoElectronico"].ToString();
+                usuario.contraseña = dataTable.Rows[i]["Contraseña"].ToString();
+                usuario.tipoDeUsuario = (eTipoDeUsuario)Convert.ToInt32(dataTable.Rows[i]["TipoDeUsuario"]);
+
+                listaUsuarios.Add(usuario);
+            }
+            return listaUsuarios;
+
 
         }
 

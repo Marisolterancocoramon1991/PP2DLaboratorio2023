@@ -86,7 +86,6 @@
             Carniceria.TabIndex = 2;
             Carniceria.TabStop = false;
             Carniceria.Text = "grupoCarniceria";
-            //Carniceria.Enter += Carniceria_Enter;
             // 
             // labelInformacionError
             // 
@@ -128,7 +127,7 @@
             textBoxCorreo.Name = "textBoxCorreo";
             textBoxCorreo.Size = new Size(149, 23);
             textBoxCorreo.TabIndex = 6;
-           // textBoxCorreo.TextChanged += textBoxCorreo_TextChanged;
+            textBoxCorreo.TextChanged += textBoxCorreo_TextChanged;
             // 
             // textBoxContraseña
             // 
@@ -189,7 +188,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TopMost = true;
-   //         Load += FrmLogin_Load;
             Carniceria.ResumeLayout(false);
             Carniceria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMostrar).EndInit();

@@ -5,16 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using static BibliotecaDeClases.Cliente;
 using System.Linq;
+using static BibliotecaDeClases.Persona;
+using System.Data;
 
 namespace BibliotecaDeClases
 {
-    public abstract class Carne
+    public class Carne
     {
         private string nombre = string.Empty;
         private string tipos = string.Empty;
         private float precio;
         private int cantidadEnInventarioKilos;
-
+        public Carne()
+        { 
+            //constructor vacio para la conexion en sql base de datos         
+        }
         public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos) 
         {
             this.Nombre = nombre;
@@ -147,6 +152,27 @@ namespace BibliotecaDeClases
 
 
             return sb.ToString();
+        }
+
+        public static List<Carne> ConvertirDataTableALista(DataTable dataTable)
+        {
+            List<Carne> listaProducto = new List<Carne>();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                // (Nombre, Apellido, Direccion, CorreoElectronico" +
+                // "Contraseña,TipoDeUsuarios)
+                Carne producto = new Carne();
+              
+                producto.Nombre = dataTable.Rows[i]["Nombre"].ToString();
+                producto.Tipo = dataTable.Rows[i]["Tipo"].ToString();              
+                producto.Precio= Convert.ToInt32(dataTable.Rows[i]["Precio"]);
+                producto.cantidadEnInventarioKilos = Convert.ToInt32(dataTable.Rows[i]["CantidadPorKilos"]);
+
+                listaProducto.Add(producto);
+            }
+            return listaProducto;
+
+
         }
     }
 

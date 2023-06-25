@@ -1,4 +1,5 @@
 ﻿
+using CsvHelper;
 using System;
 using System.Collections.Generic;
 using System.Formats.Asn1;
@@ -13,6 +14,7 @@ namespace BibliotecaDeClases
 {
     public class Serializador<T>
     {
+        // el primero la entidad T strin el nombre y la ruta del archivo
         public void SerializarXML(T entidad, string nombreArchivo)
         {
             using (StreamWriter streamWriter = new StreamWriter(nombreArchivo))
@@ -43,7 +45,7 @@ namespace BibliotecaDeClases
             string jsonString = JsonSerializer.Serialize(entidad, options);
             File.WriteAllText(nombreArchivo, jsonString);
         }
-
+        // para leer un archivo el estirn es la ruta del archivo
         public T DeserializarJSON(string nombreArchivo)
         {
             T Objetodeserializado;
@@ -52,6 +54,26 @@ namespace BibliotecaDeClases
             return Objetodeserializado;
         }
 
+        public void SerializarCSV<T>(IEnumerable<T> entidad, string nombreArhcivo)
+        {
+            StreamWriter streamWriter = new StreamWriter(nombreArhcivo);
+            using (var csv = new CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(entidad);
+            }
+            streamWriter.Close();
+        }
 
+        public List<T> DeserializarCSV<T>(string nombreArchivo)
+        {
+            List<T> Objetodeserializado;
+            StreamReader streamReader = new StreamReader(nombreArchivo);
+            using (var csv = new CsvReader(streamReader, CultureInfo.InvariantCulture))
+            {
+                Objetodeserializado = csv.GetRecords<T>().ToList();
+            }
+            streamReader.Close();
+            return Objetodeserializado;
+        }
     }
 }

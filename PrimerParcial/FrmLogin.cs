@@ -12,15 +12,48 @@ namespace PrimerParcial
 {
     public partial class FrmLogin : Form
     {
-        Persona? auxiliar;
-
+        Persona? auxiliar;  
+        List<Cliente> listaCliente;
+        List<Vendedor> listaVendedores;
+        List<Ave> listaAve;
+        List<Cerdo> listaCerdo;
+        List<Vacuno> listaVacuno;
         FormBienvenidaMontoM? formBienvenidaMonto;
         public FrmLogin()
         {
             InitializeComponent();
             string stringVentas = LecturaArchivo.leerArchivosVentas();
             List<string> listaStringVenta = LecturaArchivo.CrearListasStringVentas(stringVentas);
-             Parser.ParsearProductos(listaStringVenta);
+            Parser.ParsearProductos(listaStringVenta);
+            if (listaCliente is null || listaAve is null || listaCerdo is null
+                || listaVacuno is null || listaVendedores is null) 
+            {
+                try
+                {
+                    listaAve = ControllerConexion.ConectarProductosAveDB();
+                    listaCerdo = ControllerConexion.ConectarProductosCerdoDB();
+                    listaVacuno =ControllerConexion.ConectarProductosVacunoDB();
+                    listaCliente = ControllerConexion.ConectarUsuariosClienteDB();
+                    listaVendedores = ControllerConexion.ConectarUsuariosTrabajadorDB();
+                    Negocio.CargaListaClientes(listaCliente);
+                    Negocio.CargarListaTrabajadores(listaVendedores);
+                    Negocio.CargaListaAves(listaAve);
+                    Negocio.CargaListaCerdo(listaCerdo);
+                    Negocio.CargaListaVacuno(listaVacuno);
+
+
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("hubo un error en, ", ex.Message);
+                }
+                
+
+            }
+           
+            
+          
+
         }
         /// <summary>
         /// boton para ocultar la clave
@@ -55,7 +88,7 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
-            auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text);
+            auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text, listaCliente,listaVendedores);
             // Ruta relativa del archivo de sonido
             string relativePath = @".\sonidoAplicacion.wav";
 
@@ -80,16 +113,16 @@ namespace PrimerParcial
             if (auxiliar != null)
             {
 
-                if (auxiliar.TipoDeUsuario == Persona.eTipoDeUsuario.Cliente)
+                if (auxiliar.TipoDeUsuario == eTipoDeUsuario.Cliente)
                 {
                     formBienvenidaMonto = new FormBienvenidaMontoM(auxiliar);
                     formBienvenidaMonto.Show();
                     this.Hide();//oculta esta ventana
                     //  this.Close();
                 }
-                if (auxiliar.TipoDeUsuario == Persona.eTipoDeUsuario.Vendedor)
+                if (auxiliar.TipoDeUsuario == eTipoDeUsuario.Vendedor)
                 {
-                  
+
                     FormAdministracion formAdministracion = new();
                     MessageBox.Show("gracias por tu trabajo");
                     this.Hide();
@@ -104,7 +137,7 @@ namespace PrimerParcial
             }
         }
 
-        
+
         /// <summary>
         /// depende de lo que se elija se auto completa textBox
         /// </summary>
@@ -149,6 +182,9 @@ namespace PrimerParcial
             }
         }
 
- 
+        private void textBoxCorreo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace BibliotecaDeClases
         {
             this.tipoAve= tipoAve;
         }
+        public Ave()
+        {
 
+        }
         public eTipoAve TipoAve { get => tipoAve; set => tipoAve = value ; }
 
 
@@ -34,6 +38,24 @@ namespace BibliotecaDeClases
             return sb.ToString();
 
 
+        }
+        public static List<Ave> ConvertirDataTableAveALista(DataTable dataTable)
+        {
+            List<Ave> listaAves = new List<Ave>();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Ave ave = new Ave();
+                ave.Nombre = dataTable.Rows[i]["Nombre"].ToString();
+                ave.Tipo = dataTable.Rows[i]["Tipo"].ToString();
+                ave.Precio = Convert.ToSingle(dataTable.Rows[i]["Precio"]);
+                ave.CantidadEnInventario = Convert.ToInt32(dataTable.Rows[i]["CantidadEnInventarioKilos"]);
+                ave.TipoAve = (eTipoAve)Convert.ToInt32(dataTable.Rows[i]["TipoAve"]);
+
+                listaAves.Add(ave);
+            }
+
+            return listaAves;
         }
     }
 }
