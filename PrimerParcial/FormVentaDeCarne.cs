@@ -181,6 +181,7 @@ namespace PrimerParcial
                             usuario = usuario - precioAGastar;
                             labelDinero.Text = usuario.Saldo.ToString();
                             EscribirArchivo.ActualizarArchivo(listVentaCliente);
+                            Negocio.CargarGastoCliente(usuario);
                         }
                     }
                     else

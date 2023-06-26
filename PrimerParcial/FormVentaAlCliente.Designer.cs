@@ -59,14 +59,29 @@
             labelGastoTotal = new Label();
             groupBoxModoPago = new GroupBox();
             radioButtonTarjeteDebito = new RadioButton();
-            radioButtonTarjetaC = new RadioButton();
             radioButtonMarcadoPago = new RadioButton();
+            radioButtonTarjetaC = new RadioButton();
             numericUpDown1 = new NumericUpDown();
+            dataGridViewVaca = new DataGridView();
+            Column10 = new DataGridViewTextBoxColumn();
+            Column11 = new DataGridViewTextBoxColumn();
+            Column12 = new DataGridViewTextBoxColumn();
+            Column13 = new DataGridViewTextBoxColumn();
+            Column14 = new DataGridViewTextBoxColumn();
+            dataGridViewCerdo = new DataGridView();
+            Column15 = new DataGridViewTextBoxColumn();
+            Column16 = new DataGridViewTextBoxColumn();
+            Column17 = new DataGridViewTextBoxColumn();
+            Column18 = new DataGridViewTextBoxColumn();
+            Column19 = new DataGridViewTextBoxColumn();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             groupBoxModoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewVaca).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCerdo).BeginInit();
             SuspendLayout();
             // 
             // listBoxClientes
@@ -223,6 +238,7 @@
             labelMostrarSeleccion.Size = new Size(211, 205);
             labelMostrarSeleccion.TabIndex = 12;
             labelMostrarSeleccion.Text = "Mostrar en texto informacion del cliente ";
+            labelMostrarSeleccion.Click += labelMostrarSeleccion_Click;
             // 
             // pictureBox1
             // 
@@ -335,17 +351,6 @@
             radioButtonTarjeteDebito.Text = "Tarjeta Debito";
             radioButtonTarjeteDebito.UseVisualStyleBackColor = true;
             // 
-            // radioButtonTarjetaC
-            // 
-            radioButtonTarjetaC.AutoSize = true;
-            radioButtonTarjetaC.Location = new Point(137, 18);
-            radioButtonTarjetaC.Name = "radioButtonTarjetaC";
-            radioButtonTarjetaC.Size = new Size(117, 19);
-            radioButtonTarjetaC.TabIndex = 0;
-            radioButtonTarjetaC.TabStop = true;
-            radioButtonTarjetaC.Text = "Tarjeta de Credito";
-            radioButtonTarjetaC.UseVisualStyleBackColor = true;
-            // 
             // radioButtonMarcadoPago
             // 
             radioButtonMarcadoPago.AutoSize = true;
@@ -357,6 +362,17 @@
             radioButtonMarcadoPago.Text = "Mercado PG";
             radioButtonMarcadoPago.UseVisualStyleBackColor = true;
             // 
+            // radioButtonTarjetaC
+            // 
+            radioButtonTarjetaC.AutoSize = true;
+            radioButtonTarjetaC.Location = new Point(137, 18);
+            radioButtonTarjetaC.Name = "radioButtonTarjetaC";
+            radioButtonTarjetaC.Size = new Size(117, 19);
+            radioButtonTarjetaC.TabIndex = 0;
+            radioButtonTarjetaC.TabStop = true;
+            radioButtonTarjetaC.Text = "Tarjeta de Credito";
+            radioButtonTarjetaC.UseVisualStyleBackColor = true;
+            // 
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(668, 297);
@@ -364,12 +380,97 @@
             numericUpDown1.Size = new Size(120, 23);
             numericUpDown1.TabIndex = 23;
             // 
+            // dataGridViewVaca
+            // 
+            dataGridViewVaca.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewVaca.Columns.AddRange(new DataGridViewColumn[] { Column10, Column11, Column12, Column13, Column14 });
+            dataGridViewVaca.Location = new Point(446, 34);
+            dataGridViewVaca.Name = "dataGridViewVaca";
+            dataGridViewVaca.RowTemplate.Height = 25;
+            dataGridViewVaca.Size = new Size(331, 182);
+            dataGridViewVaca.TabIndex = 24;
+            dataGridViewVaca.CellContentClick += dataGridViewVaca_CellContentClick;
+            // 
+            // Column10
+            // 
+            Column10.HeaderText = "Nombre";
+            Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            Column11.HeaderText = "Tipo";
+            Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            Column12.HeaderText = "Precio";
+            Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            Column13.HeaderText = "Tipo";
+            Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            Column14.HeaderText = "Cantidad";
+            Column14.Name = "Column14";
+            // 
+            // dataGridViewCerdo
+            // 
+            dataGridViewCerdo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCerdo.Columns.AddRange(new DataGridViewColumn[] { Column15, Column16, Column17, Column18, Column19 });
+            dataGridViewCerdo.Location = new Point(446, 31);
+            dataGridViewCerdo.Name = "dataGridViewCerdo";
+            dataGridViewCerdo.RowTemplate.Height = 25;
+            dataGridViewCerdo.Size = new Size(331, 182);
+            dataGridViewCerdo.TabIndex = 25;
+            dataGridViewCerdo.CellContentClick += dataGridViewCerdo_CellContentClick;
+            // 
+            // Column15
+            // 
+            Column15.HeaderText = "Nombre";
+            Column15.Name = "Column15";
+            // 
+            // Column16
+            // 
+            Column16.HeaderText = "Tipo";
+            Column16.Name = "Column16";
+            // 
+            // Column17
+            // 
+            Column17.HeaderText = "Precio";
+            Column17.Name = "Column17";
+            // 
+            // Column18
+            // 
+            Column18.HeaderText = "Tipo";
+            Column18.Name = "Column18";
+            // 
+            // Column19
+            // 
+            Column19.HeaderText = "Cantidad";
+            Column19.Name = "Column19";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Ninguna", "Ave", "Cerdo", "Vaca" });
+            comboBox1.Location = new Point(644, 5);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 26;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
             // FormVentaAlCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 255, 128);
             ClientSize = new Size(800, 433);
+            Controls.Add(comboBox1);
+            Controls.Add(dataGridViewCerdo);
+            Controls.Add(dataGridViewVaca);
             Controls.Add(numericUpDown1);
             Controls.Add(groupBoxModoPago);
             Controls.Add(labelGastoTotal);
@@ -402,6 +503,8 @@
             groupBoxModoPago.ResumeLayout(false);
             groupBoxModoPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewVaca).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCerdo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -442,5 +545,18 @@
         private RadioButton radioButtonTarjetaC;
         private RadioButton radioButtonTarjeteDebito;
         private NumericUpDown numericUpDown1;
+        private DataGridView dataGridViewVaca;
+        private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn Column11;
+        private DataGridViewTextBoxColumn Column12;
+        private DataGridViewTextBoxColumn Column13;
+        private DataGridViewTextBoxColumn Column14;
+        private DataGridView dataGridViewCerdo;
+        private DataGridViewTextBoxColumn Column15;
+        private DataGridViewTextBoxColumn Column16;
+        private DataGridViewTextBoxColumn Column17;
+        private DataGridViewTextBoxColumn Column18;
+        private DataGridViewTextBoxColumn Column19;
+        private ComboBox comboBox1;
     }
 }

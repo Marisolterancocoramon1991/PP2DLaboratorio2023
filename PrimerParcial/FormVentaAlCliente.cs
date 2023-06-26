@@ -11,13 +11,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Data.SqlClient;
+using System.Runtime.Intrinsics.X86;
 
 namespace PrimerParcial
 {
     public partial class FormVentaAlCliente : Form
     {
         List<Carne> ListaCarne;
-        List<Persona> listaUsuarios;
+        List<Cliente> listaCliente;
+        List<Ave> listaAve;
+        List<Cerdo> listaCerdo;
+        List<Vacuno> listaVacuno;
         List<Venta> ventaTotal;
         Carne productoSeleccinadoDataUno;
         Carne productoSeleccinadoDataDos;
@@ -37,7 +41,7 @@ namespace PrimerParcial
         {
             if (listBoxClientes.SelectedItem != null)
             {
-                foreach (Persona usuario in listaUsuarios)
+                foreach (Persona usuario in listaCliente)
                 {
                     if (usuario is Cliente)
                     {
@@ -64,11 +68,18 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void FormVentaAlCliente_Load(object sender, EventArgs e)
         {
-            listaUsuarios = Negocio.RetornaListaUsuarios();
-            ListaCarne = Negocio.RetornarProductos();
+            listaCliente = Negocio.RetornaListaClientes();
+            listaAve = Negocio.RetornarListaAve();
+            listaCerdo = Negocio.RetornarListaCerdo();
+            listaVacuno = Negocio.RetornarListaVacuno();
             CargaListaBoxClientes();
-            CargarDataGridView(ListaCarne);
+            CargarDataGridView(listaAve);
+            CargarDataGridView(listaCerdo);
+            CargarDataGridView(listaVacuno);
             ventaTotal = Negocio.RetornarListaDeVentas();
+            dataGridViewVaca.Visible = false;
+            dataGridViewCerdo.Visible = false;
+            dataGridView1.Visible = false;
         }
 
         /// <summary>
@@ -112,7 +123,7 @@ namespace PrimerParcial
         {
             listBoxClientes.FormattingEnabled = true;
             // listBoxClientes.Items.AddRange(listaUsuarios.ToArray());
-            foreach (Persona Usuario in listaUsuarios)
+            foreach (Persona Usuario in listaCliente)
             {
                 if (Usuario is Cliente)
                 {
@@ -165,7 +176,7 @@ namespace PrimerParcial
 
                         if (confirmarVenta == DialogResult.Yes)
                         {
-                          eMetodoPago metodoPago;
+                            eMetodoPago metodoPago;
 
                             if (radioButtonMarcadoPago.Checked)
                             {
@@ -184,19 +195,20 @@ namespace PrimerParcial
                                 productoSeleccinadoDataUno.Precio, precioAGastar, metodoPago, (int)numericUpDown1.Value, clienteSeleccionado.ID,
                                 clienteSeleccionado.Nombre);
                             Negocio.CargarVenta(venta);
-                          /*  productoSeleccioando.Nombre,productoSeleccioando.Tipo,
-                                productoSeleccioando.Precio, precioAGastar, metodoPago, 
-                                (int)numericUpDown1.Value, usuario.ID, usuario.Nombre*/
+                            /*  productoSeleccioando.Nombre,productoSeleccioando.Tipo,
+                                  productoSeleccioando.Precio, precioAGastar, metodoPago, 
+                                  (int)numericUpDown1.Value, usuario.ID, usuario.Nombre*/
 
-                            
+
                             clienteSeleccionado = clienteSeleccionado - precioAGastar;
 
                             CargarDataGridView2();
-                            listaUsuarios = Negocio.RetornaListaUsuarios();
+                            listaCliente = Negocio.RetornaListaClientes();
                             listBoxClientes.Items.Clear();
                             CargaListaBoxClientes();
                             labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();
                             EscribirArchivo.ActualizarArchivo(ventaTotal);
+                            Negocio.CargarGastoCliente(clienteSeleccionado);
                         }
                     }
                     else
@@ -208,9 +220,9 @@ namespace PrimerParcial
                 {
                     MessageBox.Show($"{ex.Message}. No se pudo validar con el método {ex.TargetSite?.Name}, por favor agregar saldo...");
                 }
-                
-               
-                
+
+
+
             }
         }
 
@@ -236,19 +248,41 @@ namespace PrimerParcial
             }
 
         }
+        public void CargarDataGridView(List<Vacuno> listaDeProductos)
+        {
+            dataGridViewVaca.Rows.Clear();
+            foreach (Vacuno producto in listaDeProductos)
+            {
+                dataGridViewVaca.Rows.Add(producto.Nombre, producto.Tipo, producto.Precio, producto.RazasDeVacas, producto.CantidadEnInventario);
+            }
+        }
+
+        public void CargarDataGridView(List<Cerdo> listaDeProductos)
+        {
+            dataGridViewCerdo.Rows.Clear();
+            foreach (Cerdo producto in listaDeProductos)
+            {
+                dataGridViewCerdo.Rows.Add(producto.Nombre, producto.Tipo, producto.Precio, producto.RazasDeCerdo, producto.CantidadEnInventario);
+            }
+        }
 
 
         /// <summary>
         /// carga la data necesaria en el DataGridView
         /// </summary>
         /// <param name="listaDeProductos"></param>
-        public void CargarDataGridView(List<Carne> listaDeProductos)
+        public void CargarDataGridView(List<Ave> listaDeProductos)
         {
 
             dataGridView1.Rows.Clear();
-            foreach (Carne producto in listaDeProductos)
+            foreach (Ave producto in listaDeProductos)
             {
-                if (producto is Cerdo)
+
+                dataGridView1.Rows.Add(producto.Nombre, producto.Tipo, producto.Precio, producto.TipoAve, producto.CantidadEnInventario);
+
+
+
+                /*if (producto is Cerdo)
                 {
                     Cerdo cerdo = (Cerdo)producto;
                     dataGridView1.Rows.Add(cerdo.Nombre, cerdo.Tipo, cerdo.Precio, cerdo.RazasDeCerdo, cerdo.CantidadEnInventario);
@@ -262,7 +296,7 @@ namespace PrimerParcial
                 {
                     Vacuno vaca = (Vacuno)producto;
                     dataGridView1.Rows.Add(vaca.Nombre, vaca.Tipo, vaca.Precio, vaca.RazasDeVacas, vaca.CantidadEnInventario);
-                }
+                }*/
             }
         }
         /// <summary>
@@ -304,7 +338,7 @@ namespace PrimerParcial
 
             if (n != -1)
             {
-                foreach (Carne producto in ListaCarne)
+                foreach (Ave producto in listaAve)
                 {
                     if (producto.Nombre == dataGridView1.Rows[n].Cells[0].Value.ToString() &&
                         producto.Tipo == dataGridView1.Rows[n].Cells[1].Value.ToString() &&
@@ -312,11 +346,97 @@ namespace PrimerParcial
                     {
                         productoSeleccinadoDataUno = producto;
 
+                        MessageBox.Show($"{productoSeleccinadoDataUno.MostrarDetallesDeProducto()}", "Producto seleccionado");
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void labelMostrarSeleccion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 1:
+                    dataGridView1.Visible = true;
+                    dataGridViewCerdo.Visible = false;
+                    dataGridViewVaca.Visible = false;
+
+                    break;
+                case 2:
+                    dataGridView1.Visible = false;
+                    dataGridViewCerdo.Visible = true;
+                    dataGridViewVaca.Visible = false;
+
+                    break;
+                case 3:
+                    dataGridView1.Visible = false;
+                    dataGridViewCerdo.Visible = false;
+                    dataGridViewVaca.Visible = true;
+
+                    break;
+
+                default:
+                    dataGridView1.Visible = false;
+                    dataGridViewCerdo.Visible = false;
+                    dataGridViewVaca.Visible = false;
+
+
+                    break;
+
+            }
+        }
+
+
+
+        private void dataGridViewCerdo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int n = e.RowIndex;
+            MessageBox.Show("he llegado");
+            if (n != -1)
+            {
+                foreach (Cerdo producto in listaCerdo)
+                {
+                    if (producto.Nombre == dataGridViewCerdo.Rows[n].Cells[0].Value.ToString() &&
+                        producto.Tipo == dataGridViewCerdo.Rows[n].Cells[1].Value.ToString() &&
+                        producto.Precio == (float)dataGridViewCerdo.Rows[n].Cells[2].Value)
+                    {
+                        productoSeleccinadoDataUno = producto;
+                        MessageBox.Show($"{productoSeleccinadoDataUno.MostrarDetallesDeProducto()}", "Producto seleccionado");
 
                         break;
                     }
                 }
             }
+
+        }
+
+
+        private void dataGridViewVaca_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int n = e.RowIndex;
+
+            if (n != -1)
+            {
+                foreach (Vacuno producto in listaVacuno)
+                {
+                    if (producto.Nombre == dataGridViewVaca.Rows[n].Cells[0].Value.ToString() &&
+                        producto.Tipo == dataGridViewVaca.Rows[n].Cells[1].Value.ToString() &&
+                        producto.Precio == (float)dataGridViewVaca.Rows[n].Cells[2].Value)
+                    {
+                        productoSeleccinadoDataUno = producto;
+                        MessageBox.Show($"{productoSeleccinadoDataUno.MostrarDetallesDeProducto()}", "Producto seleccionado");
+
+                        break;
+                    }
+                }
+            }
+
         }
     }
 }

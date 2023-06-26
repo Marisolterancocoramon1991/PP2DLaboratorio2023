@@ -347,6 +347,14 @@ namespace BibliotecaDeClases
             return resultado;
         }
 
+        public static void CargarGastoCliente(Cliente cliente) 
+        {
+            HanblerCliente usuariosHandler = new HanblerCliente();
+            usuariosHandler.Modificar(cliente);
+            Negocio.CargaListaClientes(usuariosHandler.Leer());
+
+        }
+
         public static double GananciaTotal(List<Venta> listaVenta, Cliente usuario)
         {
             double resultado = 0;
