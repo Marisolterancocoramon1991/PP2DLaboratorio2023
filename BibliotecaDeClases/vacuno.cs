@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,7 +54,7 @@ namespace BibliotecaDeClases
                 vacuno.CantidadEnInventario = Convert.ToInt32(dataTable.Rows[i]["CantidadEnInventarioKilos"]);
                 vacuno.RazasDeVacas = (eRazasDeVacas)Convert.ToInt32(dataTable.Rows[i]["RazaDeVacas"]);
                 vacuno.Categoria = (eCategoria)Convert.ToInt32(dataTable.Rows[i]["Categoria"]);
-
+                vacuno.id= Convert.ToInt32(dataTable.Rows[i]["Id"]);
                 listaVacas.Add(vacuno);
             }
 

@@ -351,6 +351,7 @@
             Name = "FormCreacionNuevoProducto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCreacionNuevoProducto";
+            Load += FormCreacionNuevoProducto_Load;
             groupBoxAve.ResumeLayout(false);
             groupBoxAve.PerformLayout();
             groupBoxCarneVacuno.ResumeLayout(false);

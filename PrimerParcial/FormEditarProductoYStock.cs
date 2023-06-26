@@ -132,7 +132,7 @@ namespace PrimerParcial
                             {
                                 productoSeleccioando = producto;
                                 indice = producto.Id;
-                                MessageBox.Show("eleccioon");
+                                MessageBox.Show($"eleccioon {producto.Id}");
                                 break;
                             }
                         }
@@ -196,7 +196,7 @@ namespace PrimerParcial
                             {
                                 productoSeleccioando = producto;
                                 indice = producto.Id;
-                                MessageBox.Show("eleccioon");
+                                MessageBox.Show($"eleccioon {indice}");
                                 break;
                             }
                         }
@@ -280,7 +280,7 @@ namespace PrimerParcial
                             {
                                 productoSeleccioando = producto;
                                 indice = producto.Id;
-                                MessageBox.Show("eleccioon");
+                                MessageBox.Show($"eleccioon {producto.MostrarCarnes()}");
                                 break;
                             }
                         }
@@ -422,71 +422,207 @@ namespace PrimerParcial
         /// <summary>
         /// edita el producto depende de lo generado
         /// </summary>
+        /*    private void EditarProducto()
+            {
+                // Carne nuevoProducto = null;
+                float precio;
+                //       int cantidadEnInventarioKilos;
+
+                if (productoSeleccioando is not null && (comboBoxTipoProducto.Text == "Ave" ||
+                    comboBoxTipoProducto.Text == "Cerdo" || comboBoxTipoProducto.Text == "Vacuno"))
+                {
+                    if (Validaciones.EsNombre(textBoxNombre.Text))
+                        productoSeleccioando.Nombre = textBoxNombre.Text;
+                    if (Validaciones.EsNombre(textBoxTipo.Text))
+                        productoSeleccioando.Tipo = textBoxTipo.Text;
+                    if ((float.TryParse(textBoxPrecio.Text, out precio)))
+                    switch (comboBoxTipoProducto.SelectedIndex)
+                    {
+                        case 1:
+
+                            if (productoSeleccioando is Ave)
+                            {
+                                List<Ave> listaControlAve = new List<Ave>();
+
+                                Ave productoModificarAve= new Ave(indice, textBoxNombre.Text,textBoxTipo.Text,precio, productoSeleccioando.CantidadEnInventario,
+                                    (eTipoAve)comboBoxTipoAve.SelectedItem);
+                                HandlerAve handlerAve = new HandlerAve();
+                                handlerAve.Modificar(productoModificarAve);
+                                Negocio.CargaListaAves(handlerAve.Leer());
+                                MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
+                                $" {productoModificarAve.MostrarDetallesDeProducto()}");
+
+
+                            }
+                            break;
+                        case 2:
+                            if (productoSeleccioando is Cerdo)
+                            {
+                                Cerdo ProductoC = (Cerdo)productoSeleccioando;
+                                ProductoC.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
+                                handlerCerdo handlerCerdo = new handlerCerdo();
+                                handlerCerdo.Modificar(ProductoC);
+                                Negocio.CargaListaCerdo(handlerCerdo.Leer());
+                                MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
+                                      $" {ProductoC.MostrarDetallesDeProducto()}");
+                            }
+                            break;
+                        case 3:
+                            if (productoSeleccioando is Vacuno)
+                            {
+                                Vacuno ProductoV = (Vacuno)productoSeleccioando;
+                                ProductoV.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
+                                HanblerVacuno hanblerVacuno = new HanblerVacuno();
+                                hanblerVacuno.Modificar(ProductoV);
+                                Negocio.CargaListaVacuno(hanblerVacuno.Leer());
+                                MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
+                                $" {ProductoV.MostrarDetallesDeProducto()}");
+                            }
+                            break;
+
+                    }
+
+                }
+                else
+                    MessageBox.Show("no ha seleccionado ningun producto para editar");
+            }*/
+        /*   private void EditarProducto()
+           {
+               float precio;
+
+               if (productoSeleccioando != null && (comboBoxTipoProducto.Text == "Ave" ||
+                   comboBoxTipoProducto.Text == "Cerdo" || comboBoxTipoProducto.Text == "Vacuno"))
+               {
+                   if (Validaciones.EsNombre(textBoxNombre.Text))
+                       productoSeleccioando.Nombre = textBoxNombre.Text;
+                   if (Validaciones.EsNombre(textBoxTipo.Text))
+                       productoSeleccioando.Tipo = textBoxTipo.Text;
+                   if (float.TryParse(textBoxPrecio.Text, out precio))
+                   {
+                       switch (comboBoxTipoProducto.SelectedIndex)
+                       {
+                           case 1:
+                               if (productoSeleccioando is Ave)
+                               {
+
+                                   List<Ave> lisAve = Negocio.RetornarListaAve();
+                                   Ave ave = new Ave(productoSeleccioando.Id, textBoxNombre.Text, textBoxTipo.Text, precio, 
+                                       productoSeleccioando.CantidadEnInventario, (eTipoAve)comboBoxTipoAve.SelectedItem);
+
+                                   HandlerAve handlerAve = new HandlerAve();
+                                   handlerAve.Modificar(ave);
+                                   Negocio.CargaListaAves(handlerAve.Leer());
+                                   MessageBox.Show($"Ha editado correctamente el producto:\n" +
+                                       $"{ave.MostrarDetallesDeProducto()}");
+                               }
+                               break;
+                           case 2:
+                               if (productoSeleccioando is Cerdo)
+                               {
+                                   Cerdo productoModificarCerdo = (Cerdo)productoSeleccioando;
+                                   productoModificarCerdo.Precio = precio;
+                                   productoModificarCerdo.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
+                                   handlerCerdo handlerCerdo = new handlerCerdo();
+                                   handlerCerdo.Modificar(productoModificarCerdo);
+                                   Negocio.CargaListaCerdo(handlerCerdo.Leer());
+                                   MessageBox.Show($"Ha editado correctamente el producto:\n" +
+                                       $"{productoModificarCerdo.MostrarDetallesDeProducto()}");
+                               }
+                               break;
+                           case 3:
+                               if (productoSeleccioando is Vacuno)
+                               {
+                                   Vacuno productoModificarVacuno = (Vacuno)productoSeleccioando;
+                                   productoModificarVacuno.Precio = precio;
+                                   productoModificarVacuno.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
+                                   HanblerVacuno handlerVacuno = new HanblerVacuno();
+                                   handlerVacuno.Modificar(productoModificarVacuno);
+                                   Negocio.CargaListaVacuno(handlerVacuno.Leer());
+                                   MessageBox.Show($"Ha editado correctamente el producto:\n" +
+                                       $"{productoModificarVacuno.MostrarDetallesDeProducto()}");
+                               }
+                               break;
+                       }
+                   }
+                   else
+                   {
+                       MessageBox.Show("El precio ingresado no es válido.");
+                   }
+               }
+               else
+               {
+                   MessageBox.Show("No ha seleccionado ningún producto para editar.");
+               }
+           }*/
         private void EditarProducto()
         {
-            // Carne nuevoProducto = null;
             float precio;
-            //       int cantidadEnInventarioKilos;
 
-            if (productoSeleccioando is not null && (comboBoxTipoProducto.Text == "Ave" ||
-                comboBoxTipoProducto.Text == "Cerdo" || comboBoxTipoProducto.Text == "Vacuno"))
+            if (productoSeleccioando != null && (comboBoxTipoProducto.Text == "Ave" || comboBoxTipoProducto.Text == "Cerdo" || comboBoxTipoProducto.Text == "Vacuno"))
             {
                 if (Validaciones.EsNombre(textBoxNombre.Text))
                     productoSeleccioando.Nombre = textBoxNombre.Text;
                 if (Validaciones.EsNombre(textBoxTipo.Text))
                     productoSeleccioando.Tipo = textBoxTipo.Text;
-                if ((float.TryParse(textBoxPrecio.Text, out precio)))
-                    productoSeleccioando.Precio = precio;
-                switch (comboBoxTipoProducto.SelectedIndex)
+                if (float.TryParse(textBoxPrecio.Text, out precio))
                 {
-                    case 1:
+                    switch (comboBoxTipoProducto.SelectedIndex)
+                    {
+                        case 1:
+                            if (productoSeleccioando is Ave)
+                            {
+                                Ave ave = (Ave)productoSeleccioando;
+                                ave.Precio = precio;
+                                ave.TipoAve = (eTipoAve)comboBoxTipoAve.SelectedItem;
 
-                        if (productoSeleccioando is Ave)
-                        {
-                            List<Ave> listaControlAve = new List<Ave>();
+                                HandlerAve handlerAve = new HandlerAve();
+                                handlerAve.Modificar(ave);
+                                Negocio.CargaListaAves(handlerAve.Leer());
+                                MessageBox.Show($"Ha editado correctamente el producto:\n" +
+                                    $"{ave.MostrarDetallesDeProducto()}");
+                            }
+                            break;
+                        case 2:
+                            if (productoSeleccioando is Cerdo)
+                            {
+                                Cerdo cerdo = (Cerdo)productoSeleccioando;
+                                cerdo.Precio = precio;
+                                cerdo.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
 
-                            Ave productoModificarAve= new Ave(indice, textBoxNombre.Text,textBoxTipo.Text,precio, productoSeleccioando.CantidadEnInventario,
-                                (eTipoAve)comboBoxTipoAve.SelectedItem);
-                            HandlerAve handlerAve = new HandlerAve();
-                            handlerAve.Modificar(productoModificarAve);
-                            Negocio.CargaListaAves(handlerAve.Leer());
-                            MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
-                            $" {productoModificarAve.MostrarDetallesDeProducto()}");
-                            
+                                handlerCerdo handlerCerdo = new handlerCerdo();
+                                handlerCerdo.Modificar(cerdo);
+                                Negocio.CargaListaCerdo(handlerCerdo.Leer());
+                                MessageBox.Show($"Ha editado correctamente el producto:\n" +
+                                    $"{cerdo.MostrarDetallesDeProducto()}");
+                            }
+                            break;
+                        case 3:
+                            if (productoSeleccioando is Vacuno)
+                            {
+                                Vacuno vacuno = (Vacuno)productoSeleccioando;
+                                vacuno.Precio = precio;
+                                vacuno.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
 
-                        }
-                        break;
-                    case 2:
-                        if (productoSeleccioando is Cerdo)
-                        {
-                            Cerdo ProductoC = (Cerdo)productoSeleccioando;
-                            ProductoC.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
-                            handlerCerdo handlerCerdo = new handlerCerdo();
-                            handlerCerdo.Modificar(ProductoC);
-                            Negocio.CargaListaCerdo(handlerCerdo.Leer());
-                            MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
-                                  $" {ProductoC.MostrarDetallesDeProducto()}");
-                        }
-                        break;
-                    case 3:
-                        if (productoSeleccioando is Vacuno)
-                        {
-                            Vacuno ProductoV = (Vacuno)productoSeleccioando;
-                            ProductoV.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
-                            HanblerVacuno hanblerVacuno = new HanblerVacuno();
-                            hanblerVacuno.Modificar(ProductoV);
-                            Negocio.CargaListaVacuno(hanblerVacuno.Leer());
-                            MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
-                            $" {ProductoV.MostrarDetallesDeProducto()}");
-                        }
-                        break;
-
+                                HanblerVacuno handlerVacuno = new HanblerVacuno();
+                                handlerVacuno.Modificar(vacuno);
+                                Negocio.CargaListaVacuno(handlerVacuno.Leer());
+                                MessageBox.Show($"Ha editado correctamente el producto:\n" +
+                                    $"{vacuno.MostrarDetallesDeProducto()}");
+                            }
+                            break;
+                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("El precio ingresado no es válido.");
+                }
             }
             else
-                MessageBox.Show("no ha seleccionado ningun producto para editar");
+            {
+                MessageBox.Show("No ha seleccionado ningún producto para editar.");
+            }
         }
+
 
 
         /// <summary>
@@ -508,15 +644,15 @@ namespace PrimerParcial
         /// <param name="e"></param> informacion adicional del evento
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            EditarProducto();
-            /*try
-            {
 
+            try
+            {
+                EditarProducto();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("algo ha sucedido con la modificacion del producto");
-            }*/
+            }
 
         }
 
@@ -551,6 +687,16 @@ namespace PrimerParcial
             FormAdministracion formAdministracion = new();
             this.Hide();
             formAdministracion.Show();
+        }
+
+        private void groupBoxCerdo_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxVacuno_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -161,7 +161,7 @@ namespace PrimerParcial
                 switch (comboBox1.SelectedIndex)
                 {
                     case 1:
-                        Ave nuevoProductoAve = new Ave(0, textBoxNombre.Text, textBoxTipoCarne.Text,
+                        Ave nuevoProductoAve = new Ave(textBoxNombre.Text, textBoxTipoCarne.Text,
                             precio, cantidadEnInventarioKilos, (eTipoAve)comboBoxTipoAve.SelectedItem);
                         HandlerAve handlerAve = new HandlerAve();
                         handlerAve.Add(nuevoProductoAve);
@@ -227,6 +227,11 @@ namespace PrimerParcial
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCreacionNuevoProducto_Load(object sender, EventArgs e)
         {
 
         }

@@ -64,6 +64,7 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@RazaDeVacas", entidad.RazasDeVacas); // Convertir la enumeración a entero
                 comando.Parameters.AddWithValue("@Categoria", entidad.Categoria); // Convertir la enumeración a entero
                 comando.Parameters.AddWithValue("@Nombre", entidad.Nombre);
+                comando.Parameters.AddWithValue("@Id", entidad.Id);
 
                 EjecutarNonQuery(comando);
             }

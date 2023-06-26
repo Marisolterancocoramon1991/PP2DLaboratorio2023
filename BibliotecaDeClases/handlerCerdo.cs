@@ -22,6 +22,7 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@Precio", entidad.Precio);
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
                 comando.Parameters.AddWithValue("@RazasDeCerdo", entidad.RazasDeCerdo);
+           
 
                 EjecutarNonQuery(comando);
             }
@@ -37,6 +38,7 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
                 comando.Parameters.AddWithValue("@RazasDeCerdo", (int)entidad.RazasDeCerdo);
                 comando.Parameters.AddWithValue("@Nombre", entidad.Nombre);
+                comando.Parameters.AddWithValue("@Id", entidad.Id);
 
                 EjecutarNonQuery(comando);
             }

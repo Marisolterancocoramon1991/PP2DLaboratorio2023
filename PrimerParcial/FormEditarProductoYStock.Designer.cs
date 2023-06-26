@@ -39,10 +39,6 @@
             textBoxNombre = new TextBox();
             textBoxPrecio = new TextBox();
             textBoxTipo = new TextBox();
-            groupBoxAve = new GroupBox();
-            comboBoxTipoAve = new ComboBox();
-            groupBoxCerdo = new GroupBox();
-            comboBoxRCerdo = new ComboBox();
             groupBoxVacuno = new GroupBox();
             comboBox4 = new ComboBox();
             comboBoxCategoria = new ComboBox();
@@ -52,29 +48,33 @@
             TipoVacuno = new DataGridViewTextBoxColumn();
             PrecioVacuno = new DataGridViewTextBoxColumn();
             RazaVacuno = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            Nombre = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            TipoCerdo = new DataGridViewTextBoxColumn();
-            RazaCerdo = new DataGridViewTextBoxColumn();
+            groupBoxCerdo = new GroupBox();
+            groupBoxAve = new GroupBox();
+            comboBoxTipoAve = new ComboBox();
             labelTipoAve = new Label();
             dataGridView1 = new DataGridView();
             NombreAve = new DataGridViewTextBoxColumn();
             TipoAve = new DataGridViewTextBoxColumn();
             PrecioAve = new DataGridViewTextBoxColumn();
             CategoriaAve = new DataGridViewTextBoxColumn();
+            comboBoxRCerdo = new ComboBox();
+            dataGridView2 = new DataGridView();
+            Nombre = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            TipoCerdo = new DataGridViewTextBoxColumn();
+            RazaCerdo = new DataGridViewTextBoxColumn();
             comboBoxTipoProducto = new ComboBox();
             labelNombre = new Label();
             label3 = new Label();
             textBoxCantidad = new TextBox();
             buttonRegresar = new Button();
             pictureBox1 = new PictureBox();
-            groupBoxAve.SuspendLayout();
-            groupBoxCerdo.SuspendLayout();
             groupBoxVacuno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVacuno).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            groupBoxCerdo.SuspendLayout();
+            groupBoxAve.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -177,47 +177,6 @@
             textBoxTipo.Size = new Size(100, 23);
             textBoxTipo.TabIndex = 11;
             // 
-            // groupBoxAve
-            // 
-            groupBoxAve.Controls.Add(comboBoxTipoAve);
-            groupBoxAve.Controls.Add(groupBoxCerdo);
-            groupBoxAve.Controls.Add(labelTipoAve);
-            groupBoxAve.Controls.Add(dataGridView1);
-            groupBoxAve.Location = new Point(164, 16);
-            groupBoxAve.Name = "groupBoxAve";
-            groupBoxAve.Size = new Size(520, 277);
-            groupBoxAve.TabIndex = 13;
-            groupBoxAve.TabStop = false;
-            groupBoxAve.Text = "AVE";
-            // 
-            // comboBoxTipoAve
-            // 
-            comboBoxTipoAve.FormattingEnabled = true;
-            comboBoxTipoAve.Location = new Point(339, 89);
-            comboBoxTipoAve.Name = "comboBoxTipoAve";
-            comboBoxTipoAve.Size = new Size(121, 23);
-            comboBoxTipoAve.TabIndex = 2;
-            // 
-            // groupBoxCerdo
-            // 
-            groupBoxCerdo.Controls.Add(comboBoxRCerdo);
-            groupBoxCerdo.Controls.Add(dataGridView2);
-            groupBoxCerdo.Controls.Add(labelRazaCerdo);
-            groupBoxCerdo.Location = new Point(0, 0);
-            groupBoxCerdo.Name = "groupBoxCerdo";
-            groupBoxCerdo.Size = new Size(522, 277);
-            groupBoxCerdo.TabIndex = 15;
-            groupBoxCerdo.TabStop = false;
-            groupBoxCerdo.Text = "CERDO";
-            // 
-            // comboBoxRCerdo
-            // 
-            comboBoxRCerdo.FormattingEnabled = true;
-            comboBoxRCerdo.Location = new Point(367, 138);
-            comboBoxRCerdo.Name = "comboBoxRCerdo";
-            comboBoxRCerdo.Size = new Size(121, 23);
-            comboBoxRCerdo.TabIndex = 1;
-            // 
             // groupBoxVacuno
             // 
             groupBoxVacuno.Controls.Add(comboBox4);
@@ -226,12 +185,13 @@
             groupBoxVacuno.Controls.Add(dataGridViewVacuno);
             groupBoxVacuno.Controls.Add(labelRazaDelVacuno);
             groupBoxVacuno.Controls.Add(labelCategoria);
-            groupBoxVacuno.Location = new Point(159, 16);
+            groupBoxVacuno.Location = new Point(174, 18);
             groupBoxVacuno.Name = "groupBoxVacuno";
             groupBoxVacuno.Size = new Size(522, 277);
             groupBoxVacuno.TabIndex = 16;
             groupBoxVacuno.TabStop = false;
             groupBoxVacuno.Text = "VACUNO";
+            groupBoxVacuno.Enter += groupBoxVacuno_Enter;
             // 
             // comboBox4
             // 
@@ -288,36 +248,38 @@
             RazaVacuno.HeaderText = "Raza";
             RazaVacuno.Name = "RazaVacuno";
             // 
-            // dataGridView2
+            // groupBoxCerdo
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Nombre, Precio, TipoCerdo, RazaCerdo });
-            dataGridView2.Location = new Point(49, 31);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(262, 222);
-            dataGridView2.TabIndex = 0;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            groupBoxCerdo.Controls.Add(comboBoxRCerdo);
+            groupBoxCerdo.Controls.Add(dataGridView2);
+            groupBoxCerdo.Controls.Add(labelRazaCerdo);
+            groupBoxCerdo.Location = new Point(176, 16);
+            groupBoxCerdo.Name = "groupBoxCerdo";
+            groupBoxCerdo.Size = new Size(520, 277);
+            groupBoxCerdo.TabIndex = 15;
+            groupBoxCerdo.TabStop = false;
+            groupBoxCerdo.Text = "CERDO";
+            groupBoxCerdo.Enter += groupBoxCerdo_Enter;
             // 
-            // Nombre
+            // groupBoxAve
             // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
+            groupBoxAve.Controls.Add(comboBoxTipoAve);
+            groupBoxAve.Controls.Add(labelTipoAve);
+            groupBoxAve.Controls.Add(dataGridView1);
+            groupBoxAve.Location = new Point(173, 18);
+            groupBoxAve.Name = "groupBoxAve";
+            groupBoxAve.Size = new Size(520, 277);
+            groupBoxAve.TabIndex = 13;
+            groupBoxAve.TabStop = false;
+            groupBoxAve.Text = "AVE";
             // 
-            // Precio
+            // comboBoxTipoAve
             // 
-            Precio.HeaderText = "Precio";
-            Precio.Name = "Precio";
-            // 
-            // TipoCerdo
-            // 
-            TipoCerdo.HeaderText = "Tipo";
-            TipoCerdo.Name = "TipoCerdo";
-            // 
-            // RazaCerdo
-            // 
-            RazaCerdo.HeaderText = "Raza";
-            RazaCerdo.Name = "RazaCerdo";
+            comboBoxTipoAve.FormattingEnabled = true;
+            comboBoxTipoAve.Location = new Point(339, 89);
+            comboBoxTipoAve.Name = "comboBoxTipoAve";
+            comboBoxTipoAve.Size = new Size(121, 23);
+            comboBoxTipoAve.TabIndex = 2;
             // 
             // labelTipoAve
             // 
@@ -358,6 +320,45 @@
             // 
             CategoriaAve.HeaderText = "Categoria";
             CategoriaAve.Name = "CategoriaAve";
+            // 
+            // comboBoxRCerdo
+            // 
+            comboBoxRCerdo.FormattingEnabled = true;
+            comboBoxRCerdo.Location = new Point(367, 138);
+            comboBoxRCerdo.Name = "comboBoxRCerdo";
+            comboBoxRCerdo.Size = new Size(121, 23);
+            comboBoxRCerdo.TabIndex = 1;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Nombre, Precio, TipoCerdo, RazaCerdo });
+            dataGridView2.Location = new Point(49, 31);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(262, 222);
+            dataGridView2.TabIndex = 0;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.Name = "Precio";
+            // 
+            // TipoCerdo
+            // 
+            TipoCerdo.HeaderText = "Tipo";
+            TipoCerdo.Name = "TipoCerdo";
+            // 
+            // RazaCerdo
+            // 
+            RazaCerdo.HeaderText = "Raza";
+            RazaCerdo.Name = "RazaCerdo";
             // 
             // comboBoxTipoProducto
             // 
@@ -424,10 +425,9 @@
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(pictureBox1);
-            Controls.Add(groupBoxVacuno);
             Controls.Add(buttonRegresar);
-            Controls.Add(groupBoxAve);
             Controls.Add(textBoxCantidad);
+            Controls.Add(groupBoxAve);
             Controls.Add(label3);
             Controls.Add(labelNombre);
             Controls.Add(comboBoxTipoProducto);
@@ -439,19 +439,21 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonCantidad);
             Controls.Add(buttonlogearte);
+            Controls.Add(groupBoxCerdo);
+            Controls.Add(groupBoxVacuno);
             Name = "FormEditarProductoYStock";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormEditarProductoYStock";
             Load += FormEditarProductoYStock_Load;
-            groupBoxAve.ResumeLayout(false);
-            groupBoxAve.PerformLayout();
-            groupBoxCerdo.ResumeLayout(false);
-            groupBoxCerdo.PerformLayout();
             groupBoxVacuno.ResumeLayout(false);
             groupBoxVacuno.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVacuno).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            groupBoxCerdo.ResumeLayout(false);
+            groupBoxCerdo.PerformLayout();
+            groupBoxAve.ResumeLayout(false);
+            groupBoxAve.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +49,7 @@ namespace BibliotecaDeClases
                 cerdo.Precio = Convert.ToSingle(dataTable.Rows[i]["Precio"]);
                 cerdo.CantidadEnInventario = Convert.ToInt32(dataTable.Rows[i]["CantidadEnInventarioKilos"]);
                 cerdo.RazasDeCerdo = (eRazasDeCerdo)Convert.ToInt32(dataTable.Rows[i]["RazaDeCerdo"]);
+                cerdo.Id = Convert.ToInt32(dataTable.Rows[i]["Id"]);
 
                 listaCerdos.Add(cerdo);
             }

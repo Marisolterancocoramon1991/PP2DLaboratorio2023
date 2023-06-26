@@ -16,18 +16,26 @@ namespace BibliotecaDeClases
         private string tipos = string.Empty;
         private float precio;
         private int cantidadEnInventarioKilos;
-        private int id;
+        protected int id;
         public Carne()
-        { 
+        {
             //constructor vacio para la conexion en sql base de datos         
         }
-        public Carne(int id, string nombre, string tipo, float precio, int cantidadEnInventarioKilos) 
+        public Carne(int id, string nombre, string tipo, float precio, int cantidadEnInventarioKilos)
         {
             this.Nombre = nombre;
             this.Tipo = tipo;
             this.id = id;
             this.Precio = precio;
             this.cantidadEnInventarioKilos = cantidadEnInventarioKilos;
+        }
+        public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos)
+        {
+            this.Tipo = tipo;
+            this.Nombre = nombre;
+            this.Precio = precio;
+            this.cantidadEnInventarioKilos = cantidadEnInventarioKilos;
+
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
@@ -50,12 +58,12 @@ namespace BibliotecaDeClases
         {
             StringBuilder sb = new StringBuilder();
 
-            
-                sb.AppendLine($"  Carne  {nombre}");
-                sb.AppendLine($"tipo de carne{tipos}");
-                sb.AppendLine($"el del producto precio {precio}");
 
-           
+            sb.AppendLine($"  Carne  {nombre}");
+            sb.AppendLine($"tipo de carne{tipos}");
+            sb.AppendLine($"el del producto precio {precio}");
+
+
 
             return sb.ToString();
 
@@ -84,8 +92,8 @@ namespace BibliotecaDeClases
         /// <returns></returns> flotante 
         public static float operator +(Carne p1, float cantidadASumar)
         {
-            
-            return p1.precio +( p1.precio * cantidadASumar);
+
+            return p1.precio + (p1.precio * cantidadASumar);
         }
 
         /// <summary>
@@ -120,11 +128,11 @@ namespace BibliotecaDeClases
         /// <returns></returns> retorna objeto 
         public static Carne operator -(Carne p1, int CantidadARestar)
         {
-            p1.cantidadEnInventarioKilos-= CantidadARestar;
+            p1.cantidadEnInventarioKilos -= CantidadARestar;
 
             return p1;
         }
-        
+
         /// <summary>
         /// multiplica el precio por la unidades establecidas
         /// </summary>
@@ -138,7 +146,7 @@ namespace BibliotecaDeClases
             return resultado;
         }
 
-        
+
 
         /// <summary>
         /// muestra los detalles del producto
@@ -164,10 +172,10 @@ namespace BibliotecaDeClases
                 // (Nombre, Apellido, Direccion, CorreoElectronico" +
                 // "Contraseña,TipoDeUsuarios)
                 Carne producto = new Carne();
-              
+
                 producto.Nombre = dataTable.Rows[i]["Nombre"].ToString();
-                producto.Tipo = dataTable.Rows[i]["Tipo"].ToString();              
-                producto.Precio= Convert.ToInt32(dataTable.Rows[i]["Precio"]);
+                producto.Tipo = dataTable.Rows[i]["Tipo"].ToString();
+                producto.Precio = Convert.ToInt32(dataTable.Rows[i]["Precio"]);
                 producto.cantidadEnInventarioKilos = Convert.ToInt32(dataTable.Rows[i]["CantidadPorKilos"]);
 
                 listaProducto.Add(producto);

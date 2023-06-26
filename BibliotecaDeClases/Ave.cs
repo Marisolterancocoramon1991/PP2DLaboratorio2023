@@ -17,6 +17,11 @@ namespace BibliotecaDeClases
         {
             this.tipoAve= tipoAve;
         }
+        public Ave(string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eTipoAve tipoAve)
+        : base(nombre, tipo, precio, cantidadEnInventarioKilos)
+        {
+            this.tipoAve = tipoAve;
+        }
         public Ave()
         {
 
@@ -51,6 +56,7 @@ namespace BibliotecaDeClases
                 ave.Precio = Convert.ToSingle(dataTable.Rows[i]["Precio"]);
                 ave.CantidadEnInventario = Convert.ToInt32(dataTable.Rows[i]["CantidadEnInventarioKilos"]);
                 ave.TipoAve = (eTipoAve)Convert.ToInt32(dataTable.Rows[i]["TipoAve"]);
+                ave.Id = Convert.ToInt32(dataTable.Rows[i]["Id"]);
 
                 listaAves.Add(ave);
             }
