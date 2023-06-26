@@ -12,7 +12,7 @@ namespace BibliotecaDeClases
     {
         public void Add(Cerdo entidad)
         {
-            string query = "INSERT INTO Cerdos (Nombre, Tipo, Precio, CantidadEnInventarioKilos, RazasDeCerdo) " +
+            string query = "INSERT INTO Cerdos (Nombre, Tipo, Precio, CantidadEnInventarioKilos, RazaDeCerdo) " +
                            "VALUES (@Nombre, @Tipo, @Precio, @CantidadEnInventarioKilos, @RazasDeCerdo)";
 
             using (SqlCommand comando = CrearComando(query))

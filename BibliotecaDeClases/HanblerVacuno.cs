@@ -23,14 +23,14 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
                 comando.Parameters.AddWithValue("@RazaDeVacas", entidad.RazasDeVacas); // Convertir la enumeración a entero
                 comando.Parameters.AddWithValue("@Categoria", entidad.Categoria); // Convertir la enumeración a entero
-                comando.ExecuteNonQuery();
+              
                 EjecutarNonQuery(comando);
             }
         }
 
         public void Delete(int id)
         {
-            string query = "DELETE FROM usuarios WHERE id = @id";
+            string query = "DELETE FROM Vacunos WHERE id = @id";
 
             using (SqlCommand comando = CrearComando(query))
             {
@@ -53,15 +53,16 @@ namespace BibliotecaDeClases
         }
         public void Modificar(Vacuno entidad)
         {
-            string query = "UPDATE Vacunos SET Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = @CantidadEnInventarioKilos, RazaDeVacas = @RazaDeVacas, Categoria = @Categoria WHERE Nombre = @Nombre";
+            string query = "UPDATE Vacunos SET Tipo = @Tipo, Precio = @Precio," +
+                " CantidadEnInventarioKilos = @CantidadEnInventarioKilos, RazaDeVacas = @RazaDeVacas, Categoria = @Categoria WHERE id = @id";
 
             using (SqlCommand comando = CrearComando(query))
             {
                 comando.Parameters.AddWithValue("@Tipo", entidad.Tipo);
                 comando.Parameters.AddWithValue("@Precio", entidad.Precio);
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
-                comando.Parameters.AddWithValue("@RazaDeVacas", (int)entidad.RazasDeVacas); // Convertir la enumeración a entero
-                comando.Parameters.AddWithValue("@Categoria", (int)entidad.Categoria); // Convertir la enumeración a entero
+                comando.Parameters.AddWithValue("@RazaDeVacas", entidad.RazasDeVacas); // Convertir la enumeración a entero
+                comando.Parameters.AddWithValue("@Categoria", entidad.Categoria); // Convertir la enumeración a entero
                 comando.Parameters.AddWithValue("@Nombre", entidad.Nombre);
 
                 EjecutarNonQuery(comando);

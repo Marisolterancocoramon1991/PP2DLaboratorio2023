@@ -31,15 +31,18 @@ namespace BibliotecaDeClases
 
         public void Modificar(Ave entidad)
         {
-            string query = "UPDATE Aves SET Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = @CantidadEnInventarioKilos, TipoAve = @TipoAve WHERE Nombre = @Nombre";
+            string query = "UPDATE Aves SET Nombre= @Nombre, Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = " +
+                "@CantidadEnInventarioKilos, TipoAve = @TipoAve WHERE Id = @Id";
 
             using (SqlCommand comando = CrearComando(query))
             {
+              
                 comando.Parameters.AddWithValue("@Tipo", entidad.Tipo);
                 comando.Parameters.AddWithValue("@Precio", entidad.Precio);
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
-                comando.Parameters.AddWithValue("@TipoAve", (int)entidad.TipoAve); // Convertir la enumeración a entero
+                comando.Parameters.AddWithValue("@TipoAve", entidad.TipoAve); // Convertir la enumeración a entero
                 comando.Parameters.AddWithValue("@Nombre", entidad.Nombre);
+                comando.Parameters.AddWithValue("@Id", entidad.Id);
 
                 EjecutarNonQuery(comando);
             }

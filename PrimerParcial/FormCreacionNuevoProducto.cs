@@ -25,6 +25,10 @@ namespace PrimerParcial
             comboBoxRVacuno.DataSource = Enum.GetValues(typeof(eRazasDeVacas));
             comboBoxCategoria.DataSource = Enum.GetValues(typeof(eCategoria));
             comboBoxRCerdo.DataSource = Enum.GetValues(typeof(eRazasDeCerdo));
+            groupBoxAve.Visible = false;
+            groupBoxCarneCerdo.Visible = false;
+            groupBoxCarneVacuno.Visible = false;
+
         }
 
 
@@ -52,6 +56,11 @@ namespace PrimerParcial
                     groupBoxAve.Visible = false;
                     groupBoxCarneCerdo.Visible = false;
                     groupBoxCarneVacuno.Visible = true;
+                    break;
+                default:
+                    groupBoxAve.Visible = false;
+                    groupBoxCarneCerdo.Visible = false;
+                    groupBoxCarneVacuno.Visible = false;
                     break;
 
             }
@@ -171,9 +180,9 @@ namespace PrimerParcial
                             precio, cantidadEnInventarioKilos,
                             (eRazasDeVacas)comboBoxRVacuno.SelectedItem,
                             (eCategoria)comboBoxCategoria.SelectedItem);
-                            HanblerVacuno hanblerVacuno = new HanblerVacuno();
-                            hanblerVacuno.Add(nuevoProductoVaca);
-                            Negocio.CargaListaVacuno(hanblerVacuno.Leer());
+                        HanblerVacuno hanblerVacuno = new HanblerVacuno();
+                        hanblerVacuno.Add(nuevoProductoVaca);
+                        Negocio.CargaListaVacuno(hanblerVacuno.Leer());
                         break;
                 }
             }
@@ -190,9 +199,9 @@ namespace PrimerParcial
         {
             List<Carne> lista = Negocio.RetornarProductos();
 
-         //   try
-          //  {
-               CrearProducto();
+            try
+            {
+                CrearProducto();
                 DialogResult Respuesta = new();
 
 
@@ -206,15 +215,15 @@ namespace PrimerParcial
                     login.Show();
 
                 }
-       //     }
-      //      catch (Exception ex) 
-        //    {
+            }
+            catch (Exception ex)
+            {
 
-           //     MessageBox.Show("hubo un problema a la hora de cargar el producto");
-           // }
-             
+                MessageBox.Show("hubo un problema a la hora de cargar el producto");
+            }
 
-            
+
+
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)

@@ -15,8 +15,12 @@ namespace PrimerParcial
 
     public partial class FormEditarProductoYStock : Form
     {
+
+        private int indice { get; set; }
         Carne productoSeleccioando;
-        List<Carne> listaDeProductos;
+        List<Ave> listaDeAve;
+        List<Cerdo> listaDeCerdo;
+        List<Vacuno> listaDeVacuno;
         Ave productoAve;
         Cerdo productoCerdo;
         Vacuno productoVacuno;
@@ -38,10 +42,12 @@ namespace PrimerParcial
             comboBoxRazaVacuno.DataSource = Enum.GetValues(typeof(eRazasDeVacas));
             comboBoxCategoria.DataSource = Enum.GetValues(typeof(eCategoria));
             comboBoxRCerdo.DataSource = Enum.GetValues(typeof(eRazasDeCerdo));
-            listaDeProductos = Negocio.RetornarProductos();
-            CargarDataGridView(listaDeProductos, productoAve);
-            CargarDataGridView(listaDeProductos, productoVacuno);
-            CargarDataGridView(listaDeProductos, productoCerdo);
+            listaDeVacuno = Negocio.RetornarListaVacuno();
+            listaDeCerdo = Negocio.RetornarListaCerdo();
+            listaDeAve = Negocio.RetornarListaAve();
+            CargarDataGridView(listaDeAve, productoAve);
+            CargarDataGridView(listaDeVacuno, productoVacuno);
+            CargarDataGridView(listaDeCerdo, productoCerdo);
         }
 
 
@@ -95,7 +101,7 @@ namespace PrimerParcial
 
             int n = e.RowIndex;
 
-            if (n != -1 && listaDeProductos != null)
+            if (n != -1 && listaDeAve != null)
             {
                 DataGridViewRow selectedRow;
                 try
@@ -120,11 +126,13 @@ namespace PrimerParcial
 
                     if (float.TryParse(precioCell.Value.ToString(), out float precio))
                     {
-                        foreach (Carne producto in listaDeProductos)
+                        foreach (Ave producto in listaDeAve)
                         {
                             if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
                             {
                                 productoSeleccioando = producto;
+                                indice = producto.Id;
+                                MessageBox.Show("eleccioon");
                                 break;
                             }
                         }
@@ -155,7 +163,9 @@ namespace PrimerParcial
 
             int n = e.RowIndex;
 
-            if (n != -1 && listaDeProductos != null)
+
+
+            if (n != -1 && listaDeCerdo != null)
             {
                 DataGridViewRow selectedRow;
                 try
@@ -180,11 +190,13 @@ namespace PrimerParcial
 
                     if (float.TryParse(precioCell.Value.ToString(), out float precio))
                     {
-                        foreach (Carne producto in listaDeProductos)
+                        foreach (Cerdo producto in listaDeCerdo)
                         {
                             if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
                             {
                                 productoSeleccioando = producto;
+                                indice = producto.Id;
+                                MessageBox.Show("eleccioon");
                                 break;
                             }
                         }
@@ -233,9 +245,11 @@ namespace PrimerParcial
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+
             int n = e.RowIndex;
 
-            if (n != -1 && listaDeProductos != null)
+            if (n != -1 && listaDeVacuno != null)
             {
                 DataGridViewRow selectedRow;
                 try
@@ -260,11 +274,13 @@ namespace PrimerParcial
 
                     if (float.TryParse(precioCell.Value.ToString(), out float precio))
                     {
-                        foreach (Carne producto in listaDeProductos)
+                        foreach (Vacuno producto in listaDeVacuno)
                         {
                             if (producto.Nombre == nombre && producto.Tipo == tipo && producto.Precio == precio)
                             {
                                 productoSeleccioando = producto;
+                                indice = producto.Id;
+                                MessageBox.Show("eleccioon");
                                 break;
                             }
                         }
@@ -354,7 +370,7 @@ namespace PrimerParcial
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="Ave"></param>
-        public void CargarDataGridView(List<Carne> listaDeProductos, Ave Ave)
+        public void CargarDataGridView(List<Ave> listaDeProductos, Ave Ave)
         {
 
             foreach (Carne producto in listaDeProductos)
@@ -368,12 +384,13 @@ namespace PrimerParcial
             }
         }
 
+
         /// <summary>
         /// carga el data necesaria  en el dataGridView
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="CarneCerdo"></param>
-        public void CargarDataGridView(List<Carne> listaDeProductos, Cerdo CarneCerdo)
+        public void CargarDataGridView(List<Cerdo> listaDeProductos, Cerdo CarneCerdo)
         {
             foreach (Carne producto in listaDeProductos)
             {
@@ -390,7 +407,7 @@ namespace PrimerParcial
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="ProductoVaca"></param>
-        public void CargarDataGridView(List<Carne> listaDeProductos, Vacuno ProductoVaca)
+        public void CargarDataGridView(List<Vacuno> listaDeProductos, Vacuno ProductoVaca)
         {
             foreach (Carne producto in listaDeProductos)
             {
@@ -426,10 +443,16 @@ namespace PrimerParcial
 
                         if (productoSeleccioando is Ave)
                         {
-                            Ave ProductoA = (Ave)productoSeleccioando;
-                            ProductoA.TipoAve = (eTipoAve)comboBoxTipoAve.SelectedItem;
+                            List<Ave> listaControlAve = new List<Ave>();
+
+                            Ave productoModificarAve= new Ave(indice, textBoxNombre.Text,textBoxTipo.Text,precio, productoSeleccioando.CantidadEnInventario,
+                                (eTipoAve)comboBoxTipoAve.SelectedItem);
+                            HandlerAve handlerAve = new HandlerAve();
+                            handlerAve.Modificar(productoModificarAve);
+                            Negocio.CargaListaAves(handlerAve.Leer());
                             MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
-                            $" {ProductoA.MostrarDetallesDeProducto()}");
+                            $" {productoModificarAve.MostrarDetallesDeProducto()}");
+                            
 
                         }
                         break;
@@ -438,6 +461,9 @@ namespace PrimerParcial
                         {
                             Cerdo ProductoC = (Cerdo)productoSeleccioando;
                             ProductoC.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
+                            handlerCerdo handlerCerdo = new handlerCerdo();
+                            handlerCerdo.Modificar(ProductoC);
+                            Negocio.CargaListaCerdo(handlerCerdo.Leer());
                             MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
                                   $" {ProductoC.MostrarDetallesDeProducto()}");
                         }
@@ -447,13 +473,16 @@ namespace PrimerParcial
                         {
                             Vacuno ProductoV = (Vacuno)productoSeleccioando;
                             ProductoV.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
+                            HanblerVacuno hanblerVacuno = new HanblerVacuno();
+                            hanblerVacuno.Modificar(ProductoV);
+                            Negocio.CargaListaVacuno(hanblerVacuno.Leer());
                             MessageBox.Show($"Ha editado correctamente ahora el producto\n" +
                             $" {ProductoV.MostrarDetallesDeProducto()}");
                         }
                         break;
 
                 }
-               
+
             }
             else
                 MessageBox.Show("no ha seleccionado ningun producto para editar");
@@ -480,6 +509,15 @@ namespace PrimerParcial
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             EditarProducto();
+            /*try
+            {
+
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("algo ha sucedido con la modificacion del producto");
+            }*/
+
         }
 
 

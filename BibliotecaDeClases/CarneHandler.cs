@@ -12,7 +12,7 @@ namespace BibliotecaDeClases
     {
         public void Add(Carne entidad)
         {
-            string query = "INSERT INTO productos (Nombre,Tipo,Precio,CantidadEnInventarioKilos" +
+            string query = "INSERT INTO Carnes (Nombre,Tipo,Precio,CantidadEnInventarioKilos" +
              "VALUES (Nombre = @Nombre, Tipo=@Tipo,Precio=@Precio," +
              "CantidadEnInventarioKilos=@CantidadEnInventarioKilos)";
 

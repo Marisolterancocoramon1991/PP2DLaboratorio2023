@@ -47,7 +47,7 @@ namespace BibliotecaDeClases
                 cerdo.Tipo = dataTable.Rows[i]["Tipo"].ToString();
                 cerdo.Precio = Convert.ToSingle(dataTable.Rows[i]["Precio"]);
                 cerdo.CantidadEnInventario = Convert.ToInt32(dataTable.Rows[i]["CantidadEnInventarioKilos"]);
-                cerdo.RazasDeCerdo = (eRazasDeCerdo)Convert.ToInt32(dataTable.Rows[i]["RazasDeCerdo"]);
+                cerdo.RazasDeCerdo = (eRazasDeCerdo)Convert.ToInt32(dataTable.Rows[i]["RazaDeCerdo"]);
 
                 listaCerdos.Add(cerdo);
             }
