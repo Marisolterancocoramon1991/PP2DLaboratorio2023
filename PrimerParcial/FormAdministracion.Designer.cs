@@ -38,6 +38,7 @@
             pictureBox4 = new PictureBox();
             buttonVender = new Button();
             labelMontoVentasTotales = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -149,12 +150,26 @@
             labelMontoVentasTotales.Text = "Click para ver las ventas totales";
             labelMontoVentasTotales.Click += labelMontoVentasTotales_Click;
             // 
+            // button1
+            // 
+            button1.Image = Properties.Resources.usuariosN1;
+            button1.ImageAlign = ContentAlignment.BottomCenter;
+            button1.Location = new Point(584, 314);
+            button1.Name = "button1";
+            button1.Size = new Size(101, 38);
+            button1.TabIndex = 10;
+            button1.Text = "Abm Usuarios";
+            button1.TextAlign = ContentAlignment.BottomCenter;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FormAdministracion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(868, 362);
+            Controls.Add(button1);
             Controls.Add(labelMontoVentasTotales);
             Controls.Add(buttonVender);
             Controls.Add(pictureBox4);
@@ -189,5 +204,6 @@
         private PictureBox pictureBox4;
         private Button buttonVender;
         private Label labelMontoVentasTotales;
+        private Button button1;
     }
 }

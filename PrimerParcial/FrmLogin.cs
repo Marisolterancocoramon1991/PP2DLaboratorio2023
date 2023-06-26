@@ -28,8 +28,8 @@ namespace PrimerParcial
             if (listaCliente is null || listaAve is null || listaCerdo is null
                 || listaVacuno is null || listaVendedores is null) 
             {
-                try
-                {
+               try
+              {
                     listaAve = ControllerConexion.ConectarProductosAveDB();
                     listaCerdo = ControllerConexion.ConectarProductosCerdoDB();
                     listaVacuno =ControllerConexion.ConectarProductosVacunoDB();
@@ -42,10 +42,10 @@ namespace PrimerParcial
                     Negocio.CargaListaVacuno(listaVacuno);
 
 
-                }
-                catch (Exception ex) 
+               }
+                catch (Exception) 
                 {
-                    MessageBox.Show("hubo un error en, ", ex.Message);
+                    MessageBox.Show("hubo un error en ña carga de la lista");
                 }
                 
 
@@ -170,14 +170,14 @@ namespace PrimerParcial
             {
 
 
-                textBoxCorreo.Text = "KervinBriceño@gmail.com";
-                textBoxContraseña.Text = "123456";
+                textBoxCorreo.Text = "martaFb@hotmail.com";
+                textBoxContraseña.Text = "21321deded";
             }
             else
             {
 
-                textBoxCorreo.Text = "LucasBriceño@gmial.com";
-                textBoxContraseña.Text = "123456789";
+                textBoxCorreo.Text = "laCabrasMortal@gmail.com";
+                textBoxContraseña.Text = "losSueñs1";
 
             }
         }

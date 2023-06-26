@@ -57,7 +57,7 @@ namespace BibliotecaDeClases
 
         public List<Ave> Leer()
         {
-            string query = "SELECT * FROM Vendedores";
+            string query = "SELECT * FROM Aves";
 
             using (SqlCommand comando = CrearComando(query))
             {

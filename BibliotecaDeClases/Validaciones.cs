@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -220,6 +221,46 @@ namespace BibliotecaDeClases
         public static bool IsNotNull(object obj)
         {
             return obj != null;
+        }
+        /// <summary>
+        /// Control que se Encarga de llamar a todas la funciones que validan a los Usuario para que se puedan loggear
+        /// </summary>
+        /// <param name="nombre">Nombre</param>
+        /// <param name="mail">Mail</param>
+        /// <param name="password">password</param>
+        public static void ValidarCamposLoggin(string nombre, string mail, string password)
+        {
+            ValidadCamposNoVacios(nombre, mail, password);
+            ValidadMail(mail);
+        }
+
+
+
+        /// <summary>
+        /// Valida que ninguno de los campos este vacio al momento de dar de alta un Usuario
+        /// </summary>
+        /// <param name="nombre">nombre</param>
+        /// <param name="mail">mail</param>
+        /// <param name="password">password</param>
+        /// <exception cref="CamposVaciosException">Excepcion Propia</exception>
+        public static void ValidadCamposNoVacios(string nombre, string mail, string password)
+        {
+            if (nombre.Length <= 0 || mail.Length <= 0 || password.Length <= 0)
+            {
+                throw new CamposVaciosException("Hay que Completar todos los Campos");
+            }
+        }
+        /// <summary>
+        /// Valida que el mail Ingredado contega @
+        /// </summary>
+        /// <param name="mail">mail</param>
+        /// <exception cref="ContieneArrobaException">Excepcion Propia</exception>
+        public static void ValidadMail(string mail)
+        {
+            if (mail.Contains('@') == false)
+            {
+                throw new ContieneArrobaException("El debe contener @");
+            }
         }
     }
 }

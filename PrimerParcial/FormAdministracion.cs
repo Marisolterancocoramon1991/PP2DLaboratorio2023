@@ -97,5 +97,12 @@ namespace PrimerParcial
         {
             labelMontoVentasTotales.Text = "haz clock aqui para conocer las ganancias totales";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdministrarCliente administrarCliente = new();
+            administrarCliente.Show();
+        }
     }
 }

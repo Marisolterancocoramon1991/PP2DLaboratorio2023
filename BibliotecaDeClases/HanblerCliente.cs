@@ -73,9 +73,10 @@ namespace BibliotecaDeClases
         public void Modificar(Cliente entidad)
         {
             string query = "UPDATE Clientes SET nombre = @Nombre, Apellido = @Apellido, " +
-                " Direccion = @Direccion, CorreoElectronico =@CorreoElectronico," +
-                "Contraseña = @Contraseña,TipoDeUsuario =@TipoDeUsuario, " +
-                "Saldo =@Saldo, NumeroDeCuenta WHERE id = @id";
+                 "Direccion = @Direccion, CorreoElectronico = @CorreoElectronico, " +
+                 "Contraseña = @Contraseña, TipoDeUsuario = @TipoDeUsuario, " +
+                 "Saldo = @Saldo, NumeroDeCuenta = @NumeroDeCuenta WHERE Id = @Id";
+
 
 
             using (SqlCommand comando = CrearComando(query))
@@ -83,11 +84,13 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@Nombre", entidad.Nombre);
                 comando.Parameters.AddWithValue("@Apellido", entidad.Apellido);
                 comando.Parameters.AddWithValue("@Direccion", entidad.Direccion);
-                comando.Parameters.AddWithValue("@CorreoElectronico", entidad.Contraseña);
+                comando.Parameters.AddWithValue("@CorreoElectronico", entidad.CorreoElectronico);
                 comando.Parameters.AddWithValue("@Contraseña", entidad.Contraseña);
                 comando.Parameters.AddWithValue("@TipoDeUsuario", entidad.TipoDeUsuario);
                 comando.Parameters.AddWithValue("@Saldo", entidad.saldo);
                 comando.Parameters.AddWithValue("@NumeroDeCuenta", entidad.NumeroDeCuenta);
+                comando.Parameters.AddWithValue("@Id", entidad.ID);
+
                 EjecutarNonQuery(comando);
             }
         }

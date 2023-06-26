@@ -53,14 +53,17 @@ namespace BibliotecaDeClases
         {
             if (Validaciones.ValidarCamposIngresados(corrreoElectronico, contraseña))
             {
-                foreach (Persona item in listapersona)
-                {
-                    if (item.CorreoElectronico.Trim().ToLower() == corrreoElectronico.Trim().ToLower()
-                        && item.Contraseña == contraseña) //Dejo diferencia de mayus y espacios.
+                
+                    foreach (Persona item in listapersona)
                     {
-                        return item;
+                        if (item.CorreoElectronico.Trim().ToLower() == corrreoElectronico.Trim().ToLower()
+                            && item.Contraseña == contraseña) //Dejo diferencia de mayus y espacios.
+                        {
+                            return item;
+                        }
                     }
-                }
+                
+               
                 foreach (Persona item in listaVendedores)
                 {
                     if (item.CorreoElectronico.Trim().ToLower() == corrreoElectronico.Trim().ToLower()
