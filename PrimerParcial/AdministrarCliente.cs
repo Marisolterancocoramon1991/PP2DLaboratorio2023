@@ -18,6 +18,7 @@ namespace PrimerParcial
         List<Vendedor> ListaTrabajadores;
         Vendedor vendedor;
         Cliente cliente;
+        List<Vendedor> ListaVendedor;
         public int Indice { get; set; }
         public AdministrarCliente()
         {
@@ -54,6 +55,16 @@ namespace PrimerParcial
                     break;
 
             }
+
+        }
+        private void SetTextStringModificar(Cliente clienteAmodificar)
+        {
+             txtNombreUsuario.Text = clienteAmodificar.Nombre;
+            txtApellidoUsuario.Text = clienteAmodificar.Apellido;
+             txtDireccioUsuario.Text= clienteAmodificar.Direccion;
+             txtCorreoUsuario.Text = clienteAmodificar.CorreoElectronico;
+            txtContraseñaUsuario.Text= clienteAmodificar.Contraseña;
+            
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -107,6 +118,7 @@ namespace PrimerParcial
                         {
                             // Guardar el ID del cliente seleccionado en la variable Indice
                             Indice = clienteSeleccionado.ID;
+                            SetTextStringModificar(clienteSeleccionado);
                         }
                         else
                         {
@@ -305,10 +317,12 @@ namespace PrimerParcial
 
         }
 
+        
         private void btnModificar_Click(object sender, EventArgs e)
         {
-           try {
-               
+            try
+            {
+
                 string nombreUsuario = txtNombreUsuario.Text;
                 string ApellidoUsuario = txtApellidoUsuario.Text;
                 string DireccionUsuario = txtDireccioUsuario.Text;
@@ -319,7 +333,8 @@ namespace PrimerParcial
                 if (Validaciones.EsNumero(txtCuentaUsuario.Text))
                 {
                     cuenta = txtCuentaUsuario.Text;
-                }else
+                }
+                else
                 {
                     MessageBox.Show("nummero de cuenta debe establecerse como numero");
                     return;
@@ -332,12 +347,12 @@ namespace PrimerParcial
                 Validaciones.ValidarCamposLoggin(nombreUsuario, correo, contraseña);
                 List<Cliente> listaUsuarios = new List<Cliente>();
                 listaUsuarios = Negocio.RetornaListaClientes();
-                Cliente auxUsuario = new Cliente(Indice, nombreUsuario, 
+                Cliente auxUsuario = new Cliente(Indice, nombreUsuario,
                     ApellidoUsuario, DireccionUsuario, correo,
                     contraseña, saldo, cuenta, eTipoDeUsuario.Cliente);
                 HanblerCliente usuariosHandler = new HanblerCliente();
                 usuariosHandler.Modificar(auxUsuario);
-                 Negocio.CargaListaClientes(usuariosHandler.Leer());
+                Negocio.CargaListaClientes(usuariosHandler.Leer());
                 CargarDataGridView(Listaclientes, cliente);
 
             }
@@ -345,7 +360,154 @@ namespace PrimerParcial
             {
                 MessageBox.Show(ex.Message, "Ocurrio un Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCrearCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombre = textNombre.Text;
+                string apellido = textApellido.Text;
+                string direccion = textDireccion.Text;
+                string correo = textCorrreoCliente.Text;
+                string Contraseña = textContraseñaCliente.Text;
+                float saldo = Validaciones.DeStringANumero(textSaldo.Text);
+                string Cuenta;
+
+                if (nombre.Length > 1 && apellido.Length > 1 && direccion.Length > 1 && correo.Length > 1 &&
+                    Contraseña.Length > 1 && Validaciones.EsNumero(textCuenta.Text))
+                {
+                    Cuenta = textCuenta.Text;
+
+                    Cliente cliente = new Cliente(0, nombre, apellido, direccion, correo, Contraseña, saldo, Cuenta, eTipoDeUsuario.Cliente);
+                    HanblerCliente usuarioHanbler = new HanblerCliente();
+                    usuarioHanbler.Add(cliente);
+                    Listaclientes = ControllerConexion.ConectarUsuariosClienteDB();
+                    Negocio.CargaListaClientes(Listaclientes);
+                    textNombre.Text = " ";
+                    textApellido.Text = " ";
+                    textDireccion.Text = " ";
+                    textCorrreoCliente.Text = " ";
+                    textContraseñaCliente.Text = " ";
+                    textSaldo.Text = " ";
+                    textCuenta.Text = " ";
+                    MessageBox.Show($"se ha creado con exito {cliente.Mostrar()}", "Anuncio del Cliente");
+                }
+                else
+                {
+
+                    MessageBox.Show("debes agregar todos los campso");
+                }
+
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Los campos precio y Cantidad deben ser Numericos", "Ocurrio Un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Valor demasiado largo", "Ocurrio Un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ocurrio Un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnCrearVendedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombre = textNombreTrabajador.Text;
+                string apellido = textApellidoTra.Text;
+                string direccion = textDireccionTra.Text;
+                string correo = textCorreoTra.Text;
+                string Contraseña = textContraseñaTra.Text;
+                float sueldo = Validaciones.DeStringANumero(textSueldoTra.Text);
+                
+
+                if (nombre.Length > 1 && apellido.Length > 1 && direccion.Length > 1 && correo.Length > 1 &&
+                    Contraseña.Length > 1)
+                {
+                  
+
+                    Vendedor trabajador = new Vendedor(0, nombre, apellido, direccion, correo, Contraseña, sueldo, eTurno.noche, eTipoDeUsuario.Vendedor);
+                    HandlerVendedor usuarioHanbler = new HandlerVendedor();
+                    usuarioHanbler.Add(trabajador);
+                    ListaVendedor = ControllerConexion.ConectarUsuariosTrabajadorDB();
+                    Negocio.CargarListaTrabajadores(ListaVendedor);
+                    textNombreTrabajador.Text = " ";
+                    textApellidoTra.Text = " ";
+                    textDireccionTra.Text = " ";
+                    textCorreoTra.Text = " ";
+                    textContraseñaTra.Text = " ";
+                    textSueldoTra.Text = " ";
+                  
+                    MessageBox.Show($"se ha creado con exito {trabajador.Mostrar()}", "Bienvenida al nuevo trabajador");
+                }
+                else
+                {
+
+                    MessageBox.Show("debes agregar todos los campso");
+                }
+
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Los campos precio y Cantidad deben ser Numericos", "Ocurrio Un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Valor demasiado largo", "Ocurrio Un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ocurrio Un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogearse_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmarVenta;
+            confirmarVenta = MessageBox.Show("Desea logearse", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (confirmarVenta == DialogResult.Yes)
+            {
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Perfecto... siga con su labor");
+            }
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            FormAdministracion formAdministracion = new FormAdministracion();
+            formAdministracion.Show();
+            this.Hide();
+        }
+
+        private void textCorreo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
+

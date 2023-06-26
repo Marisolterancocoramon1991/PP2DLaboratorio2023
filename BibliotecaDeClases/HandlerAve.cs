@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    internal class HandlerAve : ComandoSQL, ImanjadorConexion<Ave>
+    public class HandlerAve : ComandoSQL, ImanjadorConexion<Ave>
     {
 
         public void Add(Ave entidad)
@@ -22,7 +22,7 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@Tipo", entidad.Tipo);
                 comando.Parameters.AddWithValue("@Precio", entidad.Precio);
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
-                comando.Parameters.AddWithValue("@TipoAve", (int)entidad.TipoAve);
+                comando.Parameters.AddWithValue("@TipoAve", entidad.TipoAve);
 
                 EjecutarNonQuery(comando);
             }

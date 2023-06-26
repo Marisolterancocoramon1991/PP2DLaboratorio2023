@@ -12,8 +12,8 @@ namespace BibliotecaDeClases
     {
       
         private eTipoAve tipoAve;
-        public Ave(string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eTipoAve tipoAve)
-            : base(nombre, tipo, precio, cantidadEnInventarioKilos)
+        public Ave(int id, string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eTipoAve tipoAve)
+            : base(id, nombre, tipo, precio, cantidadEnInventarioKilos)
         {
             this.tipoAve= tipoAve;
         }

@@ -82,9 +82,9 @@ namespace PrimerParcial
         /// valida, intancia y agrega un producto nuevo
         /// </summary>
         /// <returns></returns>
-        private Carne CrearProducto()
+        private void CrearProducto()
         {
-            Carne nuevoProducto = null;
+            
             float precio;
             int cantidadEnInventarioKilos;
 
@@ -100,20 +100,28 @@ namespace PrimerParcial
                 switch (comboBox1.SelectedIndex)
                 {
                     case 1:
-                        nuevoProducto = new Ave(textBoxNombre.Text, textBoxTipoCarne.Text,
+                        Ave  nuevoProductoAve = new Ave(0,textBoxNombre.Text, textBoxTipoCarne.Text,
                    precio, cantidadEnInventarioKilos, (eTipoAve)comboBoxTipoAve.SelectedItem);
-
+                        HandlerAve handlerAve = new HandlerAve();
+                        handlerAve.Add(nuevoProductoAve);
 
                         break;
                     case 2:
-                        nuevoProducto = new Cerdo(textBoxNombre.Text, textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, (eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
+                        Cerdo nuevoProductoCerdo = new Cerdo(0,textBoxNombre.Text, 
+                            textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, 
+                            (eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
+                        handlerCerdo handlerCerdo = new handlerCerdo();
+                        handlerCerdo.Add(nuevoProductoCerdo);
 
                         break;
                     case 3:
-                        nuevoProducto = new Vacuno(textBoxNombre.Text, textBoxTipoCarne.Text,
+                        Vacuno nuevoProductoVaca = new Vacuno(0, textBoxNombre.Text, textBoxTipoCarne.Text,
                         precio, cantidadEnInventarioKilos,
                         (eRazasDeVacas)comboBoxRVacuno.SelectedItem,
                         (eCategoria)comboBoxCategoria.SelectedItem);
+                        HanblerVacuno hanblerVacuno = new HanblerVacuno();
+                        hanblerVacuno.Add(nuevoProductoVaca);
+                        
                         break;
 
                 }
@@ -122,7 +130,7 @@ namespace PrimerParcial
 
 
             }
-            return nuevoProducto;
+        
         }
 
 
@@ -139,6 +147,7 @@ namespace PrimerParcial
             if (nuevoProducto != null)
             {
                 lista.Add(nuevoProducto);
+                
                 Respuesta = MessageBox.Show("Ha editado exitosamente, desea logearse o seguir", "Atencion",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);

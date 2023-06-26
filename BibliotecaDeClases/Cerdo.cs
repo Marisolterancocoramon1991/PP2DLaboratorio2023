@@ -10,8 +10,8 @@ namespace BibliotecaDeClases
     public class Cerdo : Carne
     {
         private eRazasDeCerdo razasDeCerdo;
-        public Cerdo(string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eRazasDeCerdo razasDeCerdo
-            ) : base(nombre, tipo, precio, cantidadEnInventarioKilos)
+        public Cerdo(int id, string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eRazasDeCerdo razasDeCerdo
+            ) : base( id,nombre, tipo, precio, cantidadEnInventarioKilos)
         {
             this.razasDeCerdo = razasDeCerdo;
         }

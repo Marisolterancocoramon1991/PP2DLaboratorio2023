@@ -13,8 +13,8 @@ namespace BibliotecaDeClases
         private eCategoria categoria;
 
 
-        public Vacuno(string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eRazasDeVacas razasDeVacas, eCategoria categoria
-            ) : base(nombre, tipo, precio, cantidadEnInventarioKilos)
+        public Vacuno(int id,string nombre, string tipo, float precio, int cantidadEnInventarioKilos, eRazasDeVacas razasDeVacas, eCategoria categoria
+            ) : base(id, nombre, tipo, precio, cantidadEnInventarioKilos)
         {
             this.categoria = categoria;
             this.razasDeVacas = razasDeVacas;

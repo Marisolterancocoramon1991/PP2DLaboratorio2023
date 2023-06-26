@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    internal class handlerCerdo: ComandoSQL, ImanjadorConexion<Cerdo>
+    public class handlerCerdo: ComandoSQL, ImanjadorConexion<Cerdo>
     {
         public void Add(Cerdo entidad)
         {
@@ -21,7 +21,7 @@ namespace BibliotecaDeClases
                 comando.Parameters.AddWithValue("@Tipo", entidad.Tipo);
                 comando.Parameters.AddWithValue("@Precio", entidad.Precio);
                 comando.Parameters.AddWithValue("@CantidadEnInventarioKilos", entidad.CantidadEnInventario);
-                comando.Parameters.AddWithValue("@RazasDeCerdo", (int)entidad.RazasDeCerdo);
+                comando.Parameters.AddWithValue("@RazasDeCerdo", entidad.RazasDeCerdo);
 
                 EjecutarNonQuery(comando);
             }

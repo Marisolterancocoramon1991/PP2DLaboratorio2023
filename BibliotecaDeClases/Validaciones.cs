@@ -152,15 +152,15 @@ namespace BibliotecaDeClases
         /// <returns></returns>
         public static string CargarNumero(string cadenaCaracteres)
         {
-            if(EsNumero(cadenaCaracteres))
+            if (EsNumero(cadenaCaracteres))
             {
                 return cadenaCaracteres;
 
             }
-            else 
+            else
             {
                 return "error en la carga de numero de cuenta";
-            
+
             }
 
         }
@@ -185,14 +185,14 @@ namespace BibliotecaDeClases
         public static int CargaID(string nombre)
         {
             int id;
-            if (nombre == "Kervin") 
+            if (nombre == "Kervin")
             {
                 id = 7628199;
                 return id;
-               
-            }          
+
+            }
             Random rnd = new Random();
-             id = rnd.Next(1000000, 9999999);
+            id = rnd.Next(1000000, 9999999);
 
             return id;
         }
@@ -204,10 +204,10 @@ namespace BibliotecaDeClases
         public static float DeStringANumero(string numero)
         {
             float auxiliar;
-           
+
             if (EsNumero(numero))
             {
-                 float.TryParse(numero, out auxiliar);
+                float.TryParse(numero, out auxiliar);
                 return auxiliar;
             }
 
@@ -260,6 +260,24 @@ namespace BibliotecaDeClases
             if (mail.Contains('@') == false)
             {
                 throw new ContieneArrobaException("El debe contener @");
+            }
+        }
+        /// <summary>
+        /// Valida que inguno de  los campos  esten vacion al momento de dar de alta un Producto
+        /// </summary>
+        /// <param name="nombreProdcuto">nombreProducto</param>
+        /// <param name="precioProdcuto">precioProducto</param>
+        /// <param name="cantdiadProdcuto">cantidadProducto</param>
+        /// <param name="codigoBarras">codigoBarras</param>
+        /// <exception cref="CamposVaciosException">Excepcion Propia</exception>
+        public static void validarCamposNoVaciosProdcuto(string nombreProdcuto, int precioProdcuto, int cantdiadProdcuto)
+        {
+            string precioProdcutoString = precioProdcuto.ToString();
+            string cantidadProductoString = cantdiadProdcuto.ToString();
+
+            if (nombreProdcuto.Length <= 0 || precioProdcutoString.Length <= 0 || cantidadProductoString.Length <= 0)
+            {
+                throw new CamposVaciosException("Hay que Completar todos los Campos");
             }
         }
     }

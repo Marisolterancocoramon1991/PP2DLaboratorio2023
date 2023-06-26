@@ -13,19 +13,18 @@ namespace BibliotecaDeClases
     {
          public void Add(Cliente entidad)
           {
-              string query = "INSERT INTO Clientes (Nombre,Apellido,Direccion,CorreoElectronico" +
-                  "Contraseña,TipoDeUsuario,Saldo,NumeroDeCuenta)" +
-               "VALUES (@Nombre,@Apellido,@Direccion,@CorreoElectronico,@Contraseña,@TipoDeUsuario," +
-               "saldo,numeroDeCuenta)";
+            string query = "INSERT INTO Clientes (Nombre, Apellido, Direccion, CorreoElectronico, Contraseña, TipoDeUsuario, Saldo, NumeroDeCuenta) " +
+              "VALUES (@Nombre, @Apellido, @Direccion, @CorreoElectronico, @Contraseña, @TipoDeUsuario, @Saldo, @NumeroDeCuenta)";
 
 
-              using (SqlCommand comando = CrearComando(query))
+
+            using (SqlCommand comando = CrearComando(query))
               {
                  
                       comando.Parameters.AddWithValue("@Nombre", entidad.Nombre);
                       comando.Parameters.AddWithValue("@Apellido", entidad.Apellido);
                       comando.Parameters.AddWithValue("@Direccion", entidad.Direccion);
-                      comando.Parameters.AddWithValue("@CorreoElectronico", entidad.Contraseña);
+                      comando.Parameters.AddWithValue("@CorreoElectronico", entidad.CorreoElectronico);
                       comando.Parameters.AddWithValue("@Contraseña", entidad.Contraseña);
                       comando.Parameters.AddWithValue("@TipoDeUsuario", entidad.TipoDeUsuario);
                       comando.Parameters.AddWithValue("@Saldo", entidad.saldo);

@@ -16,15 +16,16 @@ namespace BibliotecaDeClases
         private string tipos = string.Empty;
         private float precio;
         private int cantidadEnInventarioKilos;
+        private int id;
         public Carne()
         { 
             //constructor vacio para la conexion en sql base de datos         
         }
-        public Carne(string nombre, string tipo, float precio, int cantidadEnInventarioKilos) 
+        public Carne(int id, string nombre, string tipo, float precio, int cantidadEnInventarioKilos) 
         {
             this.Nombre = nombre;
             this.Tipo = tipo;
-
+            this.id = id;
             this.Precio = precio;
             this.cantidadEnInventarioKilos = cantidadEnInventarioKilos;
         }
@@ -37,9 +38,10 @@ namespace BibliotecaDeClases
             get => cantidadEnInventarioKilos;
             set => cantidadEnInventarioKilos = value;
         }
+        public int Id { get => id; set => id = value; }
 
-        
-     
+
+
         /// <summary>
         /// muestra la informacion general del producto
         /// </summary>
