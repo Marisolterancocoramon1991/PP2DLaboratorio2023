@@ -15,6 +15,9 @@ namespace PrimerParcial
 {
     public partial class FormCreacionNuevoProducto : Form
     {
+        List<Vacuno> listaVaca;
+        List<Cerdo> listaCerdo;
+        List<Ave> listaAve;
         public FormCreacionNuevoProducto()
         {
             InitializeComponent();
@@ -82,12 +85,62 @@ namespace PrimerParcial
         /// valida, intancia y agrega un producto nuevo
         /// </summary>
         /// <returns></returns>
+        /*   private void CrearProducto()
+           {
+
+               float precio;
+               int cantidadEnInventarioKilos;
+
+
+               if (comboBox1.Text != "Tipo de Producto" &&
+                  !(string.IsNullOrEmpty(textBoxNombre.Text))
+                   && !(string.IsNullOrEmpty(textBoxTipoCarne.Text)) &&
+                   float.TryParse(textBoxPrecio.Text, out precio) &&
+                   int.TryParse(textBoxUnidades.Text, out cantidadEnInventarioKilos)
+                   && cantidadEnInventarioKilos > 0)
+               {
+                   //  MessageBox.Show("llega nulo");
+                   switch (comboBox1.SelectedIndex)
+                   {
+                       case 1:
+                           Ave  nuevoProductoAve = new Ave(0,textBoxNombre.Text, textBoxTipoCarne.Text,
+                      precio, cantidadEnInventarioKilos, (eTipoAve)comboBoxTipoAve.SelectedItem);
+                           HandlerAve handlerAve = new HandlerAve();
+                           handlerAve.Add(nuevoProductoAve);
+                           Negocio.CargaListaAves(handlerAve.Leer());
+
+                           break;
+                       case 2:
+                           Cerdo nuevoProductoCerdo = new Cerdo(0,textBoxNombre.Text, 
+                               textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, 
+                               (eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
+                           handlerCerdo handlerCerdo = new handlerCerdo();
+                           handlerCerdo.Add(nuevoProductoCerdo);
+                           Negocio.CargaListaCerdo(handlerCerdo.Leer());
+
+                           break;
+                       case 3:
+                           Vacuno nuevoProductoVaca = new Vacuno(0, textBoxNombre.Text, textBoxTipoCarne.Text,
+                           precio, cantidadEnInventarioKilos,
+                           (eRazasDeVacas)comboBoxRVacuno.SelectedItem,
+                           (eCategoria)comboBoxCategoria.SelectedItem);
+                           HanblerVacuno hanblerVacuno = new HanblerVacuno();
+                           hanblerVacuno.Add(nuevoProductoVaca);
+                           Negocio.CargaListaVacuno(hanblerVacuno.Leer());
+                           break;
+
+                   }
+
+
+
+
+               }
+
+           }*/
         private void CrearProducto()
         {
-            
             float precio;
             int cantidadEnInventarioKilos;
-
 
             if (comboBox1.Text != "Tipo de Producto" &&
                !(string.IsNullOrEmpty(textBoxNombre.Text))
@@ -96,42 +149,36 @@ namespace PrimerParcial
                 int.TryParse(textBoxUnidades.Text, out cantidadEnInventarioKilos)
                 && cantidadEnInventarioKilos > 0)
             {
-                //  MessageBox.Show("llega nulo");
                 switch (comboBox1.SelectedIndex)
                 {
                     case 1:
-                        Ave  nuevoProductoAve = new Ave(0,textBoxNombre.Text, textBoxTipoCarne.Text,
-                   precio, cantidadEnInventarioKilos, (eTipoAve)comboBoxTipoAve.SelectedItem);
+                        Ave nuevoProductoAve = new Ave(0, textBoxNombre.Text, textBoxTipoCarne.Text,
+                            precio, cantidadEnInventarioKilos, (eTipoAve)comboBoxTipoAve.SelectedItem);
                         HandlerAve handlerAve = new HandlerAve();
                         handlerAve.Add(nuevoProductoAve);
-
+                        Negocio.CargaListaAves(handlerAve.Leer());
                         break;
                     case 2:
-                        Cerdo nuevoProductoCerdo = new Cerdo(0,textBoxNombre.Text, 
-                            textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos, 
+                        Cerdo nuevoProductoCerdo = new Cerdo(0, textBoxNombre.Text,
+                            textBoxTipoCarne.Text, precio, cantidadEnInventarioKilos,
                             (eRazasDeCerdo)comboBoxRCerdo.SelectedItem);
                         handlerCerdo handlerCerdo = new handlerCerdo();
                         handlerCerdo.Add(nuevoProductoCerdo);
-
+                        Negocio.CargaListaCerdo(handlerCerdo.Leer());
                         break;
                     case 3:
                         Vacuno nuevoProductoVaca = new Vacuno(0, textBoxNombre.Text, textBoxTipoCarne.Text,
-                        precio, cantidadEnInventarioKilos,
-                        (eRazasDeVacas)comboBoxRVacuno.SelectedItem,
-                        (eCategoria)comboBoxCategoria.SelectedItem);
-                        HanblerVacuno hanblerVacuno = new HanblerVacuno();
-                        hanblerVacuno.Add(nuevoProductoVaca);
-                        
+                            precio, cantidadEnInventarioKilos,
+                            (eRazasDeVacas)comboBoxRVacuno.SelectedItem,
+                            (eCategoria)comboBoxCategoria.SelectedItem);
+                            HanblerVacuno hanblerVacuno = new HanblerVacuno();
+                            hanblerVacuno.Add(nuevoProductoVaca);
+                            Negocio.CargaListaVacuno(hanblerVacuno.Leer());
                         break;
-
                 }
-
-
-
-
             }
-        
         }
+
 
 
         /// <summary>
@@ -142,12 +189,13 @@ namespace PrimerParcial
         private void buttonCrearProducto_Click(object sender, EventArgs e)
         {
             List<Carne> lista = Negocio.RetornarProductos();
-            Carne nuevoProducto = CrearProducto();
-            DialogResult Respuesta = new();
-            if (nuevoProducto != null)
-            {
-                lista.Add(nuevoProducto);
-                
+
+         //   try
+          //  {
+               CrearProducto();
+                DialogResult Respuesta = new();
+
+
                 Respuesta = MessageBox.Show("Ha editado exitosamente, desea logearse o seguir", "Atencion",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);
@@ -158,8 +206,15 @@ namespace PrimerParcial
                     login.Show();
 
                 }
+       //     }
+      //      catch (Exception ex) 
+        //    {
 
-            }
+           //     MessageBox.Show("hubo un problema a la hora de cargar el producto");
+           // }
+             
+
+            
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)

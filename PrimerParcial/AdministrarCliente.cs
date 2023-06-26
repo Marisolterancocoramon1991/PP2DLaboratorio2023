@@ -59,12 +59,12 @@ namespace PrimerParcial
         }
         private void SetTextStringModificar(Cliente clienteAmodificar)
         {
-             txtNombreUsuario.Text = clienteAmodificar.Nombre;
+            txtNombreUsuario.Text = clienteAmodificar.Nombre;
             txtApellidoUsuario.Text = clienteAmodificar.Apellido;
-             txtDireccioUsuario.Text= clienteAmodificar.Direccion;
-             txtCorreoUsuario.Text = clienteAmodificar.CorreoElectronico;
-            txtContraseñaUsuario.Text= clienteAmodificar.Contraseña;
-            
+            txtDireccioUsuario.Text = clienteAmodificar.Direccion;
+            txtCorreoUsuario.Text = clienteAmodificar.CorreoElectronico;
+            txtContraseñaUsuario.Text = clienteAmodificar.Contraseña;
+
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -317,7 +317,7 @@ namespace PrimerParcial
 
         }
 
-        
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
@@ -432,12 +432,12 @@ namespace PrimerParcial
                 string correo = textCorreoTra.Text;
                 string Contraseña = textContraseñaTra.Text;
                 float sueldo = Validaciones.DeStringANumero(textSueldoTra.Text);
-                
+
 
                 if (nombre.Length > 1 && apellido.Length > 1 && direccion.Length > 1 && correo.Length > 1 &&
                     Contraseña.Length > 1)
                 {
-                  
+
 
                     Vendedor trabajador = new Vendedor(0, nombre, apellido, direccion, correo, Contraseña, sueldo, eTurno.noche, eTipoDeUsuario.Vendedor);
                     HandlerVendedor usuarioHanbler = new HandlerVendedor();
@@ -450,7 +450,7 @@ namespace PrimerParcial
                     textCorreoTra.Text = " ";
                     textContraseñaTra.Text = " ";
                     textSueldoTra.Text = " ";
-                  
+
                     MessageBox.Show($"se ha creado con exito {trabajador.Mostrar()}", "Bienvenida al nuevo trabajador");
                 }
                 else
