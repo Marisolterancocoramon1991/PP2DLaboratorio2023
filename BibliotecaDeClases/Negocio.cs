@@ -13,7 +13,7 @@ namespace BibliotecaDeClases
 {
    
 
-    public class Negocio
+    public static class Negocio
     {
         private static List<Persona> usuariosRegistrados;
         private static List<Carne> listaDeProductos;
@@ -396,17 +396,12 @@ namespace BibliotecaDeClases
         public static double GananciaTotal(List<Venta> listaVenta, Cliente usuario)
         {
             double resultado = 0;
-
+           
             foreach (Venta venta in listaVenta)
             {
-                if (usuario == venta.IDCliente1 && venta.MetodoPago == eMetodoPago.TarjetaDeCredito)
+              if(venta.IDCliente1== usuario.ID)
                 {
-                    double resultadoMasImpuesto = (venta.Precio * venta.CantidadDeUnidades) * 0.05;
-                    resultado += (venta.Precio * venta.CantidadDeUnidades)+ resultadoMasImpuesto;
-                }
-                else if (usuario == venta.IDCliente1)
-                {
-                    resultado += (venta.Precio * venta.CantidadDeUnidades);
+                    resultado += venta.Precio * venta.CantidadDeUnidades;
 
                 }
 
@@ -414,6 +409,10 @@ namespace BibliotecaDeClases
 
 
             return resultado;
+        }
+        public static int RetornaId(this Cliente cliente)
+        {
+            return cliente.id;
         }
 
         /*    public static double GananciaPorMercadoPago(Cliente cliente)

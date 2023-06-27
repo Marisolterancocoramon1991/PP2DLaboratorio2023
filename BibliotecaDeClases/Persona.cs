@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static BibliotecaDeClases.Persona;
@@ -11,7 +12,7 @@ namespace BibliotecaDeClases
     public class Persona
     {
         protected string nombre;
-        protected int id;
+        internal int id;
         protected string apellido;
         protected string direccion;
         protected string correoElectronico;
@@ -132,6 +133,7 @@ namespace BibliotecaDeClases
 
         }
 
+       
 
     }
 }
