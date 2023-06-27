@@ -25,6 +25,7 @@ namespace BibliotecaDeClases
         private static List<Vacuno> listaVacuno;
         private static List<Cerdo> listaCerdo;
         private static List<Ave> listaAve;
+        private static Vendedor trabajador;
         static Negocio()
         {
             usuariosRegistrados = new List<Persona>();
@@ -38,10 +39,18 @@ namespace BibliotecaDeClases
         }
 
 
-       
 
 
-        
+        public static void CargarTrabajadores(this Vendedor vendedor)
+        {
+            trabajador = vendedor;
+        }
+
+        public static Vendedor RetornaVendedor ()
+        {
+            return trabajador; 
+
+        }
 
         /// <summary>
         /// busca un usuario en una lista de "usuariosRegistrados" a través de su correo electrónico y 

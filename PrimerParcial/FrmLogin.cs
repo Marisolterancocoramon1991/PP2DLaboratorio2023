@@ -122,7 +122,8 @@ namespace PrimerParcial
                 }
                 if (auxiliar.TipoDeUsuario == eTipoDeUsuario.Vendedor)
                 {
-
+                    Vendedor vendedor = (Vendedor)auxiliar;
+                    vendedor.CargarTrabajadores();
                     FormAdministracion formAdministracion = new();
                     MessageBox.Show("gracias por tu trabajo");
                     this.Hide();

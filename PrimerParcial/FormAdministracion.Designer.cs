@@ -40,6 +40,7 @@
             labelMontoVentasTotales = new Label();
             button1 = new Button();
             buttonArchivo = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -174,12 +175,24 @@
             buttonArchivo.UseVisualStyleBackColor = true;
             buttonArchivo.Click += buttonArchivo_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Lime;
+            label1.Location = new Point(288, 49);
+            label1.Name = "label1";
+            label1.Size = new Size(283, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Haz Click aqui y sabras si tu sueldo es mayor a 10000";
+            label1.Click += label1_Click;
+            // 
             // FormAdministracion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(868, 362);
+            Controls.Add(label1);
             Controls.Add(buttonArchivo);
             Controls.Add(button1);
             Controls.Add(labelMontoVentasTotales);
@@ -218,5 +231,6 @@
         private Label labelMontoVentasTotales;
         private Button button1;
         private Button buttonArchivo;
+        private Label label1;
     }
 }

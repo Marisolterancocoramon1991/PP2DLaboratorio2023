@@ -13,9 +13,11 @@ namespace PrimerParcial
 {
     public partial class FormAdministracion : Form
     {
+        Vendedor vendedor;
         public FormAdministracion()
         {
             InitializeComponent();
+            vendedor = Negocio.RetornaVendedor();
         }
 
 
@@ -110,6 +112,11 @@ namespace PrimerParcial
             this.Hide();
             informesVentasForm1 informes = new();
             informes.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Text = vendedor.SalarioMayorA(10000).ToString();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDeClases
 {
-    public class Validaciones
+    public static class Validaciones
     {
 
         /// <summary>
@@ -280,5 +280,12 @@ namespace BibliotecaDeClases
                 throw new CamposVaciosException("Hay que Completar todos los Campos");
             }
         }
+
+        public static bool SalarioMayorA(this Vendedor vendedor, float salarioMinimo)
+        {
+            return vendedor.Sueldo > salarioMinimo;
+        }
+
+
     }
 }
