@@ -65,7 +65,7 @@ namespace PrimerParcial
                 MessageBox.Show("...espere unos instantes");
             }
 
-            FormVentaDeCarne ventanaCerdo = new FormVentaDeCarne(usuario);
+            FormVentaDeCarne ventanaCerdo = new FormVentaDeCarne(usuario,"Cerdo");
 
             this.Hide();
             ventanaCerdo.Show();
@@ -97,7 +97,7 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario);
+            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario,"Ave");
 
             this.Hide();
             ventanaVentaCarne.Show();
@@ -130,7 +130,7 @@ namespace PrimerParcial
                 // Mostrar espera ya que el archvo no pudo abrir...
                 MessageBox.Show("...espere unos instantes");
             }
-            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario);
+            FormVentaDeCarne ventanaVentaCarne = new FormVentaDeCarne(usuario, "Vaca");
             this.Hide();
             ventanaVentaCarne.Show();
         }

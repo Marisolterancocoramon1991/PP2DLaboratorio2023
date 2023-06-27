@@ -22,7 +22,7 @@ namespace PrimerParcial
             InitializeComponent();
             this.usuario = usuario;
             this.listaVentas = listaVentas;
-           
+
         }
         /// <summary>
         /// carga los item para que la ventana pueda funcionar
@@ -37,7 +37,8 @@ namespace PrimerParcial
             labelID.Text = "ID: " + usuario.ID;
             DateTime fechaActual = DateTime.Now;
             labelFechaActual.Text = "Fecha actual " + fechaActual.ToString();
-            labelTotal.Text = "Haz click y conoceras el total de gastos";
+            labelTotal.Text = "Haz click. Total gastado";
+            labelMontoTotalNuevaLista.Text = "Total. Compra actual";
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void ButtonRegresar_Click(object sender, EventArgs e)
         {
-            FormVentaDeCarne formVentaDeCarne = new FormVentaDeCarne(usuario);
+            FormVentaDeCarne formVentaDeCarne = new FormVentaDeCarne(usuario, "Ave");
             formVentaDeCarne.Show();
             this.Hide();
         }
@@ -127,6 +128,9 @@ namespace PrimerParcial
             }
         }
 
-       
+        private void labelMontoTotalNuevaLista_Click(object sender, EventArgs e)
+        {
+            labelMontoTotalNuevaLista.Text = ($"total: {Negocio.GananciaTotal(listaVentas, usuario)}");
+        }
     }
 }

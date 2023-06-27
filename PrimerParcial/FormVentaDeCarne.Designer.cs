@@ -31,6 +31,20 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupCerdo = new GroupBox();
+            label4 = new Label();
+            comboBox1 = new ComboBox();
+            dataGridViewVacuno = new DataGridView();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            clm6 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            dataGridViewCerdo = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            PrecioColumna = new DataGridViewTextBoxColumn();
+            clm4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             buttonFactura = new Button();
             textBuscador = new TextBox();
             buttonBuscar = new Button();
@@ -53,6 +67,8 @@
             precio = new DataGridViewTextBoxColumn();
             raza = new DataGridViewTextBoxColumn();
             groupCerdo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewVacuno).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCerdo).BeginInit();
             groupBoxTipoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -61,6 +77,10 @@
             // groupCerdo
             // 
             groupCerdo.BackColor = Color.FromArgb(255, 128, 128);
+            groupCerdo.Controls.Add(label4);
+            groupCerdo.Controls.Add(comboBox1);
+            groupCerdo.Controls.Add(dataGridViewVacuno);
+            groupCerdo.Controls.Add(dataGridViewCerdo);
             groupCerdo.Controls.Add(buttonFactura);
             groupCerdo.Controls.Add(textBuscador);
             groupCerdo.Controls.Add(buttonBuscar);
@@ -77,10 +97,102 @@
             groupCerdo.Controls.Add(dataGridView1);
             groupCerdo.Location = new Point(-2, 3);
             groupCerdo.Name = "groupCerdo";
-            groupCerdo.Size = new Size(637, 425);
+            groupCerdo.Size = new Size(637, 426);
             groupCerdo.TabIndex = 0;
             groupCerdo.TabStop = false;
             groupCerdo.Text = "Carniceria_Teran";
+            groupCerdo.Enter += groupCerdo_Enter;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(496, 13);
+            label4.Name = "label4";
+            label4.Size = new Size(128, 15);
+            label4.TabIndex = 17;
+            label4.Text = "Elegir lista de producto";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Ave", "Cerdo", "Vacuno" });
+            comboBox1.Location = new Point(498, 37);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 16;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // dataGridViewVacuno
+            // 
+            dataGridViewVacuno.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewVacuno.Columns.AddRange(new DataGridViewColumn[] { Column3, Column4, Column5, clm6, Column6 });
+            dataGridViewVacuno.Location = new Point(51, 67);
+            dataGridViewVacuno.Name = "dataGridViewVacuno";
+            dataGridViewVacuno.RowTemplate.Height = 25;
+            dataGridViewVacuno.Size = new Size(502, 250);
+            dataGridViewVacuno.TabIndex = 15;
+            dataGridViewVacuno.CellContentClick += dataGridViewVacuno_CellContentClick;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Nombre";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Tipo";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Precio";
+            Column5.Name = "Column5";
+            // 
+            // clm6
+            // 
+            clm6.HeaderText = "Raza";
+            clm6.Name = "clm6";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Precio";
+            Column6.Name = "Column6";
+            // 
+            // dataGridViewCerdo
+            // 
+            dataGridViewCerdo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCerdo.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, PrecioColumna, clm4, dataGridViewTextBoxColumn1 });
+            dataGridViewCerdo.Location = new Point(51, 67);
+            dataGridViewCerdo.Name = "dataGridViewCerdo";
+            dataGridViewCerdo.RowTemplate.Height = 25;
+            dataGridViewCerdo.Size = new Size(502, 250);
+            dataGridViewCerdo.TabIndex = 14;
+            dataGridViewCerdo.CellContentClick += dataGridViewCerdo_CellContentClick;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Nombre";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Tipo";
+            Column2.Name = "Column2";
+            // 
+            // PrecioColumna
+            // 
+            PrecioColumna.HeaderText = "Precio";
+            PrecioColumna.Name = "PrecioColumna";
+            // 
+            // clm4
+            // 
+            clm4.HeaderText = "Raza";
+            clm4.Name = "clm4";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Precio";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // buttonFactura
             // 
@@ -94,14 +206,14 @@
             // 
             // textBuscador
             // 
-            textBuscador.Location = new Point(393, 38);
+            textBuscador.Location = new Point(327, 37);
             textBuscador.Name = "textBuscador";
             textBuscador.Size = new Size(155, 23);
             textBuscador.TabIndex = 12;
             // 
             // buttonBuscar
             // 
-            buttonBuscar.Location = new Point(429, 9);
+            buttonBuscar.Location = new Point(367, 9);
             buttonBuscar.Name = "buttonBuscar";
             buttonBuscar.Size = new Size(75, 23);
             buttonBuscar.TabIndex = 11;
@@ -310,6 +422,8 @@
             Load += FormVentaDeCarne_Load;
             groupCerdo.ResumeLayout(false);
             groupCerdo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewVacuno).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCerdo).EndInit();
             groupBoxTipoPago.ResumeLayout(false);
             groupBoxTipoPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
@@ -341,5 +455,19 @@
         private TextBox textBuscador;
         private Button buttonBuscar;
         private Button buttonFactura;
+        private DataGridView dataGridViewCerdo;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn PrecioColumna;
+        private DataGridViewTextBoxColumn clm4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridView dataGridViewVacuno;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn clm6;
+        private DataGridViewTextBoxColumn Column6;
+        private Label label4;
+        private ComboBox comboBox1;
     }
 }

@@ -32,6 +32,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             groupCarniceria = new GroupBox();
+            labelMontoTotalNuevaLista = new Label();
             button1 = new Button();
             labelTotal = new Label();
             ButtonRegresar = new Button();
@@ -51,6 +52,7 @@
             // groupCarniceria
             // 
             groupCarniceria.BackColor = SystemColors.ScrollBar;
+            groupCarniceria.Controls.Add(labelMontoTotalNuevaLista);
             groupCarniceria.Controls.Add(button1);
             groupCarniceria.Controls.Add(labelTotal);
             groupCarniceria.Controls.Add(ButtonRegresar);
@@ -66,6 +68,16 @@
             groupCarniceria.TabIndex = 0;
             groupCarniceria.TabStop = false;
             groupCarniceria.Text = "Carniceria_Teran";
+            // 
+            // labelMontoTotalNuevaLista
+            // 
+            labelMontoTotalNuevaLista.AutoSize = true;
+            labelMontoTotalNuevaLista.Location = new Point(445, 389);
+            labelMontoTotalNuevaLista.Name = "labelMontoTotalNuevaLista";
+            labelMontoTotalNuevaLista.Size = new Size(45, 19);
+            labelMontoTotalNuevaLista.TabIndex = 8;
+            labelMontoTotalNuevaLista.Text = "label1";
+            labelMontoTotalNuevaLista.Click += labelMontoTotalNuevaLista_Click;
             // 
             // button1
             // 
@@ -84,7 +96,7 @@
             labelTotal.AutoSize = true;
             labelTotal.Cursor = Cursors.Hand;
             labelTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTotal.Location = new Point(288, 386);
+            labelTotal.Location = new Point(222, 386);
             labelTotal.Name = "labelTotal";
             labelTotal.Size = new Size(52, 21);
             labelTotal.TabIndex = 6;
@@ -229,5 +241,6 @@
         private Label labelTotal;
         private Button ButtonRegresar;
         private Button button1;
+        private Label labelMontoTotalNuevaLista;
     }
 }

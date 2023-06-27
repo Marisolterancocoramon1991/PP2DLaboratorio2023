@@ -66,6 +66,7 @@ namespace PrimerParcial
                 {
 
                     cliente.Saldo = Validaciones.DeStringANumero(textBoxAgregarMonto.Text);
+                    Negocio.CargarGastoCliente(cliente);
                     MessageBox.Show(cliente.Mostrar());
                     formVentas = new FormBuscadorCarnes(cliente);
                     formVentas.Show();
