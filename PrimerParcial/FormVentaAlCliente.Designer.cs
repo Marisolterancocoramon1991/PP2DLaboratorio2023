@@ -420,7 +420,7 @@
             // 
             dataGridViewCerdo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCerdo.Columns.AddRange(new DataGridViewColumn[] { Column15, Column16, Column17, Column18, Column19 });
-            dataGridViewCerdo.Location = new Point(446, 31);
+            dataGridViewCerdo.Location = new Point(446, 34);
             dataGridViewCerdo.Name = "dataGridViewCerdo";
             dataGridViewCerdo.RowTemplate.Height = 25;
             dataGridViewCerdo.Size = new Size(331, 182);

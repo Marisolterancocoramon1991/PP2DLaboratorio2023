@@ -21,9 +21,6 @@ namespace PrimerParcial
         List<Ave> listaDeAve;
         List<Cerdo> listaDeCerdo;
         List<Vacuno> listaDeVacuno;
-        Ave productoAve;
-        Cerdo productoCerdo;
-        Vacuno productoVacuno;
         public FormEditarProductoYStock()
         {
             InitializeComponent();
@@ -45,9 +42,9 @@ namespace PrimerParcial
             listaDeVacuno = Negocio.RetornarListaVacuno();
             listaDeCerdo = Negocio.RetornarListaCerdo();
             listaDeAve = Negocio.RetornarListaAve();
-            CargarDataGridView(listaDeAve, productoAve);
-            CargarDataGridView(listaDeVacuno, productoVacuno);
-            CargarDataGridView(listaDeCerdo, productoCerdo);
+            CargarDataGridView(listaDeAve);
+            CargarDataGridView(listaDeVacuno);
+            CargarDataGridView(listaDeCerdo);
         }
 
 
@@ -370,16 +367,15 @@ namespace PrimerParcial
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="Ave"></param>
-        public void CargarDataGridView(List<Ave> listaDeProductos, Ave Ave)
+        public void CargarDataGridView(List<Ave> listaDeProductos)
         {
-
-            foreach (Carne producto in listaDeProductos)
+            dataGridView1.Rows.Clear();
+            foreach (Ave producto in listaDeProductos)
             {
-                if (producto is Ave)
-                {
-                    Ave = (Ave)producto;
-                    dataGridView1.Rows.Add(Ave.Nombre, Ave.Tipo, Ave.Precio, Ave.TipoAve);
-                }
+                
+
+                dataGridView1.Rows.Add(producto.Nombre, producto.Tipo, producto.Precio, producto.TipoAve);
+
 
             }
         }
@@ -390,16 +386,15 @@ namespace PrimerParcial
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="CarneCerdo"></param>
-        public void CargarDataGridView(List<Cerdo> listaDeProductos, Cerdo CarneCerdo)
+        public void CargarDataGridView(List<Cerdo> listaDeProductos)
         {
-            foreach (Carne producto in listaDeProductos)
+            dataGridView2.Rows.Clear();
+            foreach (Cerdo producto in listaDeProductos)
             {
-                if (producto is Cerdo)
-                {
-                    CarneCerdo = (Cerdo)producto;
-                    dataGridView2.Rows.Add(CarneCerdo.Nombre, CarneCerdo.Tipo,
-                        CarneCerdo.Precio, CarneCerdo.RazasDeCerdo);
-                }
+
+                dataGridView2.Rows.Add(producto.Nombre, producto.Tipo,
+                    producto.Precio, producto.RazasDeCerdo);
+
             }
         }
         /// <summary>
@@ -407,16 +402,15 @@ namespace PrimerParcial
         /// </summary>
         /// <param name="listaDeProductos"></param>
         /// <param name="ProductoVaca"></param>
-        public void CargarDataGridView(List<Vacuno> listaDeProductos, Vacuno ProductoVaca)
+        public void CargarDataGridView(List<Vacuno> listaDeProductos)
         {
-            foreach (Carne producto in listaDeProductos)
+            dataGridViewVacuno.Rows.Clear();
+            foreach (Vacuno producto in listaDeProductos)
             {
-                if (producto is Vacuno)
-                {
-                    ProductoVaca = (Vacuno)producto;
-                    dataGridViewVacuno.Rows.Add(ProductoVaca.Nombre, ProductoVaca.Tipo,
-                         ProductoVaca.Precio, ProductoVaca.RazasDeVacas);
-                }
+
+                dataGridViewVacuno.Rows.Add(producto.Nombre, producto.Tipo,
+                     producto.Precio, producto.RazasDeVacas);
+
             }
         }
         /// <summary>
@@ -575,11 +569,11 @@ namespace PrimerParcial
                                 ave.Precio = precio;
                                 ave.TipoAve = (eTipoAve)comboBoxTipoAve.SelectedItem;
 
-                                HandlerAve handlerAve = new HandlerAve();
-                                handlerAve.Modificar(ave);
-                                Negocio.CargaListaAves(handlerAve.Leer());
+                                Negocio.CargarModificacionesProducto(ave);
                                 MessageBox.Show($"Ha editado correctamente el producto:\n" +
                                     $"{ave.MostrarDetallesDeProducto()}");
+                                CargarDataGridView(listaDeAve);
+
                             }
                             break;
                         case 2:
@@ -588,12 +582,14 @@ namespace PrimerParcial
                                 Cerdo cerdo = (Cerdo)productoSeleccioando;
                                 cerdo.Precio = precio;
                                 cerdo.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
-
+                                Negocio.CargarModificacionesProducto(cerdo);
                                 handlerCerdo handlerCerdo = new handlerCerdo();
                                 handlerCerdo.Modificar(cerdo);
                                 Negocio.CargaListaCerdo(handlerCerdo.Leer());
                                 MessageBox.Show($"Ha editado correctamente el producto:\n" +
                                     $"{cerdo.MostrarDetallesDeProducto()}");
+
+                                CargarDataGridView(listaDeCerdo);
                             }
                             break;
                         case 3:
@@ -602,10 +598,8 @@ namespace PrimerParcial
                                 Vacuno vacuno = (Vacuno)productoSeleccioando;
                                 vacuno.Precio = precio;
                                 vacuno.RazasDeVacas = (eRazasDeVacas)comboBoxRazaVacuno.SelectedItem;
-
-                                HanblerVacuno handlerVacuno = new HanblerVacuno();
-                                handlerVacuno.Modificar(vacuno);
-                                Negocio.CargaListaVacuno(handlerVacuno.Leer());
+                                Negocio.CargarModificacionesProducto(vacuno);
+                                CargarDataGridView(listaDeVacuno);
                                 MessageBox.Show($"Ha editado correctamente el producto:\n" +
                                     $"{vacuno.MostrarDetallesDeProducto()}");
                             }

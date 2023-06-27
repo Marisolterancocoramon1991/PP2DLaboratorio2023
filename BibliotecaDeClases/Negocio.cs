@@ -354,6 +354,27 @@ namespace BibliotecaDeClases
             Negocio.CargaListaClientes(usuariosHandler.Leer());
 
         }
+        public static void CargarModificacionesProducto(Vacuno vacuno)
+        {
+            HanblerVacuno handlerVacuno = new HanblerVacuno();
+            handlerVacuno.Modificar(vacuno);
+            Negocio.CargaListaVacuno(handlerVacuno.Leer());
+
+        }
+        public static void CargarModificacionesProducto(Ave Ave)
+        {
+            HandlerAve handlerAve = new HandlerAve();
+            handlerAve.Modificar(Ave);
+            Negocio.CargaListaAves(handlerAve.Leer());
+
+        }
+        public static void CargarModificacionesProducto(Cerdo cerdo)
+        {
+            handlerCerdo handlerCerdo = new handlerCerdo();
+            handlerCerdo.Modificar(cerdo);
+            Negocio.CargaListaCerdo(handlerCerdo.Leer());
+
+        }
 
         public static double GananciaTotal(List<Venta> listaVenta, Cliente usuario)
         {

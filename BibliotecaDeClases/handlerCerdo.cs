@@ -29,7 +29,7 @@ namespace BibliotecaDeClases
         }
         public void Modificar(Cerdo entidad)
         {
-            string query = "UPDATE Cerdos SET Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = @CantidadEnInventarioKilos, RazasDeCerdo = @RazasDeCerdo WHERE Nombre = @Nombre";
+            string query = "UPDATE Cerdos SET Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = @CantidadEnInventarioKilos, RazaDeCerdo = @RazasDeCerdo WHERE Nombre = @Nombre";
 
             using (SqlCommand comando = CrearComando(query))
             {

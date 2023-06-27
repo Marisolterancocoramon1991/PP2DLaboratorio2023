@@ -28,6 +28,7 @@ namespace PrimerParcial
                 string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
                 var Serializador = new Serializador<List<Venta>>();
                 Serializador.SerializarXML(listaVenta, rutaArchivo);
+                MessageBox.Show("la accion se ha ejecutado Correctamente");
             }
             catch (Exception ex)
             {
@@ -44,6 +45,7 @@ namespace PrimerParcial
                 string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
                 var Serializador = new Serializador<List<Venta>>();
                 Serializador.SerializarCSV(listaVenta, rutaArchivo);
+                MessageBox.Show("la accion se ha ejecutado Correctamente");
             }
             catch (Exception ex)
             {
@@ -61,6 +63,7 @@ namespace PrimerParcial
                 string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
                 var Serializador = new Serializador<List<Venta>>();
                 Serializador.SerializarJSON(listaVenta, rutaArchivo);
+                MessageBox.Show("la accion se ha ejecutado Correctamente");
             }
             catch (Exception ex)
             {

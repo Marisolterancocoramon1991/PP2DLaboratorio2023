@@ -209,6 +209,19 @@ namespace PrimerParcial
                             labelMostrarSeleccion.Text = clienteSeleccionado.Mostrar();
                             EscribirArchivo.ActualizarArchivo(ventaTotal);
                             Negocio.CargarGastoCliente(clienteSeleccionado);
+                            if (productoSeleccinadoDataUno is Vacuno) 
+                            {
+                                Negocio.CargarModificacionesProducto((Vacuno)productoSeleccinadoDataUno);
+                            }
+                            else if (productoSeleccinadoDataUno is Cerdo)
+                            {
+                                Negocio.CargarModificacionesProducto((Cerdo)productoSeleccinadoDataUno);
+                            }
+                            else
+                            {
+                                Negocio.CargarModificacionesProducto((Ave)productoSeleccinadoDataUno);
+                            }
+                           
                         }
                     }
                     else
