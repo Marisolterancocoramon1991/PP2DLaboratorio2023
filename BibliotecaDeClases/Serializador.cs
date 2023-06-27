@@ -14,7 +14,7 @@ namespace BibliotecaDeClases
 {
     public class Serializador<T>
     {
-        // el primero la entidad T strin el nombre y la ruta del archivo
+        // el primero la entidad T string el nombre y la ruta del archivo
         public void SerializarXML(T entidad, string nombreArchivo)
         {
             using (StreamWriter streamWriter = new StreamWriter(nombreArchivo))

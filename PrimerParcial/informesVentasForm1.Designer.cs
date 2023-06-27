@@ -32,11 +32,12 @@
             btnVentasXML = new Button();
             btnCSVDeVentas = new Button();
             textBox1 = new TextBox();
+            buttonRegresa = new Button();
             SuspendLayout();
             // 
             // btnVentasJASON
             // 
-            btnVentasJASON.Image = Properties.Resources.XMLNuevo;
+            btnVentasJASON.Image = Properties.Resources.JSONNuevo;
             btnVentasJASON.Location = new Point(51, 57);
             btnVentasJASON.Name = "btnVentasJASON";
             btnVentasJASON.Size = new Size(101, 103);
@@ -46,7 +47,7 @@
             // 
             // btnVentasXML
             // 
-            btnVentasXML.Image = Properties.Resources.CSVIMAGEN2;
+            btnVentasXML.Image = Properties.Resources.XMLNuevo;
             btnVentasXML.Location = new Point(331, 57);
             btnVentasXML.Name = "btnVentasXML";
             btnVentasXML.Size = new Size(101, 103);
@@ -56,7 +57,7 @@
             // 
             // btnCSVDeVentas
             // 
-            btnCSVDeVentas.Image = Properties.Resources.JSONNuevo;
+            btnCSVDeVentas.Image = Properties.Resources.CSVIMAGEN2;
             btnCSVDeVentas.Location = new Point(197, 57);
             btnCSVDeVentas.Name = "btnCSVDeVentas";
             btnCSVDeVentas.Size = new Size(101, 103);
@@ -75,17 +76,30 @@
             textBox1.TabIndex = 3;
             textBox1.Text = "imprimir la lista de venta en estos archivos con sus respectivos formatos";
             // 
+            // buttonRegresa
+            // 
+            buttonRegresa.BackColor = Color.Lime;
+            buttonRegresa.Location = new Point(331, 181);
+            buttonRegresa.Name = "buttonRegresa";
+            buttonRegresa.Size = new Size(115, 22);
+            buttonRegresa.TabIndex = 4;
+            buttonRegresa.Text = "Regresar";
+            buttonRegresa.UseVisualStyleBackColor = false;
+            buttonRegresa.Click += buttonRegresa_Click;
+            // 
             // informesVentasForm1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(470, 228);
+            Controls.Add(buttonRegresa);
             Controls.Add(textBox1);
             Controls.Add(btnCSVDeVentas);
             Controls.Add(btnVentasXML);
             Controls.Add(btnVentasJASON);
             Name = "informesVentasForm1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "informesVentasForm1";
             Load += informesVentasForm1_Load;
             ResumeLayout(false);
@@ -98,5 +112,6 @@
         private Button btnVentasXML;
         private Button btnCSVDeVentas;
         private TextBox textBox1;
+        private Button buttonRegresa;
     }
 }

@@ -39,6 +39,7 @@
             buttonVender = new Button();
             labelMontoVentasTotales = new Label();
             button1 = new Button();
+            buttonArchivo = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -163,12 +164,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // buttonArchivo
+            // 
+            buttonArchivo.Image = Properties.Resources.Archivo;
+            buttonArchivo.Location = new Point(428, 312);
+            buttonArchivo.Name = "buttonArchivo";
+            buttonArchivo.Size = new Size(99, 40);
+            buttonArchivo.TabIndex = 11;
+            buttonArchivo.UseVisualStyleBackColor = true;
+            buttonArchivo.Click += buttonArchivo_Click;
+            // 
             // FormAdministracion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(868, 362);
+            Controls.Add(buttonArchivo);
             Controls.Add(button1);
             Controls.Add(labelMontoVentasTotales);
             Controls.Add(buttonVender);
@@ -205,5 +217,6 @@
         private Button buttonVender;
         private Label labelMontoVentasTotales;
         private Button button1;
+        private Button buttonArchivo;
     }
 }

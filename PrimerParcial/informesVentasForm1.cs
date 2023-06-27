@@ -14,7 +14,7 @@ namespace PrimerParcial
     public partial class informesVentasForm1 : Form
     {
         List<Venta> listaVenta;
-            
+
         public informesVentasForm1()
         {
             InitializeComponent();
@@ -22,26 +22,71 @@ namespace PrimerParcial
 
         private void btnVentasXML_Click(object sender, EventArgs e)
         {
-            var Serializador = new Serializador<List<Venta>>();
-            Serializador.SerializarXML(listaVenta,"ventas.xml");
+            try
+            {
+                string nombreArchivo = "ventas.xml";
+                string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
+                var Serializador = new Serializador<List<Venta>>();
+                Serializador.SerializarXML(listaVenta, rutaArchivo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("algo ocurrio en la carga de XML");
+            }
+
         }
 
         private void btnCSVDeVentas_Click(object sender, EventArgs e)
         {
-            var Serializador = new Serializador<List<Venta>>();
-            Serializador.SerializarCSV(listaVenta, "ventas.xml");
+            try
+            {
+                string nombreArchivo = "ventas.csv";
+                string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
+                var Serializador = new Serializador<List<Venta>>();
+                Serializador.SerializarCSV(listaVenta, rutaArchivo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("algo ocurrio en la carga de Csv");
+            }
+
 
         }
 
         private void btnVentasJASON_Click(object sender, EventArgs e)
         {
-            var Serializador = new Serializador<List<Venta>>();
-            Serializador.SerializarJSON(listaVenta, "ventas.xml");
+            try
+            {
+                string nombreArchivo = "ventas.json";
+                string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
+                var Serializador = new Serializador<List<Venta>>();
+                Serializador.SerializarJSON(listaVenta, rutaArchivo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("algo ocurrio en la carga json");
+            }
+
         }
 
         private void informesVentasForm1_Load(object sender, EventArgs e)
         {
-            listaVenta=Negocio.RetornarListaDeVentas();
+            try
+            {
+                listaVenta = Negocio.RetornarListaDeVentas();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("algo ocurrio en la carga de la lista");
+            }
+
+        }
+
+        private void buttonRegresa_Click(object sender, EventArgs e)
+        {
+            FormAdministracion formAdministracion = new FormAdministracion();
+            this.Hide();
+            formAdministracion.Show();
         }
     }
 }

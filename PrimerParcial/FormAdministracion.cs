@@ -104,5 +104,12 @@ namespace PrimerParcial
             AdministrarCliente administrarCliente = new();
             administrarCliente.Show();
         }
+
+        private void buttonArchivo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            informesVentasForm1 informes = new();
+            informes.Show();
+        }
     }
 }

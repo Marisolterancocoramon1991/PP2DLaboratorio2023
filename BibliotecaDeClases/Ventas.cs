@@ -32,7 +32,8 @@ namespace BibliotecaDeClases
             IDCliente1 = iDCliente;
         }
 
-
+        public Venta() 
+        { }
         public string ProductoVendido
         {
             get { return productoVendido; }
