@@ -23,6 +23,9 @@ namespace PrimerParcial
             InitializeComponent();
        
             this.usuario = cliente;
+            RegistroAcceso registro = new RegistroAcceso(cliente.Nombre, "formulario factura");
+            this.Load += registro.OnFrmAbierto;
+            this.FormClosed += registro.OnFrmCerrado;
         }
 
         /// <summary>

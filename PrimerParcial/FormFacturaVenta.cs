@@ -16,12 +16,16 @@ namespace PrimerParcial
     {
         Cliente usuario;
         List<Venta> listaVentas;
+        List<Venta> listaVentasTotal;
 
         public FormFacturaVenta(Cliente usuario, List<Venta> listaVentas)
         {
             InitializeComponent();
             this.usuario = usuario;
             this.listaVentas = listaVentas;
+            RegistroAcceso registro = new RegistroAcceso(usuario.Nombre, "formulario factura");
+            this.Load+= registro.OnFrmAbierto;
+            this.FormClosed+= registro.OnFrmCerrado;
 
         }
         /// <summary>
@@ -39,6 +43,9 @@ namespace PrimerParcial
             labelFechaActual.Text = "Fecha actual " + fechaActual.ToString();
             labelTotal.Text = "Haz click. Total gastado";
             labelMontoTotalNuevaLista.Text = "Total. Compra actual";
+            listaVentasTotal = Negocio.RetornarListaDeVentas();
+           
+
         }
 
         /// <summary>
@@ -93,7 +100,9 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void labelTotal_Click(object sender, EventArgs e)
         {
-            labelTotal.Text = "TOTAL " + Negocio.GananciaTotal(usuario).ToString();
+            CalcularGastosDelegate calcularGananciasDelegate = Delegado.CalcularGastosTotales;
+
+            labelTotal.Text = $"TOTAL {calcularGananciasDelegate(usuario, listaVentasTotal)}";
         }
 
         /// <summary>
@@ -131,6 +140,11 @@ namespace PrimerParcial
         private void labelMontoTotalNuevaLista_Click(object sender, EventArgs e)
         {
             labelMontoTotalNuevaLista.Text = ($"total: {Negocio.GananciaTotal(listaVentas, usuario)}");
+        }
+
+        private void groupCarniceria_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,6 +11,8 @@ using static BibliotecaDeClases.Venta;
 
 namespace BibliotecaDeClases
 {
+   
+
     public class Negocio
     {
         private static List<Persona> usuariosRegistrados;
@@ -194,6 +196,21 @@ namespace BibliotecaDeClases
             return retorno;
         }
 
+        public static double CalcularGastosTotales(Cliente cliente)
+        {
+            double gastosTotales = 0;
+
+            foreach (Venta venta in listaVentas)
+            { 
+                if(venta.IDCliente1 == cliente.ID)
+                {
+                    gastosTotales += venta.PrecioTotal;
+                }
+            
+            }
+
+            return gastosTotales;
+        }
 
         /// <summary>
         /// carga una venta a la lista de ventas
@@ -392,9 +409,6 @@ namespace BibliotecaDeClases
                     resultado += (venta.Precio * venta.CantidadDeUnidades);
 
                 }
-
-
-
 
             }
 

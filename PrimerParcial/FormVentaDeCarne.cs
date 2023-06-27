@@ -30,6 +30,9 @@ namespace PrimerParcial
             InitializeComponent();
             this.usuario = usuario;
             this.tipoListaMostrar = tipoListaMostrar;
+            RegistroAcceso registro = new RegistroAcceso(usuario.Nombre, "formulario factura");
+            this.Load += registro.OnFrmAbierto;
+            this.FormClosed += registro.OnFrmCerrado;
 
         }
 
