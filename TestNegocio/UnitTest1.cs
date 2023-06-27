@@ -60,6 +60,45 @@ namespace TestNegocio
             // Assert
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void EsNumero_ValidNumber_ReturnsTrue()
+        {
+            // Arrange
+            string nummeroAValidar = "123";
+
+            // Act
+            bool result = Validaciones.EsNumero(nummeroAValidar);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void EsNumero_InvalidNumber_ReturnsFalse()
+        {
+            // Arrange
+            string nummeroAValidar = "abc";
+
+            // Act
+            bool result = Validaciones.EsNumero(nummeroAValidar);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void EsNumero_EmptyString_ReturnsFalse()
+        {
+            // Arrange
+            string nummeroAValidar = string.Empty;
+
+            // Act
+            bool result = Validaciones.EsNumero(nummeroAValidar);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
 
     }
 }
