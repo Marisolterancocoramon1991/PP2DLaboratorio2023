@@ -419,6 +419,12 @@ namespace BibliotecaDeClases
 
             return resultado;
         }
+
+        public static void CargaListaDeVenta()
+        {
+            listaVentas = EscribirArchivo.CargarVentasDesdeArchivo();
+
+        }
         public static int RetornaId(this Cliente cliente)
         {
             return cliente.id;

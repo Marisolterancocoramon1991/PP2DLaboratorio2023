@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -568,7 +569,7 @@ namespace PrimerParcial
                                 Ave ave = (Ave)productoSeleccioando;
                                 ave.Precio = precio;
                                 ave.TipoAve = (eTipoAve)comboBoxTipoAve.SelectedItem;
-
+                                
                                 Negocio.CargarModificacionesProducto(ave);
                                 MessageBox.Show($"Ha editado correctamente el producto:\n" +
                                     $"{ave.MostrarDetallesDeProducto()}");
@@ -583,9 +584,6 @@ namespace PrimerParcial
                                 cerdo.Precio = precio;
                                 cerdo.RazasDeCerdo = (eRazasDeCerdo)comboBoxRCerdo.SelectedItem;
                                 Negocio.CargarModificacionesProducto(cerdo);
-                                handlerCerdo handlerCerdo = new handlerCerdo();
-                                handlerCerdo.Modificar(cerdo);
-                                Negocio.CargaListaCerdo(handlerCerdo.Leer());
                                 MessageBox.Show($"Ha editado correctamente el producto:\n" +
                                     $"{cerdo.MostrarDetallesDeProducto()}");
 

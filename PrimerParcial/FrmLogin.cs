@@ -6,18 +6,21 @@ using System.ComponentModel.Design.Serialization;
 using Microsoft.VisualBasic.ApplicationServices;
 using PrimerParcial.Properties;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace PrimerParcial
 
 {
     public partial class FrmLogin : Form
     {
-        Persona? auxiliar;  
+        Persona? auxiliar;
         List<Cliente> listaCliente;
         List<Vendedor> listaVendedores;
         List<Ave> listaAve;
         List<Cerdo> listaCerdo;
         List<Vacuno> listaVacuno;
+        List<Venta> listaVenta;
+        Cliente clienteConMayorVentas;
         FormBienvenidaMontoM? formBienvenidaMonto;
         public FrmLogin()
         {
@@ -26,35 +29,67 @@ namespace PrimerParcial
             List<string> listaStringVenta = LecturaArchivo.CrearListasStringVentas(stringVentas);
             Parser.ParsearProductos(listaStringVenta);
             if (listaCliente is null || listaAve is null || listaCerdo is null
-                || listaVacuno is null || listaVendedores is null) 
+                || listaVacuno is null || listaVendedores is null)
             {
-               try
-              {
+                try
+                {
                     listaAve = ControllerConexion.ConectarProductosAveDB();
                     listaCerdo = ControllerConexion.ConectarProductosCerdoDB();
-                    listaVacuno =ControllerConexion.ConectarProductosVacunoDB();
+                    listaVacuno = ControllerConexion.ConectarProductosVacunoDB();
                     listaCliente = ControllerConexion.ConectarUsuariosClienteDB();
                     listaVendedores = ControllerConexion.ConectarUsuariosTrabajadorDB();
-                    Negocio.CargaListaClientes(listaCliente);
-                    Negocio.CargarListaTrabajadores(listaVendedores);
-                    Negocio.CargaListaAves(listaAve);
-                    Negocio.CargaListaCerdo(listaCerdo);
-                    Negocio.CargaListaVacuno(listaVacuno);
+
+                    Task tareaCargar = Task.Run(CargarAsinCronicamenteListas);
+
+                    tareaCargar.Wait();
+                    listaVenta = Negocio.RetornarListaDeVentas();
+
+                    Task tareaObtenerClienteMayor = Task.Run(() => clienteConMayorVentas = ObtenerClienteConMayorCantidadVentasAsync(listaVenta));
+
+                    tareaObtenerClienteMayor.Wait();
+
+                    MostrarClienteLabel(clienteConMayorVentas);
 
 
-               }
-                catch (Exception) 
+                    /*  Negocio.CargaListaClientes(listaCliente);
+                      Negocio.CargarListaTrabajadores(listaVendedores);
+                      Negocio.CargaListaAves(listaAve);
+                      Negocio.CargaListaCerdo(listaCerdo);
+                      Negocio.CargaListaVacuno(listaVacuno);
+                      Negocio.CargaListaDeVenta();*/
+
+                }
+                catch (Exception)
                 {
                     MessageBox.Show("hubo un error en ña carga de la lista");
                 }
-                
+
 
             }
-           
-            
-          
+
+
+
 
         }
+
+
+        private void MostrarClienteLabel(Cliente cliente)
+        {
+
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate { MostrarClienteLabel(cliente); });
+            }
+            else
+            {
+                if (cliente is not null)
+                    labelMostrarCliente.Text = $"Felicidades al cliente {cliente.Nombre} \n por ser" +
+                        $"nuestro cliente numero uno en ventas.\n A esta direccion le " +
+                        $"estarà llegando su regalo:\n {cliente.Direccion}";
+            }
+        }
+
+
         /// <summary>
         /// boton para ocultar la clave
         /// </summary>
@@ -88,7 +123,7 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
-            auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text, listaCliente,listaVendedores);
+            auxiliar = Negocio.LogearUsuario(textBoxCorreo.Text, textBoxContraseña.Text, listaCliente, listaVendedores);
             // Ruta relativa del archivo de sonido
             string relativePath = @".\sonidoAplicacion.wav";
 
@@ -184,6 +219,74 @@ namespace PrimerParcial
         }
 
         private void textBoxCorreo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TomarAlClienteConMasCompras()
+        {
+
+
+
+        }
+
+        private void CargarAsinCronicamenteListas()
+        {
+            //List<Task> tasks = new List<Task>();
+            Task tarea1 = Task.Run(Negocio.CargaListaDeVenta);
+            Task tarea2 = Task.Run(() => Negocio.CargaListaClientes(listaCliente));
+            Task tarea3 = Task.Run(() => Negocio.CargarListaTrabajadores(listaVendedores));
+            Task tarea4 = Task.Run(() => Negocio.CargaListaAves(listaAve));
+            Task tarea5 = Task.Run(() => Negocio.CargaListaCerdo(listaCerdo));
+            Task tarea6 = Task.Run(() => Negocio.CargaListaVacuno(listaVacuno));
+
+
+        }
+        public Cliente ObtenerClienteConMayorCantidadVentasAsync(List<Venta> listaVentas)
+        {
+            Dictionary<int, int> contadorVentasPorCliente = new Dictionary<int, int>();
+
+            // Contar la cantidad de ventas por cliente
+            foreach (Venta venta in listaVentas)
+            {
+                if (contadorVentasPorCliente.ContainsKey(venta.IDCliente))
+                {
+                    contadorVentasPorCliente[venta.IDCliente]++;
+                }
+                else
+                {
+                    contadorVentasPorCliente[venta.IDCliente] = 1;
+                }
+            }
+
+            // Obtener el cliente con la mayor cantidad de ventas
+            int maxVentas = 0;
+            int idClienteMaxVentas = 0;
+
+            foreach (KeyValuePair<int, int> kvp in contadorVentasPorCliente)
+            {
+                if (kvp.Value > maxVentas)
+                {
+                    maxVentas = kvp.Value;
+                    idClienteMaxVentas = kvp.Key;
+                }
+            }
+
+            // Buscar y devolver el cliente correspondiente al ID con mayor cantidad de ventas
+            foreach (Cliente cliente in listaCliente)
+            {
+                if (cliente.ID == idClienteMaxVentas)
+                {
+                    return cliente;
+                }
+            }
+
+
+
+            return null;
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
         {
 
         }

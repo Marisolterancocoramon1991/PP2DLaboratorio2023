@@ -42,79 +42,128 @@ namespace BibliotecaDeClases
             }       
         }
 
-/*
-         /// <summary>
-         /// Actualiza el archivo "ventas.txt" con la información de la lista de ventas.
-         /// </summary>
-         /// <param name="listaDeventas">Lista de ventas a escribir en el archivo.</param>
-        public static void ActualizarArchivo(List<Venta> listaDeventas)
+        public static List<Venta> CargarVentasDesdeArchivo()
         {
-            List<string> listaStringVentas = new List<string>();
-
-            foreach (var venta in listaDeventas)
-            {
-                if (venta is not null)
-                {
-                    Type ventaType = venta.GetType();
-                    var properties = ventaType.GetProperties();
-
-                    var propertyValues = properties.Select(prop => prop.GetValue(venta)?.ToString() ?? "null");
-                    string ventaString = string.Join(",", propertyValues);
-                    listaStringVentas.Add(ventaString);
-                  listaStringVentas.Add(venta.ToString());
-
-                }
-
-            }
             string nombreArchivo = "ventas.txt";
             string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
-            string listadeventas = string.Join(Environment.NewLine, listaStringVentas.ToArray());
-            if (!File.Exists(rutaArchivo))
+
+            List<Venta> listaVentas = new List<Venta>();
+
+            try
             {
-                File.Create(nombreArchivo);
-                
-                      File.WriteAllText(rutaArchivo, listadeventas);
-                
-              
+                using (StreamReader sr = new StreamReader(rutaArchivo))
+                {
+                    string linea;
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        // Dividir la línea en campos utilizando la coma como separador
+                        string[] campos = linea.Split(',');
+
+                        if (campos.Length == 8)
+                        {
+                            // Obtener los valores de los campos
+                            string productoVendido = campos[0];
+                            string tipo = campos[1];
+                            float precio = float.Parse(campos[2]);
+                            float precioTotal = float.Parse(campos[3]);
+                            eMetodoPago metodoDePago = (eMetodoPago)Enum.Parse(typeof(eMetodoPago), campos[4]);
+                            int cantidadDeUnidades = int.Parse(campos[5]);
+                            int idCliente = int.Parse(campos[6]);
+                            string nombreCliente = campos[7];
+
+                            // Crear una nueva instancia de Venta y agregarla a la lista
+                            Venta venta = new Venta(productoVendido, tipo, precio, precioTotal, metodoDePago, cantidadDeUnidades, idCliente, nombreCliente);
+                            listaVentas.Add(venta);
+                        }
+                        else
+                        {
+                            // La línea no tiene el formato esperado, puedes manejar el error de alguna forma específica
+                        }
+                    }
+                }
             }
-            else
+            catch (Exception e)
             {
-                File.WriteAllText(rutaArchivo, listadeventas);
+                throw new Exception(e.Message);
             }
 
+            return listaVentas;
+        }
 
-        }*/
-       /*
-               public static void ActualizarArchivo(List<Venta> listaDeventas)
-               {
-                   List<string> listaStringVentas = new List<string>();
 
-                   foreach (var venta in listaDeventas)
-                   {
-                       if (venta is not null)
-                       {
-                           Type ventaType = venta.GetType();
-                           var properties = ventaType.GetProperties();
+        /*
+                 /// <summary>
+                 /// Actualiza el archivo "ventas.txt" con la información de la lista de ventas.
+                 /// </summary>
+                 /// <param name="listaDeventas">Lista de ventas a escribir en el archivo.</param>
+                public static void ActualizarArchivo(List<Venta> listaDeventas)
+                {
+                    List<string> listaStringVentas = new List<string>();
 
-                           var propertyValues = properties.Select(prop => prop.GetValue(venta)?.ToString() ?? "null");
-                           string ventaString = string.Join(",", propertyValues);
-                           listaStringVentas.Add(ventaString);
-                       }
-                   }
+                    foreach (var venta in listaDeventas)
+                    {
+                        if (venta is not null)
+                        {
+                            Type ventaType = venta.GetType();
+                            var properties = ventaType.GetProperties();
 
-                   string nombreArchivo = "ventas.txt";
-                   string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
-                   string listadeventas = string.Join(Environment.NewLine, listaStringVentas.ToArray());
+                            var propertyValues = properties.Select(prop => prop.GetValue(venta)?.ToString() ?? "null");
+                            string ventaString = string.Join(",", propertyValues);
+                            listaStringVentas.Add(ventaString);
+                          listaStringVentas.Add(venta.ToString());
 
-                   string directoryPath = Path.GetDirectoryName(rutaArchivo);
-                   if (!Directory.Exists(directoryPath))
-                   {
-                       Directory.CreateDirectory(directoryPath);
-                   }
+                        }
 
-                   File.WriteAllText(rutaArchivo, listadeventas);
-               }
+                    }
+                    string nombreArchivo = "ventas.txt";
+                    string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
+                    string listadeventas = string.Join(Environment.NewLine, listaStringVentas.ToArray());
+                    if (!File.Exists(rutaArchivo))
+                    {
+                        File.Create(nombreArchivo);
 
-          */
+                              File.WriteAllText(rutaArchivo, listadeventas);
+
+
+                    }
+                    else
+                    {
+                        File.WriteAllText(rutaArchivo, listadeventas);
+                    }
+
+
+                }*/
+        /*
+                public static void ActualizarArchivo(List<Venta> listaDeventas)
+                {
+                    List<string> listaStringVentas = new List<string>();
+
+                    foreach (var venta in listaDeventas)
+                    {
+                        if (venta is not null)
+                        {
+                            Type ventaType = venta.GetType();
+                            var properties = ventaType.GetProperties();
+
+                            var propertyValues = properties.Select(prop => prop.GetValue(venta)?.ToString() ?? "null");
+                            string ventaString = string.Join(",", propertyValues);
+                            listaStringVentas.Add(ventaString);
+                        }
+                    }
+
+                    string nombreArchivo = "ventas.txt";
+                    string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", nombreArchivo);
+                    string listadeventas = string.Join(Environment.NewLine, listaStringVentas.ToArray());
+
+                    string directoryPath = Path.GetDirectoryName(rutaArchivo);
+                    if (!Directory.Exists(directoryPath))
+                    {
+                        Directory.CreateDirectory(directoryPath);
+                    }
+
+                    File.WriteAllText(rutaArchivo, listadeventas);
+                }
+
+           */
     }
 }

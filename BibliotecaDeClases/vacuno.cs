@@ -54,7 +54,7 @@ namespace BibliotecaDeClases
                 vacuno.CantidadEnInventario = Convert.ToInt32(dataTable.Rows[i]["CantidadEnInventarioKilos"]);
                 vacuno.RazasDeVacas = (eRazasDeVacas)Convert.ToInt32(dataTable.Rows[i]["RazaDeVacas"]);
                 vacuno.Categoria = (eCategoria)Convert.ToInt32(dataTable.Rows[i]["Categoria"]);
-                vacuno.id= Convert.ToInt32(dataTable.Rows[i]["Id"]);
+                vacuno.id= Convert.ToInt32(dataTable.Rows[i]["id"]);
                 listaVacas.Add(vacuno);
             }
 

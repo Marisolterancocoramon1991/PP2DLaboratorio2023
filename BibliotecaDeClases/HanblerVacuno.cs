@@ -53,7 +53,7 @@ namespace BibliotecaDeClases
         }
         public void Modificar(Vacuno entidad)
         {
-            string query = "UPDATE Vacunos SET Tipo = @Tipo, Precio = @Precio," +
+            string query = "UPDATE Vacunos SET Nombre =@Nombre, Tipo = @Tipo, Precio = @Precio," +
                 " CantidadEnInventarioKilos = @CantidadEnInventarioKilos, RazaDeVacas = @RazaDeVacas, Categoria = @Categoria WHERE id = @id";
 
             using (SqlCommand comando = CrearComando(query))

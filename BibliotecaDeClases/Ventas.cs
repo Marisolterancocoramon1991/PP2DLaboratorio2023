@@ -12,7 +12,7 @@ namespace BibliotecaDeClases
         private string  productoVendido;
         private eMetodoPago metodoDePago;
         private int cantidadDeUnidades;
-        private int IDCliente;
+        public int IDCliente;
         private string tipo;
         private string nombre;
         float precio;

@@ -164,6 +164,12 @@ namespace BibliotecaDeClases
             return sb.ToString();
         }
 
+
+        /// <summary>
+        /// /crea desde la tabla una lista del producto
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
         public static List<Carne> ConvertirDataTableALista(DataTable dataTable)
         {
             List<Carne> listaProducto = new List<Carne>();
@@ -184,6 +190,9 @@ namespace BibliotecaDeClases
 
 
         }
+
+        
+
     }
 
 

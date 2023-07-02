@@ -57,11 +57,9 @@ namespace BibliotecaDeClases
             if ((float)numero > 0)
             {
                 return true;
-
             }
             else
             {
-
                 return false;
             }
 
@@ -84,7 +82,6 @@ namespace BibliotecaDeClases
             }
             else
             {
-
                 return false;
             }
 

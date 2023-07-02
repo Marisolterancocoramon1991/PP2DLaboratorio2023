@@ -30,7 +30,7 @@ namespace PrimerParcial
             InitializeComponent();
             this.usuario = usuario;
             this.tipoListaMostrar = tipoListaMostrar;
-            RegistroAcceso registro = new RegistroAcceso(usuario.Nombre, "formulario factura");
+            RegistroAcceso registro = new RegistroAcceso(usuario.Nombre, "formulario Carne");
             this.Load += registro.OnFrmAbierto;
             this.FormClosed += registro.OnFrmCerrado;
 
@@ -46,6 +46,7 @@ namespace PrimerParcial
             listaDeAve = Negocio.RetornarListaAve();
             listaDeCerdo = Negocio.RetornarListaCerdo();
             listaDeVacuno = Negocio.RetornarListaVacuno();
+            ventaTotal = Negocio.RetornarListaDeVentas();
             CargarDataGridView(listaDeAve);
             CargarDataGridView(listaDeCerdo);
             CargarDataGridView(listaDeVacuno);
@@ -227,7 +228,7 @@ namespace PrimerParcial
 
                             usuario = usuario - precioAGastar;
                             labelDinero.Text = usuario.Saldo.ToString();
-                            EscribirArchivo.ActualizarArchivo(listVentaCliente);
+                            EscribirArchivo.ActualizarArchivo(ventaTotal);
                             Negocio.CargarGastoCliente(usuario);
                         }
                     }

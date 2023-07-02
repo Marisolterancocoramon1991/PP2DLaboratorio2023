@@ -39,6 +39,7 @@
             labelContraseña = new Label();
             buttonIngresar = new Button();
             Usuario = new ListBox();
+            labelMostrarCliente = new Label();
             Carniceria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMostrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureOcultar).BeginInit();
@@ -80,7 +81,7 @@
             Carniceria.Controls.Add(Usuario);
             Carniceria.Controls.Add(labelPrincipal);
             Carniceria.Controls.Add(labelCorreo);
-            Carniceria.Location = new Point(95, 28);
+            Carniceria.Location = new Point(143, 34);
             Carniceria.Name = "Carniceria";
             Carniceria.Size = new Size(252, 213);
             Carniceria.TabIndex = 2;
@@ -178,21 +179,33 @@
             Usuario.TabIndex = 2;
             Usuario.SelectedIndexChanged += Usuario_SelectedIndexChanged;
             // 
+            // labelMostrarCliente
+            // 
+            labelMostrarCliente.AutoSize = true;
+            labelMostrarCliente.Location = new Point(462, 176);
+            labelMostrarCliente.Name = "labelMostrarCliente";
+            labelMostrarCliente.Size = new Size(16, 15);
+            labelMostrarCliente.TabIndex = 10;
+            labelMostrarCliente.Text = "...";
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(460, 311);
+            ClientSize = new Size(744, 335);
+            Controls.Add(labelMostrarCliente);
             Controls.Add(Carniceria);
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TopMost = true;
+            Load += FrmLogin_Load;
             Carniceria.ResumeLayout(false);
             Carniceria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMostrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureOcultar).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -208,5 +221,6 @@
         private PictureBox pictureOcultar;
         private PictureBox pictureMostrar;
         private Label labelInformacionError;
+        private Label labelMostrarCliente;
     }
 }
