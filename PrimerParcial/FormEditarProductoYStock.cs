@@ -549,6 +549,12 @@ namespace PrimerParcial
                    MessageBox.Show("No ha seleccionado ningún producto para editar.");
                }
            }*/
+
+        /// <summary>
+        /// Método para editar un producto seleccionado en base a los valores ingresados en los campos de texto.
+        /// Valida los valores ingresados y realiza las modificaciones correspondientes en el producto seleccionado.
+        /// Actualiza la información en la base de datos y muestra un mensaje de éxito.
+        /// </summary>
         private void EditarProducto()
         {
             float precio;

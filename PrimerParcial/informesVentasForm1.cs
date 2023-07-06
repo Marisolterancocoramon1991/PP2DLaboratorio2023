@@ -20,6 +20,12 @@ namespace PrimerParcial
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón "Ventas XML".
+        /// Serializa la lista de ventas en un archivo XML.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         private void btnVentasXML_Click(object sender, EventArgs e)
         {
             try
@@ -37,6 +43,12 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón "CSV de Ventas".
+        /// Serializa la lista de ventas en un archivo CSV.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         private void btnCSVDeVentas_Click(object sender, EventArgs e)
         {
             try
@@ -55,6 +67,12 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón "Ventas JSON".
+        /// Serializa la lista de ventas en un archivo JSON.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         private void btnVentasJASON_Click(object sender, EventArgs e)
         {
             try
@@ -71,7 +89,12 @@ namespace PrimerParcial
             }
 
         }
-
+        /// <summary>
+        /// Maneja el evento de carga del formulario "informesVentasForm1".
+        /// Carga la lista de ventas desde el negocio.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         private void informesVentasForm1_Load(object sender, EventArgs e)
         {
             try
@@ -85,6 +108,12 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// Maneja el evento de clic del botón "Regresa".
+        /// Muestra el formulario "FormAdministracion" y oculta el formulario actual.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         private void buttonRegresa_Click(object sender, EventArgs e)
         {
             FormAdministracion formAdministracion = new FormAdministracion();

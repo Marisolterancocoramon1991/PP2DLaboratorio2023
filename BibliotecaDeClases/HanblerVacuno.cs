@@ -10,6 +10,10 @@ namespace BibliotecaDeClases
 {
     public class HanblerVacuno: ComandoSQL, ImanjadorConexion<Vacuno>
     {
+        /// <summary>
+        /// Agrega un vacuno a la base de datos.
+        /// </summary>
+        /// <param name="entidad">Objeto de tipo Vacuno con los datos a agregar.</param>
         public void Add(Vacuno entidad)
         {
             string query = @"INSERT INTO Vacunos (Nombre, Tipo, Precio, CantidadEnInventarioKilos, RazaDeVacas, Categoria)
@@ -28,6 +32,10 @@ namespace BibliotecaDeClases
             }
         }
 
+        /// <summary>
+        /// Elimina un vacuno de la base de datos.
+        /// </summary>
+        /// <param name="id">ID del vacuno a eliminar.</param>
         public void Delete(int id)
         {
             string query = "DELETE FROM Vacunos WHERE id = @id";
@@ -38,7 +46,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
-
+        /// <summary>
+        /// Lee todos los vacunos de la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Vacuno con los vacunos leídos.</returns>
         public List<Vacuno> Leer()
         {
             string query = "SELECT * FROM Vacunos";
@@ -51,6 +62,10 @@ namespace BibliotecaDeClases
                 return listaUsuarios;
             }
         }
+        /// <summary>
+        /// Modifica un vacuno en la base de datos.
+        /// </summary>
+        /// <param name="entidad">Objeto de tipo Vacuno con los datos actualizados.</param>
         public void Modificar(Vacuno entidad)
         {
             string query = "UPDATE Vacunos SET Nombre =@Nombre, Tipo = @Tipo, Precio = @Precio," +

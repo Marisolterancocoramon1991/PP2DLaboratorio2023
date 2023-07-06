@@ -72,7 +72,11 @@ namespace PrimerParcial
 
         }
 
-
+        /// <summary>
+        /// Muestra la información del cliente en la etiqueta "labelMostrarCliente".
+        /// Si es necesario, invoca el método nuevamente en el subproceso de interfaz de usuario.
+        /// </summary>
+        /// <param name="cliente">Cliente cuya información se va a mostrar</param>
         private void MostrarClienteLabel(Cliente cliente)
         {
 
@@ -230,6 +234,9 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// Carga de forma asíncrona las diferentes listas de datos necesarias.
+        /// </summary>
         private void CargarAsinCronicamenteListas()
         {
             //List<Task> tasks = new List<Task>();
@@ -239,9 +246,13 @@ namespace PrimerParcial
             Task tarea4 = Task.Run(() => Negocio.CargaListaAves(listaAve));
             Task tarea5 = Task.Run(() => Negocio.CargaListaCerdo(listaCerdo));
             Task tarea6 = Task.Run(() => Negocio.CargaListaVacuno(listaVacuno));
-
-
         }
+
+        /// <summary>
+        /// Obtiene el cliente con la mayor cantidad de ventas de una lista dada de ventas.
+        /// </summary>
+        /// <param name="listaVentas">La lista de ventas.</param>
+        /// <returns>El cliente con la mayor cantidad de ventas, o null si no se encuentra.</returns>
         public Cliente ObtenerClienteConMayorCantidadVentasAsync(List<Venta> listaVentas)
         {
             Dictionary<int, int> contadorVentasPorCliente = new Dictionary<int, int>();

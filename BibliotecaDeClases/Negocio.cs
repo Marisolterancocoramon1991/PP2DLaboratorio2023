@@ -11,8 +11,8 @@ using static BibliotecaDeClases.Venta;
 
 namespace BibliotecaDeClases
 {
-   
 
+    public delegate double CalcularGastosDelegate(Cliente cliente, List<Venta> lista);
     public static class Negocio
     {
         private static List<Persona> usuariosRegistrados;
@@ -38,14 +38,42 @@ namespace BibliotecaDeClases
            // CargarClientes();
         }
 
+        /// <summary>
+        /// Calcula los gastos totales realizados por un cliente en base a una lista de ventas.
+        /// </summary>
+        /// <param name="cliente">El cliente para el cual se calcularán los gastos.</param>
+        /// <param name="listaVentas">La lista de ventas.</param>
+        /// <returns>El valor total de los gastos realizados por el cliente.</returns>
+        public static double CalcularGastosTotales(Cliente cliente, List<Venta> listaVentas)
+        {
+            double gastosTotales = 0;
+
+            foreach (Venta venta in listaVentas)
+            {
+                if (venta.IDCliente1 == cliente.ID)
+                {
+                    gastosTotales += venta.PrecioTotal;
+                }
+
+            }
+
+            return gastosTotales;
+        }
 
 
+        /// <summary>
+        /// carga un trabajador en la aplicacion 
+        /// </summary>
+        /// <param name="vendedor"></param>
 
         public static void CargarTrabajadores(this Vendedor vendedor)
         {
             trabajador = vendedor;
         }
-
+        /// <summary>
+        /// retorna vendedor 
+        /// </summary>
+        /// <returns></returns>
         public static Vendedor RetornaVendedor ()
         {
             return trabajador; 
@@ -204,7 +232,11 @@ namespace BibliotecaDeClases
 
             return retorno;
         }
-
+        /// <summary>
+        /// calcula gastos totales 
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public static double CalcularGastosTotales(Cliente cliente)
         {
             double gastosTotales = 0;
@@ -229,53 +261,95 @@ namespace BibliotecaDeClases
         {
             listaVentas.Add(venta);
         }
+        /// <summary>
+        /// actualiza la lista de vendedores por medio de la lista que llega por parametro
+        /// </summary>
+        /// <param name="lisVendedorParametro"></param>
         public static void CargarListaTrabajadores(List<Vendedor> lisVendedorParametro)
         {
             listaVendedor = lisVendedorParametro;
 
         }
-
+        /// <summary>
+        /// cargar lista de cliente a traves de la que llega por parametro
+        /// </summary>
+        /// <param name="listaClienteParametro"></param>
         public static void CargaListaClientes(List<Cliente> listaClienteParametro)
         {
 
             listaCliente = listaClienteParametro;
         
         }
+
+        /// <summary>
+        /// carga la lista de la aplicacion por medio de la que llega por parametro
+        /// </summary>
+        /// <param name="listaAveParametro"></param>
         public static void CargaListaAves(List<Ave> listaAveParametro)
         {
 
             listaAve = listaAveParametro;
 
         }
+        /// <summary>
+        /// carga la lista de cerdos por medio de la que llega por parameto
+        /// </summary>
+        /// <param name="listaCerdoParametro"></param>
         public static void CargaListaCerdo(List<Cerdo> listaCerdoParametro)
         {
 
             listaCerdo = listaCerdoParametro;
 
         }
+        /// <summary>
+        /// caga lissta de vacuno por medio de la lista que llega or parametro 
+        /// </summary>
+        /// <param name="listaVacunoParametro"></param>
         public static void CargaListaVacuno(List<Vacuno> listaVacunoParametro)
         {
 
             listaVacuno = listaVacunoParametro;
 
         }
+        /// <summary>
+        /// retorna lista de vendedores 
+        /// </summary>
+        /// <returns>lista de vendedor</returns>
         public static List<Vendedor> RetornarListaVendedores()
         {
             return listaVendedor;
 
         }
+        /// <summary>
+        /// retorna lista de clientes 
+        /// </summary>
+        /// <returns>lista de cliente</returns>
         public static List<Cliente> RetornaListaClientes() 
         { 
             return listaCliente;
         }
+
+        /// <summary>
+        /// retorna lista de vacuno
+        /// </summary>
+        /// <returns>lista vacuno </returns>
         public static List<Vacuno> RetornarListaVacuno()
         {
             return listaVacuno;
         }
+        /// <summary>
+        /// retorna lista de ave
+        /// </summary>
+        /// <returns>retorna lista de ave</returns>
         public static List<Ave> RetornarListaAve()
         {
             return listaAve;
         }
+
+        /// <summary>
+        /// retorna lista de cerdo
+        /// </summary>
+        /// <returns>lista de ventas </returns>
         public static List<Cerdo> RetornarListaCerdo()
         {
             return listaCerdo;
@@ -285,7 +359,7 @@ namespace BibliotecaDeClases
         /// en esta funcion se carga una lista de lista de ventas
         /// y al no hacerlo directamente la lista con la otra no se solapan
         /// </summary>
-        /// <param name="listaDeVentas"></param> lista de ventas;
+        /// <param name="listaDeVentas">lista de ventas</param> lista de ventas;
         public static void CargarVenta(List<Venta> listaDeVentas)
         {
             List<Venta> nuevaListaDeVentas = new List<Venta>(listaDeVentas);
@@ -297,8 +371,8 @@ namespace BibliotecaDeClases
         /// <summary>
         /// /agrega a la lista venta una venta
         /// </summary>
-        /// <param name="listaVenta"></param> lista de venta
-        /// <param name="venta"></param> venta
+        /// <param name="listaVenta">lista de venta</param> lista de venta
+        /// <param name="venta">instancia de venta</param> venta
         public static void CargarVenta(List<Venta> listaVenta, Venta venta)
         {
             listaVenta.Add(venta);
@@ -308,7 +382,7 @@ namespace BibliotecaDeClases
         /// <summary>
         /// va iterando y sumando hasta obtener las ganancias totales
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ganacias </returns>
         public static double GananciaTotal()
         {
             double retorno = 0;
@@ -330,12 +404,16 @@ namespace BibliotecaDeClases
         /// <summary>
         /// retorna la lista venta 
         /// </summary>
-        /// <returns></returns> lista 
+        /// <returns>lista de venta</returns> lista 
         public static List<Venta> RetornarListaDeVentas()
         {
             return listaVentas;
         }
-
+        /// <summary>
+        /// retorna lista de ventas para un cliente
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns>lista de venta </returns>
         public static List<Venta> RetornarListaDeVentas(Cliente cliente)
         {
             List<Venta> list = new();
@@ -353,7 +431,7 @@ namespace BibliotecaDeClases
         ///  retorna el precio total de la factura por cliente
         /// </summary>
         /// <param name="listaVenta"></param> lista de venta creada
-        /// <returns></returns> float 
+        /// <returns>ganancia total</returns> float 
         public static double GananciaTotal(Cliente usuario)
         {
             double resultado = 0;
@@ -372,7 +450,10 @@ namespace BibliotecaDeClases
 
             return resultado;
         }
-
+        /// <summary>
+        /// actualiza en la base de datos clientes
+        /// </summary>
+        /// <param name="cliente">instancia cliente</param>
         public static void CargarGastoCliente(Cliente cliente) 
         {
             HanblerCliente usuariosHandler = new HanblerCliente();
@@ -380,6 +461,10 @@ namespace BibliotecaDeClases
             Negocio.CargaListaClientes(usuariosHandler.Leer());
 
         }
+        /// <summary>
+        /// carga en la base datos vacuno
+        /// </summary>
+        /// <param name="vacuno">instancia vacuno</param>
         public static void CargarModificacionesProducto(Vacuno vacuno)
         {
             HanblerVacuno handlerVacuno = new HanblerVacuno();
@@ -387,6 +472,10 @@ namespace BibliotecaDeClases
             Negocio.CargaListaVacuno(handlerVacuno.Leer());
 
         }
+        /// <summary>
+        /// carga las modificaciones en una base de datos de un ave 
+        /// </summary>
+        /// <param name="Ave">instancia de ave</param>
         public static void CargarModificacionesProducto(Ave Ave)
         {
             HandlerAve handlerAve = new HandlerAve();
@@ -394,6 +483,11 @@ namespace BibliotecaDeClases
             Negocio.CargaListaAves(handlerAve.Leer());
 
         }
+
+        /// <summary>
+        /// carga en la base de datos las modificciones de un cerdo 
+        /// </summary>
+        /// <param name="cerdo">instancia cerdo</param>
         public static void CargarModificacionesProducto(Cerdo cerdo)
         {
             handlerCerdo handlerCerdo = new handlerCerdo();
@@ -401,7 +495,12 @@ namespace BibliotecaDeClases
             Negocio.CargaListaCerdo(handlerCerdo.Leer());
 
         }
-
+        /// <summary>
+        /// gastos totales de un cliente
+        /// </summary>
+        /// <param name="listaVenta">lista de venta creada en la compra</param>
+        /// <param name="usuario">instancia de cliente</param>
+        /// <returns>double</returns>
         public static double GananciaTotal(List<Venta> listaVenta, Cliente usuario)
         {
             double resultado = 0;
@@ -419,12 +518,19 @@ namespace BibliotecaDeClases
 
             return resultado;
         }
-
+        /// <summary>
+        /// carga la lista de ventas a la aplicacion
+        /// </summary>
         public static void CargaListaDeVenta()
         {
             listaVentas = EscribirArchivo.CargarVentasDesdeArchivo();
 
         }
+        /// <summary>
+        /// entrega un cliente su id 
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public static int RetornaId(this Cliente cliente)
         {
             return cliente.id;

@@ -277,7 +277,12 @@ namespace BibliotecaDeClases
                 throw new CamposVaciosException("Hay que Completar todos los Campos");
             }
         }
-
+        /// <summary>
+        /// Verifica si el salario del vendedor es mayor al salario mínimo especificado.
+        /// </summary>
+        /// <param name="vendedor">El vendedor a verificar.</param>
+        /// <param name="salarioMinimo">El salario mínimo a comparar.</param>
+        /// <returns>True si el salario del vendedor es mayor al salario mínimo, false de lo contrario.</returns>
         public static bool SalarioMayorA(this Vendedor vendedor, float salarioMinimo)
         {
             return vendedor.Sueldo > salarioMinimo;

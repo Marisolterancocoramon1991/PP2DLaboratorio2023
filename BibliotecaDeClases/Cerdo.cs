@@ -36,6 +36,11 @@ namespace BibliotecaDeClases
 
 
         }
+        /// <summary>
+        /// Convierte un DataTable de cerdos a una lista de objetos Cerdo.
+        /// </summary>
+        /// <param name="dataTable">DataTable con los datos de los cerdos.</param>
+        /// <returns>Lista de objetos Cerdo.</returns>
         public static List<Cerdo> ConvertirDataTableCerdoALista(DataTable dataTable)
         {
             List<Cerdo> listaCerdos = new List<Cerdo>();

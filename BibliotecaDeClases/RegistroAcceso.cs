@@ -23,7 +23,12 @@ namespace BibliotecaDeClases
             this.Usuario = usuario;
             this.NombreFrm = nombreFrm;
         }
-
+        /// <summary>
+        /// Evento que se ejecuta cuando el formulario se abre.
+        /// Registra la acción de abrir el formulario en los movimientos de usuario.
+        /// </summary>
+        /// <param name="sender">El objeto que genera el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         public void OnFrmAbierto(object sender, EventArgs e)
         {
             string accion = "Abrio";
@@ -31,6 +36,12 @@ namespace BibliotecaDeClases
             movimientosUsuarioHandler.add(Usuario, accion, NombreFrm);
         }
 
+        /// <summary>
+        /// Evento que se ejecuta cuando el formulario se cierra.
+        /// Registra la acción de cerrar el formulario en los movimientos de usuario.
+        /// </summary>
+        /// <param name="sender">El objeto que genera el evento.</param>
+        /// <param name="e">Los argumentos del evento.</param>
         public void OnFrmCerrado(object sender, EventArgs e)
         {
             string accion = "Cerro";

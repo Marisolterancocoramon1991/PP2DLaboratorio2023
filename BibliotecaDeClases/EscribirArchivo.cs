@@ -12,7 +12,10 @@ namespace BibliotecaDeClases
 {
     public static class EscribirArchivo
     {
-
+        /// <summary>
+        /// Actualiza un archivo de ventas con la información de una lista de ventas.
+        /// </summary>
+        /// <param name="listaDeventas">Lista de objetos de tipo Venta.</param>
         public static void ActualizarArchivo(List<Venta> listaDeventas)
         {
             string nombreArchivo = "ventas.txt";
@@ -41,7 +44,10 @@ namespace BibliotecaDeClases
                 sw.Close();
             }       
         }
-
+        /// <summary>
+        /// Carga las ventas desde un archivo y devuelve una lista de objetos de tipo Venta.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Venta.</returns>
         public static List<Venta> CargarVentasDesdeArchivo()
         {
             string nombreArchivo = "ventas.txt";

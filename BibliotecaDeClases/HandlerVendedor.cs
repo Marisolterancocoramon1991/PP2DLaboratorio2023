@@ -10,6 +10,10 @@ namespace BibliotecaDeClases
 {
     public class HandlerVendedor: ComandoSQL, ImanjadorConexion<Vendedor>
     {
+        /// <summary>
+        /// Agrega un nuevo registro de vendedor a la base de datos.
+        /// </summary>
+        /// <param name="entidad">El objeto Vendedor a agregar.</param>
         public void Add(Vendedor entidad)
         {
             string query = "INSERT INTO Vendedores (Nombre, Apellido, Direccion, CorreoElectronico, Contraseña, Sueldo, Turno, TipoDeUsuario) " +
@@ -35,7 +39,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
-
+        /// <summary>
+        /// Elimina un registro de vendedor de la base de datos según su ID.
+        /// </summary>
+        /// <param name="id">El ID del vendedor a eliminar.</param>
         public void Delete(int id)
         {
             string query = "DELETE FROM Vendedores WHERE id = @id";
@@ -46,7 +53,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
-
+        /// <summary>
+        /// Obtiene una lista de todos los vendedores almacenados en la base de datos.
+        /// </summary>
+        /// <returns>Una lista de vendedores.</returns>
         public List<Vendedor> Leer()
         {
             string query = "SELECT * FROM Vendedores";
@@ -66,7 +76,10 @@ namespace BibliotecaDeClases
             }
         }
 
-
+        /// <summary>
+        /// Actualiza los datos de un vendedor en la base de datos.
+        /// </summary>
+        /// <param name="entidad">El objeto Vendedor con los datos actualizados.</param>
         public void Modificar(Vendedor entidad)
         {
             string query = "UPDATE Vendedores SET nombre = @Nombre, Apellido = @Apellido, " +

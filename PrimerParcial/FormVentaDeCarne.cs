@@ -137,6 +137,10 @@ namespace PrimerParcial
             }
         }
 
+        /// <summary>
+        /// Carga los datos de la lista de cerdos en el DataGridView "dataGridViewCerdo".
+        /// </summary>
+        /// <param name="listaDeCerdo">Lista de cerdos a cargar en el DataGridView</param>
 
         public void CargarDataGridView(List<Cerdo> listaDeCerdo)
         {
@@ -165,7 +169,10 @@ namespace PrimerParcial
                 dataGridView1.Rows.Add(ave.Nombre, ave.Tipo, ave.Precio, ave.TipoAve);
             }
         }
-
+        /// <summary>
+        /// Carga los datos de la lista de vacas en el DataGridView "dataGridViewVacuno".
+        /// </summary>
+        /// <param name="listaDeVaca">Lista de vacas a cargar en el DataGridView</param>
         public void CargarDataGridView(List<Vacuno> listaDeVaca)
         {
 
@@ -337,6 +344,12 @@ namespace PrimerParcial
 
         }
 
+        /// <summary>
+        /// Maneja el evento SelectedIndexChanged del ComboBox "comboBox1".
+        /// Cambia la visibilidad de los DataGridView según la opción seleccionada.
+        /// </summary>
+        /// <param name="sender">Objeto que generó el evento</param>
+        /// <param name="e">Argumentos del evento</param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex)
@@ -362,7 +375,12 @@ namespace PrimerParcial
 
             }
         }
-
+        /// <summary>
+        /// Maneja el evento CellContentClick del DataGridView "dataGridViewVacuno".
+        /// Obtiene la información de la fila seleccionada y guarda el producto Vacuno correspondiente.
+        /// </summary>
+        /// <param name="sender">Objeto que generó el evento</param>
+        /// <param name="e">Argumentos del evento</param>
         private void dataGridViewVacuno_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;
@@ -419,6 +437,13 @@ namespace PrimerParcial
 
         }
 
+
+        /// <summary>
+        /// Maneja el evento CellContentClick del DataGridView "dataGridViewCerdo".
+        /// Obtiene la información de la fila seleccionada y guarda el producto Cerdo correspondiente.
+        /// </summary>
+        /// <param name="sender">Objeto que generó el evento</param>
+        /// <param name="e">Argumentos del evento</param>
         private void dataGridViewCerdo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int n = e.RowIndex;

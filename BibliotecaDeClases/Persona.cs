@@ -110,6 +110,11 @@ namespace BibliotecaDeClases
             return sb.ToString();
 
         }
+        /// <summary>
+        /// Convierte un objeto DataTable en una lista de objetos de tipo Persona.
+        /// </summary>
+        /// <param name="dataTable">El objeto DataTable a convertir.</param>
+        /// <returns>Una lista de objetos de tipo Persona.</returns>
         public virtual List<Persona> ConvertirDataTableALista(DataTable dataTable)
         {
             List<Persona> listaUsuarios = new List<Persona>();

@@ -100,7 +100,7 @@ namespace PrimerParcial
         /// <param name="e"></param>
         private void labelTotal_Click(object sender, EventArgs e)
         {
-            CalcularGastosDelegate calcularGananciasDelegate = Delegado.CalcularGastosTotales;
+            CalcularGastosDelegate calcularGananciasDelegate = Negocio.CalcularGastosTotales;
 
             labelTotal.Text = $"TOTAL {calcularGananciasDelegate(usuario, listaVentasTotal)}";
         }
@@ -137,6 +137,10 @@ namespace PrimerParcial
             }
         }
 
+        /// <summary>
+        /// Evento que se ejecuta al hacer clic en el label "labelMontoTotalNuevaLista".
+        /// Calcula la ganancia total de las ventas en la lista de ventas y la muestra en el label.
+        /// </summary>
         private void labelMontoTotalNuevaLista_Click(object sender, EventArgs e)
         {
             labelMontoTotalNuevaLista.Text = ($"total: {Negocio.GananciaTotal(listaVentas, usuario)}");

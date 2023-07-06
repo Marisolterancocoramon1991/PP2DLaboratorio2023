@@ -10,7 +10,10 @@ namespace BibliotecaDeClases
 {
     public class HandlerAve : ComandoSQL, ImanjadorConexion<Ave>
     {
-
+        /// <summary>
+        /// Agrega un ave a la base de datos.
+        /// </summary>
+        /// <param name="entidad">Objeto de tipo Ave con los datos del ave a agregar.</param>
         public void Add(Ave entidad)
         {
             string query = "INSERT INTO Aves (Nombre, Tipo, Precio, CantidadEnInventarioKilos, TipoAve) " +
@@ -28,7 +31,10 @@ namespace BibliotecaDeClases
             }
         }
 
-
+        /// <summary>
+        /// Modifica los datos de un ave en la base de datos.
+        /// </summary>
+        /// <param name="entidad">Objeto de tipo Ave con los nuevos datos del ave.</param>
         public void Modificar(Ave entidad)
         {
             string query = "UPDATE Aves SET Nombre= @Nombre, Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = " +
@@ -47,6 +53,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
+        /// <summary>
+        /// Elimina un ave de la base de datos.
+        /// </summary>
+        /// <param name="id">Id del ave a eliminar.</param>
         public void Delete(int id)
         {
             string query = "DELETE FROM Aves WHERE id = @id";
@@ -57,7 +67,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
-
+        /// <summary>
+        /// Lee todos los registros de aves de la base de datos.
+        /// </summary>
+        /// <returns>Una lista de objetos Ave con los datos de las aves encontradas.</returns>
         public List<Ave> Leer()
         {
             string query = "SELECT * FROM Aves";

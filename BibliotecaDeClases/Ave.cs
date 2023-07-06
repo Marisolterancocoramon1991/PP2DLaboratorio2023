@@ -44,6 +44,12 @@ namespace BibliotecaDeClases
 
 
         }
+
+        /// <summary>
+        /// Convierte un DataTable de aves a una lista de objetos Ave.
+        /// </summary>
+        /// <param name="dataTable">DataTable con los datos de las aves.</param>
+        /// <returns>Lista de objetos Ave.</returns>
         public static List<Ave> ConvertirDataTableAveALista(DataTable dataTable)
         {
             List<Ave> listaAves = new List<Ave>();

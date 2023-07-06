@@ -17,12 +17,17 @@ namespace BibliotecaDeClases
             _connectionString = "Server=.;Database=UTN_PROYECTO;Trusted_Connection=True;";
         }
 
+        /// <summary>
+        /// Abre la conexión con la base de datos.
+        /// </summary>
         public void Abrir()
         {
             _connection = new SqlConnection(_connectionString);
             _connection.Open();
         }
-
+        /// <summary>
+        /// Cierra la conexión con la base de datos.
+        /// </summary>
         public void Cerrar()
         {
             _connection.Close();

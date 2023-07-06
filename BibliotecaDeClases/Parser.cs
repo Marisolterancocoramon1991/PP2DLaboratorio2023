@@ -10,42 +10,46 @@ namespace BibliotecaDeClases
 {
     public static class Parser
     {
-     /*   public static List<Carne> ParseaProductos(List<string> productos)
-        {
-            List<Carne> listaProductos = new List<Carne>();
+        /*   public static List<Carne> ParseaProductos(List<string> productos)
+           {
+               List<Carne> listaProductos = new List<Carne>();
 
-            foreach (string item in productos)
-            {
-                // Aquí puedes realizar la lógica para separar los valores del string y asignarlos correctamente a las propiedades de cada tipo de carne.
-                // Por ejemplo, puedes separar los valores utilizando algún carácter delimitador, como la coma (',').
-                // Luego, puedes crear la instancia correspondiente de la clase (Ave, Cerdo o Vacuno) y asignar los valores adecuados.
+               foreach (string item in productos)
+               {
+                   // Aquí puedes realizar la lógica para separar los valores del string y asignarlos correctamente a las propiedades de cada tipo de carne.
+                   // Por ejemplo, puedes separar los valores utilizando algún carácter delimitador, como la coma (',').
+                   // Luego, puedes crear la instancia correspondiente de la clase (Ave, Cerdo o Vacuno) y asignar los valores adecuados.
 
-                string[] valores = item.Split(',');
-                string tipoCarne = valores[0].Trim();
+                   string[] valores = item.Split(',');
+                   string tipoCarne = valores[0].Trim();
 
-                if (tipoCarne == "Ave")
-                {
-                    // Ejemplo de creación de instancia de Ave y asignación de valores.
-                    Ave ave = new Ave(valores[1].Trim(), valores[2].Trim(), float.Parse(valores[3].Trim()), int.Parse(valores[4].Trim()), (eTipoAve)Enum.Parse(typeof(eTipoAve), valores[5].Trim()));
-                    listaProductos.Add(ave);
-                }
-                else if (tipoCarne == "Cerdo")
-                {
-                    // Ejemplo de creación de instancia de Cerdo y asignación de valores.
-                    Cerdo cerdo = new Cerdo(valores[1].Trim(), valores[2].Trim(), float.Parse(valores[3].Trim()), int.Parse(valores[4].Trim()), (eRazasDeCerdo)Enum.Parse(typeof(eRazasDeCerdo), valores[5].Trim()));
-                    listaProductos.Add(cerdo);
-                }
-                else if (tipoCarne == "Vacuno")
-                {
-                    // Ejemplo de creación de instancia de Vacuno y asignación de valores.
-                    Vacuno vacuno = new Vacuno(valores[1].Trim(), valores[2].Trim(), float.Parse(valores[3].Trim()), int.Parse(valores[4].Trim()), (eRazasDeVacas)Enum.Parse(typeof(eRazasDeVacas), valores[5].Trim()), (eCategoria)Enum.Parse(typeof(eCategoria), valores[6].Trim()));
-                    listaProductos.Add(vacuno);
-                }
-            }
+                   if (tipoCarne == "Ave")
+                   {
+                       // Ejemplo de creación de instancia de Ave y asignación de valores.
+                       Ave ave = new Ave(valores[1].Trim(), valores[2].Trim(), float.Parse(valores[3].Trim()), int.Parse(valores[4].Trim()), (eTipoAve)Enum.Parse(typeof(eTipoAve), valores[5].Trim()));
+                       listaProductos.Add(ave);
+                   }
+                   else if (tipoCarne == "Cerdo")
+                   {
+                       // Ejemplo de creación de instancia de Cerdo y asignación de valores.
+                       Cerdo cerdo = new Cerdo(valores[1].Trim(), valores[2].Trim(), float.Parse(valores[3].Trim()), int.Parse(valores[4].Trim()), (eRazasDeCerdo)Enum.Parse(typeof(eRazasDeCerdo), valores[5].Trim()));
+                       listaProductos.Add(cerdo);
+                   }
+                   else if (tipoCarne == "Vacuno")
+                   {
+                       // Ejemplo de creación de instancia de Vacuno y asignación de valores.
+                       Vacuno vacuno = new Vacuno(valores[1].Trim(), valores[2].Trim(), float.Parse(valores[3].Trim()), int.Parse(valores[4].Trim()), (eRazasDeVacas)Enum.Parse(typeof(eRazasDeVacas), valores[5].Trim()), (eCategoria)Enum.Parse(typeof(eCategoria), valores[6].Trim()));
+                       listaProductos.Add(vacuno);
+                   }
+               }
 
-            return listaProductos;
-        }*/
-
+               return listaProductos;
+           }*/
+        /// <summary>
+        /// toma una lista de cadenas 
+        /// que representa información de ventas y las convierte en objetos de tipo Venta
+        /// </summary>
+        /// <param name="listaStringVentas">listas de string </param>
         static public void ParsearProductos(List<string> listaStringVentas)
         {
             List<Venta> listaVentas = new List<Venta>();
@@ -79,7 +83,7 @@ namespace BibliotecaDeClases
                                 idCliente,
                                 valores[7]
                             );
-                            Negocio.CargarVenta(venta);                        
+                            Negocio.CargarVenta(venta);
                         }
                     }
                 }
@@ -90,7 +94,7 @@ namespace BibliotecaDeClases
                 Console.WriteLine("Error al parsear productos: " + ex.Message);
             }
 
-           
+
         }
 
 

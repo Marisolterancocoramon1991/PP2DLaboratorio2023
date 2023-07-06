@@ -42,6 +42,11 @@ namespace BibliotecaDeClases
             return sb.ToString();
 
         }
+        /// <summary>
+        /// Convierte un DataTable en una lista de objetos Vendedor.
+        /// </summary>
+        /// <param name="dataTable">El DataTable a convertir.</param>
+        /// <returns>La lista de objetos Vendedor.</returns>
         public static  List<Vendedor> ConvertirDataTableALista(DataTable dataTable)
         {
             List<Vendedor> listaUsuarios = new List<Vendedor>();

@@ -24,7 +24,12 @@ namespace PrimerParcial
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Controlador de eventos que se activa cuando se cambia la selección en un ComboBox.
+        /// Muestra u oculta diferentes grupos de controles en el formulario según la opción seleccionada.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex)
@@ -57,6 +62,10 @@ namespace PrimerParcial
             }
 
         }
+        /// <summary>
+        /// Establece los valores de texto en los controles de texto para modificar un cliente.
+        /// </summary>
+        /// <param name="clienteAmodificar">Cliente a modificar.</param>
         private void SetTextStringModificar(Cliente clienteAmodificar)
         {
             txtNombreUsuario.Text = clienteAmodificar.Nombre;
@@ -67,6 +76,13 @@ namespace PrimerParcial
 
 
         }
+
+        /// <summary>
+        /// Evento que se activa cuando se hace clic en una celda del DataGridView.
+        /// Obtiene los valores de la fila seleccionada y los utiliza para cargar los datos en los controles de texto.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
@@ -141,15 +157,24 @@ namespace PrimerParcial
             }
         }
 
- 
 
+        /// <summary>
+        /// Evento que se activa al cargar el formulario de administración de clientes.
+        /// Obtiene la lista de clientes desde el negocio y la carga en el DataGridView.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void AdministrarCliente_Load(object sender, EventArgs e)
         {
             Listaclientes = Negocio.RetornaListaClientes();
             CargarDataGridView(Listaclientes, cliente);
 
         }
-
+        /// <summary>
+        /// Carga los datos de una lista de clientes en un DataGridView.
+        /// </summary>
+        /// <param name="listaCliente">Lista de clientes a cargar.</param>
+        /// <param name="cliente">Instancia de la clase Cliente.</param>
         public void CargarDataGridView(List<Cliente> listaCliente, Cliente cliente)
         {
             foreach (Cliente clientes in listaCliente)
@@ -197,10 +222,6 @@ namespace PrimerParcial
                     return;
 
                 }
-
-
-
-
                 Validaciones.ValidarCamposLoggin(nombreUsuario, correo, contraseña);
                 List<Cliente> listaUsuarios = new List<Cliente>();
                 listaUsuarios = Negocio.RetornaListaClientes();
@@ -337,7 +358,13 @@ namespace PrimerParcial
         {
 
         }
-
+        /// <summary>
+        /// Evento que se ejecuta al hacer clic en el botón "Modificar".
+        /// Obtiene los datos del formulario, los valida, modifica el cliente en la lista y en el DataGridView,
+        /// y muestra un mensaje de error en caso de excepción.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void btnLogearse_Click(object sender, EventArgs e)
         {
             DialogResult confirmarVenta;
@@ -353,7 +380,12 @@ namespace PrimerParcial
                 MessageBox.Show("Perfecto... siga con su labor");
             }
         }
-
+        /// <summary>
+        /// Evento que se ejecuta al hacer clic en el botón "Atrás".
+        /// Crea una instancia del formulario de administración, lo muestra y oculta el formulario actual.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void btnAtras_Click(object sender, EventArgs e)
         {
             FormAdministracion formAdministracion = new FormAdministracion();

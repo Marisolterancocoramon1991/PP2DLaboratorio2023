@@ -41,6 +41,12 @@ namespace BibliotecaDeClases
             return sb.ToString();
 
         }
+
+        /// <summary>
+        /// Convierte un DataTable en una lista de objetos Vacuno.
+        /// </summary>
+        /// <param name="dataTable">El DataTable que contiene los datos.</param>
+        /// <returns>Una lista de objetos Vacuno.</returns>
         public static List<Vacuno> ConvertirDataTableALista(DataTable dataTable)
         {
             List<Vacuno> listaVacas = new List<Vacuno>();

@@ -14,7 +14,11 @@ namespace BibliotecaDeClases
 {
     public class Serializador<T>
     {
-        // el primero la entidad T string el nombre y la ruta del archivo
+        /// <summary>
+        /// Serializa un objeto en formato XML y lo guarda en un archivo.
+        /// </summary>
+        /// <param name="entidad">El objeto a serializar.</param>
+        /// <param name="nombreArchivo">El nombre del archivo donde se guardará el XML.</param>
         public void SerializarXML(T entidad, string nombreArchivo)
         {
             using (StreamWriter streamWriter = new StreamWriter(nombreArchivo))
@@ -24,6 +28,11 @@ namespace BibliotecaDeClases
             }
         }
 
+        /// <summary>
+        /// Deserializa un objeto desde un archivo XML.
+        /// </summary>
+        /// <param name="nombreArchivo">El nombre del archivo XML.</param>
+        /// <returns>El objeto deserializado.</returns>
 
         public T DeserializarXMl(string nombreArchivo)
         {
@@ -37,7 +46,11 @@ namespace BibliotecaDeClases
             return (T)Objetodeserializado;
         }
 
-
+        /// <summary>
+        /// Serializa un objeto en formato JSON y lo guarda en un archivo.
+        /// </summary>
+        /// <param name="entidad">El objeto a serializar.</param>
+        /// <param name="nombreArchivo">El nombre del archivo donde se guardará el JSON.</param>
         public void SerializarJSON(T entidad, string nombreArchivo)
         {
             var options = new JsonSerializerOptions();
@@ -45,7 +58,13 @@ namespace BibliotecaDeClases
             string jsonString = JsonSerializer.Serialize(entidad, options);
             File.WriteAllText(nombreArchivo, jsonString);
         }
-        // para leer un archivo el estirn es la ruta del archivo
+
+        /// <summary>
+        /// Deserializa un objeto desde un archivo JSON.
+        /// </summary>
+        /// <param name="nombreArchivo">El nombre del archivo que contiene el JSON.</param>
+        /// <returns>El objeto deserializado.</returns>
+
         public T DeserializarJSON(string nombreArchivo)
         {
             T Objetodeserializado;
@@ -53,7 +72,12 @@ namespace BibliotecaDeClases
             Objetodeserializado = JsonSerializer.Deserialize<T>(jsonString);
             return Objetodeserializado;
         }
-
+        /// <summary>
+        /// Serializa una colección de objetos en formato CSV.
+        /// </summary>
+        /// <typeparam name="T">El tipo de los objetos en la colección.</typeparam>
+        /// <param name="entidad">La colección de objetos a serializar.</param>
+        /// <param name="nombreArchivo">El nombre del archivo de salida.</param>
         public void SerializarCSV<T>(IEnumerable<T> entidad, string nombreArhcivo)
         {
             StreamWriter streamWriter = new StreamWriter(nombreArhcivo);
@@ -63,7 +87,12 @@ namespace BibliotecaDeClases
             }
             streamWriter.Close();
         }
-
+        /// <summary>
+        /// Deserializa un archivo CSV en una lista de objetos del tipo especificado.
+        /// </summary>
+        /// <typeparam name="T">El tipo de los objetos en la lista.</typeparam>
+        /// <param name="nombreArchivo">El nombre del archivo CSV.</param>
+        /// <returns>Una lista de objetos deserializados.</returns>
         public List<T> DeserializarCSV<T>(string nombreArchivo)
         {
             List<T> Objetodeserializado;

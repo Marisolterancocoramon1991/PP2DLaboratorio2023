@@ -146,6 +146,10 @@ namespace PrimerParcial
                }
 
            }*/
+        /// <summary>
+        /// Método que se ejecuta al crear un nuevo producto.
+        /// Valida los campos del formulario y crea el producto correspondiente según el tipo seleccionado en el ComboBox.
+        /// </summary>
         private void CrearProducto()
         {
             float precio;

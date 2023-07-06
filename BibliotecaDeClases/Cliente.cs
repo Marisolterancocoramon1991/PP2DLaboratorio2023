@@ -111,15 +111,19 @@ namespace BibliotecaDeClases
             return sb.ToString();
 
         }
+
+        /// <summary>
+        /// Convierte un DataTable a una lista de objetos Cliente.
+        /// </summary>
+        /// <param name="dataTable">DataTable con los datos de los clientes.</param>
+        /// <returns>Lista de objetos Cliente.</returns>
+
         public static List<Cliente> ConvertirDataTableALista(DataTable dataTable)
         {
             List<Cliente> listaUsuarios = new List<Cliente>();
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-
-
-
                 // (Nombre, Apellido, Direccion, CorreoElectronico, Contraseña, TipoDeUsuarios)
                 Cliente usuario = new Cliente();
                 usuario.id = Convert.ToInt32(dataTable.Rows[i]["id"]);

@@ -9,6 +9,11 @@ namespace BibliotecaDeClases
 {
    public class ControllerConexion
     {
+
+        /// <summary>
+        /// Conecta con la base de datos y obtiene una lista de productos de cerdo.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Cerdo.</returns>
         public static List<Cerdo> ConectarProductosCerdoDB()
         {
             List<Cerdo> listaProductos = new List<Cerdo>();
@@ -18,7 +23,10 @@ namespace BibliotecaDeClases
             listaProductos = productosHandlre.Leer();
             return listaProductos;
         }
-
+        /// <summary>
+        /// Conecta con la base de datos y obtiene una lista de productos de vacuno.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Vacuno.</returns>
         public static List<Vacuno> ConectarProductosVacunoDB()
         {
             List<Vacuno> listaProductos = new List<Vacuno>();
@@ -28,7 +36,10 @@ namespace BibliotecaDeClases
             listaProductos = productosHandlre.Leer();
             return listaProductos;
         }
-
+        /// <summary>
+        /// Conecta con la base de datos y obtiene una lista de productos de ave.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Ave.</returns>
         public static List<Ave> ConectarProductosAveDB()
         {
             List<Ave> listaProductos = new List<Ave>();
@@ -38,7 +49,10 @@ namespace BibliotecaDeClases
             listaProductos = productosHandlre.Leer();
             return listaProductos;
         }
-
+        /// <summary>
+        /// Conecta con la base de datos y obtiene una lista de usuarios cliente.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Cliente.</returns>
         public static List<Cliente> ConectarUsuariosClienteDB()
         {
             List<Cliente> listaUsuarios = new List<Cliente>();
@@ -48,6 +62,11 @@ namespace BibliotecaDeClases
             listaUsuarios = usuariosHandler.Leer();
             return listaUsuarios;
         }
+
+        /// <summary>
+        /// Conecta con la base de datos y obtiene una lista de usuarios trabajador.
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Vendedor.</returns>
         public static List<Vendedor> ConectarUsuariosTrabajadorDB()
         {
             List<Vendedor> listaUsuarios = new List<Vendedor>();

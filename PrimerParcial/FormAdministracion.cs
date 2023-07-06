@@ -99,21 +99,36 @@ namespace PrimerParcial
         {
             labelMontoVentasTotales.Text = "haz clock aqui para conocer las ganancias totales";
         }
-
+        /// <summary>
+        /// Evento que se ejecuta al hacer clic en el botón "button1".
+        /// Oculta el formulario actual y muestra el formulario de administración de clientes.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             AdministrarCliente administrarCliente = new();
             administrarCliente.Show();
         }
-
+        /// <summary>
+        /// Evento que se ejecuta al hacer clic en el botón "buttonArchivo".
+        /// Oculta el formulario actual y muestra el formulario de informes de ventas.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void buttonArchivo_Click(object sender, EventArgs e)
         {
             this.Hide();
             informesVentasForm1 informes = new();
             informes.Show();
         }
-
+        /// <summary>
+        /// Evento que se ejecuta al hacer clic en el control "label1".
+        /// Actualiza el texto del control con el resultado de la comprobación del salario del vendedor.
+        /// </summary>
+        /// <param name="sender">Objeto que genera el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void label1_Click(object sender, EventArgs e)
         {
             label1.Text = vendedor.SalarioMayorA(10000).ToString();

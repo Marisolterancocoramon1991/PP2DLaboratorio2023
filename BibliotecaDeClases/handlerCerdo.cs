@@ -10,6 +10,10 @@ namespace BibliotecaDeClases
 {
     public class handlerCerdo: ComandoSQL, ImanjadorConexion<Cerdo>
     {
+        /// <summary>
+        /// Agrega un nuevo cerdo a la base de datos.
+        /// </summary>
+        /// <param name="entidad">El objeto Cerdo que se va a agregar.</param>
         public void Add(Cerdo entidad)
         {
             string query = "INSERT INTO Cerdos (Nombre, Tipo, Precio, CantidadEnInventarioKilos, RazaDeCerdo) " +
@@ -27,6 +31,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
+        /// <summary>
+        /// Modifica un cerdo existente en la base de datos.
+        /// </summary>
+        /// <param name="entidad">El objeto Cerdo con los nuevos valores a actualizar.</param>
         public void Modificar(Cerdo entidad)
         {
             string query = "UPDATE Cerdos SET Tipo = @Tipo, Precio = @Precio, CantidadEnInventarioKilos = @CantidadEnInventarioKilos, RazaDeCerdo = @RazasDeCerdo WHERE Nombre = @Nombre";
@@ -43,6 +51,10 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
+        /// <summary>
+        /// Elimina un registro de cerdo de la base de datos.
+        /// </summary>
+        /// <param name="id">El ID del cerdo a eliminar.</param>
         public void Delete(int id)
         {
             string query = "DELETE FROM Cerdos WHERE id = @id";
@@ -53,6 +65,11 @@ namespace BibliotecaDeClases
                 EjecutarNonQuery(comando);
             }
         }
+
+        /// <summary>
+        /// Obtiene todos los registros de cerdo de la base de datos.
+        /// </summary>
+        /// <returns>Una lista de objetos Cerdo.</returns>
         public List<Cerdo> Leer()
         {
             string query = "SELECT * FROM Cerdos";
